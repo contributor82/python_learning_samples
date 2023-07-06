@@ -1,7 +1,6 @@
 # Encoding and decoding Json contents. 
 
 import json
-import decimal
 
 class JsonOperations: 
     data = {'Height':5.3, 'Weight': 65}  # Json data
