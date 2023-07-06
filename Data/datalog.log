@@ -1,0 +1,16 @@
+DEBUG:root:logging:debug - This message should be logged in log file. 
+INFO:root:logging:info - This message should be logged in log file. 
+WARNING:root:logging:warning - This messagen should be logged in log file. 
+ERROR:root:non-ASCII stuff, too, like Øresund and Malmö
+DEBUG:root:logging:debug - This message should be logged in log file. 
+INFO:root:logging:info - This message should be logged in log file. 
+WARNING:root:logging:warning - This messagen should be logged in log file. 
+ERROR:root:non-ASCII stuff, too, like Øresund and Malmö
+DEBUG:root:logging:debug - This message should be logged in log file. 
+INFO:root:logging:info - This message should be logged in log file. 
+WARNING:root:logging:warning - This messagen should be logged in log file. 
+ERROR:root:non-ASCII stuff, too, like Øresund and Malmö
+DEBUG:root:logging:debug - This message should be logged in log file. 
+INFO:root:logging:info - This message should be logged in log file. 
+WARNING:root:logging:warning - This messagen should be logged in log file. 
+ERROR:root:non-ASCII stuff, too, like Øresund and Malmö

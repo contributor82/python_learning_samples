@@ -1,0 +1,4 @@
+Hello, This is a text file. 
+It can be used for many purpose as test data. 
+You can read this file, write into this etc. 
+
