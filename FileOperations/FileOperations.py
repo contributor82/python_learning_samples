@@ -1,4 +1,5 @@
 import glob
+import codecs
 
 class FileOperations: 
     fileHandle = None
@@ -71,10 +72,28 @@ class FileOperations:
 
     # Returning data for display purpose
     def display_file_data(self):
-        return self.fileData    
+        return self.fileData   
+
+    def convert_between_file_encoding(self, fileName): 
+        try:
+            with open(fileName, 'r', encoding='latin-1' ) as self.fileHandle: 
+                 
+                newFileHandle =  codecs.StreamRecoder(self.fileHandle, codecs.getencoder('utf-8'), codecs.getdecoder('utf-8'), 
+                                                       codecs.getreader('latin-1'), codecs.getwriter('latin-1'))
+                self.fileData = newFileHandle.read()
+
+        except OSError as osError: 
+            print(osError)
+        except Exception as ex: 
+            print(ex)
 
 # Creating file operation class object. 
 fileObj = FileOperations()
+
+fileObj.convert_between_file_encoding('Data\\latindata.txt')
+
+fileObj.display_file_data()
+
 
 # Calling file wildcards method
 fileObj.file_wildcards()
