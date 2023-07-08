@@ -10,8 +10,13 @@ class ComplexEncoder(json.JSONEncoder):
             return [obj.real, obj.imag]
         return json.JSONEncoder.default(self, obj)
     
-    # print( json.dumps(2+ 1j, cls=  ComplexEncoder  )) - ComplexEncoder type is not recognized. 
 
-    # ComplexEncoder().encode(2 + 1j)
+complexEncoderInstance = ComplexEncoder()
 
-    # list(ComplexEncoder().iterencode(2 + 1j))
+print( json.dumps(2+ 1j, cls=type(complexEncoderInstance)  ))  # ComplexEncoder type is not recognized. 
+
+complexEncoderInstance.encode(2+1j)
+
+lst = list(complexEncoderInstance.iterencode(2+1j))
+
+print(lst)

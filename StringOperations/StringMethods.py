@@ -38,6 +38,15 @@ class StringMethods:
     
     def get_expanded_string(self, inputStr, sizeNum): 
         return inputStr.expandtabs(tabsize = sizeNum)
+    
+    def contains_white_space(self, inputStr): 
+        return inputStr.isspace()
+    
+    def is_string_lower_case(self, inputStr): 
+        return inputStr.islower()
+    
+    def is_string_upper_case(self, inputStr): 
+        return inputStr.isupper()
 
 smInstance = StringMethods()
 
@@ -99,22 +108,18 @@ print("Original String: '", tabStr, "' \n Expanding string with the specified ta
 
 # print("Original String : ", str, " Formatted string using format string method:  ", str.format(1+2))
 
-# lowerStr = "LowerStr"
+lowerStr = "LowerStr"
 
-# print("Original String : ", lowerStr, " Checking if string is lower using islower string method: ", lowerStr.islower() )
+print("Original String : ", lowerStr, " Checking if string is lower using islower string method: ", smInstance.is_string_lower_case(lowerStr) )
 
-# upperStr = "UPPERSTR"
+upperStr = "UPPERSTR"
 
-# print("Original String : ", upperStr, " Checking if string is upper using isupper string method: ", upperStr.isupper() )
+print("Original String : ", upperStr, " Checking if string is upper using isupper string method: ", smInstance.is_string_upper_case(upperStr) )
 
-# whiteSpaceStr = "  " # True if all chars as white space.  False otherwise.
+whiteSpaceStr = "  " # True if all chars as white space.  False otherwise.
 
-# print("Original String : ", whiteSpaceStr, " Checking if string has white space using isspace string method: ", whiteSpaceStr.isspace() )
+print("Original String : ", whiteSpaceStr, " Checking if string has white space using isspace string method: ",  smInstance.contains_white_space(whiteSpaceStr))
 
-# str1 = "String One" 
-# str2 = "Two"
-
-# print("Original Strings : First String: ", str1, " Second String: ", str2, " Joining string iterables using join string method: ", str1.join(str2) )
 
 
 

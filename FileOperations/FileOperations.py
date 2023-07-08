@@ -94,7 +94,6 @@ fileObj.convert_between_file_encoding('Data\\latindata.txt')
 
 fileObj.display_file_data()
 
-
 # Calling file wildcards method
 fileObj.file_wildcards()
 
