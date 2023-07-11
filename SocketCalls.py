@@ -56,7 +56,8 @@ class SocketCalls:
 
 
 scInstance = SocketCalls()
-scInstance.connect("127.0.0.1",80) 
+# host and port specified
+scInstance.connect("127.0.0.1",3000) 
 
 if  scInstance.IsConnectionMade == True:
     msg_data = bytearray("Hello, Socket calls.", encoding='utf-8')
