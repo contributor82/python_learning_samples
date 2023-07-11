@@ -1,18 +1,19 @@
+# Class impported from same folder. 
 from BagClassExample import BagClass
 
-bagObj = BagClass()
+bagInstance = BagClass()
 
-bagObj.add('Compass Box')
-bagObj.add_element_twice('Book')
-bagObj.add_element_twice('Book')
-bagObj.add_element_twice('Note Book')
-bagObj.add_element_twice('Note Book')
-bagObj.add('Water Bottle')
-bagObj.add('Lunch Box')
-bagObj.add('Raincoat with bag')
+bagInstance.add('Compass Box')
+bagInstance.add_element_twice('Book')
+bagInstance.add_element_twice('Book')
+bagInstance.add_element_twice('Note Book')
+bagInstance.add_element_twice('Note Book')
+bagInstance.add('Water Bottle')
+bagInstance.add('Lunch Box')
+bagInstance.add('Raincoat with bag')
 
 
-bagElements = bagObj.whats_added_in_bag()
+bagElements = bagInstance.whats_added_in_bag()
 
 print('What is in your Bag:', bagElements)
 
