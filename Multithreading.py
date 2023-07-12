@@ -2,6 +2,7 @@
 # Multi threading in python
 
 import threading, zipfile
+import time
 
 # YET TO BE DONE - Threading seems working but file operations not completing as expected. 
 class AsyncZip(threading.Thread): 
@@ -12,6 +13,17 @@ class AsyncZip(threading.Thread):
         threading.Thread.__init__(self)
         self.infile = inFile
         self.outfile = outFile
+    
+    def thread_task(self, name, n): 
+        for i in range(n): 
+            print(name, i)
+
+    def exec_thread(self, n): 
+        for i in range(n): 
+            T = threading.Thread(target=self.thread_task, args=(str(i), i))
+            T.start()
+        
+        time.sleep(10)
     
     def run(self): 
         try: 
@@ -25,16 +37,16 @@ class AsyncZip(threading.Thread):
             # Prints file name list present in archive folder. 
             print("Files present in zip file: ", zipFileObj.namelist())
             
-            # Gives bad file descriptor error even though file is present at the given path. 
+            # [Error 9]: Bad file descriptor error even though file is present at the given path.
+            # Removed file, changed extract path, no error but No file has been extracted. 
+            # Not giving error but not extracting file. 
             for fileZipInfo in zipFileObj.filelist: 
-                zipFileObj.extract(fileZipInfo, path="Data\\")
-            
-            zipFileObj.extract(self.infile)
+                zipFileObj.extract(fileZipInfo, path="\Data\mydata_archive")
             
             print('Finished background zip of: ', self.infile)
         except Exception as ex:
             print("Exception: ", ex)
-
+    
 
 background = AsyncZip("Data\\mydata.txt", "Data\\mydata_archive.zip")
 background.start()
