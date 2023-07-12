@@ -3,7 +3,7 @@ import codecs
 
 class FileOperations: 
     fileHandle = None
-    fileData = ""
+    fileData = None
 
     # Opening a file explicitely for reading purpose
     def open_file(self, openingMode): 
@@ -21,9 +21,6 @@ class FileOperations:
     
     # Reading file data
     def read_file(self): 
-        #  traditional approach when not using with
-        # self.close_file()
-        # self.open_file("r")     
         try: 
 
             # Using with to open file for reading and the file is closed immediately. 
@@ -37,9 +34,7 @@ class FileOperations:
 
     # Write operation currently causing an error. DO NOT USE.
     def write_file(self):
-        # self.close_file()
         # # w+ Opens a disk file for updating(reading and writing)
-        # self.open_file("w+")
         try: 
             self.fileHandle = open('Data\\textfile.txt','w+', encoding='utf-8')
             data = "This is a file write operation. textfile is getting new string contents. "
@@ -51,9 +46,7 @@ class FileOperations:
 
 
     def append_file(self):
-        # self.close_file()
         # # a Opens a file to append the contents to the end of the file.  
-        # self.open_file("a+") 
         try: 
             self.fileHandle = open('Data\\textfile.txt','a+', encoding='utf-8')
             data = "Appending file contents. "
@@ -74,23 +67,35 @@ class FileOperations:
     def display_file_data(self):
         return self.fileData   
 
+    # Causing "can't concat str to bytes error even though reading data & called bytes for the conversion. " DO NOT USE
     def convert_between_file_encoding(self, fileName): 
         try:
-            with open(fileName, 'r', encoding='latin-1' ) as self.fileHandle: 
+            with open(fileName, 'r', encoding="latin-1" ) as self.fileHandle: 
                  
                 newFileHandle =  codecs.StreamRecoder(self.fileHandle, codecs.getencoder('utf-8'), codecs.getdecoder('utf-8'), 
-                                                       codecs.getreader('latin-1'), codecs.getwriter('latin-1'))
-                self.fileData = newFileHandle.read()
+                                                       codecs.getreader('latin-1'), codecs.getwriter('latin-1'), errors="strict")
+                
+                self.fileData = newFileHandle.read().__bytes__()
 
         except OSError as osError: 
             print(osError)
         except Exception as ex: 
             print(ex)
 
+    # Causing an error - 'utf-8' codec can't decode byte 0xf3 in position 1: invalid continuation byte DO NOT USE
+    def convert_latin_data(self): 
+        try:
+            bytesObj = bytes("¿Cómo estás?", encoding="latin-1")
+            result = codecs.decode(bytesObj, encoding="utf-8",errors="strict")
+            print(result)
+        except Exception as ex: 
+            print(ex)
+
 # Creating file operation class object. 
 fileObj = FileOperations()
 
-fileObj.convert_between_file_encoding('Data\\latindata.txt')
+# fileObj.convert_between_file_encoding('Data\\latindata.txt')
+fileObj.convert_latin_data()
 
 fileObj.display_file_data()
 
