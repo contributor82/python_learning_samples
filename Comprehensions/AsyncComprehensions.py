@@ -24,10 +24,6 @@ class AsyncComprehensions:
             if (i % 2)==0: 
                 await self.sleep()
                 print("async for - printing for even numbers: ", i)
-    
-    def temp_fun(self): 
-        data = 'This is fun string'
-        return str
 
     async def async_with(self):
         with open('Data\\textfile.txt','r') as fileHandle:
