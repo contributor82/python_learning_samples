@@ -44,6 +44,8 @@ class AsyncZip(threading.Thread):
                 zipFileObj.extract(fileZipInfo, path="\Data\mydata_archive")
             
             print('Finished background zip of: ', self.infile)
+        except OSError as osError: 
+            print("Operating System Error: ", osError)
         except Exception as ex:
             print("Exception: ", ex)
     
