@@ -88,10 +88,10 @@ originalStr = "Original"
 
 print("Original String: '", originalStr, "' Encoded String using encode string method : ", smInstance.get_encoded_string(originalStr, 'utf-16', 'strict') )
 
-stringToDecode = b'x80abc'
-# stringToDecode = 'ê' # not converting to utf-8
+# stringToDecode = b'x80abc'
+stringToDecode = 'ê' # not converting to utf-8
 
-print("Original String: ", stringToDecode, " Decoded String using decode string method : ",  smInstance.get_decoded_string(stringToDecode,"utf-8", "strict"))
+print("Original String: ", stringToDecode, " Decoded String using decode string method : ",  smInstance.get_decoded_string(stringToDecode,"utf-8-sig", "strict"))
 
 print("Original String: '", originalStr, "' True if original string ends with given letter using endswith string method: ", smInstance.get_string_ends_with("l", 1, 10)  )
 

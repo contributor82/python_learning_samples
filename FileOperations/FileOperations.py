@@ -1,5 +1,6 @@
 import glob
 import codecs
+import os
 
 class FileOperations: 
     fileHandle = None
@@ -44,7 +45,7 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
 
-
+    # Appending file contents
     def append_file(self):
         # # a Opens a file to append the contents to the end of the file.  
         try: 
@@ -57,9 +58,34 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
 
+    # Deleting file
+    def delete_file(self, fileName): 
+        try:
+            if os.access(fileName, os.F_OK): 
+                os.remove(fileName)
+                print(fileName, " deleted successfully. ")
+        except FileNotFoundError as fileNotFoundError: 
+            print(fileNotFoundError)
+        except OSError as osError: 
+            print(osError)
+        except Exception as ex: 
+            print(ex)
 
+    # Renaming file
+    def rename_file(self, oldFileName, newFileName): 
+        try:
+            if os.access(oldFileName, os.F_OK): 
+                os.rename(oldFileName, newFileName)
+                print("File has been renmaed successfully. ")
+        except FileNotFoundError as fileNotFoundError: 
+            print(fileNotFoundError)
+        except OSError as osError: 
+            print(osError)
+        except Exception as ex: 
+            print(ex)
+    
     # Listing files present when file extension is given.
-    def  file_wildcards(self): 
+    def file_wildcards(self): 
         filesList = glob.glob('*.py')
         print(filesList)
 
@@ -74,28 +100,32 @@ class FileOperations:
                  
                 newFileHandle =  codecs.StreamRecoder(self.fileHandle, codecs.getencoder('utf-8'), codecs.getdecoder('utf-8'), 
                                                        codecs.getreader('latin-1'), codecs.getwriter('latin-1'), errors="strict")
-                
-                self.fileData = newFileHandle.read().__bytes__()
+                data = newFileHandle.read().__bytes__().decode(encoding="iso-8859-1").encode(encoding="utf-8")
+                print(data)
 
         except OSError as osError: 
             print(osError)
         except Exception as ex: 
             print(ex)
 
-    # Causing an error - 'utf-8' codec can't decode byte 0xf3 in position 1: invalid continuation byte DO NOT USE
     def convert_latin_data(self): 
         try:
             bytesObj = bytes("¿Cómo estás?", encoding="latin-1")
-            result = codecs.decode(bytesObj, encoding="utf-8",errors="strict")
-            print(result)
+            result = codecs.decode(bytesObj, encoding="iso-8859-1",errors="strict").encode(encoding="utf-8")
+            bytesObjNew = bytes(result.__str__(),encoding="utf-8")
+            result1 = codecs.decode(bytesObjNew,encoding="latin-1")
+            
+            print(result, " ", result1)
         except Exception as ex: 
             print(ex)
 
 # Creating file operation class object. 
 fileObj = FileOperations()
 
+fileObj.rename_file("Data\\tempfile.txt", "Data\\tempfile_one.txt")
+
 # fileObj.convert_between_file_encoding('Data\\latindata.txt')
-fileObj.convert_latin_data()
+# fileObj.convert_latin_data()
 
 fileObj.display_file_data()
 
@@ -137,5 +167,7 @@ print("Reading after appending file contents: ", data)
 
 # Calling file close explicitely if file has not been closed. 
 fileObj.close_file()
+
+fileObj.delete_file("Data\\tempfile.txt")
 
 
