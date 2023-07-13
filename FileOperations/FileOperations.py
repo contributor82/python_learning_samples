@@ -1,15 +1,16 @@
 import glob
 import codecs
 import os
+import struct
 
 class FileOperations: 
     fileHandle = None
     fileData = None
 
     # Opening a file explicitely for reading purpose
-    def open_file(self, openingMode): 
+    def open_file(self, fileName, openingMode): 
         try:
-            self.fileHandle = open('Data\\textfile.txt', openingMode)
+            self.fileHandle = open(fileName, openingMode)
         except OSError as osError: 
             print(osError)
         except Exception as ex: 
@@ -21,23 +22,32 @@ class FileOperations:
             self.fileHandle.close()
     
     # Reading file data
-    def read_file(self): 
+    def read_file(self, fileName): 
         try: 
-
-            # Using with to open file for reading and the file is closed immediately. 
-            with open('Data\\textfile.txt','r') as self.fileHandle:
+            with open(fileName,'r') as self.fileHandle:
                 self.fileData = self.fileHandle.read()
         except OSError as osError: 
             print(osError)
         except Exception as ex: 
             print(ex)
-        
+    
+    # Reading binary data from file
+    def read_binarydata_from_file(self, fileName): 
+        try: 
+            with open(fileName,'rb') as self.fileHandle:
+                self.fileData = self.fileHandle.read(8)
+                x, y, z = struct.unpack(">hhl", self.fileData)
+                print("Binary data from file: ", x, y, z)
+        except OSError as osError: 
+            print(osError)
+        except Exception as ex: 
+            print(ex)
 
     # Write operation currently causing an error. DO NOT USE.
-    def write_file(self):
+    def write_file(self, fileName):
         # # w+ Opens a disk file for updating(reading and writing)
         try: 
-            self.fileHandle = open('Data\\textfile.txt','w+', encoding='utf-8')
+            self.fileHandle = open(fileName,'w+', encoding='utf-8')
             data = "This is a file write operation. textfile is getting new string contents. "
             self.fileHandle.write(data)
         except OSError as osError: 
@@ -46,10 +56,10 @@ class FileOperations:
             print(ex)
 
     # Appending file contents
-    def append_file(self):
+    def append_file(self, fileName):
         # # a Opens a file to append the contents to the end of the file.  
         try: 
-            self.fileHandle = open('Data\\textfile.txt','a+', encoding='utf-8')
+            self.fileHandle = open(fileName,'a+', encoding='utf-8')
             data = "Appending file contents. "
             self.fileHandle.write(data) 
             self.close_file()
@@ -108,66 +118,75 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
 
-    def convert_latin_data(self): 
-        try:
-            bytesObj = bytes("¿Cómo estás?", encoding="latin-1")
-            result = codecs.decode(bytesObj, encoding="iso-8859-1",errors="strict").encode(encoding="utf-8")
-            bytesObjNew = bytes(result.__str__(),encoding="utf-8")
-            result1 = codecs.decode(bytesObjNew,encoding="latin-1")
+    # def convert_latin_data(self): 
+    #     try:
+    #         bytesObj = bytes("¿Cómo estás?", encoding="latin-1")
+    #         result = codecs.decode(bytesObj, encoding="iso-8859-1",errors="strict").encode(encoding="utf-8")
+    #         bytesObjNew = bytes(result.__str__(),encoding="utf-8")
+    #         result1 = codecs.decode(bytesObjNew,encoding="latin-1")
             
-            print(result, " ", result1)
-        except Exception as ex: 
-            print(ex)
+    #         print(result, " ", result1)
+    #     except Exception as ex: 
+    #         print(ex)
 
 # Creating file operation class object. 
-fileObj = FileOperations()
+fileInstance = FileOperations()
 
-fileObj.rename_file("Data\\tempfile.txt", "Data\\tempfile_one.txt")
+binaryDataFileName = "Data\\binarydata.txt"
+fileInstance.read_binarydata_from_file(binaryDataFileName)
 
-# fileObj.convert_between_file_encoding('Data\\latindata.txt')
-# fileObj.convert_latin_data()
+oldFileName = "Data\\tempfile.txt"
+newFileName = "Data\\tempfile_one.txt"
 
-fileObj.display_file_data()
+fileInstance.rename_file(oldFileName,newFileName )
 
+latinDataFileName = 'Data\\latindata.txt'
+# fileInstance.convert_between_file_encoding(latinDataFileName)
+# fileInstance.convert_latin_data()
+
+fileInstance.display_file_data()
+
+fileName = 'Data\\textfile.txt'
 # Calling file wildcards method
-fileObj.file_wildcards()
+fileInstance.file_wildcards()
 
 # Calling file read method 
-fileObj.read_file()
+fileInstance.read_file(fileName)
 
 # Calling file data and storing returned data in a variable. 
-data = fileObj.display_file_data()
+data = fileInstance.display_file_data()
 
 # Printing returned data. 
 print("Reading current file data: ", data)
 
 # Calling write file operation
-fileObj.write_file()
+fileInstance.write_file(fileName)
 
 # Calling read file after write operation
-fileObj.read_file()
+fileInstance.read_file(fileName)
 
 # Calling file display data
-data = fileObj.display_file_data()
+data = fileInstance.display_file_data()
 
 # Printing file contents after reading. 
 print("Reading after writing file contents: ", data)
 
 # Calling file append
-fileObj.append_file()
+fileInstance.append_file(fileName)
 
 # Calling read file after append  operation
-fileObj.read_file()
+fileInstance.read_file(fileName)
 
 # Calling file display data
-data = fileObj.display_file_data()
+data = fileInstance.display_file_data()
 
 # Printing file contents after reading. 
 print("Reading after appending file contents: ", data)
 
 # Calling file close explicitely if file has not been closed. 
-fileObj.close_file()
+fileInstance.close_file()
 
-fileObj.delete_file("Data\\tempfile.txt")
+delFileName = "Data\\tempfile_one.txt"
+fileInstance.delete_file(delFileName)
 
 
