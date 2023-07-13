@@ -9,7 +9,8 @@ class DBOperations:
     # Getting an error while opening DB connection
     def open_connection(self): 
       try:
-        self.con =  sqlite3.connect('Data source=FUTURE\\SQLSERVER_DEV;Integrated Security=SSPI;Database=Students; User Instance=true; Encrypt=true;Trust Server Certificate=true;')
+        connectionStr = 'Data source=FUTURE\\SQLSERVER_DEV;Integrated Security=SSPI;Database=Students.mdf; User Instance=true; Encrypt=true;Trust Server Certificate=true;'
+        self.con =  sqlite3.connect(connectionStr)
         if self.con != None: 
             print("Database connection established successfully. ")
             return True
@@ -35,7 +36,7 @@ class DBOperations:
                 for row in self.data: 
                     print(row)
             else: 
-                print("There is a problem in the connection or No records to display. ")
+                print("There is a problem in the connection or No records available to display. ")
         except Exception as ex: 
                 print(ex)
  
