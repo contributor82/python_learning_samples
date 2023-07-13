@@ -81,12 +81,12 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
 
-    # Renaming file
+    # Renaming file - causing Access is denied error DO NOT USE
     def rename_file(self, oldFileName, newFileName): 
         try:
             if os.access(oldFileName, os.F_OK): 
                 os.rename(oldFileName, newFileName)
-                print("File has been renmaed successfully. ")
+                print("File has been renamed successfully. ")
         except FileNotFoundError as fileNotFoundError: 
             print(fileNotFoundError)
         except OSError as osError: 
