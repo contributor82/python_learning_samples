@@ -4,6 +4,7 @@
 import threading, zipfile
 import time
 
+# async zip class
 class AsyncZip(threading.Thread): 
     infile = None
     outfile = None
