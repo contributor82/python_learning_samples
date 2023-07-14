@@ -1,7 +1,6 @@
-
-
 import socket
 
+#  Class for Socket calls
 class SocketCalls: 
     sock = None
     MSGLEN = 0
