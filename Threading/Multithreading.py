@@ -4,7 +4,6 @@
 import threading, zipfile
 import time
 
-# YET TO BE DONE - Threading seems working but file operations not completing as expected. 
 class AsyncZip(threading.Thread): 
     infile = None
     outfile = None
@@ -50,7 +49,7 @@ class AsyncZip(threading.Thread):
             print("Exception: ", ex)
     
 
-background = AsyncZip("Data\\mydata.txt", "Data\\mydata_archive.zip")
+background = AsyncZip("C:\\Data\\mydata.txt", "C:\\Data\\mydata_archive.zip")
 background.start()
 print(" The main program continues to run in foreground. ")
 

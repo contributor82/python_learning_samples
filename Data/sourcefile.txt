@@ -1,0 +1,1 @@
+This is a source file contains few lines to be copied over to the destination file. 

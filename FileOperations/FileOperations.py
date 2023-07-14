@@ -2,6 +2,7 @@ import glob
 import codecs
 import os
 import struct
+import shutil
 
 class FileOperations: 
     fileHandle = None
@@ -94,6 +95,13 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
     
+    def file_copy(self, sourceFileName, destFileName):
+        try:
+            result = shutil.copyfile(sourceFileName, destFileName)
+            print(result)
+        except Exception as ex: 
+            print(ex)
+
     # Listing files present when file extension is given.
     def file_wildcards(self): 
         filesList = glob.glob('*.py')
@@ -132,21 +140,21 @@ class FileOperations:
 # Creating file operation class object. 
 fileInstance = FileOperations()
 
-binaryDataFileName = "Data\\binarydata.txt"
+binaryDataFileName = "C:\\Data\\binarydata.txt"
 fileInstance.read_binarydata_from_file(binaryDataFileName)
 
-oldFileName = "Data\\tempfile.txt"
-newFileName = "Data\\tempfile_one.txt"
+oldFileName = "C:\\Data\\tempfile.txt"
+newFileName = "C:\\Data\\tempfile_one.txt"
 
 fileInstance.rename_file(oldFileName,newFileName )
 
-latinDataFileName = 'Data\\latindata.txt'
+latinDataFileName = 'C:\\Data\\latindata.txt'
 # fileInstance.convert_between_file_encoding(latinDataFileName)
 # fileInstance.convert_latin_data()
 
 fileInstance.display_file_data()
 
-fileName = 'Data\\textfile.txt'
+fileName = 'C:\\Data\\textfile.txt'
 # Calling file wildcards method
 fileInstance.file_wildcards()
 
@@ -186,7 +194,11 @@ print("Reading after appending file contents: ", data)
 # Calling file close explicitely if file has not been closed. 
 fileInstance.close_file()
 
-delFileName = "Data\\tempfile_one.txt"
+sourceFileName = "C:\\Data\\sourcefile.txt"
+destFileName = "C:\\Data\\destinationfile.txt"
+fileInstance.file_copy(sourceFileName,  destFileName)
+
+delFileName = "C:\\Data\\delfile.txt"
 fileInstance.delete_file(delFileName)
 
 
