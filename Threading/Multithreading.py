@@ -18,8 +18,8 @@ class AsyncZip(threading.Thread):
         for i in range(n): 
             print(name, i)
 
-    def exec_thread(self, n): 
-        for i in range(n): 
+    def exec_thread(self, num): 
+        for i in range(num): 
             T = threading.Thread(target=self.thread_task, args=(str(i), i))
             T.start()
         
