@@ -2,7 +2,16 @@ import unittest
 
 # To have python detect written test cases, the method name should start with 'test' as prefix
 
+import sys
+sys.path.append(r"c:\MyLearning\python-learning\StringOperations")
+from StringMethods import StringMethods
+
+
 class TestStringMethods(unittest.TestCase): 
+
+    def test_string_method_instance(self): 
+        smInstance = StringMethods()
+        self.assertIsInstance(smInstance, StringMethods)
 
     # Using AssertEqual
     def test_upper(self): 

@@ -48,78 +48,80 @@ class StringMethods:
     def is_string_upper_case(self, inputStr): 
         return inputStr.isupper()
 
-smInstance = StringMethods()
 
-print('C:\n folder1\n folder2')
+if __name__ == '__main__': 
+    smInstance = StringMethods()
 
-print('\\n is considered as new line character. ')
+    print('C:\n folder1\n folder2')
 
-print ('To break long string lines while writing use "text" ')
+    print('\\n is considered as new line character. ')
 
-text = ('Put several strings into parentheses '
-       'to have them join together')
-print(text)
+    print ('To break long string lines while writing use "text" ')
 
-str = 'python'
+    text = ('Put several strings into parentheses '
+        'to have them join together')
+    print(text)
 
-print ("Original String: '", str,  "' First letter from string: ", smInstance.get_first_letter_from_string(str))
+    str = 'python'
 
-print("Original String: '", str,  "'Last letter from word: ", smInstance.get_last_letter_from_string(str))
+    print ("Original String: '", str,  "' First letter from string: ", smInstance.get_first_letter_from_string(str))
 
-print("Original String: '", str,  "' First three letters: ", smInstance.get_first_few_letters_from_string(str,3)) # letters from the beginning position 0
+    print("Original String: '", str,  "'Last letter from word: ", smInstance.get_last_letter_from_string(str))
 
-print("Original String: '", str,  "' First two letters from position 1 : ", smInstance.get_few_letters_from_string(str,1,3)) # letters from the beginning position 1
+    print("Original String: '", str,  "' First three letters: ", smInstance.get_first_few_letters_from_string(str,3)) # letters from the beginning position 0
 
-print("Getting string length using len string method: ", len("Hello World!"))
+    print("Original String: '", str,  "' First two letters from position 1 : ", smInstance.get_few_letters_from_string(str,1,3)) # letters from the beginning position 1
 
-print("Original String: '", str, "' Capitalized first letter of the string using capitalize string method: ", smInstance.get_first_letter_in_cap_case(str))
+    print("Getting string length using len string method: ", len("Hello World!"))
 
-worldToCaseFold = 'NewPython'
+    print("Original String: '", str, "' Capitalized first letter of the string using capitalize string method: ", smInstance.get_first_letter_in_cap_case(str))
 
-print("Original String: '", worldToCaseFold, "' Case folded given string using casefold string method : ", smInstance.get_string_case_fold(worldToCaseFold))
+    worldToCaseFold = 'NewPython'
 
-print("Original String: '", str, "' Centered a given string by padding given character in remaining spaces: ", smInstance.get_string_centered_by_padding(str,10, "n"))
+    print("Original String: '", worldToCaseFold, "' Case folded given string using casefold string method : ", smInstance.get_string_case_fold(worldToCaseFold))
 
-inputStr = "String hiding inside string."
+    print("Original String: '", str, "' Centered a given string by padding given character in remaining spaces: ", smInstance.get_string_centered_by_padding(str,10, "n"))
 
-print("Original String: '", inputStr, "'  SubString: ring", " Substring count using count string method: ", smInstance.get_substring_count(inputStr, "ring", 1,30))
+    inputStr = "String hiding inside string."
 
-originalStr = "Original"
+    print("Original String: '", inputStr, "'  SubString: ring", " Substring count using count string method: ", smInstance.get_substring_count(inputStr, "ring", 1,30))
 
-print("Original String: '", originalStr, "' Encoded String using encode string method : ", smInstance.get_encoded_string(originalStr, 'utf-16', 'strict') )
+    originalStr = "Original"
 
-# stringToDecode = b'x80abc'
-stringToDecode = 'ê' # not converting to utf-8
+    print("Original String: '", originalStr, "' Encoded String using encode string method : ", smInstance.get_encoded_string(originalStr, 'utf-16', 'strict') )
 
-print("Original String: ", stringToDecode, " Decoded String using decode string method : ",  smInstance.get_decoded_string(stringToDecode,"utf-8-sig", "strict"))
+    # stringToDecode = b'x80abc'
+    stringToDecode = 'ê' # not converting to utf-8
 
-print("Original String: '", originalStr, "' True if original string ends with given letter using endswith string method: ", smInstance.get_string_ends_with("l", 1, 10)  )
+    print("Original String: ", stringToDecode, " Decoded String using decode string method : ",  smInstance.get_decoded_string(stringToDecode,"utf-8-sig", "strict"))
 
-tabStr = '01\t012\t0123\t01234'
+    print("Original String: '", originalStr, "' True if original string ends with given letter using endswith string method: ", smInstance.get_string_ends_with("l", 1, 10)  )
 
-print("Original String: '", tabStr, "' \n Expanding string with the specified tab size using expandtabs string method : ",  smInstance.get_expanded_string(tabStr, 8) )
+    tabStr = '01\t012\t0123\t01234'
 
-# print("Original String: '", originalStr, "' Finding substring position in the given string using find string method:  ",  originalStr.find("gi",1,10))
+    print("Original String: '", tabStr, "' \n Expanding string with the specified tab size using expandtabs string method : ",  smInstance.get_expanded_string(tabStr, 8) )
 
-# print("Original String: ", originalStr, " Finding substring position in the given string using index string method:  ", originalStr.index("gi",1,10))
+    # print("Original String: '", originalStr, "' Finding substring position in the given string using find string method:  ",  originalStr.find("gi",1,10))
 
-# print("Original String: ", originalStr, " Finding substring position in the given string using index string method ValueError if string not found:  ", originalStr.index("di",1,10))
+    # print("Original String: ", originalStr, " Finding substring position in the given string using index string method:  ", originalStr.index("gi",1,10))
 
-# str = "The sum of 1 + 2 is {0}"
+    # print("Original String: ", originalStr, " Finding substring position in the given string using index string method ValueError if string not found:  ", originalStr.index("di",1,10))
 
-# print("Original String : ", str, " Formatted string using format string method:  ", str.format(1+2))
+    # str = "The sum of 1 + 2 is {0}"
 
-lowerStr = "LowerStr"
+    # print("Original String : ", str, " Formatted string using format string method:  ", str.format(1+2))
 
-print("Original String : ", lowerStr, " Checking if string is lower using islower string method: ", smInstance.is_string_lower_case(lowerStr) )
+    lowerStr = "LowerStr"
 
-upperStr = "UPPERSTR"
+    print("Original String : ", lowerStr, " Checking if string is lower using islower string method: ", smInstance.is_string_lower_case(lowerStr) )
 
-print("Original String : ", upperStr, " Checking if string is upper using isupper string method: ", smInstance.is_string_upper_case(upperStr) )
+    upperStr = "UPPERSTR"
 
-whiteSpaceStr = "  " # True if all chars as white space.  False otherwise.
+    print("Original String : ", upperStr, " Checking if string is upper using isupper string method: ", smInstance.is_string_upper_case(upperStr) )
 
-print("Original String : ", whiteSpaceStr, " Checking if string has white space using isspace string method: ",  smInstance.contains_white_space(whiteSpaceStr))
+    whiteSpaceStr = "  " # True if all chars as white space.  False otherwise.
+
+    print("Original String : ", whiteSpaceStr, " Checking if string has white space using isspace string method: ",  smInstance.contains_white_space(whiteSpaceStr))
 
 
 

@@ -4,7 +4,7 @@
 class ListComprehensions: 
 
     def list_appending(self, squares, rangeVal): 
-        for i in range(10):
+        for i in range(rangeVal):
             squares.append(i**2)
         return squares
     

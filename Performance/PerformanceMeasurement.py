@@ -1,6 +1,5 @@
 import threading
 from timeit import Timer
-import timeit
 
 class PerformanceMeasurement: 
 
@@ -21,9 +20,6 @@ class PerformanceMeasurement:
         result = Timer('temp = num1; num1 = num2; num2 = temp ', 'num1 = 1; num2 = 2').timeit()
         print(result)
         
-    
-
-
 perfInstance = PerformanceMeasurement()
 perfInstance.perf_check()
 

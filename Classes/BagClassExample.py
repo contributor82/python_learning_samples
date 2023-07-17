@@ -1,5 +1,6 @@
 # An example using class to add elements in Bag collection
 # Returning Bag elements. 
+import sys
 
 class BagClass: 
 
@@ -16,6 +17,11 @@ class BagClass:
     def whats_added_in_bag(self): 
         return self.data
         
+
+if __name__ == '__main__': 
+        print("In module TestClassMethods __package__ and __name__ : ", __package__, __name__)
+        print("In module products sys.path[0], __package__ ==", sys.path[0], __package__)
+
 # Commented since class has been invoked from another file. 
 # bagObject = BagClass()
 # bagObject.add("Compass box")

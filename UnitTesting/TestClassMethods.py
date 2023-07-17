@@ -1,25 +1,18 @@
 # Following Import class statement is giving an error hence taken entire class
 # for unit testing sample. 
-# from ..Classes.BagClassExample import BagClass
+
+# Importing BagClass from BagClassExample.py file
+import sys
+sys.path.append(r"c:\MyLearning\python-learning\Classes")
+from BagClassExample import BagClass
+
+# Following import statement doesn't work. 
+#from ..Classes.BagClassExample import BagClass
+
 import unittest
 
-class BagClass: 
-
-    def __init__(self):
-        self.data = []
-
-    def add(self, element):
-        self.data.append(element)
-    
-    def add_element_twice(self, element): 
-        self.data.append(element)
-        self.data.append(element)
-
-    def whats_added_in_bag(self): 
-        return self.data
-
-
 class TestBagClass(unittest.TestCase): 
+
     bagObj = BagClass()
     def test_BagClass_Instance(self): 
         self.assertTrue(isinstance(self.bagObj, BagClass))
@@ -40,3 +33,6 @@ class TestBagClass(unittest.TestCase):
 
 if __name__ == '__main__': 
     unittest.main()
+
+
+#python -m unittest TestClassMethods -v
