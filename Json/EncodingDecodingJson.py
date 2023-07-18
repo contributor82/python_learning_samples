@@ -26,16 +26,11 @@ class JsonOperations:
         return self.dct
     
 
-jsonOperationsInstance = JsonOperations()
-
-print("Original Data: ", jsonOperationsInstance.data)
-
-print("After encoding : ", jsonOperationsInstance.encoding_json())
-
-print("After decoding: ", jsonOperationsInstance.decoding_json())
-
-
-jsonStr = {"__complex__": True, "real": 1, "imag": 2}
-
-print(jsonOperationsInstance.specialized_decoding_json(jsonStr))
+if __name__ == '__main__':
+    jsonOperationsInstance = JsonOperations()
+    print("Original Data: ", jsonOperationsInstance.data)
+    print("After encoding : ", jsonOperationsInstance.encoding_json())
+    print("After decoding: ", jsonOperationsInstance.decoding_json())
+    jsonStr = {"__complex__": True, "real": 1, "imag": 2}
+    print(jsonOperationsInstance.specialized_decoding_json(jsonStr))
 

@@ -50,10 +50,11 @@ class AsyncZip(threading.Thread):
             print("Exception: ", ex)
     
 
-background = AsyncZip("C:\\Data\\mydata.txt", "C:\\Data\\mydata_archive.zip")
-background.start()
-print(" The main program continues to run in foreground. ")
+if __name__ == '__main__': 
+    background = AsyncZip("C:\\Data\\mydata.txt", "C:\\Data\\mydata_archive.zip")
+    background.start()
+    print(" The main program continues to run in foreground. ")
 
-background.join()
-print('Main program waited until the background was done. ')
+    background.join()
+    print('Main program waited until the background was done. ')
 

@@ -16,7 +16,5 @@ class Numbertests(unittest.TestCase):
             with self.subTest(i=i): 
                 self.assertEqual(i % 2, 0)
 
-
-
 if __name__ == '__main__': 
     unittest.main()
