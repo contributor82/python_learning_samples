@@ -1,21 +1,7 @@
 # Complex Patterns and a wildcard 
 
-
-from enum import Enum
-
-
-class Point: 
-    x: int
-    y: int
-
-    def __init__(self, x, y):
-        self.x =  x
-        self.y = y
-
-class Color(Enum): 
-    RED = 0, 
-    GREEN = 1, 
-    BLUE = 2    
+from PointClass import Point
+from ColorEnum import Color
 
 class ComplexPatterns: 
 
@@ -42,9 +28,11 @@ class ComplexPatterns:
             case Color.BLUE: print('Print Blue')
 
 
-cpInstance = ComplexPatterns()
-cpInstance.complex_pattern_sample((5,5,'_')) 
-cpInstance.complex_pattern_sample(('error','code',800)) 
-cpInstance.complex_pattern_with_guard(Point(5,7))
-# cpInstance.complex_pattern_with_guard( Point(5,7), Point(10,10) as p2 ) Getting syntax error when placing a call [SyntaxError: multiple assignments to name 'x' in pattern.]
-cpInstance.enumeration_pattern(Color.BLUE)
+
+if __name__ == '__main__': 
+    cpInstance = ComplexPatterns()
+    cpInstance.complex_pattern_sample((5,5,'_')) 
+    cpInstance.complex_pattern_sample(('error','code',800)) 
+    cpInstance.complex_pattern_with_guard(Point(5,7))
+    # cpInstance.complex_pattern_with_guard( Point(5,7), Point(10,10) as p2 ) Getting syntax error when placing a call [SyntaxError: multiple assignments to name 'x' in pattern.]
+    cpInstance.enumeration_pattern(Color.BLUE)

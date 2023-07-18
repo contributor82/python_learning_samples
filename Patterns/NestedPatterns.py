@@ -1,14 +1,7 @@
 
 # Nested Patterns: Patterns can be arbitrarily nested. 
 
-class Point: 
-    x: int
-    y: int
-
-    def __init__(self,x,y): 
-        self.x=x
-        self.y=y
-
+from PointClass import Point
 
 class NestedPatterns:
 
@@ -24,7 +17,8 @@ class NestedPatterns:
                 print("Something found in the list")
 
 
-nestedPatternsInstance = NestedPatterns()
-#Created points list and passing for pattern matching. 
-points = [Point(0,0),Point(0,5)]
-nestedPatternsInstance.nested_pattern_sample(points) 
+if __name__ == '__main__': 
+    nestedPatternsInstance = NestedPatterns()
+    #Created points list and passing for pattern matching. 
+    points = [Point(0,0),Point(0,5)]
+    nestedPatternsInstance.nested_pattern_sample(points) 

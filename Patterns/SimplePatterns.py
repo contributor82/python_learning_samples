@@ -1,11 +1,5 @@
 # Simple Pattern : Match to a literal
-class Point: 
-    x: int
-    y: int
-
-    def __init__(self,x,y): 
-        self.x=x
-        self.y=y
+from PointClass import Point
 
 
 class SimplePatterns: 
@@ -39,7 +33,7 @@ class SimplePatterns:
     # In this example, Point class added with init to initialize members.  
     # In pattern matching, initialized class instance is given to match the case and print
     # appropriate output. 
-    def location(point): 
+    def location(self, point): 
         match point:
             case Point(x=0, y=0): print("Origin is the point's location")
             case Point(x=0, y=y): print(f"Y={y} and the point is on y axis")
@@ -49,12 +43,13 @@ class SimplePatterns:
             case _: print("No point")
 
 
+if __name__ == '__main__': 
 
-spInstance = SimplePatterns()
+    spInstance = SimplePatterns()
 
-print("Http Error : ", spInstance.http_error(418))
-spInstance.match_point(point=(5,5))
+    print("Http Error : ", spInstance.http_error(418))
+    spInstance.match_point(point=(5,5))
 
-inputPoint = Point(2,3)
-spInstance.location(inputPoint)
+    inputPoint = Point(2,3)
+    spInstance.location(inputPoint)
 
