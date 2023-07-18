@@ -26,7 +26,7 @@ class AsyncComprehensions:
                 print("async for - printing for even numbers: ", i)
 
     async def async_with(self):
-        with open('Data\\textfile.txt','r') as fileHandle:
+        with open('C:\\Data\\textfile.txt','r') as fileHandle:
             if fileHandle != None: 
                 await self.sleep()
                 data = fileHandle.read()
@@ -40,14 +40,14 @@ class AsyncComprehensions:
         await asyncio.sleep(3)
         print('3')
 
-    async def main(self): 
+    async def gather_all(self): 
         await asyncio.gather(self.counter(), self.counter(), self.counter(), self.async_for(), self.async_with())
 
 
-# if __name__ == "__main__":
-t = time.perf_counter()
-acInstance = AsyncComprehensions()
-asyncio.run(acInstance.main())
-t2 = time.perf_counter()
-    
-print(f'Total time elapsed: {t2:0.2f} seconds')
+if __name__ == "__main__":
+    t = time.perf_counter()
+    acInstance = AsyncComprehensions()
+    asyncio.run(acInstance.gather_all())
+    t2 = time.perf_counter()
+        
+    print(f'Total time elapsed: {t2:0.2f} seconds')

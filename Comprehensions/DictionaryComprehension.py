@@ -8,5 +8,6 @@ class DictionaryComprehensions:
 
         return {num: num ** 2 for num in range(rangeValue)}
 
-dcInstance = DictionaryComprehensions()
-print("Dictionary comprehension for the given range: ", dcInstance.get_dict_comprehension(10))
+if __name__ == '__main__':
+    dcInstance = DictionaryComprehensions()
+    print("Dictionary comprehension for the given range: ", dcInstance.get_dict_comprehension(10))
