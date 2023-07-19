@@ -1,47 +1,25 @@
 import unittest
 
-class Widget: 
-    widgetName = ''
-    x=0
-    y=0
-
-    def __init__(self, name):
-        self.widgetName = name
-        self.x =0
-        self.y=0
-
-    def size(self):
-        self.x = 50
-        self.y = 50
-        
-        return (self.x, self.y)
-    
-    def resize(self,resizeX,resizeY): 
-        self.x = resizeX
-        self.y = resizeY
-        
-        return (self.x,self.y)
-
-    def dispose(self): 
-        self.dispose()
-
+import sys
+sys.path.append("C:\\MyLearning\\python-learning\\UnitTesting\\WidgetClass.py")
+from WidgetClass import Widget
 
 class DefaultWidgetSizeTestCase(unittest.TestCase):
     
-    def setUp(self):
+    def setUp(self) -> None:
         self.widget = Widget('The Widget')
     
-    def test_default_widget_size(self):
+    def test_default_widget_size(self) -> None:
         self.assertEqual(self.widget.size(), (50, 50), 'Default sizing')
     
-    def test_widget_resize(self):
+    def test_widget_resize(self) -> None:
         self.widget.resize(100,150)
         self.assertEqual(self.widget.size(), (100, 150), 'Wrong size after resize')
     
-    def tearDown(self):
+    def tearDown(self) -> None:
         self.widget.dispose()
 
-def suite(): 
+def suite() -> unittest.TestSuite: 
     suite = unittest.TestSuite()
     suite.addTest(DefaultWidgetSizeTestCase('test_default_widget_size'))
     suite.addTest(DefaultWidgetSizeTestCase('test_widget_resize'))
