@@ -2,11 +2,11 @@
 # String formmat_mpa further grabs key and maps with associated value.  
 
 class Default(dict):
-    def __missing__(self, key):
+    def __missing__(self, key: any):
         return key
     
-str = "{name} is from {country}"
+inputStr = "{name} is from {country}"
 
-print(str.format_map(Default(name="John", country="USA")))
+print(inputStr.format_map(Default(name="John", country="USA")))
 
 print(Default(one=1))
