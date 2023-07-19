@@ -24,23 +24,23 @@ class DerivedClass2(DerivedClass1):
         return self.strDerived2Member
 
 # Derived Class instance created. 
-derived1ClassObject = DerivedClass1()
+derived1Instance = DerivedClass1()
 
 # Derived Class instance created. 
-derived2ClassObject = DerivedClass2()
+derived2Instance = DerivedClass2()
 
 # Invoked Base class method
-print("Base Class method invocation using first derived class object : ",  derived1ClassObject.displayBase())
+print("Base Class method invocation using first derived class object : ",  derived1Instance.displayBase())
 
 # Invoked Derived class one method. 
-print("Derived Class One method invocation: ",  derived1ClassObject.displayDerived1())
+print("Derived Class One method invocation: ",  derived1Instance.displayDerived1())
 
 # Invoked Base class method
-print("Base Class method invocation using second derived class object : ",  derived2ClassObject.displayBase())
+print("Base Class method invocation using second derived class object : ",  derived2Instance.displayBase())
 
 # Invoked Derived class one method. 
-print("Derived Class One method invocation: ",  derived2ClassObject.displayDerived1())
+print("Derived Class One method invocation: ",  derived2Instance.displayDerived1())
 
 # Invoked Derived class two method. 
-print("Derived Class Two method invocation: ",  derived2ClassObject.displayDerived2())
+print("Derived Class Two method invocation: ",  derived2Instance.displayDerived2())
 

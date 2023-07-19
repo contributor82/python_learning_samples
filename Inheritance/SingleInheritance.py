@@ -16,10 +16,10 @@ class DerivedClass(BaseClass):
         return self.strDerivedMember
     
 # Derived Class instance created. 
-derivedClassObject = DerivedClass()
+derivedInstance = DerivedClass()
 
 # Invoked Base class method
-print("Base Class method invocation: ",  derivedClassObject.displayBase())
+print("Base Class method invocation: ",  derivedInstance.displayBase())
 
 # Invoked Derived class method. 
-print("Derived Class method invocation: ",  derivedClassObject.displayDerived())
+print("Derived Class method invocation: ",  derivedInstance.displayDerived())
