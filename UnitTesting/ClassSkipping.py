@@ -3,7 +3,7 @@ import unittest
 
 @unittest.skip("Skipping class")
 class SkippedTestClass(unittest.TestCase): 
-    def test_not_run(self): 
+    def test_not_run(self) -> None: 
         pass
 
 
