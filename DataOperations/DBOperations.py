@@ -8,7 +8,7 @@ class DBOperations:
     data = None
 
     # Getting an error while opening DB connection
-    def open_connection(self): 
+    def open_connection(self) -> bool | None: 
       try:
         # connectionStr = 'Data source=SQLSERVER_DEV;Integrated Security=SSPI;Database=Students; User Instance=true; Encrypt=true;Trust Server Certificate=true;'
         self.con = pymssql.connect(server="FUTURE\\SQLSERVER_DEV", user="", password="", database="Students")
@@ -21,7 +21,7 @@ class DBOperations:
          return False
     
     # Executing DML statements sent as an input 
-    def exec_dml_statements(self, dml_statement): 
+    def exec_dml_statements(self, dml_statement : str) -> None: 
         try: 
             if self.con != None: 
                 self.cur = self.con.cursor()
@@ -32,7 +32,7 @@ class DBOperations:
             print(ex)
 
     # Displaying data received from DML statement such as SELECT. 
-    def display_data(self):
+    def display_data(self) -> None:
         try:
             if self.data != None: 
                 for row in self.data: 
