@@ -1,11 +1,11 @@
 # List as Queue
 # Queue - First In, First Out
-
-from collections import deque
-
 # Deque object initialized from left-to-right
 # Generalization of stacks & queues
 # Thread-safe, double ended, pops from either side of deque
+
+from collections import deque
+
 class DequeSample: 
     dq = deque[str]
 
