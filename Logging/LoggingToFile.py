@@ -2,17 +2,17 @@
 # Logging to file
 
 import logging
-import logging.config as logConfig
+
 
 class LoggingToFile: 
 
-    def config_logging(self): 
+    def config_logging(self, logFile: str) -> None: 
         try:
-            logging.basicConfig(filename='Data\\datalog.log', filemode='a', encoding='UTF-8', level=logging.DEBUG)
-        except Exception as ex:
-            raise(FileNotFoundError)
+            logging.basicConfig(filename=logFile, filemode='a', encoding='UTF-8', level=logging.DEBUG)
+        except FileNotFoundError as ex:
+            raise(ex)
 
-    def logging_to_file(self): 
+    def logging_to_file(self) -> None: 
         try: 
             logging.debug("logging:debug - This message should be logged in log file. ")
             logging.info("logging:info - This message should be logged in log file. ")
@@ -22,7 +22,7 @@ class LoggingToFile:
         except Exception as ex: 
             print(ex)
     
-    def get_current_logging_level(self): 
+    def get_current_logging_level(self) -> None: 
         try: 
             logger = logging.getLogger(__name__)
             effectiveLevel = logger.getEffectiveLevel()
@@ -31,11 +31,11 @@ class LoggingToFile:
         except Exception as ex:
             print(ex)
 
-    
-logger = LoggingToFile()
-logger.config_logging()
-logger.logging_to_file()
-logger.get_current_logging_level()
+if __name__ == '__main__':
+    logger = LoggingToFile()
+    logger.config_logging('C:\\Data\\datalog.log')
+    logger.logging_to_file()
+    logger.get_current_logging_level()
 
 
 

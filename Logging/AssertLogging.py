@@ -4,7 +4,7 @@ import unittest
 
 class AssertLogging(unittest.TestCase): 
 
-    def test_assert_logging(self): 
+    def test_assert_logging(self) -> None: 
         with self.assertLogs("Logging", level="INFO") as al: 
             logging.getLogger("Logging").info("First message")
             logging.getLogger("Logging.bar").error("Second message")

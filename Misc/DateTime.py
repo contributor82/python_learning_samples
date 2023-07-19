@@ -1,32 +1,32 @@
-from datetime import date, tzinfo, timedelta, datetime, timezone
+from datetime import date, datetime, timezone
 import time
 
 class DateTimeClass: 
 
-    def current_date_dtls(self): 
+    def current_date_dtls(self) -> None: 
         print('Current Date: ', date.today())
         print('Current Day: ', date.today().day)
         print('Current Day: ', date.today().month)
         print('Current Day: ', date.today().year)
 
-    def current_time_dtls(self): 
+    def current_time_dtls(self) -> None: 
         now = date.today()
         dateTime = datetime(now.year, now.month, now.day,now.timetuple().tm_hour, tzinfo=timezone.utc)
         print('Current time: ', time.strftime('%H:%M:%S %p'))
-        print('Time by Zone UTC: ', datetime.now(timezone.utc).time())
+        print('Time by Zone UTC: ', dateTime.now(timezone.utc).time())
 
-    def date_time_data_concatenation(self): 
+    def date_time_data_concatenation(self) -> None: 
         currentDate = date.today().__str__()
         currentTime = time.strftime('%H:%M:%S %p').__str__()
 
         logging_strings = ['DateTime file executed at ', currentDate , currentTime ]
 
         # Created an empty array
-        process_strings = []
+        process_strings = ['']
 
         # Running a loop to append list with specifier 
-        for str in logging_strings: 
-            process_strings.append(str)
+        for logStr in logging_strings: 
+            process_strings.append(logStr)
             process_strings.append(" ")
 
         # Using join to concatenate at one go to generate final string. 
@@ -34,12 +34,12 @@ class DateTimeClass:
 
         print(loggingMessage)
 
+if __name__ == '__main__': 
 
-
-dtInstance = DateTimeClass()
-dtInstance.current_date_dtls()
-dtInstance.current_time_dtls()
-dtInstance.date_time_data_concatenation()
+    dtInstance = DateTimeClass()
+    dtInstance.current_date_dtls()
+    dtInstance.current_time_dtls()
+    dtInstance.date_time_data_concatenation()
 
 # ZERO = timedelta(0)
 # HOUR = timedelta(hours=1)

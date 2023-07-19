@@ -1,6 +1,5 @@
 # An example using class to add elements in Bag collection
 # Returning Bag elements. 
-import sys
 
 class BagClass: 
 

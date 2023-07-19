@@ -3,12 +3,20 @@
 
 import glob
 
-# Example One
-dataStructureFiles = glob.glob('Data Structures\*.*')
+class FileWildCards: 
 
-print(dataStructureFiles)
+    def example_one(self) -> None: 
+        # Example One
+        dataStructureFiles = glob.glob('DataStructures\\*.*')
+        print(dataStructureFiles)
 
-# Example Two
-pythonLearningFiles = glob.glob('C:\MyLearning\python-learning\*.*')
+    def example_two(self) -> None: 
+        # Example Two
+        pythonLearningFiles = glob.glob('C:\\MyLearning\\python-learning\\*.*')
 
-print(pythonLearningFiles)
+        print(pythonLearningFiles)
+
+if __name__ == '__main__': 
+    fwcInstance = FileWildCards()
+    fwcInstance.example_one()
+    fwcInstance.example_two()

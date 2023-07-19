@@ -8,7 +8,7 @@ class JsonOperations:
     decoded_json = ''
     dct = ''
     
-    def encoding_json(self): 
+    def encoding_json(self) -> str: 
 
         # Compact encoding 
         self.encoded_json = json.dumps(self.data, separators=(',',':'), sort_keys=True, indent=4)
@@ -19,7 +19,7 @@ class JsonOperations:
         self.decoded_json = json.loads(self.encoded_json)
         return self.decoded_json
     
-    def specialized_decoding_json(self, dict): 
+    def specialized_decoding_json(self, dict : any): 
         self.dct = dict
         if '__complex__' in self.dct : 
             return complex(self.dct["real"], self.dct['imag'])
