@@ -6,25 +6,26 @@ class TestClass:
     strMember: str
 
     # Default Constructor
-    def __init__(self) -> None:
+    def __init__(self)-> None: 
         pass
 
     # Parameterized Constructor. 
-    def __init__(self, int_member, str_member):
+    def __init__(self, int_member : int, str_member: str) -> None:
         self.intMember = int_member
         self.strMember = str_member 
 
     # Method
-    def display(self): 
+    def display(self) -> None: 
         print ("Integer member: ", self.intMember)
         print ("String member: ", self.strMember)
         
-    
+
+if __name__ == '__main__':    
 # Class Instance creation
-testClassObject = TestClass(34234, "Test class")
-testClassObject.display()
+    tcInstance = TestClass(34234, "Test class")
+    tcInstance.display()
 
-testClassObject.intMember = 123123
-testClassObject.strMember = "Test class updated"
+    tcInstance.intMember = 123123
+    tcInstance.strMember = "Test class updated"
 
-testClassObject.display()
+    tcInstance.display()

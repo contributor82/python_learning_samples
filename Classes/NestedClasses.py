@@ -1,6 +1,7 @@
 class ParentClass: 
     intParentMember = 1
     stringParentMember = "Parent Class String member"
+
     def __init__(self) -> None:
         pass
 
@@ -18,10 +19,9 @@ class ParentClass:
         def childDisplay(self): 
             return self.stringChildMember
     
-parentClassObject = ParentClass()
 
-print("Parent class String value: ", parentClassObject.parentDisplay())
-
-childClassObject = parentClassObject.ChildClass()
-
-print("Child class String value: ", childClassObject.childDisplay())
+if __name__ == '__main__':  
+    parentInstance = ParentClass()
+    print("Parent class String value: ", parentInstance.parentDisplay())
+    childInstance = parentInstance.ChildClass()
+    print("Child class String value: ", childInstance.childDisplay())

@@ -9,11 +9,14 @@ class TestClass:
         pass
 
     # Method
-    def display(self): 
+    def display(self) -> str: 
         return "Hello World"
     
-# Class Instance creation
-testClassObject = TestClass()
 
-print(testClassObject.intMember)
-print(testClassObject.display())
+if __name__ == '__main__': 
+
+    # Class Instance creation
+    tcInstance = TestClass()
+
+    print(tcInstance.intMember)
+    print(tcInstance.display())
