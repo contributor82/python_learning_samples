@@ -1,10 +1,9 @@
 
-
 class DictionaryComprehensions: 
 
     # Here a number will be taken from the given range
     # it will start making its square. 
-    def get_dict_comprehension(self, rangeValue): 
+    def get_dict_comprehension(self, rangeValue: int) -> dict[int, int]: 
 
         return {num: num ** 2 for num in range(rangeValue)}
 

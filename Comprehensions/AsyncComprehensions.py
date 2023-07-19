@@ -1,5 +1,6 @@
 from asyncio import sleep
 import asyncio
+from io import TextIOWrapper
 import time
 
 # Following Async comprehensions seems changed from python 3.10 version hence DO NOT USE. 
@@ -14,10 +15,10 @@ import time
 # Async comprehensions 
 class AsyncComprehensions: 
 
-    async def sleep(self):
+    async def sleep(self) -> None:
         await asyncio.sleep(1)
 
-    async def async_for(self): 
+    async def async_for(self) -> None: 
         data = [1,2,3,4,5]
         iterable = (data)
         for i in iter(iterable): 
@@ -26,13 +27,14 @@ class AsyncComprehensions:
                 print("async for - printing for even numbers: ", i)
 
     async def async_with(self):
-        with open('C:\\Data\\textfile.txt','r') as fileHandle:
-            if fileHandle != None: 
-                await self.sleep()
-                data = fileHandle.read()
-                print("async with - File Data: = ", data)
+        fileHandle: TextIOWrapper
+        data:str = ''
+        fileHandle = open('C:\\Data\\textfile.txt','r')
+        await self.sleep()
+        data = fileHandle.read()
+        print("async with - File Data: = ", data)
 
-    async def counter(self): 
+    async def counter(self) -> None: 
         await asyncio.sleep(1)
         print('1')
         await asyncio.sleep(2)
@@ -40,7 +42,7 @@ class AsyncComprehensions:
         await asyncio.sleep(3)
         print('3')
 
-    async def gather_all(self): 
+    async def gather_all(self) -> None: 
         await asyncio.gather(self.counter(), self.counter(), self.counter(), self.async_for(), self.async_with())
 
 
