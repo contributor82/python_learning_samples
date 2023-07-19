@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 class ProdClass:
 
     # Returns max of three numbers. 
-    def get_max(self, num1, num2, num3): 
+    def get_max(self, num1: int, num2: int , num3: int): 
         num_list = []
         num_list.insert(num1)
         num_list.insert(num2)

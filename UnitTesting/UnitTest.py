@@ -9,21 +9,21 @@ from StringMethods import StringMethods
 
 class TestStringMethods(unittest.TestCase): 
 
-    def test_string_method_instance(self): 
+    def test_string_method_instance(self) -> None: 
         smInstance = StringMethods()
         self.assertIsInstance(smInstance, StringMethods)
 
     # Using AssertEqual
-    def test_upper(self): 
+    def test_upper(self) -> None: 
         self.assertEqual('String'.upper(), "STRING")
 
     # Using AssertTrue
-    def test_isupper(self): 
+    def test_isupper(self) -> None: 
         self.assertTrue('STRING'.isupper())
         self.assertFalse('String'.isupper())
     
     # Using Assert raise for exception case
-    def test_split(self): 
+    def test_split(self) -> None: 
         str = 'Hello World'
         self.assertEqual(str.split(), ['Hello', 'World'])
     

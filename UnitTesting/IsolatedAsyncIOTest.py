@@ -34,7 +34,7 @@ class Test(IsolatedAsyncioTestCase):
         await self._async_connection.close()
         self.events.append("asyncTearDown")
     
-    async def on_cleanup(self): 
+    async def on_cleanup(self) -> None: 
         self.events.append("on_cleanup")
     
 if __name__ == '__main__': 

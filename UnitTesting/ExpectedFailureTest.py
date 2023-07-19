@@ -4,7 +4,7 @@ import unittest
 class ExpectedFailureClass(unittest.TestCase): 
 
     @unittest.expectedFailure
-    def test_fail(self): 
+    def test_fail(self) -> None: 
         self.assertEqual(1,0, "Broken")
 
     def SkipUnlessHasattr(obj, attr): 
