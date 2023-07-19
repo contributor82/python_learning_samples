@@ -8,7 +8,7 @@ class SimplePatterns:
     # Here the patterns are each of the case statement
     # Literals represents http status codes. 
     # Once the pattern has been identified, respective http error message will be returned. 
-    def http_error(self, status): 
+    def http_error(self, status: int): 
         match status: 
             case 400: return 'Bad Request'
             case 401 | 403 : return 'Not Allowed' # Here '|' represents OR meaning this case should be executed for 401 or 403 http code. 
@@ -19,7 +19,7 @@ class SimplePatterns:
     # Simple Pattern : Patterns with a literal and variable
     # In this example, point(x,y) has been used for pattern matching to print 
     # what values have been passed. 
-    def match_point(self, point): 
+    def match_point(self, point) -> None: 
         match point:
             case (0, 0): print('Origin')
             case (0,y): print(f"Y={y}")

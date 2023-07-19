@@ -7,7 +7,7 @@ class NestedPatterns:
 
     # In this nested pattern sample function, a list input is matched against the case pattern
     # and output is printed. 
-    def nested_pattern_sample(self, points):
+    def nested_pattern_sample(self, points : any):
         match points:
             case []: print("No points in the list")
             case [Point(x=0,y=0)]: print("Origin is the only point in the list")

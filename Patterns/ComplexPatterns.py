@@ -5,7 +5,7 @@ from ColorEnum import Color
 
 class ComplexPatterns: 
 
-    def complex_pattern_sample(self, test_variable): 
+    def complex_pattern_sample(self, test_variable: any) -> None: 
 
         match test_variable: 
             case ('warning', code, 40): print(' A warning has been received.')
@@ -13,14 +13,14 @@ class ComplexPatterns:
             case ('error', code, _): 
                 print(f"An error {code} occurred.")
 
-    def complex_pattern_with_guard(self, point):
+    def complex_pattern_with_guard(self, point: Point) -> None:
         
         match point: 
             case Point(x=x,y=y) if x==y: print(f"The point is located at diagonal Y=X at {x}") 
             case Point(x=x,y=y): print(f"Point is not on the diagonal. ")
             # case (Point(x=x,y=y), Point(x=x,y=y) as p2): print(" Subpattern capturing using as. ") # Subpattern gives an error
 
-    def enumeration_pattern(self, color): 
+    def enumeration_pattern(self, color: Color) -> None: 
         
         match color: 
             case Color.RED : print('Print Red')
