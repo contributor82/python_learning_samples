@@ -2,6 +2,7 @@ import sys
 import smtplib
 
 # Sending an email from python script
+# This is as per the python documentation
 class EmailOperations: 
     host: str = ""
     port: int = 0
