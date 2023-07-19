@@ -12,55 +12,55 @@ class Student:
     grade = ''
     age = ''
 
-    def __init__(self, name, grade, age):
+    def __init__(self, name : str, grade : str , age: int) -> None:
          self.name = name
          self.grade = grade
          self.age = age
 
-    def __repr__(self):
+    def __repr__(self) -> str:
          return repr((self.name, self.grade, self.age))
 
 
 class BuiltInFunctions: 
 
     # Returning input string in upper case
-    def string_upper(self,input_str): 
+    def string_upper(self,input_str: str) -> str: 
         return input_str.upper()
     
     # Returning given number is even or not 
-    def is_even(self, num): 
+    def is_even(self, num: int) -> bool: 
         return (num % 2)  == 0
     
     # Returning list of even number for the given range. 
-    def get_even_numbers(self, input_range): 
+    def get_even_numbers(self, input_range: int) -> list[int]: 
         return (list(filter(self.is_even, range(input_range))))
     
     # Returning random numbers
-    def generate_random_number(self): 
+    def generate_random_number(self) -> float: 
         return random.random()
     
     # Returning random number sample list for the given range and number limit
-    def generate_random_sample(self, input_range, num_limit): 
+    def generate_random_sample(self, input_range: int, num_limit: int) -> list[int]: 
         return random.sample(range(input_range), num_limit)
     
     # Returning sorted number list for the given number list. 
-    def number_sorting(self, num_list):
+    def number_sorting(self, num_list: any) -> list[any]:
         return sorted(num_list)
     
     # Returning sorted number list in reverse order for the given number list.
-    def number_sorting_in_reverse_order(self, num_list): 
+    def number_sorting_in_reverse_order(self, num_list: list[int]) -> list[int]: 
         return sorted(num_list, reverse=True)
 
     # Returning tuple sorting
-    def tuple_sorting(self, tuple): 
+    def tuple_sorting(self, tuple: list[any]): 
         return sorted(tuple)
 
     # Returning tuple sorting by specific field. 
-    def tuple_sorting_by_specific_sorting(self, tuple, tuple_lambda_expression): 
-        return sorted(tuple, key=tuple_lambda_expression )
+    def tuple_sorting_by_specific_sorting(self, tuple: list[any], tuple_lambda_expression : any): 
+        return sorted(tuple, key=tuple_lambda_expression)
 
     # DO NOT USE: New Generator using itertools.count showing incorrect result 
-    def new_iterators(self, start, step_val): 
+    def new_iterators(self, start: int, step_val:int): 
         return itertools.count(start, step_val)
 
 bifInstance = BuiltInFunctions()
