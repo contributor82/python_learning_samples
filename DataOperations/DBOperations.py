@@ -33,7 +33,8 @@ class DBOperations:
              print(ex)
              return False
 
-    # Executing DML statements sent as an input 
+    # Executing DDL statements sent as an input 
+    # Exception if table already exists
     def exec_ddl_statements(self, ddl_statement : str) -> None: 
         try: 
             if self.con != None: 
@@ -45,6 +46,19 @@ class DBOperations:
         except Exception as ex: 
             print(ex)
     
+    # Executing batch DDL statements sent as an input 
+    # Exception if table already exists
+    def exec_batch_ddl_statements(self, ddl_statement : str) -> None: 
+        try: 
+            if self.con != None: 
+                self.cur = self.con.cursor()
+
+            if self.cur != None: 
+                self.data = self.cur.executescript(ddl_statement)
+
+        except Exception as ex: 
+            print(ex)
+
     # Executing DML statements sent as an input 
     def exec_dml_statements(self, dml_statement : str, sql_parameters: any  = None) -> None: 
         try: 
@@ -60,7 +74,7 @@ class DBOperations:
             print(ex)
 
     # Executing batch DML statements sent as an input 
-    def exec_many_dml_statements(self, dml_statement : str, sql_parameters: any  = None) -> None: 
+    def exec_batch_dml_statements(self, dml_statement : str, sql_parameters: any  = None) -> None: 
         try: 
             if self.con != None: 
                 self.cur = self.con.cursor()
@@ -101,6 +115,7 @@ if __name__ == '__main__':
     dbInstance = DBOperations()
     isConnectionSuccess = dbInstance.open_connection()
     if isConnectionSuccess == True: 
+
         dbInstance.exec_ddl_statements('CREATE TABLE Student(StudentId, Name)')
         dbInstance.exec_dml_statements("INSERT INTO Student VALUES(?,?)",(1,"Scott"))
         dbInstance.exec_dml_statements("INSERT INTO Student VALUES(?,?)",(2,"Martin"))
@@ -111,11 +126,19 @@ if __name__ == '__main__':
         dbInstance.display_scalar_data()
 
         dbInstance.exec_ddl_statements("CREATE TABLE Marks(MarksId, StudentId, SubjectName, SubjectMarks)")
-        dbInstance.exec_many_dml_statements("INSERT INTO Marks(MarksId, StudentId, SubjectName, SubjectMarks) VALUES(?,?,?,?)", 
+        dbInstance.exec_batch_dml_statements("INSERT INTO Marks(MarksId, StudentId, SubjectName, SubjectMarks) VALUES(?,?,?,?)", 
                                             [ (1,1,"Physics", 75), 
                                               (2,1,"Chemistry", 85), 
                                               (3,1,"Maths", 90), 
                                               (4,1,"Biology", 78) ])
         dbInstance.exec_dml_statements("SELECT MarksId, StudentId, SubjectName, SubjectMarks FROM Marks")
         dbInstance.display_data()
+
+        dbInstance.exec_batch_ddl_statements("""
+                                    BEGIN;
+                                    CREATE TABLE Person(PersonId, FirstName, LastName, Age);
+                                    CREATE TABLE Book(BookId, Title, Author, Published);
+                                    CREATE TABLE Publisher(PublisherId, Name, Address);
+                                    COMMIT;
+                                        """)
         dbInstance.close_connection()
