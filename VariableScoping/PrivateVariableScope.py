@@ -26,8 +26,8 @@
 
 
 class TrialClass: 
-    _intVar = 0
-    _strVar = ""
+    _intVar: int = 0
+    _strVar: str = ""
 
     def __init__(self):
         self._intVar = 1
@@ -35,9 +35,10 @@ class TrialClass:
     
     def displayValues(self): 
         return  (self._intVar.__str__() + " " + self._strVar)
-    
-obj = TrialClass()
-obj._intVar = 5
-obj._strVar = "No Private variable scoping in Python"
 
-print (obj.displayValues())
+if __name__ == '__main__':
+    obj = TrialClass()
+    obj._intVar = 5
+    obj._strVar = "No Private variable scoping in Python"
+
+    print (obj.displayValues())

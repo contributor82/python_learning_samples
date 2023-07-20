@@ -1,39 +1,70 @@
 
 import sqlite3
-import pymssql
 
 class DBOperations: 
-    con = None
-    cur = None
-    data = None
+    con: sqlite3.Connection = None
+    cur: sqlite3.Cursor = None
+    data: sqlite3.Cursor = None
 
-    # Getting an error while opening DB connection
+    # Opening DB connection
     def open_connection(self) -> bool | None: 
       try:
-        # connectionStr = 'Data source=SQLSERVER_DEV;Integrated Security=SSPI;Database=Students; User Instance=true; Encrypt=true;Trust Server Certificate=true;'
-        self.con = pymssql.connect(server="FUTURE\\SQLSERVER_DEV", user="", password="", database="Students")
+        # In memory DB connection
+        # self.con = sqlite3.connect(":memory:")
+
+        # DB file will be opened if exists or created new to establish connection
+        self.con = sqlite3.connect("C:\\Data\\Students.db")
         if self.con != None: 
             print("Database connection established successfully. ")
             return True
-      # except sqlite3.DatabaseError as ex: 
+      
       except Exception as ex:
          print(ex)
-         return False
-    
+       
+    # Closing DB connection
+    def close_connection(self) -> bool | None: 
+       try:
+          if self.con != None: 
+                self.con.close()
+                print("Database connection closed successfully. ")
+                return True
+
+       except Exception as ex:
+             print(ex)
+             return False
+
     # Executing DML statements sent as an input 
-    def exec_dml_statements(self, dml_statement : str) -> None: 
+    def exec_ddl_statements(self, ddl_statement : str) -> None: 
         try: 
             if self.con != None: 
                 self.cur = self.con.cursor()
 
             if self.cur != None: 
-                self.data = self.cur.execute(dml_statement)
+                self.data = self.cur.execute(ddl_statement)
+
         except Exception as ex: 
             print(ex)
+    
+    # Executing DML statements sent as an input 
+    def exec_dml_statements(self, dml_statement : str, sql_parameters: any  = None) -> None: 
+        try: 
+            if self.con != None: 
+                self.cur = self.con.cursor()
+
+            if self.cur != None and sql_parameters != None: 
+                self.data = self.cur.execute(dml_statement, sql_parameters)
+            else: 
+                self.data = self.cur.execute(dml_statement)
+
+        except Exception as ex: 
+            print(ex)
+
+
 
     # Displaying data received from DML statement such as SELECT. 
     def display_data(self) -> None:
         try:
+            print("Table Data: \n")
             if self.data != None: 
                 for row in self.data: 
                     print(row)
@@ -43,8 +74,12 @@ class DBOperations:
                 print(ex)
  
 
-dbInstance = DBOperations()
-isConnectionSuccess = dbInstance.open_connection()
-if isConnectionSuccess == True: 
-    dbInstance.exec_dml_statements('SELECT StudentId, FirstName, MiddleName, LastName FROM [dbo].[Student]')
-    dbInstance.display_data()
+if __name__ == '__main__': 
+    dbInstance = DBOperations()
+    isConnectionSuccess = dbInstance.open_connection()
+    if isConnectionSuccess == True: 
+        dbInstance.exec_ddl_statements('CREATE TABLE Student(StudentId, Name)')
+        dbInstance.exec_dml_statements("INSERT INTO Student VALUES(?,?)",(1,"Scott"))
+        dbInstance.exec_dml_statements("SELECT StudentId, Name FROM Student")
+        dbInstance.display_data()
+        dbInstance.close_connection()
