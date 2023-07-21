@@ -5,47 +5,50 @@ import tracemalloc
 
 class MemoryAllocationTrace: 
     top_stats = None
-    snapshot1 = None
-    snapshot2 = None
+    snapshot : tracemalloc.Snapshot
+    snapshot1 : tracemalloc.Snapshot
+    snapshot2 : tracemalloc.Snapshot
 
-    def start_tracemalloc(self): 
+    def start_tracemalloc(self) -> None: 
         tracemalloc.start()
 
-    def gatter_top_stats(self): 
-        snapshot = tracemalloc.take_snapshot()
+    def gatter_top_stats(self) -> None: 
+        self.snapshot = tracemalloc.take_snapshot()
         self.top_stats = self.snapshot.statistics('lineno')
 
-    def get_first_snapshot(self): 
+    def get_first_snapshot(self) -> None: 
         self.snapshot1 = tracemalloc.take_snapshot()
 
-    def get_second_snapshot(self): 
+    def get_second_snapshot(self) -> None: 
         self.snapshot2 = tracemalloc.take_snapshot()
 
-    def get_snapshot_differences(self): 
+    def get_snapshot_differences(self) -> None: 
         self.top_stats = self.snapshot2.compare_to(self.snapshot1, 'lineno')
 
-    def display_stats(self): 
+    def display_stats(self) -> None: 
         for stat in self.top_stats[:10]: 
             print(stat)
 
 
-matInstance = MemoryAllocationTrace()
 
-# Application invocation
+if __name__ == '__main__': 
+    matInstance = MemoryAllocationTrace()
 
-matInstance.gatter_top_stats()
-matInstance.display_stats()
+    # Application invocation
+
+    matInstance.gatter_top_stats()
+    matInstance.display_stats()
 
 
-# Another approach to find the differences between snapshots 
+    # Another approach to find the differences between snapshots 
 
-matInstance.get_first_snapshot()
+    matInstance.get_first_snapshot()
 
-# Call routine 
+    # Call routine 
 
-matInstance.get_second_snapshot()
+    matInstance.get_second_snapshot()
 
-matInstance.get_snapshot_differences()
-matInstance.display_stats()
+    matInstance.get_snapshot_differences()
+    matInstance.display_stats()
 
 
