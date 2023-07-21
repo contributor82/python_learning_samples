@@ -19,7 +19,7 @@ class JsonOperations:
         self.decoded_json = json.loads(self.encoded_json)
         return self.decoded_json
     
-    def specialized_decoding_json(self, dict : any): 
+    def specialized_decoding_json(self, dict : dict[str, bool | int]) -> complex | dict[str, bool | int]: 
         self.dct = dict
         if '__complex__' in self.dct : 
             return complex(self.dct["real"], self.dct['imag'])

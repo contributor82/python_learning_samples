@@ -5,7 +5,7 @@ import json
 
 class ComplexEncoder(json.JSONEncoder): 
 
-    def default(self, obj: any) -> any: 
+    def default(self, obj: complex) -> any: 
         if isinstance(obj,complex): 
             return [obj.real, obj.imag]
         return json.JSONEncoder.default(self, obj)
