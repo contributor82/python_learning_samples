@@ -18,23 +18,24 @@ class ThreadPoolExecutorSample:
         'http://europe.wsj.com/',
         'http://www.bbc.co.uk/']
 
-    # opening url and reading bytes. 
-    def load_url(self, url, timeout): 
+    # Opening url and reading bytes. 
+    def load_url(self, url : str, timeout : float | None) -> any: 
         with urllib.request.urlopen(url, timeout=timeout) as conn: 
              return conn.read()
     
     # Using ThreadPoolExecutor as executor to process the call 
-    def execute_async(self, maxWorkers): 
+    def execute_async(self, maxWorkers : int | None) -> None: 
+        data_from_url = any
         with concurrent.futures.ThreadPoolExecutor(max_workers=maxWorkers) as executor: 
-            future_to_url = { executor.submit(self.load_url, url, 60): url for url in self.urls }
-            for future in concurrent.futures.as_completed(future_to_url): 
-                url = future_to_url[future]
+            url_collection = { executor.submit(self.load_url, url, 60): url for url in self.urls }
+            for future in concurrent.futures.as_completed(url_collection): 
+                url = url_collection[future]
                 try:
-                    data = future.result()
+                    data_from_url = future.result()
                 except Exception as exc:
                     print('%r generated an exception: %s' % (url, exc))
                 else:
-                    print('%r page is %d bytes' % (url, len(data)))
+                    print('%r page is %d bytes' % (url, len(data_from_url)))
 
 if __name__ == '__main__':
     asynExecInstance = ThreadPoolExecutorSample()

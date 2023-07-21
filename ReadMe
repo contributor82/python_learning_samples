@@ -1,0 +1,4 @@
+1. Create C:\Data folder and keep the sample data files in it
+2. Python code samples from the documentation going to refer this path to read and write files. 
+3. For importing classes, use direct class path compare to relative path. 
+4. 

@@ -7,7 +7,7 @@
 import itertools
 import random
 import sys
-sys.path.append('C:\\MyLearning\\python-learning\\Misc\\StudentClass.py')
+sys.path.append('\\Misc\\StudentClass.py')
 from StudentClass import Student
 
 

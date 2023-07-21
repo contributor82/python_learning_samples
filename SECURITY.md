@@ -19,4 +19,6 @@ Use this section to tell people how to report a vulnerability.
 Tell them where to go, how often they can expect to get an update on a
 reported vulnerability, what to expect if the vulnerability is accepted or
 declined, etc.
-This is just a Python learning sample. This is not yet completed. Once it is available for use. I will let you know. Till then DO NOT MAKE ANY UPDATES.  
+This is just a Python learning sample branch. It will be updated more frequently. 
+As of now, it is not available for public to make any changes. 
+In case you are able to see this branch or got access somehow then DO NOT MAKE ANY UPDATES.  

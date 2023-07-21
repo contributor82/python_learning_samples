@@ -7,9 +7,9 @@
 import threading, queue, time
 
 class ThreadingUsingQueue: 
-    q = queue.Queue()
+    q = queue.Queue(0)
 
-    def pulling_job_from_queue(self):
+    def pulling_job_from_queue(self) -> None:
         print("Running worker ")
         time.sleep(0.1)
         while True: 
@@ -25,11 +25,11 @@ class ThreadingUsingQueue:
                 time.sleep(0.5)
 
 
-    def adding_job_in_queue(self, jobRange): 
+    def adding_job_in_queue(self, jobRange : int) -> None: 
         for i in range(jobRange): 
             self.q.put(i)
 
-    def starting_worker_pull(self, workerRange): 
+    def starting_worker_pull(self, workerRange: int) -> None: 
         for i in range(workerRange): 
             t = threading.Thread(target=self.pulling_job_from_queue, name='Worker %i' % (i+1))
             t.start()

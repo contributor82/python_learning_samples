@@ -6,26 +6,26 @@ import time
 
 # async zip class
 class AsyncZip(threading.Thread): 
-    infile = None
-    outfile = None
+    infile: str 
+    outfile: str
 
-    def __init__(self, inFile, outFile):
+    def __init__(self, inFile : str, outFile: str) -> None:
         threading.Thread.__init__(self)
         self.infile = inFile
         self.outfile = outFile
     
-    def thread_task(self, name, n): 
-        for i in range(n): 
+    def thread_task(self, name : str, num: int) -> None: 
+        for i in range(num): 
             print(name, i)
 
-    def exec_thread(self, num): 
+    def exec_thread(self, num: int) -> None: 
         for i in range(num): 
             T = threading.Thread(target=self.thread_task, args=(str(i), i))
             T.start()
         
         time.sleep(10)
     
-    def run(self): 
+    def run(self) -> None: 
         try: 
             # checking given file is a zip file 
             if zipfile.is_zipfile(self.outfile): 
@@ -37,11 +37,9 @@ class AsyncZip(threading.Thread):
             # Prints file name list present in archive folder. 
             print("Files present in zip file: ", zipFileObj.namelist())
             
-            # [Error 9]: Bad file descriptor error even though file is present at the given path.
-            # Removed file, changed extract path, no error but No file has been extracted. 
-            # Not giving error but not extracting file. 
+            # Zip File extraction
             for fileZipInfo in zipFileObj.filelist: 
-                zipFileObj.extract(fileZipInfo, path="\Data\mydata_archive")
+                zipFileObj.extract(fileZipInfo, path="\\Data\\mydata_archive")
             
             print('Finished background zip of: ', self.infile)
         except OSError as osError: 

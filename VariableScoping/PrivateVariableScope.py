@@ -29,7 +29,7 @@ class TrialClass:
     _intVar: int = 0
     _strVar: str = ""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._intVar = 1
         self._strVar = "Trial Class"
     

@@ -13,7 +13,7 @@ class ProcessPoolExecutorSample:
     prime_numbers = [1,3,5,7,9]
 
     # is given number prime or not
-    def is_prime_num(self, num): 
+    def is_prime_num(self, num: int) -> bool: 
         if num < 2: 
             return False
         elif num == 2: 
@@ -28,7 +28,7 @@ class ProcessPoolExecutorSample:
         return True
     
     # Executing process tool executor to run thread asynchronously. 
-    def execute_process_pool(self):
+    def execute_process_pool(self) -> None:
         with concurrent.futures.ProcessPoolExecutor() as executor:
             for number, prime in zip(self.prime_numbers, executor.map(self.is_prime_num, self.prime_numbers)):
                 print('%d is prime: %s' % (number, prime))

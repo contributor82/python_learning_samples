@@ -7,7 +7,7 @@ from unittest import IsolatedAsyncioTestCase
 
 class Test(IsolatedAsyncioTestCase): 
     events = ['']
-    _async_connection = ''
+    _async_connection = None
 
 
     def setUp(self) -> None:
