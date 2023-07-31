@@ -12,9 +12,13 @@ class MathOperations:
     def flooring_of_num(self, num: float) -> int: 
         return math.floor(num)
     
-    # Returns the number of ways to choose k items from n items without repetition and without order 
+    # Returns the number of ways to choose k items from n items without repetition and WITHOUT order 
     def binomial_coefficient(self, nItems : int, kItems: int) -> int: 
         return math.comb(nItems, kItems)
+    
+    # Returns the number of ways to choose k items from n items without repetition and WITH order
+    def coefficient_perm(self, nItems: int, kItems:  int | None)-> int: 
+        return math.perm(nItems, kItems)
 
     # Returns the magnitude of x but the sign of y
     def copy_sign(self, num1: float, num2: float) -> float: 
@@ -30,7 +34,18 @@ class MathOperations:
     # Returns the inverse hyperbolic cosine of number
     def inverse_hyperbolic_cosine(self, num: float)-> complex: 
         return acosh(num)
+    
+    # Returns the greatest common divisor of given number arguments
+    def greatest_common_divisor(self, num1: int, num2: int, num3: int) -> int: 
+        return math.gcd(num1, num2, num3) 
+    
+    # Returns the least common multiple of given number arguments
+    def least_common_multiple(self, num1: int, num2: int, num3: int) -> int: 
+        return math.lcm(num1, num2, num3)
 
+    # Returns the product of all elements, * operator, default start position 1 unless specified.
+    def product_of_all_elements(self, nums : list[int | float] ) -> int | float:
+        return math.prod(nums)
 
 if __name__ == '__main__': 
    moInstance =  MathOperations()
@@ -40,5 +55,10 @@ if __name__ == '__main__':
    print("Arc cosine of num (15.0) : ", moInstance.arc_cosine(15.0))
    print("Inverse hyperbolic cosine of num (15.0) : ", moInstance.inverse_hyperbolic_cosine(15.0))
    print("Binomial Coefficient (100,10): ", moInstance.binomial_coefficient(100, 10))
+   print("Coefficient perm (100,None): ", moInstance.coefficient_perm(100, None))
    print("Copy sign of x & y (10.50, -2.5) :  ", moInstance.copy_sign(10.50, -2.5))
+   print("Greatest common divisor of 15,5,25: ", moInstance.greatest_common_divisor(15,5,25))
+   print("Least common multiple of 15,10,0: ", moInstance.least_common_multiple(15,10,0))
+   print("Product of all elements [10,15,5.2,20] : ", moInstance.product_of_all_elements([10,15,5.2,20]))
+
 
