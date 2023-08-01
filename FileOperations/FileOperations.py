@@ -39,7 +39,7 @@ class FileOperations:
             with open(fileName,'rb') as self.fileHandle:
                 self.fileData = self.fileHandle.read(8)
                 binaryDataOne , binaryDataTwo, binaryDataThree = struct.unpack(">hhl", self.fileData)
-                print("Binary data from file: ", binaryDataOne, binaryDataTwo, binaryDataTwo)
+                print("Binary data from file: ", binaryDataOne, binaryDataTwo, binaryDataThree)
         except OSError as osError: 
             print(osError)
         except Exception as ex: 
