@@ -1,4 +1,5 @@
-# Using pickle for object serialization and deserialization
+# Using pickle for object serialization and de-serialization
+# The pickle module is not secure, only unpickle data you trust - Python docs. 
 
 import pickle
 
@@ -44,6 +45,8 @@ if __name__ == '__main__':
            'ByteSeries': ("character string", b"byte string"),
            'BooleanSeries': {None, True, False}
     }
+
+    # Data can be of any format for pickling
     osdInstance.pickle_data_to_file(dataToBePickled, "C:\\Data\\Serial.pickle")    
 
     osdInstance.unpickled_data_from_file("C:\\Data\\Serial.pickle")    

@@ -33,5 +33,5 @@ class ApiController():
 
 # application would run at localhost using port 8080
 if __name__ == "__main__": 
-    uvicorn.run(app,port=8080,host='127.0.0.1')
+    uvicorn.run(app,port=8080,host='localhost')
 

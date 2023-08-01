@@ -25,6 +25,7 @@ class FileOperations:
     # Reading file data
     def read_file(self, fileName: str) -> None: 
         try: 
+            # with will take care of file to be closed after use. 
             with open(fileName,'r') as self.fileHandle:
                 self.fileData = self.fileHandle.read()
         except OSError as osError: 
