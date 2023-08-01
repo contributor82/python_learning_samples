@@ -2,6 +2,7 @@ import csv
 
 class CSVFileOperations: 
 
+    # Reading CSV file and printing its row contents
     def read_csv(self, fileName: str) -> None: 
         try: 
             with open(fileName, newline='') as csvFile: 
@@ -11,6 +12,7 @@ class CSVFileOperations:
         except Exception as ex:
             print(ex)
 
+    # Reading CSV file in a dictonary and printing contents 
     def read_csv_to_dict(self, fileName: str) -> None: 
         try: 
             with open(fileName, newline='') as csvFile: 
@@ -20,6 +22,7 @@ class CSVFileOperations:
         except Exception as ex: 
             print(ex)
 
+    # Writing CSV file contents
     def write_csv(self, fileName: str, fruitsData : list[list[str | int]]) -> None: 
         try: 
             with open(fileName, "a", newline='') as csvFile: 
