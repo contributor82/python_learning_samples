@@ -1,4 +1,3 @@
-from asyncio import sleep
 import asyncio
 from io import TextIOWrapper
 import time
@@ -19,19 +18,19 @@ class AsyncComprehensions:
         await asyncio.sleep(1)
 
     async def async_for(self) -> None: 
-        data = [1,2,3,4,5]
-        iterable = (data)
+        data: list[int] = [1,2,3,4,5]
+        iterable: list[int] = (data)
         for i in iter(iterable): 
             if (i % 2)==0: 
                 await self.sleep()
                 print("async for - printing for even numbers: ", i)
 
-    async def async_with(self):
-        fileHandle: TextIOWrapper
+    async def async_with(self) -> None:
+        file_handle: TextIOWrapper
         data:str = ''
-        fileHandle = open('C:\\Data\\textfile.txt','r')
+        file_handle = open('C:\\Data\\textfile.txt','r')
         await self.sleep()
-        data = fileHandle.read()
+        data = file_handle.read()
         print("async with - File Data: = ", data)
 
     async def counter(self) -> None: 
@@ -47,9 +46,9 @@ class AsyncComprehensions:
 
 
 if __name__ == "__main__":
-    t = time.perf_counter()
+    t: float = time.perf_counter()
     acInstance = AsyncComprehensions()
     asyncio.run(acInstance.gather_all())
-    t2 = time.perf_counter()
+    t2: float = time.perf_counter()
         
     print(f'Total time elapsed: {t2:0.2f} seconds')

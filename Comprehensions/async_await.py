@@ -47,5 +47,5 @@ class AsyncAwaitOperations:
 
 
 if __name__ == '__main__':
-    asyncAwaitOperationInstance = AsyncAwaitOperations()
-    asyncio.run(asyncAwaitOperationInstance.task_exec())
+    aao_instance = AsyncAwaitOperations()
+    asyncio.run(aao_instance.task_exec())

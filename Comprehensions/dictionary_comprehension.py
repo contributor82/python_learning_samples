@@ -8,5 +8,5 @@ class DictionaryComprehensions:
         return {num: num ** 2 for num in range(rangeValue)}
 
 if __name__ == '__main__':
-    dcInstance = DictionaryComprehensions()
-    print("Dictionary comprehension for the given range: ", dcInstance.get_dict_comprehension(10))
+    dc_instance = DictionaryComprehensions()
+    print("Dictionary comprehension for the given range: ", dc_instance.get_dict_comprehension(10))

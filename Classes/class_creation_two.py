@@ -2,7 +2,7 @@
 
 class TestClass: 
     # Class member
-    intMember = 12345
+    int_member = 12345
 
     # Default Constructor
     def __init__(self) -> None:
@@ -16,7 +16,7 @@ class TestClass:
 if __name__ == '__main__': 
 
     # Class Instance creation
-    tcInstance = TestClass()
+    tc_instance = TestClass()
 
-    print(tcInstance.intMember)
-    print(tcInstance.display())
+    print(tc_instance.int_member)
+    print(tc_instance.display())

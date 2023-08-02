@@ -46,8 +46,8 @@ class TcpClient:
 
 
 if __name__ == '__main__':
-    tcpClientInstance = TcpClient()
-    asyncio.run(tcpClientInstance.establish_connection('localhost', 8080))
-    asyncio.run(tcpClientInstance.send_message('Hello World!'))
-    asyncio.run(tcpClientInstance.receive_message())
-    asyncio.run(tcpClientInstance.close_connection())
+    tcp_client_instance = TcpClient()
+    asyncio.run(tcp_client_instance.establish_connection('localhost', 8080))
+    asyncio.run(tcp_client_instance.send_message('Hello World!'))
+    asyncio.run(tcp_client_instance.receive_message())
+    asyncio.run(tcp_client_instance.close_connection())

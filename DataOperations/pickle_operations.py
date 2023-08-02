@@ -4,50 +4,67 @@
 import pickle
 
 class SampleClass: 
-    sampleStr:str = 'Sample class'
+    ### Sample class ###
+    sample_str:str = 'Sample class'
 
-class ObjectSerializeDeserialize: 
-    pickledBytes: bytes
-    unpickledObj : any
+class ObjectPickleUnpickle: 
+     #### Object serialize de-serialize using pickle ###
 
-    def serialize_object(self, objToBeSerialized: SampleClass) -> None: 
-        self.pickledBytes =  pickle.dumps(objToBeSerialized)
+    pickled_bytes: bytes
+    unpickled_instance : any
 
-    def pickle_data_to_file(self, data: any, fileName: str) -> None: 
-       with open(fileName, 'wb') as fileHandle: 
-          pickle.dump(data, fileHandle, pickle.HIGHEST_PROTOCOL)  
+    def pickle_object(self, instance_to_serialize: SampleClass) -> None: 
+        ### Function to serialize object using pickle ### 
 
-    def unpickled_data_from_file(self, fileName: str) -> None: 
-       with open(fileName, 'rb') as fileHandle: 
-          data = pickle.loads(fileHandle)
+        self.pickled_bytes =  pickle.dumps(instance_to_serialize)
 
+    def pickle_data_to_file(self, data: any, file_name: str) -> None: 
+       ### Function to pickle data to file ### 
+      try: 
+        with open(file_name, 'wb') as file_handle: 
+          pickle.dump(data, file_handle, pickle.HIGHEST_PROTOCOL)  
+      except IOError as io_error: 
+         print(io_error)
+      except Exception as ex: 
+         print(ex)
+
+    def unpickled_data_from_file(self, file_name: str) -> None: 
+       ### Function to unpickle object ### 
+       try: 
+        with open(file_name, 'rb') as file_handle: 
+          data = pickle.loads(file_handle)
           print("Unpickled file data : ", data)
+       except IOError as io_error: 
+         print(io_error)
+       except Exception as ex: 
+         print(ex) 
 
-    def display_serialized_object_stream(self) -> None: 
-        print ("Serialized object Stream using pickle : ", self.pickledBytes)
+    def display_pickled_object_stream(self) -> None: 
+        ### Function to display pickle serialized object stream ###
+        print ("Serialized object Stream using pickle : ", self.pickled_bytes)
 
 
-    def deserialize_object(self) ->  None: 
-        self.unpickledObj = pickle.loads(self.pickledBytes)
+    def unpickle_object(self) ->  None: 
+        ### Function to display pickle serialized object stream ###
+        self.unpickled_instance = pickle.loads(self.pickled_bytes)
 
     
 if __name__ == '__main__': 
-   osdInstance =  ObjectSerializeDeserialize()
-   osdInstance.serialize_object(SampleClass)
-   osdInstance.display_serialized_object_stream()
+   opuInstance =  ObjectPickleUnpickle()
+   opuInstance.pickle_object(SampleClass)
+   opuInstance.display_pickled_object_stream()
 
-   osdInstance.deserialize_object()
-   if osdInstance.unpickledObj is SampleClass : 
-    print(osdInstance.unpickledObj.sampleStr)
+   opuInstance.unpickle_object()
+   if opuInstance.unpickled_instance is SampleClass : 
+    print(opuInstance.unpickled_instance.sample_str)
 
-    dataToBePickled = {
+    data_to_pickle = {
            'NumSeries': [1, 2.0, 3+4j],
            'ByteSeries': ("character string", b"byte string"),
            'BooleanSeries': {None, True, False}
     }
 
     # Data can be of any format for pickling
-    osdInstance.pickle_data_to_file(dataToBePickled, "C:\\Data\\Serial.pickle")    
-
-    osdInstance.unpickled_data_from_file("C:\\Data\\Serial.pickle")    
+    opuInstance.pickle_data_to_file(data_to_pickle, "C:\\Data\\Serial.pickle")    
+    opuInstance.unpickled_data_from_file("C:\\Data\\Serial.pickle")    
 

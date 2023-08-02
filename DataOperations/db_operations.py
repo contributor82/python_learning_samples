@@ -1,144 +1,166 @@
-
 import sqlite3
 
-class DBOperations: 
-    con: sqlite3.Connection = None
-    cur: sqlite3.Cursor = None
-    data: sqlite3.Cursor = None
 
-    # Opening DB connection
-    def open_connection(self) -> bool | None: 
-      try:
-        # In memory DB connection
-        # self.con = sqlite3.connect(":memory:")
+class DBOperations:
+    ### Database operations ###
 
-        # DB file will be opened if exists or created new to establish connection
-        self.con = sqlite3.connect("C:\\Data\\Students.db")
-        if self.con != None: 
-            print("Database connection established successfully. ")
-            return True
-      
-      except Exception as ex:
-         print(ex)
-       
+    con: sqlite3.Connection
+    cur: sqlite3.Cursor
+    data: sqlite3.Cursor
+
+    def open_connection(self) -> bool | None:
+        ### Opening DB connection ###
+        is_open_connection: bool = False
+        try:
+            # In memory DB connection
+            # self.con = sqlite3.connect(":memory:")
+
+            # DB file will be opened if exists or created new to establish connection
+            self.con = sqlite3.connect("C:\\Data\\Students.db")
+            if self.con is not None:
+                print("Database connection established successfully. ")
+                is_open_connection = True
+
+        except ConnectionError as ex:
+            print(ex)
+            is_open_connection = False
+
+        return is_open_connection
+
     # Closing DB connection
-    def close_connection(self) -> bool | None: 
-       try:
-          if self.con != None: 
+    def close_connection(self) -> bool | None:
+        ### Closing connection ###
+        is_close_connection: bool = False
+        try:
+            if self.con is not None:
                 self.con.close()
                 print("Database connection closed successfully. ")
-                return True
+                is_close_connection = True
 
-       except Exception as ex:
-             print(ex)
-             return False
+        except Exception as ex:
+            print(ex)
+            is_close_connection = False
 
-    # Executing DDL statements sent as an input 
+        return is_close_connection
+
+    # Executing DDL statements sent as an input
     # Exception if table already exists
-    def exec_ddl_statements(self, ddl_statement : str) -> None: 
-        try: 
-            if self.con != None: 
+    def exec_ddl_statements(self, ddl_statement: str) -> None:
+        ### Execute DDL Statements ###
+        try:
+            if self.con is not None:
                 self.cur = self.con.cursor()
 
-            if self.cur != None: 
+            if self.cur is not None:
                 self.data = self.cur.execute(ddl_statement)
 
-        except Exception as ex: 
+        except Exception as ex:
             print(ex)
-    
-    # Executing batch DDL statements sent as an input 
+
+    # Executing batch DDL statements sent as an input
     # Exception if table already exists
-    def exec_batch_ddl_statements(self, ddl_statement : str) -> None: 
-        try: 
-            if self.con != None: 
+    def exec_batch_ddl_statements(self, ddl_statement: str) -> None:
+        ### Execute Batch DDL Statements ###
+        try:
+            if self.con is not None:
                 self.cur = self.con.cursor()
 
-            if self.cur != None: 
+            if self.cur is not None:
                 self.data = self.cur.executescript(ddl_statement)
 
-        except Exception as ex: 
+        except Exception as ex:
             print(ex)
 
-    # Executing DML statements sent as an input 
-    def exec_dml_statements(self, dml_statement : str, sql_parameters: any  = None) -> None: 
-        try: 
-            if self.con != None: 
+    # Executing DML statements sent as an input
+    def exec_dml_statements(self, dml_statement: str, sql_parameters: any = None) -> None: # type: ignore
+        ### Execcute DML Statements ###
+        try:
+            if self.con is not None:
                 self.cur = self.con.cursor()
 
-            if self.cur != None and sql_parameters != None: 
+            if self.cur is not None and sql_parameters is not None:
                 self.data = self.cur.execute(dml_statement, sql_parameters)
-            else: 
+            else:
                 self.data = self.cur.execute(dml_statement)
 
-        except Exception as ex: 
+        except Exception as ex:
             print(ex)
 
-    # Executing batch DML statements sent as an input 
-    def exec_batch_dml_statements(self, dml_statement : str, sql_parameters: any  = None) -> None: 
-        try: 
-            if self.con != None: 
+    # Executing batch DML statements sent as an input
+    def exec_batch_dml_statements(self, dml_statement: str, sql_parameters: any = None) -> None:
+        try:
+            if self.con is not None:
                 self.cur = self.con.cursor()
 
-            if self.cur != None and sql_parameters != None: 
+            if self.cur is not None and sql_parameters is not None:
                 self.data = self.cur.executemany(dml_statement, sql_parameters)
-            else: 
+            else:
                 self.data = self.cur.execute(dml_statement)
 
-        except Exception as ex: 
+        except Exception as ex:
             print(ex)
 
-    # Displaying data received from DML statement such as SELECT. 
+    # Displaying data received from DML statement such as SELECT.
     def display_data(self) -> None:
         try:
             print("Table Data: \n")
-            if self.data != None: 
-                for row in self.data: 
+            if self.data is not None:
+                for row in self.data:
                     print(row)
-            else: 
-                print("There is a problem in the connection or No records available to display. ")
-        except Exception as ex: 
-                print(ex)
+            else:
+                print(
+                    "There is a problem in the connection or No records available to display. ")
+        except Exception as ex:
+            print(ex)
 
-    # Displaying data received from DML statement such as SELECT. 
+    # Displaying data received from DML statement such as SELECT.
     def display_scalar_data(self) -> None:
         try:
             print("Table Data: \n")
-            if self.data != None: 
+            if self.data is not None:
                 print("Scalar Value: ", self.data.fetchone())
-            else: 
-                print("There is a problem in the connection or No records available to display. ")
-        except Exception as ex: 
-                print(ex)
- 
+            else:
+                print(
+                    "There is a problem in the connection or No records available to display. ")
+        except Exception as ex:
+            print(ex)
 
-if __name__ == '__main__': 
-    dbInstance = DBOperations()
-    isConnectionSuccess = dbInstance.open_connection()
-    if isConnectionSuccess == True: 
 
-        dbInstance.exec_ddl_statements('CREATE TABLE Student(StudentId, Name)')
-        dbInstance.exec_dml_statements("INSERT INTO Student VALUES(?,?)",(1,"Scott"))
-        dbInstance.exec_dml_statements("INSERT INTO Student VALUES(?,?)",(2,"Martin"))
-        dbInstance.exec_dml_statements("SELECT StudentId, Name FROM Student")
-        dbInstance.display_data()
+if __name__ == '__main__':
+    db_instance = DBOperations()
+    is_connection_success: bool | None = db_instance.open_connection()
+    if is_connection_success:
+
+        db_instance.exec_ddl_statements(
+            'CREATE TABLE Student(StudentId, Name)')
         
-        dbInstance.exec_dml_statements("SELECT COUNT(StudentId) as num_of_students FROM Student")
-        dbInstance.display_scalar_data()
+        db_instance.exec_dml_statements(
+            "INSERT INTO Student VALUES(?,?)", (1, "Scott"))
+        db_instance.exec_dml_statements(
+            "INSERT INTO Student VALUES(?,?)", (2, "Martin"))
+        db_instance.exec_dml_statements("SELECT StudentId, Name FROM Student")
+        db_instance.display_data()
 
-        dbInstance.exec_ddl_statements("CREATE TABLE Marks(MarksId, StudentId, SubjectName, SubjectMarks)")
-        dbInstance.exec_batch_dml_statements("INSERT INTO Marks(MarksId, StudentId, SubjectName, SubjectMarks) VALUES(?,?,?,?)", 
-                                            [ (1,1,"Physics", 75), 
-                                              (2,1,"Chemistry", 85), 
-                                              (3,1,"Maths", 90), 
-                                              (4,1,"Biology", 78) ])
-        dbInstance.exec_dml_statements("SELECT MarksId, StudentId, SubjectName, SubjectMarks FROM Marks")
-        dbInstance.display_data()
+        db_instance.exec_dml_statements(
+            "SELECT COUNT(StudentId) as num_of_students FROM Student")
+        db_instance.display_scalar_data()
 
-        dbInstance.exec_batch_ddl_statements("""
+        db_instance.exec_ddl_statements(
+            "CREATE TABLE Marks(MarksId, StudentId, SubjectName, SubjectMarks)")
+        db_instance.exec_batch_dml_statements("INSERT INTO Marks(MarksId, StudentId, SubjectName, SubjectMarks) VALUES(?,?,?,?)",
+                                              [(1, 1, "Physics", 75),
+                                               (2, 1, "Chemistry", 85),
+                                                  (3, 1, "Maths", 90),
+                                                  (4, 1, "Biology", 78)])
+        db_instance.exec_dml_statements(
+            "SELECT MarksId, StudentId, SubjectName, SubjectMarks FROM Marks")
+        db_instance.display_data()
+
+        db_instance.exec_batch_ddl_statements("""
                                     BEGIN;
                                     CREATE TABLE Person(PersonId, FirstName, LastName, Age);
                                     CREATE TABLE Book(BookId, Title, Author, Published);
                                     CREATE TABLE Publisher(PublisherId, Name, Address);
                                     COMMIT;
                                         """)
-        dbInstance.close_connection()
+        db_instance.close_connection()
