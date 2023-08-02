@@ -47,8 +47,8 @@ class AsyncComprehensions:
 
 if __name__ == "__main__":
     t: float = time.perf_counter()
-    acInstance = AsyncComprehensions()
-    asyncio.run(acInstance.gather_all())
+    ac_instance = AsyncComprehensions()
+    asyncio.run(ac_instance.gather_all())
     t2: float = time.perf_counter()
         
     print(f'Total time elapsed: {t2:0.2f} seconds')

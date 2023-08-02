@@ -41,8 +41,11 @@ class TcpClient:
             self.writer.close()
             await self.writer.wait_closed()
 
-        except ConnectionError as ex:
+        except ConnectionError as con_error:
+            print(con_error)
+        except Exception as ex: 
             print(ex)
+
 
 
 if __name__ == '__main__':

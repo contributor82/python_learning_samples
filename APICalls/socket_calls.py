@@ -56,14 +56,14 @@ class SocketCalls:
 
 if __name__ == '__main__':
 
-    scInstance = SocketCalls()
+    sc_instance = SocketCalls()
     # host and port specified
-    scInstance.connect("127.0.0.1",3000) 
+    sc_instance.connect("localhost",80) 
 
-    if  scInstance.IsConnectionMade == True:
+    if  sc_instance.IsConnectionMade == True:
         msg_data = bytearray("Hello, Socket calls.", encoding='utf-8')
-        scInstance.send_message(msg_data)
-        received_msg = scInstance.receive_message()
+        sc_instance.send_message(msg_data)
+        received_msg = sc_instance.receive_message()
         print(" Socket received message as : ", received_msg)
     else: 
         print(" Since no connection has been established, no message send and receive possible. ")
