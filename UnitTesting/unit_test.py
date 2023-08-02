@@ -3,8 +3,8 @@ import unittest
 # To have python detect written test cases, the method name should start with 'test' as prefix
 
 import sys
-sys.path.append(r"c:\MyLearning\python-learning\StringOperations")
-from StringMethods import StringMethods
+sys.path.append(r"\StringOperations")
+from string_methods import StringMethods
 
 
 class TestStringMethods(unittest.TestCase): 

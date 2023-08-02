@@ -39,9 +39,9 @@ class ConfigParserSample:
         print(hasSection)
 
 if __name__ == '__main__': 
-    cpInstance = ConfigParserSample()
-    cpInstance.input_string(""" [s] 
+    cp_instance = ConfigParserSample()
+    cp_instance.input_string(""" [s] 
                                 list = a b c d e f g """)
-    cpInstance.get_string() 
-    cpInstance.is_section_present("s")
-    cpInstance.get_section("s")
+    cp_instance.get_string() 
+    cp_instance.is_section_present("s")
+    cp_instance.get_section("s")

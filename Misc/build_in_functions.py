@@ -8,7 +8,7 @@ import itertools
 import random
 import sys
 sys.path.append('\\Misc\\StudentClass.py')
-from StudentClass import Student
+from student_class import Student
 
 
 class BuiltInFunctions: 
@@ -56,27 +56,27 @@ class BuiltInFunctions:
 
 if __name__ == '__main__': 
 
-    bifInstance = BuiltInFunctions()
+    bif_instance = BuiltInFunctions()
 
-    print(list(map(bifInstance.string_upper, ['sentence', 'fragment'])))
+    print(list(map(bif_instance.string_upper, ['sentence', 'fragment'])))
 
-    print("Is given number even? : ", bifInstance.is_even(5))
+    print("Is given number even? : ", bif_instance.is_even(5))
 
-    print("Get even numbers for the given range: ", bifInstance.get_even_numbers(10))
+    print("Get even numbers for the given range: ", bif_instance.get_even_numbers(10))
 
-    print("Random number: ", bifInstance.generate_random_number())
+    print("Random number: ", bif_instance.generate_random_number())
 
-    random_sample = bifInstance.generate_random_sample(1000,10)
+    random_sample = bif_instance.generate_random_sample(1000,10)
 
     print ("Generate random sample: ", random_sample)
 
-    print("Sorted random sample: ", bifInstance.number_sorting(random_sample))
+    print("Sorted random sample: ", bif_instance.number_sorting(random_sample))
 
     keyValuePairList = {4:'D', 1: 'A', 3: 'C', 5: 'E', 7:'G', 6: 'F', 8: 'H', 9: 'I', 2: 'B'}
 
-    print("Sorted Key Value pair: ", bifInstance.number_sorting(keyValuePairList))
+    print("Sorted Key Value pair: ", bif_instance.number_sorting(keyValuePairList))
 
-    print("Sorted random sample in reverse order : ", bifInstance.number_sorting_in_reverse_order(random_sample))
+    print("Sorted random sample in reverse order : ", bif_instance.number_sorting_in_reverse_order(random_sample))
 
     students = [
         ('Sachin', 'A', 15), 
@@ -84,9 +84,9 @@ if __name__ == '__main__':
         ('Gunesh', 'B', 10)
     ]
 
-    print("Sorted students tuple: ", bifInstance.tuple_sorting(students))
+    print("Sorted students tuple: ", bif_instance.tuple_sorting(students))
 
-    print("Sorted students tuple by specific field: ", bifInstance.tuple_sorting_by_specific_sorting(students, lambda student: student[0]))
+    print("Sorted students tuple by specific field: ", bif_instance.tuple_sorting_by_specific_sorting(students, lambda student: student[0]))
 
     student_objects = [
         Student('Sachin', 'A', 15), 
@@ -94,9 +94,9 @@ if __name__ == '__main__':
         Student('Gunesh', 'B', 10)
     ]
 
-    print("Sorted students tuple by specific field: ", bifInstance.tuple_sorting_by_specific_sorting(student_objects, lambda student: student.age))
+    print("Sorted students tuple by specific field: ", bif_instance.tuple_sorting_by_specific_sorting(student_objects, lambda student: student.age))
 
-    # print("New Iterators: ", bifInstance.new_iterators(0,5) )
+    # print("New Iterators: ", bif_instance.new_iterators(0,5) )
 
 
 

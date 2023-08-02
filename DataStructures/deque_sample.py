@@ -27,22 +27,22 @@ class DequeSample:
 
 if __name__ == '__main__': 
     
-    dsInstance =  DequeSample()
-    dsInstance.init_deque()
-    dsInstance.append_deque("Element 4")
-    dsInstance.append_deque("Element 5")
-    dsInstance.append_deque("Element 6")
-    dsInstance.append_deque("Element 7")
+    ds_Instance =  DequeSample()
+    ds_Instance.init_deque()
+    ds_Instance.append_deque("Element 4")
+    ds_Instance.append_deque("Element 5")
+    ds_Instance.append_deque("Element 6")
+    ds_Instance.append_deque("Element 7")
 
-    dsInstance.print_deque(" 'Initial' ")
+    ds_Instance.print_deque(" 'Initial' ")
 
-    print("pop from left side: ", dsInstance.pop_from_left_side())
+    print("pop from left side: ", ds_Instance.pop_from_left_side())
 
-    dsInstance.print_deque(" 'After pop left' ")
+    ds_Instance.print_deque(" 'After pop left' ")
 
 
-    print("pop from right side: ", dsInstance.pop_from_right_side())
+    print("pop from right side: ", ds_Instance.pop_from_right_side())
 
-    dsInstance.print_deque(" 'After pop' ")
+    ds_Instance.print_deque(" 'After pop' ")
 
     

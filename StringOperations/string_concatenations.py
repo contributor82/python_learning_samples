@@ -20,20 +20,20 @@ class StringConcatenations:
         process_strings = [' ']
 
         # Running a loop to append list with specifier 
-        for strSpecifier in mystrings: 
-            process_strings.append(strSpecifier)
+        for str_specifier in mystrings: 
+            process_strings.append(str_specifier)
             process_strings.append(" ")
 
         # Using join to concatenate at one go to generate final string. 
-        finalStr = ''.join(process_strings)
+        final_str = ''.join(process_strings)
 
-        return finalStr
+        return final_str
 
 if __name__ == '__main__': 
-    scInstance = StringConcatenations()
-    resultStr = scInstance.string_concat_using_plus_operator()
+    sc_instance = StringConcatenations()
+    result_str = sc_instance.string_concat_using_plus_operator()
 
-    print(resultStr)
+    print(result_str)
 
-    joinedStrings = scInstance.string_concat_using_join()
-    print(joinedStrings)
+    joined_strings = sc_instance.string_concat_using_join()
+    print(joined_strings)

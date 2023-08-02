@@ -34,6 +34,6 @@ class ProcessPoolExecutorSample:
                 print('%d is prime: %s' % (number, prime))
 
 if __name__ == '__main__':
-  ppesInstance = ProcessPoolExecutorSample()
-  ppesInstance.execute_process_pool()
+  ppes_instance = ProcessPoolExecutorSample()
+  ppes_instance.execute_process_pool()
 

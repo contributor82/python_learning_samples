@@ -32,23 +32,23 @@ class MemoryAllocationTrace:
 
 
 if __name__ == '__main__': 
-    matInstance = MemoryAllocationTrace()
+    mat_instance = MemoryAllocationTrace()
 
     # Application invocation
 
-    matInstance.gatter_top_stats()
-    matInstance.display_stats()
+    mat_instance.gatter_top_stats()
+    mat_instance.display_stats()
 
 
     # Another approach to find the differences between snapshots 
 
-    matInstance.get_first_snapshot()
+    mat_instance.get_first_snapshot()
 
     # Call routine 
 
-    matInstance.get_second_snapshot()
+    mat_instance.get_second_snapshot()
 
-    matInstance.get_snapshot_differences()
-    matInstance.display_stats()
+    mat_instance.get_snapshot_differences()
+    mat_instance.display_stats()
 
 

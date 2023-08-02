@@ -12,7 +12,7 @@ class OperatingSystemInterface:
         return help(os)
     
 if __name__ == '__main__': 
-    osInterfaceInstance = OperatingSystemInterface()
-    print("Current Working directory: ", osInterfaceInstance.get_current_working_dir())
-    print("Module Functions list: ", osInterfaceInstance.get_module_func_list())
-    print("Module Help: ", osInterfaceInstance.get_module_help())
+    os_interface_instance = OperatingSystemInterface()
+    print("Current Working directory: ", os_interface_instance.get_current_working_dir())
+    print("Module Functions list: ", os_interface_instance.get_module_func_list())
+    print("Module Help: ", os_interface_instance.get_module_help())

@@ -1,10 +1,10 @@
 class Widget: 
-    widgetName = ''
+    widget_name = ''
     x=0
     y=0
 
     def __init__(self, name: str) -> None:
-        self.widgetName = name
+        self.widget_name = name
         self.x =0
         self.y=0
 

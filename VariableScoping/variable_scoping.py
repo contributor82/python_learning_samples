@@ -37,9 +37,9 @@ class ScopeTest:
         print("After global assignment:", spam)
    
 if __name__ == '__main__':
-    varScopeInstance = ScopeTest()
-    print ("Initial variable assigment: ", varScopeInstance.spam)
+    var_scope_instance = ScopeTest()
+    print ("Initial variable assigment: ", var_scope_instance.spam)
 
-    varScopeInstance.variable_scope()
+    var_scope_instance.variable_scope()
     # Since spam variable became global, its changed value will be displayed at module level to access
     print("In global scope:", spam)

@@ -20,7 +20,7 @@ class PerformanceMeasurement:
         print(result)
         
 if __name__ == '__main__':  
-    perfInstance = PerformanceMeasurement()
-    perfInstance.perf_check()
+    perf_instance = PerformanceMeasurement()
+    perf_instance.perf_check()
 
 

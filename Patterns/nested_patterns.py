@@ -18,7 +18,7 @@ class NestedPatterns:
 
 
 if __name__ == '__main__': 
-    nestedPatternsInstance = NestedPatterns()
+    nested_patterns_instance = NestedPatterns()
     #Created points list and passing for pattern matching. 
     points = [Point(0,0),Point(0,5)]
-    nestedPatternsInstance.nested_pattern_sample(points) 
+    nested_patterns_instance.nested_pattern_sample(points) 

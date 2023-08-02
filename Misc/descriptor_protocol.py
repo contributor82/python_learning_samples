@@ -1,5 +1,5 @@
 
-class IntField: 
+class int_field: 
     name = ''
 
     def __get__(self, instance, owner): 
@@ -14,5 +14,5 @@ class IntField:
         self.name = name
 
 # class Model: 
-intField = IntField()
-intField.__set__name
+int_field = int_field()
+int_field.__set__name

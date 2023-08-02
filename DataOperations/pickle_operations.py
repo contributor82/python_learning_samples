@@ -50,13 +50,13 @@ class ObjectPickleUnpickle:
 
     
 if __name__ == '__main__': 
-   opuInstance =  ObjectPickleUnpickle()
-   opuInstance.pickle_object(SampleClass)
-   opuInstance.display_pickled_object_stream()
+   opu_Instance =  ObjectPickleUnpickle()
+   opu_Instance.pickle_object(SampleClass) # type: ignore
+   opu_Instance.display_pickled_object_stream()
 
-   opuInstance.unpickle_object()
-   if opuInstance.unpickled_instance is SampleClass : 
-    print(opuInstance.unpickled_instance.sample_str)
+   opu_Instance.unpickle_object()
+   if opu_Instance.unpickled_instance is SampleClass : 
+    print(opu_Instance.unpickled_instance.sample_str)
 
     data_to_pickle = {
            'NumSeries': [1, 2.0, 3+4j],
@@ -65,6 +65,6 @@ if __name__ == '__main__':
     }
 
     # Data can be of any format for pickling
-    opuInstance.pickle_data_to_file(data_to_pickle, "C:\\Data\\Serial.pickle")    
-    opuInstance.unpickled_data_from_file("C:\\Data\\Serial.pickle")    
+    opu_Instance.pickle_data_to_file(data_to_pickle, "C:\\Data\\Serial.pickle")    
+    opu_Instance.unpickled_data_from_file("C:\\Data\\Serial.pickle")    
 

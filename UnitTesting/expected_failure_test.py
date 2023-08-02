@@ -7,7 +7,7 @@ class ExpectedFailureClass(unittest.TestCase):
     def test_fail(self) -> None: 
         self.assertEqual(1,0, "Broken")
 
-    def SkipUnlessHasattr(obj, attr): 
+    def SkipUnlessHasattr(obj, attr: str): 
         if hasattr(obj, attr): 
             return lambda func: func 
         return unittest.skip("{!r} doesn't have {!r} ".format(obj,attr))

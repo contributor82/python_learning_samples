@@ -1,17 +1,17 @@
 
 class StringPrefixMethods: 
     
-    def string_removeprefix(self, originalStr, prefixStr):
-        return originalStr.removeprefix(prefixStr)
+    def string_removeprefix(self, original_str: str, prefix_str: str):
+        return original_str.removeprefix(prefix_str)
 
-    def string_removesuffix(self, originalStr, suffixStr):
-        return originalStr.removesuffix(suffixStr)
+    def string_removesuffix(self, original_str: str, suffix_str: str):
+        return original_str.removesuffix(suffix_str)
 
 
-spmInstance = StringPrefixMethods()
+spm_instance = StringPrefixMethods()
 
-originalStr = "TestAdded" 
-print("Original String: ", originalStr, " String After Removing prefix 'Test' using removeprefix string method. ", spmInstance.string_removeprefix(originalStr,"Test") ) 
-print("Original String: ", originalStr, " String After Removing suffix 'Added' using removesuffix string method. ", spmInstance.string_removesuffix(originalStr,"Added")) 
+original_str = "TestAdded" 
+print("Original String: ", original_str, " String After Removing prefix 'Test' using removeprefix string method. ", spm_instance.string_removeprefix(original_str,"Test") ) 
+print("Original String: ", original_str, " String After Removing suffix 'Added' using removesuffix string method. ", spm_instance.string_removesuffix(original_str,"Added")) 
 
 

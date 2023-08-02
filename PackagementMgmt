@@ -1,0 +1,39 @@
+# Package management using pip
+
+Latest version of package installation 
+python -m pip install [package_name]
+e.g. python -m pip install nimpy
+
+Specific version of package installation
+python -m pip install [package_name]==[package_version]
+e.g. python -m pip install seaborn==0.12.2
+
+Upgrading package to the latest version
+python -m pip install --upgrade [package_name]
+e.g. python -m pip install --upgrade requests
+
+Display particular package information
+python -m pip show [package_name]
+e.g. python -m pip show nimpy
+
+List the installed packages 
+python -m pip list
+
+Output the list of the installed packages 
+File will contain package name and its version as a key value pair. 
+python -m pip freeze > [file_name]
+e.g. python -m pip freeze > package_list.txt
+
+
+To install the list of packaged at one go as part of application
+python -m pip install -r [file_name]
+e.g. python -m pip install -r package_list.txt
+
+To check package requirement configuration 
+cat [package_list_file_name]
+e.g. cat package_list.txt
+
+
+
+
+

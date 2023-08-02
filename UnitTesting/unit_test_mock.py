@@ -2,20 +2,20 @@ from typing import Self
 from unittest.mock import patch
 
 class TempClass:
-    intMember = 1
-    strMember = ""
+    int_member = 1
+    str_member = ""
 
     def __init__(self) -> None:
-        self.intMember = 1
-        self.strMember = "Temp Class string member"
+        self.int_member = 1
+        self.str_member = "Temp Class string member"
 
     def initial_data_values(self, newVal: int) -> int:
-        self.intMember = newVal 
-        return self.intMember
+        self.int_member = newVal 
+        return self.int_member
 
     def change_data_values(self) -> int: 
-        self.intMember = 5
-        return self.intMember
+        self.int_member = 5
+        return self.int_member
 
     def display_values(self) -> Self: 
         return self

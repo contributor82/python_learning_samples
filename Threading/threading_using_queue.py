@@ -35,9 +35,9 @@ class ThreadingUsingQueue:
             t.start()
 
 if __name__ == '__main__': 
-    tuqInstance = ThreadingUsingQueue()
-    tuqInstance.adding_job_in_queue(50)
-    tuqInstance.starting_worker_pull(2)
+    tuq_instance = ThreadingUsingQueue()
+    tuq_instance.adding_job_in_queue(50)
+    tuq_instance.starting_worker_pull(2)
     print('Main thread sleeping')
     time.sleep(5)
 

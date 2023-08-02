@@ -30,9 +30,9 @@ class ComplexPatterns:
 
 
 if __name__ == '__main__': 
-    cpInstance = ComplexPatterns()
-    cpInstance.complex_pattern_sample((5,5,'_')) 
-    cpInstance.complex_pattern_sample(('error','code',800)) 
-    cpInstance.complex_pattern_with_guard(Point(5,7))
-    # cpInstance.complex_pattern_with_guard( Point(5,7), Point(10,10) as p2 ) Getting syntax error when placing a call [SyntaxError: multiple assignments to name 'x' in pattern.]
-    cpInstance.enumeration_pattern(Color.BLUE)
+    cp_instance = ComplexPatterns()
+    cp_instance.complex_pattern_sample((5,5,'_')) 
+    cp_instance.complex_pattern_sample(('error','code',800)) 
+    cp_instance.complex_pattern_with_guard(Point(5,7))
+    # cp_instance.complex_pattern_with_guard( Point(5,7), Point(10,10) as p2 ) Getting syntax error when placing a call [SyntaxError: multiple assignments to name 'x' in pattern.]
+    cp_instance.enumeration_pattern(Color.BLUE)

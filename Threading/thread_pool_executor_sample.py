@@ -38,5 +38,5 @@ class ThreadPoolExecutorSample:
                     print('%r page is %d bytes' % (url, len(data_from_url)))
 
 if __name__ == '__main__':
-    asynExecInstance = ThreadPoolExecutorSample()
-    asynExecInstance.execute_async(5)
+    async_exec_instance = ThreadPoolExecutorSample()
+    async_exec_instance.execute_async(5)

@@ -3,48 +3,48 @@
 
 class ListComprehensions: 
 
-    def list_appending(self, squares, rangeVal): 
-        for i in range(rangeVal):
+    def list_appending(self, squares, range_val): 
+        for i in range(range_val):
             squares.append(i**2)
         return squares
     
-    def list_appending_expression(self, rangeVal):
-        return [x**2 for x in range(rangeVal)]
+    def list_appending_expression(self, range_val):
+        return [x**2 for x in range(range_val)]
 
-    def list_appending_using_lambda_expression(self, rangeVal): 
-        return list(map(lambda x:x**2,range(rangeVal)))
+    def list_appending_using_lambda_expression(self, range_val): 
+        return list(map(lambda x:x**2,range(range_val)))
     
-    def list_remove_duplicates(self, itemList: list): 
-        if itemList: 
-            itemList.sort()
-            last = itemList[-1]
-            for i in range(len(itemList)-2, -1, -1): 
-                if last == itemList[i]: 
-                    del itemList[i]
+    def list_remove_duplicates(self, item_list: list): 
+        if item_list: 
+            item_list.sort()
+            last = item_list[-1]
+            for i in range(len(item_list)-2, -1, -1): 
+                if last == item_list[i]: 
+                    del item_list[i]
                 else: 
-                    last = itemList[i]
+                    last = item_list[i]
 
-        return itemList
+        return item_list
 
-lcInstance =  ListComprehensions()
+lc_instance =  ListComprehensions()
 
 squares = []
 print("Initial Squares list: ",squares)
-squares = lcInstance.list_appending(squares, 10) 
+squares = lc_instance.list_appending(squares, 10) 
 print("After appending list using loop & append  function: ",squares)
 
-newSquares = []
-print("Initial Squares list: ",newSquares)
+new_squares = []
+print("Initial Squares list: ",new_squares)
 
-newSquares = lcInstance.list_appending_using_lambda_expression(10)
-print("After appending list using lambda expression: ",newSquares)
+new_squares = lc_instance.list_appending_using_lambda_expression(10)
+print("After appending list using lambda expression: ",new_squares)
 
-newSquaresTwo = []
-print("Initial Squares list: ",newSquaresTwo)
+new_squares_two = []
+print("Initial Squares list: ",new_squares_two)
 
-newSquaresTwo = lcInstance.list_appending_expression(10)
-print("After appending list using for loop: ",newSquares)
+new_squares_two = lc_instance.list_appending_expression(10)
+print("After appending list using for loop: ",new_squares)
 
-duplicatedItemsInList = [1,2,1,4,2,4,3,5,6,7,3,4,8,9,8,5,10]
-print("Duplicated Items list: ", duplicatedItemsInList)
-print("After removing duplicates from given list: ", lcInstance.list_remove_duplicates(duplicatedItemsInList))
+duplicated_items_in_list = [1,2,1,4,2,4,3,5,6,7,3,4,8,9,8,5,10]
+print("Duplicated Items list: ", duplicated_items_in_list)
+print("After removing duplicates from given list: ", lc_instance.list_remove_duplicates(duplicated_items_in_list))
