@@ -1,4 +1,14 @@
+# ReadMe is in progress. 
+
 1. Create C:\Data folder and keep the sample data files in it
 2. Python code samples from the documentation going to refer this path to read and write files. 
 3. For importing classes, use relative path compare to direct path if classes are part of project folder. 
 4. 
+
+
+
+
+
+
+
+
