@@ -1,7 +1,7 @@
 # Complex Patterns and a wildcard 
 
-from PointClass import Point
-from ColorEnum import Color
+from point_class import Point
+from color_enum import Color
 
 class ComplexPatterns: 
 
