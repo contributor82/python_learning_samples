@@ -54,7 +54,10 @@ class DBOperations:
 
             if  isinstance(self.cur, sqlite3.Cursor):
                 self.data = self.cur.execute(ddl_statement)
-
+        except sqlite3.DataError as sql_data_error: 
+            print(sql_data_error)
+        except sqlite3.Error as sql_error: 
+            print(sql_error)
         except Exception as ex:
             print(ex)
 
@@ -68,7 +71,10 @@ class DBOperations:
 
             if isinstance(self.cur, sqlite3.Cursor):
                 self.data = self.cur.executescript(ddl_statement)
-
+        except sqlite3.DataError as sql_data_error: 
+            print(sql_data_error)
+        except sqlite3.Error as sql_error: 
+            print(sql_error)
         except Exception as ex:
             print(ex)
 
@@ -83,7 +89,10 @@ class DBOperations:
                 self.data = self.cur.execute(dml_statement, sql_parameters)
             else:
                 self.data = self.cur.execute(dml_statement)
-
+        except sqlite3.DataError as sql_data_error: 
+            print(sql_data_error)
+        except sqlite3.Error as sql_error: 
+            print(sql_error)
         except Exception as ex:
             print(ex)
 
@@ -97,7 +106,10 @@ class DBOperations:
                 self.data = self.cur.executemany(dml_statement, sql_parameters)
             else:
                 self.data = self.cur.execute(dml_statement)
-
+        except sqlite3.DataError as sql_data_error: 
+            print(sql_data_error)
+        except sqlite3.Error as sql_error: 
+            print(sql_error)
         except Exception as ex:
             print(ex)
 
@@ -111,6 +123,10 @@ class DBOperations:
             else:
                 print(
                     "There is a problem in the connection or No records available to display. ")
+        except sqlite3.DataError as sql_data_error: 
+            print(sql_data_error)
+        except sqlite3.Error as sql_error: 
+            print(sql_error)
         except Exception as ex:
             print(ex)
 
@@ -123,6 +139,10 @@ class DBOperations:
             else:
                 print(
                     "There is a problem in the connection or No records available to display. ")
+        except sqlite3.DataError as sql_data_error: 
+            print(sql_data_error)
+        except sqlite3.Error as sql_error: 
+            print(sql_error)
         except Exception as ex:
             print(ex)
 
