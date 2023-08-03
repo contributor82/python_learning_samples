@@ -2,7 +2,7 @@
 
 class TestClass: 
     # Class member
-    int_member = 12345
+    int_member: int = 12345
 
     # Default Constructor
     def __init__(self) -> None:

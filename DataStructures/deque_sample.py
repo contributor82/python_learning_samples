@@ -16,13 +16,13 @@ class DequeSample:
         print("Deque Action: ", deque_action, " Deque elements: ", self.dq)
 
     def append_deque(self, element: str)-> None: 
-        self.dq.append(element)    
+        self.dq.append(element)     # type: ignore
 
     def pop_from_right_side(self) -> str: 
-        return self.dq.pop()
+        return self.dq.pop() # type: ignore
     
     def  pop_from_left_side(self) -> str: 
-        return self.dq.popleft()
+        return self.dq.popleft() # type: ignore
     
 
 if __name__ == '__main__': 

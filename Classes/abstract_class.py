@@ -63,7 +63,7 @@ if __name__ == '__main__':
         print("Sedan doors: ", sedan_instance.get_num_doors())
         print("Sedan wheels: ", sedan_instance.get_num_wheels())
         print("get_name call ", sedan_instance.get_name())
-        
+
         print("Is Car.Subclass is a subclass", issubclass(Car.Subclass, ABC))
         subclass_instance =  Car.Subclass()
         if isinstance(subclass_instance, Car.Subclass): 

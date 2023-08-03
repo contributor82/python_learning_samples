@@ -2,10 +2,10 @@
 # Stack - Last In, First Out
 
 class StackSample: 
-    stack = None
+    stack = []
 
     def init_stack(self)-> None: 
-        self.stack = []
+        self.stack = [type(int)]
 
     def append_stack(self, element: int) ->  None: 
         self.stack.append(element)
@@ -23,20 +23,20 @@ class StackSample:
 
 
 if __name__ == '__main__': 
-    ssInstance = StackSample()
-    ssInstance.init_stack()
-    ssInstance.append_stack(1)
-    ssInstance.append_stack(2)
-    ssInstance.append_stack(3)
-    ssInstance.append_stack(4)
-    ssInstance.append_stack(5)
-    ssInstance.append_stack(6)
-    ssInstance.append_stack(7)
-    ssInstance.append_stack(8)
-    ssInstance.append_stack(9)
-    ssInstance.append_stack(10)
+    ss_instance = StackSample()
+    ss_instance.init_stack()
+    ss_instance.append_stack(1)
+    ss_instance.append_stack(2)
+    ss_instance.append_stack(3)
+    ss_instance.append_stack(4)
+    ss_instance.append_stack(5)
+    ss_instance.append_stack(6)
+    ss_instance.append_stack(7)
+    ss_instance.append_stack(8)
+    ss_instance.append_stack(9)
+    ss_instance.append_stack(10)
     
-    ssInstance.display_stack()
+    ss_instance.display_stack()
 
-    print(" Get element from stack : ", ssInstance.get_stack_element())
+    print(" Get element from stack : ", ss_instance.get_stack_element())
     

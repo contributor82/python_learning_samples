@@ -47,8 +47,8 @@ class EmailOperations:
         
 if __name__ == '__main__': 
     try: 
-        eoInstance = EmailOperations('localhost',25)
-        if eoInstance.send_email() == True : 
-            eoInstance.receive_email()
+        eo_instance = EmailOperations('localhost',25)
+        if eo_instance.send_email() == True : 
+            eo_instance.receive_email()
     except Exception as ex:
         print(ex)

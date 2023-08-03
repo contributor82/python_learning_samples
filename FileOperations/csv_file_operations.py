@@ -3,47 +3,47 @@ import csv
 class CSVFileOperations: 
 
     # Reading CSV file and printing its row contents
-    def read_csv(self, fileName: str) -> None: 
+    def read_csv(self, file_name: str) -> None: 
         try: 
-            with open(fileName, newline='') as csvFile: 
-                csvReader = csv.reader(csvFile, delimiter=' ', quotechar='|')
-                for row in csvReader: 
+            with open(file_name, newline='') as csv_file: 
+                csv_reader = csv.reader(csv_file, delimiter=' ', quotechar='|')
+                for row in csv_reader: 
                     print (row)
         except Exception as ex:
             print(ex)
 
     # Reading CSV file in a dictonary and printing contents 
-    def read_csv_to_dict(self, fileName: str) -> None: 
+    def read_csv_to_dict(self, file_name: str) -> None: 
         try: 
-            with open(fileName, newline='') as csvFile: 
-                csvDictReader = csv.DictReader(csvFile)
-                for row in csvDictReader: 
+            with open(file_name, newline='') as csv_file: 
+                csv_dict_reader = csv.DictReader(csv_file)
+                for row in csv_dict_reader: 
                     print (row['baby_name'], row['baby_age'], row['baby_weight_pound'])
         except Exception as ex: 
             print(ex)
 
     # Writing CSV file contents
-    def write_csv(self, fileName: str, fruitsData : list[list[str | int]]) -> None: 
+    def write_csv(self, file_name: str, fruits_data : list[list[str | int]]) -> None: 
         try: 
-            with open(fileName, "a", newline='') as csvFile: 
-                csvWriter = csv.writer(csvFile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
+            with open(file_name, "a", newline='') as csv_file: 
+                csv_writer = csv.writer(csv_file, delimiter=',', quoting=csv.QUOTE_MINIMAL)
 
-                for fruitsRow in fruitsData: 
-                    csvWriter.writerow(fruitsRow)
+                for fruits_row in fruits_data: 
+                    csv_writer.writerow(fruits_row)
         except Exception as ex: 
             print(ex)
 
 
 if __name__ == '__main__': 
-    csvFileOpsInstance = CSVFileOperations()
+    csv_file_ops_instance = CSVFileOperations()
 
-    csvFileName: str = "C:\\Data\\Fruits.csv"
-    csvFileOpsInstance.read_csv(csvFileName)
+    csv_file_name: str = "C:\\Data\\Fruits.csv"
+    csv_file_ops_instance.read_csv(csv_file_name)
 
     fruits_data = [["Strawberry", 5, 5], ["Blueberry", 5, 10] ]
-    csvFileOpsInstance.write_csv(csvFileName, fruits_data)
+    csv_file_ops_instance.write_csv(csv_file_name, fruits_data)
 
-    csvFileOpsInstance.read_csv(csvFileName)
+    csv_file_ops_instance.read_csv(csv_file_name)
 
-    csvFileName = "C:\\Data\\Babynames.csv"
-    csvFileOpsInstance.read_csv_to_dict(csvFileName)
+    csv_file_name = "C:\\Data\\Babynames.csv"
+    csv_file_ops_instance.read_csv_to_dict(csv_file_name)

@@ -3,18 +3,18 @@
 
 class ListComprehensions: 
 
-    def list_appending(self, squares, range_val): 
+    def list_appending(self, squares: list[int], range_val : int): 
         for i in range(range_val):
             squares.append(i**2)
         return squares
     
-    def list_appending_expression(self, range_val):
+    def list_appending_expression(self, range_val: int):
         return [x**2 for x in range(range_val)]
 
-    def list_appending_using_lambda_expression(self, range_val): 
+    def list_appending_using_lambda_expression(self, range_val: int): 
         return list(map(lambda x:x**2,range(range_val)))
     
-    def list_remove_duplicates(self, item_list: list): 
+    def list_remove_duplicates(self, item_list: list[int]): 
         if item_list: 
             item_list.sort()
             last = item_list[-1]
@@ -28,7 +28,7 @@ class ListComprehensions:
 
 lc_instance =  ListComprehensions()
 
-squares = []
+squares = [int]
 print("Initial Squares list: ",squares)
 squares = lc_instance.list_appending(squares, 10) 
 print("After appending list using loop & append  function: ",squares)

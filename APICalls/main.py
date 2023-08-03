@@ -6,7 +6,7 @@ import uvicorn
 
 class Item(BaseModel): 
     name: str
-    data:list
+    data:list[str]
 
 app = FastAPI()
 
