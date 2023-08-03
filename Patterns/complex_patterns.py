@@ -5,11 +5,11 @@ from color_enum import Color
 
 class ComplexPatterns: 
 
-    def complex_pattern_sample(self, test_variable: any) -> None: 
+    def complex_pattern_sample(self, test_variable: tuple[int| str, int | str, int| str]) -> None: 
 
         match test_variable: 
             case ('warning', code, 40): print(' A warning has been received.')
-            case (x, y as int, *rest) : print(' Sequence pattern supports wildcards. ')
+            case (x, y, *rest) : print(' Sequence pattern supports wildcards. ')
             case ('error', code, _): 
                 print(f"An error {code} occurred.")
 
@@ -31,8 +31,10 @@ class ComplexPatterns:
 
 if __name__ == '__main__': 
     cp_instance = ComplexPatterns()
-    cp_instance.complex_pattern_sample((5,5,'_')) 
-    cp_instance.complex_pattern_sample(('error','code',800)) 
+    complex_pattern = (5,5,'_')
+    cp_instance.complex_pattern_sample(complex_pattern) 
+    complex_pattern = ('error','code',800)
+    cp_instance.complex_pattern_sample(complex_pattern) 
     cp_instance.complex_pattern_with_guard(Point(5,7))
     # cp_instance.complex_pattern_with_guard( Point(5,7), Point(10,10) as p2 ) Getting syntax error when placing a call [SyntaxError: multiple assignments to name 'x' in pattern.]
     cp_instance.enumeration_pattern(Color.BLUE)

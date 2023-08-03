@@ -1,37 +1,40 @@
 
 # Base Class 1 added with members and display method. 
 class BaseClass1: 
-    intBase1Member = 1
-    strBase1Member = "Base Class One"
+    int_base1_member : int = 1
+    str_base1_member : str = "Base Class One"
 
-    def displayBase1(self): 
-        return self.strBase1Member
+    def display_base1(self): 
+        return self.str_base1_member
 
 # Base Class 2 added with members and display method. 
 class BaseClass2: 
-    intBase2Member = 2
-    strBase2Member = "Base Class Two"
+    int_base2_member : int = 2
+    str_base2_member : str = "Base Class Two"
 
-    def displayBase2(self): 
-        return self.strBase2Member
+    def display_base2(self): 
+        return self.str_base2_member
 
 
 # Derived Class inherited from base class and added its members & display method. 
 class DerivedClass(BaseClass1, BaseClass2): 
-    intDerivedMember=2
-    strDerivedMember = "Derived Class"
+    int_derived_member : int =2
+    str_derived_member : str  = "Derived Class"
 
-    def displayDerived(self): 
-        return self.strDerivedMember
-    
-# Derived Class instance created. 
-derivedInstance = DerivedClass()
+    def display_derived(self): 
+        return self.str_derived_member
 
-# Invoked Base class One method
-print("Base Class One method invocation: ",  derivedInstance.displayBase1())
 
-# Invoked Base class Two method
-print("Base Class Two method invocation: ",  derivedInstance.displayBase2())
 
-# Invoked Derived class method. 
-print("Derived Class method invocation: ",  derivedInstance.displayDerived())
+if __name__ == '__main__': 
+    # Derived Class instance created. 
+    derived_instance = DerivedClass()
+
+    # Invoked Base class One method
+    print("Base Class One method invocation: ",  derived_instance.display_base1())
+
+    # Invoked Base class Two method
+    print("Base Class Two method invocation: ",  derived_instance.display_base2())
+
+    # Invoked Derived class method. 
+    print("Derived Class method invocation: ",  derived_instance.display_derived())

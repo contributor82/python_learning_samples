@@ -11,35 +11,35 @@ class DateTimeClass:
 
     def current_time_dtls(self) -> None: 
         now = date.today()
-        dateTime = datetime(now.year, now.month, now.day,now.timetuple().tm_hour, tzinfo=timezone.utc)
+        date_time = datetime(now.year, now.month, now.day,now.timetuple().tm_hour, tzinfo=timezone.utc)
         print('Current time: ', time.strftime('%H:%M:%S %p'))
-        print('Time by Zone UTC: ', dateTime.now(timezone.utc).time())
+        print('Time by Zone UTC: ', date_time.now(timezone.utc).time())
 
     def date_time_data_concatenation(self) -> None: 
-        currentDate = date.today().__str__()
-        currentTime = time.strftime('%H:%M:%S %p').__str__()
+        current_date = date.today().__str__()
+        current_time = time.strftime('%H:%M:%S %p').__str__()
 
-        logging_strings = ['DateTime file executed at ', currentDate , currentTime ]
+        logging_strings = ['DateTime file executed at ', current_date , current_time ]
 
         # Created an empty array
         process_strings = ['']
 
         # Running a loop to append list with specifier 
-        for logStr in logging_strings: 
-            process_strings.append(logStr)
+        for log_str in logging_strings: 
+            process_strings.append(log_str)
             process_strings.append(" ")
 
         # Using join to concatenate at one go to generate final string. 
-        loggingMessage = ''.join(process_strings)
+        logging_msg = ''.join(process_strings)
 
-        print(loggingMessage)
+        print(logging_msg)
 
 if __name__ == '__main__': 
 
-    dtInstance = DateTimeClass()
-    dtInstance.current_date_dtls()
-    dtInstance.current_time_dtls()
-    dtInstance.date_time_data_concatenation()
+    dt_instance = DateTimeClass()
+    dt_instance.current_date_dtls()
+    dt_instance.current_time_dtls()
+    dt_instance.date_time_data_concatenation()
 
 # ZERO = timedelta(0)
 # HOUR = timedelta(hours=1)

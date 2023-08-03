@@ -13,8 +13,8 @@ class ComplexEncoder(json.JSONEncoder):
 
 if __name__ == '__main__': 
 
-    complexEncoderInstance = ComplexEncoder()
-    print( json.dumps(2+ 1j, cls=type(complexEncoderInstance)  ))  # ComplexEncoder type is not recognized. 
-    complexEncoderInstance.encode(2+1j)
-    lst = list(complexEncoderInstance.iterencode(2+1j))
+    complex_encode_instance = ComplexEncoder()
+    print( json.dumps(2+ 1j, cls=type(complex_encode_instance)  ))  # ComplexEncoder type is not recognized. 
+    complex_encode_instance.encode(2+1j)
+    lst = list(complex_encode_instance.iterencode(2+1j))
     print(lst)

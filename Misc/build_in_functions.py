@@ -7,7 +7,7 @@
 import itertools
 import random
 import sys
-sys.path.append('\\Misc\\StudentClass.py')
+sys.path.append('\\Misc\\student_class.py')
 from student_class import Student
 
 
@@ -34,7 +34,7 @@ class BuiltInFunctions:
         return random.sample(range(input_range), num_limit)
     
     # Returning sorted number list for the given number list. 
-    def number_sorting(self, num_list: any) -> list[any]:
+    def number_sorting(self, num_list: list[int]) -> list[int]:
         return sorted(num_list)
     
     # Returning sorted number list in reverse order for the given number list.

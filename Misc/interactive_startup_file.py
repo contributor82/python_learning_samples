@@ -4,10 +4,10 @@ import os
 class InteractiveStartupFileExec: 
 
     def startup_file_exe(self): 
-        filename = os.environ.get('PYTHONSTARTUP')
-        if filename and os.path.isfile(filename): 
-            with open(filename) as fileObj: 
-                startup_file = fileObj.read()
+        file_name = os.environ.get('PYTHONSTARTUP')
+        if file_name and os.path.isfile(file_name): 
+            with open(file_name) as file_handle: 
+                startup_file = file_handle.read()
             exec(startup_file)
         else:
             print("No startup file found. ")

@@ -27,10 +27,10 @@ class JsonOperations:
     
 
 if __name__ == '__main__':
-    jsonOperationsInstance = JsonOperations()
-    print("Original Data: ", jsonOperationsInstance.data)
-    print("After encoding : ", jsonOperationsInstance.encoding_json())
-    print("After decoding: ", jsonOperationsInstance.decoding_json())
-    jsonStr = {"__complex__": True, "real": 1, "imag": 2}
-    print(jsonOperationsInstance.specialized_decoding_json(jsonStr))
+    json_ops_instance = JsonOperations()
+    print("Original Data: ", json_ops_instance.data)
+    print("After encoding : ", json_ops_instance.encoding_json())
+    print("After decoding: ", json_ops_instance.decoding_json())
+    json_str = {"__complex__": True, "real": 1, "imag": 2}
+    print(json_ops_instance.specialized_decoding_json(json_str))
 

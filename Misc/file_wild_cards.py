@@ -7,16 +7,16 @@ class FileWildCards:
 
     def example_one(self) -> None: 
         # Example One
-        dataStructureFiles = glob.glob('DataStructures\\*.*')
-        print(dataStructureFiles)
+        data_structure_files = glob.glob('DataStructures\\*.*')
+        print(data_structure_files)
 
     def example_two(self) -> None: 
         # Example Two
-        pythonLearningFiles = glob.glob('C:\\MyLearning\\python-learning\\*.*')
+        python_files = glob.glob('C:\\Data\\*.py')
 
-        print(pythonLearningFiles)
+        print(python_files)
 
 if __name__ == '__main__': 
-    fwcInstance = FileWildCards()
-    fwcInstance.example_one()
-    fwcInstance.example_two()
+    fwc_instance = FileWildCards()
+    fwc_instance.example_one()
+    fwc_instance.example_two()

@@ -1,15 +1,18 @@
 
 # Lambda Expressions in python
 
+from typing import Literal
+
+
 class LambdaExpressions: 
 
     # Returns an incrementor for the given number
-    def make_incrementor(self, num):
+    def make_incrementor(self, num: int) -> any:
         return lambda x: x + num
 
     # Returns a sorted list for the given sort key. 
-    def sort_list_using_lambda_expression(self, list, sort_key): 
-        return sorted(list, key=sort_key)
+    def sort_list_using_lambda_expression(self,lst_data: list[tuple[Literal[1]]] , sort_key: any): 
+        return sorted(lst_data, key=sort_key)
 
 if __name__ == '__main__': 
     lambda_exp_instance = LambdaExpressions()

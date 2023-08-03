@@ -11,9 +11,9 @@ class ConfigParserSample:
         self.cfg = configparser.ConfigParser(converters=self.conv)
     
     # reading input string 
-    def input_string(self, inputStr: str) -> None: 
+    def input_string(self, input_str: str) -> None: 
         try: 
-            self.cfg.read_string(inputStr)
+            self.cfg.read_string(input_str)
         except Exception as ex:
             print(ex)
 
@@ -26,16 +26,16 @@ class ConfigParserSample:
             print(ex)
     
     # Getting section
-    def get_section(self, sectionName: str) -> None:
+    def get_section(self, section_name: str) -> None:
         try:   
-            section = self.cfg[sectionName]
+            section = self.cfg[section_name]
             print("Section : ", section)
         except Exception as ex:
             print(ex)
     
     # Checking if section present
-    def is_section_present(self, sectionName: str) -> None: 
-        hasSection = self.cfg.has_section(sectionName)
+    def is_section_present(self, section_name: str) -> None: 
+        hasSection : bool = self.cfg.has_section(section_name)
         print(hasSection)
 
 if __name__ == '__main__': 

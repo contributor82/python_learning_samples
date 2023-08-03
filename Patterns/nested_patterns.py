@@ -1,13 +1,13 @@
 
 # Nested Patterns: Patterns can be arbitrarily nested. 
 
-from PointClass import Point
+from point_class import Point
 
 class NestedPatterns:
 
     # In this nested pattern sample function, a list input is matched against the case pattern
     # and output is printed. 
-    def nested_pattern_sample(self, points : any):
+    def nested_pattern_sample(self, points : list[Point | None]) -> None:
         match points:
             case []: print("No points in the list")
             case [Point(x=0,y=0)]: print("Origin is the only point in the list")
@@ -20,5 +20,5 @@ class NestedPatterns:
 if __name__ == '__main__': 
     nested_patterns_instance = NestedPatterns()
     #Created points list and passing for pattern matching. 
-    points = [Point(0,0),Point(0,5)]
+    points: list[Point | None] = [Point(0,0),Point(0,5)]
     nested_patterns_instance.nested_pattern_sample(points) 
