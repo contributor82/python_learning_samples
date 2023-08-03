@@ -1,9 +1,13 @@
 # ReadMe is in progress. 
 
-1. Create C:\Data folder and keep the sample data files in it
-2. Python code samples from the documentation going to refer this path to read and write files. 
-3. For importing classes, use relative path compare to direct path if classes are part of project folder. 
-4. 
+1. Create a "C:\Data" folder and keep the sample data files in it
+2. Python code samples from the documentation going to refer to this path to read and write files. 
+3. For importing classes, use the relative path compare to the direct path if classes are part of the project folder. 
+4. Use class structure when invoking modules. Most of the samples from Python documentation have been structured in a class to better formulate and use for Python programming. 
+5. Applying the linting technique for fixing type-checking errors and using formatting options such as autopep8 or black or fancier options to format Python program files.
+
+
+
 
 
 
