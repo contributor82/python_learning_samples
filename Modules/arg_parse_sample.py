@@ -21,12 +21,14 @@ class ArgParseSample:
         ### Function to combine positional and optional argument ### 
 
         self.parser.add_argument("square", type=int, help="display square of a given number")
-        self.parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
+        # self.parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
+        self.parser.add_argument("-v", "--verbosity", help="increase output verbosity", action="count")
         self.args = self.parser.parse_args()
         result = self.args.square ** 2
-        if self.args.verbose: 
+        if self.args.verbosity == 2: 
             print(f"the square of {self.args.square} equals {result}")
-        else: 
+        elif self.args.verbosity == 1: 
+            print(f"{self.args.square}^2 == {result}")        else: 
             print(result)
 
 if __name__ == '__main__': 
@@ -40,3 +42,5 @@ if __name__ == '__main__':
    # python arg_parse_sample.py
    # python arg_parse_sample.py [number]
    # python arg_parse_sample.py [number]  -v
+   # python arg_parse_sample.py [number]  --verbosity --verbosity
+   # python arg_parse_sample.py [number] -h
