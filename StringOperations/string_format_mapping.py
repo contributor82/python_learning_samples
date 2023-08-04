@@ -2,7 +2,7 @@
 # String formmat_mpa further grabs key and maps with associated value.  
 
 class Default(dict):
-    def __missing__(self, key: any):
+    def __missing__(self, key: object):
         return key
     
 inputStr = "{name} is from {country}"

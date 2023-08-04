@@ -5,7 +5,7 @@ class CSVFileOperations:
     # Reading CSV file and printing its row contents
     def read_csv(self, file_name: str) -> None: 
         try: 
-            with open(file_name, newline='') as csv_file: 
+            with open(file_name) as csv_file: 
                 csv_reader = csv.reader(csv_file, delimiter=' ', quotechar='|')
                 for row in csv_reader: 
                     print (row)
@@ -15,7 +15,7 @@ class CSVFileOperations:
     # Reading CSV file in a dictonary and printing contents 
     def read_csv_to_dict(self, file_name: str) -> None: 
         try: 
-            with open(file_name, newline='') as csv_file: 
+            with open(file_name) as csv_file: 
                 csv_dict_reader = csv.DictReader(csv_file)
                 for row in csv_dict_reader: 
                     print (row['baby_name'], row['baby_age'], row['baby_weight_pound'])
@@ -25,7 +25,7 @@ class CSVFileOperations:
     # Writing CSV file contents
     def write_csv(self, file_name: str, fruits_data : list[list[str | int]]) -> None: 
         try: 
-            with open(file_name, "a", newline='') as csv_file: 
+            with open(file_name, "a") as csv_file: 
                 csv_writer = csv.writer(csv_file, delimiter=',', quoting=csv.QUOTE_MINIMAL)
 
                 for fruits_row in fruits_data: 

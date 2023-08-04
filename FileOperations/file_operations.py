@@ -6,7 +6,7 @@ import shutil
 
 class FileOperations: 
     file_handle = None
-    fileData = None
+    file_data = None
 
     # Opening a file explicitely for reading purpose
     def open_file(self, file_name : str, opening_mode: str) -> None: 
@@ -27,7 +27,7 @@ class FileOperations:
         try: 
             # with will take care of file to be closed after use. 
             with open(file_name,'r') as self.file_handle:
-                self.fileData = self.file_handle.read()
+                self.file_data = self.file_handle.read()
         except OSError as osError: 
             print(osError)
         except Exception as ex: 
@@ -37,9 +37,9 @@ class FileOperations:
     def read_binarydata_from_file(self, file_name: str) -> None: 
         try: 
             with open(file_name,'rb') as self.file_handle:
-                self.fileData = self.file_handle.read(8)
-                binaryDataOne , binaryDataTwo, binaryDataThree = struct.unpack(">hhl", self.fileData)
-                print("Binary data from file: ", binaryDataOne, binaryDataTwo, binaryDataThree)
+                self.file_data = self.file_handle.read(8)
+                binary_data_one , binary_data_two, binary_data_three = struct.unpack(">hhl", self.file_data)
+                print("Binary data from file: ", binary_data_one, binary_data_two, binary_data_three)
         except OSError as osError: 
             print(osError)
         except Exception as ex: 
@@ -110,7 +110,7 @@ class FileOperations:
 
     # Returning data for display purpose
     def display_file_data(self) -> str | bytes | None:
-        return self.fileData   
+        return self.file_data   
 
     # Causing "can't concat str to bytes error even though reading data & called bytes for the conversion. " DO NOT USE
     def convert_between_file_encoding(self, file_name: str) -> None: 

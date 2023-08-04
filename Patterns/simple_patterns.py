@@ -26,6 +26,7 @@ class SimplePatterns:
             case (x,0): print(f"X={x}")
             case (x,y): print(f"X={x}, Y={y}")
             case '_': raise ValueError
+            case _: pass
 
 
 

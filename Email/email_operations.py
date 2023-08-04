@@ -8,9 +8,9 @@ class EmailOperations:
     port: int = 0
 
     # Initializing host and port
-    def __init__(self, hostAddress:str , portNumber: int) -> None:
-        self.host = hostAddress
-        self.port = portNumber
+    def __init__(self, host_address:str , port_num: int) -> None:
+        self.host = host_address
+        self.port = port_num
 
     # Send email - causing connection error and not sending message as expected.
     def send_email(self) -> bool: 

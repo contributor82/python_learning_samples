@@ -1,7 +1,6 @@
 
 # Tracking memory allocation in python
 
-from traceback import TracebackException
 import tracemalloc
 
 class MemoryAllocationTrace: 

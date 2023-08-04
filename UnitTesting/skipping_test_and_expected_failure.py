@@ -34,4 +34,4 @@ if __name__ == '__main__':
 
 
 # For command line, use following
-# python -m SkippingTestAndExpectedFailure -v  
+# python -m skipping_test_and_expected_failure -v  

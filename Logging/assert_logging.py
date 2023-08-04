@@ -14,5 +14,5 @@ class AssertLogging(unittest.TestCase):
 if __name__ == '__main__': 
     unittest.main()
 
-# alInstance = AssertLogging("assert_logging")
-# alInstance.assert_logging()
+# al_instance = AssertLogging("assert_logging")
+# al_instance.assert_logging()

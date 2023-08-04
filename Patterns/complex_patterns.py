@@ -5,7 +5,7 @@ from color_enum import Color
 
 class ComplexPatterns: 
 
-    def complex_pattern_sample(self, test_variable: tuple[int| str, int | str, int| str]) -> None: 
+    def complex_pattern_sample(self, test_variable: tuple[ int| str, int | str, int| str | list[int | str]]) -> None: 
 
         match test_variable: 
             case ('warning', code, 40): print(' A warning has been received.')

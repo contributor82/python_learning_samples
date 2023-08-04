@@ -4,7 +4,7 @@ import json
 class JsonFileOperations: 
 
     # Loading Json file
-    def load_json_data(self) -> str | any :
+    def load_json_data(self) -> str :
         # Added try..catch block to capture an exception if any.
         try:
             with open("Data\\sample.json") as file_handle: 
@@ -22,7 +22,7 @@ class JsonFileOperations:
         except Exception as ex:
             return ex.__str__()
         
-    def repeated_names_json(self, data: str | bytes | bytearray) -> any: 
+    def repeated_names_json(self, data: str | bytes | bytearray) -> str: 
         loadedJson = json.loads(data)
         return loadedJson
     

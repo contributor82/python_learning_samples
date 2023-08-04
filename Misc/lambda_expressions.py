@@ -11,7 +11,7 @@ class LambdaExpressions:
         return lambda x: x + num
 
     # Returns a sorted list for the given sort key. 
-    def sort_list_using_lambda_expression(self,lst_data: list[tuple[Literal[1]]] , sort_key: any): 
+    def sort_list_using_lambda_expression(self,lst_data: list[tuple[int, str]] , sort_key:None): 
         return sorted(lst_data, key=sort_key)
 
 if __name__ == '__main__': 

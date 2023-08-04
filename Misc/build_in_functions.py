@@ -34,7 +34,7 @@ class BuiltInFunctions:
         return random.sample(range(input_range), num_limit)
     
     # Returning sorted number list for the given number list. 
-    def number_sorting(self, num_list: list[int]) -> list[int]:
+    def number_sorting(self, num_list: list[int] | dict[int, str]) -> list[int]:
         return sorted(num_list)
     
     # Returning sorted number list in reverse order for the given number list.
@@ -42,12 +42,12 @@ class BuiltInFunctions:
         return sorted(num_list, reverse=True)
 
     # Returning tuple sorting
-    def tuple_sorting(self, tuple: list[any]): 
-        return sorted(tuple)
+    def tuple_sorting(self, iter: list[tuple[str,str,int]]): 
+        return sorted(iter)
 
     # Returning tuple sorting by specific field. 
-    def tuple_sorting_by_specific_sorting(self, tuple: list[any], tuple_lambda_expression : any) -> list[any]: 
-        return sorted(tuple, key=tuple_lambda_expression)
+    def tuple_sorting_by_specific_sorting(self, iter: list[tuple[object]] | list[object], tuple_lambda_expression : object) -> list[object]: 
+        return sorted(iter, key=tuple_lambda_expression)
 
     # DO NOT USE: New Generator using itertools.count showing incorrect result 
     def new_iterators(self, start: int, step_val:int): 
@@ -84,9 +84,11 @@ if __name__ == '__main__':
         ('Gunesh', 'B', 10)
     ]
 
+    print("Students tuple prior sorting : ", students)
+
     print("Sorted students tuple: ", bif_instance.tuple_sorting(students))
 
-    print("Sorted students tuple by specific field: ", bif_instance.tuple_sorting_by_specific_sorting(students, lambda student: student[0]))
+    print("Sorted students tuple by specific field (name): ", bif_instance.tuple_sorting_by_specific_sorting(students, lambda student: student[0]))
 
     student_objects = [
         Student('Sachin', 'A', 15), 
@@ -94,7 +96,8 @@ if __name__ == '__main__':
         Student('Gunesh', 'B', 10)
     ]
 
-    print("Sorted students tuple by specific field: ", bif_instance.tuple_sorting_by_specific_sorting(student_objects, lambda student: student.age))
+    print("Students prior sorting by age : ", student_objects)
+    print("Sorted students tuple by specific field (age): ", bif_instance.tuple_sorting_by_specific_sorting(student_objects, lambda student: student.age))
 
     # print("New Iterators: ", bif_instance.new_iterators(0,5) )
 

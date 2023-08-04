@@ -4,12 +4,9 @@
 # Importing BagClass from BagClassExample.py file
 
 import sys
-sys.path.append(r"\Classes")
+sys.path.append("\\Classes\\bag_class_example.py")
 
-from bag_class_example import BagClass
-
-# Following import statement doesn't work. 
-#from ..Classes.BagClassExample import BagClass
+from ..Classes.bag_class_example import BagClass
 
 import unittest
 
@@ -37,4 +34,4 @@ if __name__ == '__main__':
     unittest.main()
 
 
-#python -m unittest TestClassMethods -v
+#python -m unittest test_class_methods -v

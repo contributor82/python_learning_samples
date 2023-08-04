@@ -1,8 +1,8 @@
 import unittest
 
 import sys
-sys.path.append("\\UnitTesting\\WidgetClass.py")
-from WidgetClass import Widget
+sys.path.append("\\UnitTesting\\widget_class.py")
+from widget_class import Widget
 
 class DefaultWidgetSizeTestCase(unittest.TestCase):
     

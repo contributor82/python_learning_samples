@@ -35,8 +35,8 @@ if __name__ == '__main__':
 
 # Command line option to run test as 
 # Change directory first and then try following commands 
-# python -m unittest UnitTest.py
+# python -m unittest unit_test.py
 # Enables higher level of verbosity when adding -v
-# python -m unittest UnitTest.py -v  
+# python -m unittest unit_test.py -v  
 
     

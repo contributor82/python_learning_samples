@@ -2,8 +2,8 @@ from typing import Self
 from unittest.mock import patch
 
 class TempClass:
-    int_member = 1
-    str_member = ""
+    int_member: int = 1
+    str_member: str = ""
 
     def __init__(self) -> None:
         self.int_member = 1

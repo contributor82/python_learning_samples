@@ -2,7 +2,7 @@ import configparser
 
 # Customize conversion of values by specifying a dictionary of converters from python docs.
 class ConfigParserSample: 
-    conv = {}
+    conv: dict[object, object] = {}
     cfg = None
 
     # Initializing converters map by lambda expression

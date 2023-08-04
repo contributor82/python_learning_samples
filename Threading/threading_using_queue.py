@@ -14,7 +14,7 @@ class ThreadingUsingQueue:
         time.sleep(0.1)
         while True: 
             try: 
-                arg = self.q.get(block=False)
+                arg: object = self.q.get(block=False)
 
             except queue.Empty: 
                 print('Worker', threading.current_thread(), ' ') 
@@ -25,12 +25,12 @@ class ThreadingUsingQueue:
                 time.sleep(0.5)
 
 
-    def adding_job_in_queue(self, jobRange : int) -> None: 
-        for i in range(jobRange): 
+    def adding_job_in_queue(self, job_range_val : int) -> None: 
+        for i in range(job_range_val): 
             self.q.put(i)
 
-    def starting_worker_pull(self, workerRange: int) -> None: 
-        for i in range(workerRange): 
+    def starting_worker_pull(self, worker_range_val: int) -> None: 
+        for i in range(worker_range_val): 
             t = threading.Thread(target=self.pulling_job_from_queue, name='Worker %i' % (i+1))
             t.start()
 
