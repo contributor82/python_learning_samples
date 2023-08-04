@@ -1,3 +1,5 @@
+# argparse is for building command line interface
+
 import argparse
 
 
@@ -9,17 +11,17 @@ class ArgParseSample:
 
     def __init__(self) -> None:
      self.parser = argparse.ArgumentParser(description="Calculate X to the power of Y when X and Y are provided.") 
-     
-    def add_new_argument(self): 
-        ### Function to add new argument to module ###
-        try: 
-            self.parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
-            self.args = self.parser.parse_args()
-            if self.args.verbose: 
-                print("verbosity turned on")
-        except Exception as ex: 
-            print(ex)
 
+    def add_new_argument(self): 
+            ### Function to add new argument to module ###
+            try: 
+                self.parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
+                self.args = self.parser.parse_args()
+                if self.args.verbose: 
+                    print("verbosity turned on")
+            except Exception as ex: 
+                print(ex)
+     
     def add_positional_argument(self): 
         ### Function to add positional argument to module ###
         try: 
@@ -29,6 +31,16 @@ class ArgParseSample:
         except Exception as ex: 
             print(ex)
 
+    def add_optional_argument(self): 
+            ### Function to add new argument to module ###
+            try: 
+                self.parser.add_argument("--verbosity", help="increase output verbosity")
+                self.args = self.parser.parse_args()
+                if self.args.verbose: 
+                    print("verbosity turned on")
+            except Exception as ex: 
+                print(ex)
+            
     def add_combine_positional_optional_argument(self): 
         ### Function to combine positional and optional argument ### 
         try: 
@@ -83,7 +95,8 @@ class ArgParseSample:
 
 if __name__ == '__main__': 
     arg_parse_sample_instance = ArgParseSample()
-    # arg_parse_sample_instance.add_new_argument()  OR following line for positional argument
+    # arg_parse_sample_instance.add_new_argument()  OR following line for optional argument
+    # arg_parse_sample_instance.add_optional_argument()  OR following line for positional argument
     # arg_parse_sample_instance.add_positional_argument() OR following line since combining arguments
     # arg_parse_sample_instance.add_combine_positional_optional_argument() OR following line with more advance argument combination
     # arg_parse_sample_instance.add_adv_combine_positional_option_argument() OR following line with mutually exclusive group argument
@@ -91,6 +104,7 @@ if __name__ == '__main__':
    # Use command line to get the output 
    # python arg_parse_sample.py --v 
    # python arg_parse_sample.py --help
+   # python arg_parse_sample.py --verbosity 1
    # python arg_parse_sample.py -h
    # python arg_parse_sample.py
    # python arg_parse_sample.py [number]
@@ -100,4 +114,5 @@ if __name__ == '__main__':
    # python arg_parse_sample.py [number1] [number2] --v
    # python arg_parse_sample.py [number1] [number2] --v --v
    # python arg_parse_sample.py [number1] [number2] --q
+   # python arg_parse_sample.py [number1] [number2] --vq
    # python arg_parse_sample.py [number1] [number2] --quiet
