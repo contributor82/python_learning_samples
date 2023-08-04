@@ -39,7 +39,7 @@ class SocketCalls:
     # Receiving message from established socket connection
     # Receiving error as of now while receiving message from socket connection
     def receive_message(self): 
-        chunks = []
+        chunks = [bytes()]
         bytes_received =0
         try: 
             while bytes_received < self.msg_len: 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     sc_instance = SocketCalls()
     # host and port specified
-    sc_instance.connect("localhost",80) 
+    sc_instance.connect("localhost",8080) 
 
     if  sc_instance.is_connection_made == True:
         msg_data = bytearray("Hello, Socket calls.", encoding='utf-8')

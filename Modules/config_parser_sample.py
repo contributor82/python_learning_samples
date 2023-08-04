@@ -2,6 +2,8 @@ import configparser
 
 # Customize conversion of values by specifying a dictionary of converters from python docs.
 class ConfigParserSample: 
+    ### Config parser sample class ###
+
     conv: dict[object, object] = {}
     cfg = None
 
@@ -12,6 +14,8 @@ class ConfigParserSample:
     
     # reading input string 
     def input_string(self, input_str: str) -> None: 
+        ### Function to read input string ### 
+
         try: 
             self.cfg.read_string(input_str)
         except Exception as ex:
@@ -19,6 +23,8 @@ class ConfigParserSample:
 
     # Getting an option value for a given section 
     def get_string(self) -> None:
+        ### Function to get an option value for a given section ### 
+
         try:   
             outStr: str = self.cfg.get('s', 'list')
             print(outStr)
@@ -27,6 +33,8 @@ class ConfigParserSample:
     
     # Getting section
     def get_section(self, section_name: str) -> None:
+        ### Function to get section ###
+
         try:   
             section = self.cfg[section_name]
             print("Section : ", section)
@@ -35,6 +43,8 @@ class ConfigParserSample:
     
     # Checking if section present
     def is_section_present(self, section_name: str) -> None: 
+        ### Function to check if section is present ### 
+
         hasSection : bool = self.cfg.has_section(section_name)
         print(hasSection)
 
