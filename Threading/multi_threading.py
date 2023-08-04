@@ -6,13 +6,13 @@ import time
 
 # async zip class
 class AsyncZip(threading.Thread): 
-    infile: str 
-    outfile: str
+    in_file: str 
+    out_file: str
 
-    def __init__(self, inFile : str, outFile: str) -> None:
+    def __init__(self, in_file : str, out_file: str) -> None:
         threading.Thread.__init__(self)
-        self.infile = inFile
-        self.outfile = outFile
+        self.in_file = in_file
+        self.out_file = out_file
     
     def thread_task(self, name : str, num: int) -> None: 
         for i in range(num): 
@@ -28,20 +28,20 @@ class AsyncZip(threading.Thread):
     def run(self) -> None: 
         try: 
             # checking given file is a zip file 
-            if zipfile.is_zipfile(self.outfile): 
-                print(self.outfile, " is a zipfile")
+            if zipfile.is_zipfile(self.out_file): 
+                print(self.out_file, " is a zipfile")
             
             # Reading files from zip file.
-            zipFileObj = zipfile.ZipFile(self.outfile, 'r',zipfile.ZIP_DEFLATED)
+            zip_file_instance = zipfile.ZipFile(self.out_file, 'r',zipfile.ZIP_DEFLATED)
 
             # Prints file name list present in archive folder. 
-            print("Files present in zip file: ", zipFileObj.namelist())
+            print("Files present in zip file: ", zip_file_instance.namelist())
             
             # Zip File extraction
-            for fileZipInfo in zipFileObj.filelist: 
-                zipFileObj.extract(fileZipInfo, path="\\Data\\mydata_archive")
+            for file_zip_info in zip_file_instance.filelist: 
+                zip_file_instance.extract(file_zip_info, path="\\Data\\mydata_archive")
             
-            print('Finished background zip of: ', self.infile)
+            print('Finished background zip of: ', self.in_file)
         except OSError as osError: 
             print("Operating System Error: ", osError)
         except Exception as ex:
