@@ -24,14 +24,14 @@ class StatsFuncAvgCentralLocations:
         return fmean(data)
 
     def geometric_mean_of_data(self, data: list[float]) -> float: 
-        ### The central tendency or typical value of data values ###
+        ### The central tendency or typical value of data values as opposed to arithmatic mean ###
         return geometric_mean(data)
 
-    def harmonic_mean_of_data(self, data: list[float]) -> float: 
-        ### Reciprocal of mean of data values ### 
-        # 3/(1/a + 1/b + 1/c) when a,b,c values given 
+    def harmonic_mean_of_data(self, data: list[int| float], weight: list[int |float]) -> float: 
+        ### Reciprocal of the data values ### 
+        # 3/(1/a + 1/b + 1/c) when a,b,c values are given 
 
-        return harmonic_mean(data)
+        return harmonic_mean(data, weights=weight)
 
     def median_low_of_data(self, data: list[float]) -> float: 
         ### Returns low median of numeric data values ### 
@@ -74,7 +74,12 @@ if __name__ == '__main__':
 
     print("Fast, floating arithmatic mean of data : ", stats_funcs_instance.fmean_of_data(clean_data))
 
-    print("harmonic mean of data : ", stats_funcs_instance.harmonic_mean_of_data(clean_data))
+
+    # Suppose a car travels 40 km/hr for 5 km, and when traffic clears, speeds-up to 60 km/hr for the remaining 30 km of the journey. 
+    # What is the average speed?
+    car_travels_in_kmhr : list [int | float] = [40,60]
+    weight : list[ int | float] = [5,30]
+    print("harmonic mean of data : ", stats_funcs_instance.harmonic_mean_of_data(car_travels_in_kmhr, weight ))
 
     print("geometric mean of data : ", stats_funcs_instance.geometric_mean_of_data(clean_data))
 
