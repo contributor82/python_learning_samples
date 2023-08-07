@@ -1,4 +1,4 @@
-from statistics import median, mean, fmean, geometric_mean, harmonic_mean, median_low, median_high, median_grouped, mode
+from statistics import median, mean, fmean, geometric_mean, harmonic_mean, median_low, median_high, median_grouped, mode, multimode, quantiles
 from math import isnan
 from itertools  import filterfalse
 from fractions import Fraction 
@@ -58,8 +58,20 @@ class StatsFuncAvgCentralLocations:
 
     def stat_mode(self, data: list[int | str]) -> int | str: 
         ### Returns the single most data point of discrete or nominal data ###
-
+        # there are multiple modes with the same frequency, returns the first one encountered in the data
+        
         return mode(data)
+
+    def stat_multimode(self, data: str) -> list[str]: 
+        ### Returns a list of most occurring values 
+        # returns more than one result if there are multiple modes. 
+        return multimode(data)
+
+    def stat_quantiles(self, data : list[int], interval: int, method_val: any) -> list[float]: 
+        ### Divides data into n continuous intervals and returns a list of n-1 cut points ###
+        # For meaninful results, the data points should be greater than n intervals
+        # method values : exclusive or inclusive. 
+        return quantiles(data,n=interval, method=method_val)
 
 if __name__ == '__main__': 
     stats_funcs_instance = StatsFuncAvgCentralLocations()
@@ -103,10 +115,30 @@ if __name__ == '__main__':
 
     print("median grouped of data : ", stats_funcs_instance.median_grouped_of_data(clean_data))
 
-    data_elements : list[int | str] = [1,1,2,2,3,3,3,4,4,4,4,5,5,5,5,5]
+    numeric_data_elements : list[int | str] = [1,1,2,2,3,3,3,4,4,4,4,5,5,5,5,5,6,6,6,6,6,6]
+    print("numeric data elements: ", numeric_data_elements)
+    print("mode of numeric data: ", stats_funcs_instance.stat_mode(numeric_data_elements))
 
-    print("data elements: ", data_elements)
-    print("mode of data: ", stats_funcs_instance.stat_mode(data_elements))
+    alphabetic_data_elements : list[int | str] = ["blue","blue","blue","red","red", "green", "red"]
+    print("alphabetic elements: ", alphabetic_data_elements)
+    print("mode of alphabetic data elements: ", stats_funcs_instance.stat_mode(alphabetic_data_elements))
+
+    alphabetic_multidata_elements : str  = "aabbccdddddeeeeefffffg"
+    print("Numeric multidata elements: ", alphabetic_multidata_elements)
+    print("mode of data: ", stats_funcs_instance.stat_multimode(alphabetic_multidata_elements))
+
+    sample_data = [105, 129, 87, 86, 111, 111, 89, 81, 108, 92, 110,
+        100, 75, 105, 103, 109, 76, 119, 99, 91, 103, 129,
+        106, 101, 84, 111, 74, 87, 86, 103, 103, 106, 86,
+        111, 75, 87, 102, 121, 111, 88, 89, 101, 106, 95,
+        103, 107, 101, 81, 109, 104]
+
+    print ("sample data for quantile : ", sample_data)
+    
+    result = [round (q,1) for q in stats_funcs_instance.stat_quantiles(sample_data,10,'exclusive')]
+
+    print (" Quantile of sample data: ", result)
+
 
 
 
