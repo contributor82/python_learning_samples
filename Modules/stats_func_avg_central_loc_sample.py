@@ -1,6 +1,7 @@
 from statistics import median, mean, fmean, geometric_mean, harmonic_mean, median_low, median_high, median_grouped
 from math import isnan
 from itertools  import filterfalse
+from fractions import Fraction # F as an alias 
 
 class StatsFuncAvgCentralLocations: 
     # Statistic functions of average & measures of central location
@@ -15,7 +16,7 @@ class StatsFuncAvgCentralLocations:
 
         return median(data)
 
-    def mean_of_data(self, data: list[float]) -> float: 
+    def mean_of_data(self, data: list[ Fraction | float]) -> float: 
         ### Sum of the data values divided by number of data values ###
         return mean(data)
 
@@ -71,6 +72,10 @@ if __name__ == '__main__':
     print("Sorted clean data:  ", stats_funcs_instance.sort_data(clean_data))
 
     print("mean of data : ", stats_funcs_instance.mean_of_data(clean_data))
+
+    fraction_data: list[Fraction | float] = [Fraction(3,7) , Fraction(1,21),Fraction(5,3), Fraction(1,3)]
+
+    print("mean of fraction data : ", stats_funcs_instance.mean_of_data(fraction_data))
 
     print("Fast, floating arithmatic mean of data : ", stats_funcs_instance.fmean_of_data(clean_data))
 
