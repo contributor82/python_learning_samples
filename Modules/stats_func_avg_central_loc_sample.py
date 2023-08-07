@@ -1,7 +1,8 @@
-from statistics import median, mean, fmean, geometric_mean, harmonic_mean, median_low, median_high, median_grouped
+from statistics import median, mean, fmean, geometric_mean, harmonic_mean, median_low, median_high, median_grouped, mode
 from math import isnan
 from itertools  import filterfalse
-from fractions import Fraction # F as an alias 
+from fractions import Fraction 
+from decimal import Decimal
 
 class StatsFuncAvgCentralLocations: 
     # Statistic functions of average & measures of central location
@@ -16,7 +17,7 @@ class StatsFuncAvgCentralLocations:
 
         return median(data)
 
-    def mean_of_data(self, data: list[ Fraction | float]) -> float: 
+    def mean_of_data(self, data: list[ Fraction | Decimal | float]) -> float: 
         ### Sum of the data values divided by number of data values ###
         return mean(data)
 
@@ -55,6 +56,11 @@ class StatsFuncAvgCentralLocations:
         ### Removes NaN from data values ### 
         return list(filterfalse(isnan, data))
 
+    def stat_mode(self, data: list[int | str]) -> int | str: 
+        ### Returns the single most data point of discrete or nominal data ###
+
+        return mode(data)
+
 if __name__ == '__main__': 
     stats_funcs_instance = StatsFuncAvgCentralLocations()
 
@@ -73,18 +79,21 @@ if __name__ == '__main__':
 
     print("mean of data : ", stats_funcs_instance.mean_of_data(clean_data))
 
-    fraction_data: list[Fraction | float] = [Fraction(3,7) , Fraction(1,21),Fraction(5,3), Fraction(1,3)]
+    fraction_data: list[Fraction | Decimal | float] = [Fraction(3,7) , Fraction(1,21),Fraction(5,3), Fraction(1,3)]
 
     print("mean of fraction data : ", stats_funcs_instance.mean_of_data(fraction_data))
 
-    print("Fast, floating arithmatic mean of data : ", stats_funcs_instance.fmean_of_data(clean_data))
+    decimal_data : list [Fraction | Decimal | float] = [Decimal("0.25"), Decimal("0.178"), Decimal("0.26"), Decimal("0.65") ]
 
+    print("mean of decimal data : ", stats_funcs_instance.mean_of_data(decimal_data))
+
+    print("Fast, floating arithmatic mean of data : ", stats_funcs_instance.fmean_of_data(clean_data))
 
     # Suppose a car travels 40 km/hr for 5 km, and when traffic clears, speeds-up to 60 km/hr for the remaining 30 km of the journey. 
     # What is the average speed?
-    car_travels_in_kmhr : list [int | float] = [40,60]
-    weight : list[ int | float] = [5,30]
-    print("harmonic mean of data : ", stats_funcs_instance.harmonic_mean_of_data(car_travels_in_kmhr, weight ))
+    car_speed_in_kmhr : list [int | float] = [40,60]
+    distance_traveled_in_km : list[ int | float] = [5,30]
+    print("harmonic mean of data : ", stats_funcs_instance.harmonic_mean_of_data(car_speed_in_kmhr, distance_traveled_in_km ))
 
     print("geometric mean of data : ", stats_funcs_instance.geometric_mean_of_data(clean_data))
 
@@ -93,6 +102,11 @@ if __name__ == '__main__':
     print("median low of data : ", stats_funcs_instance.median_low_of_data(clean_data))
 
     print("median grouped of data : ", stats_funcs_instance.median_grouped_of_data(clean_data))
+
+    data_elements : list[int | str] = [1,1,2,2,3,3,3,4,4,4,4,5,5,5,5,5]
+
+    print("data elements: ", data_elements)
+    print("mode of data: ", stats_funcs_instance.stat_mode(data_elements))
 
 
 
