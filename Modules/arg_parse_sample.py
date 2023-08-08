@@ -4,7 +4,7 @@ import argparse
 
 
 class ArgParseSample:
-    ### Argument Parser Sample from Python doc ###
+    ### Class for Argument Parser Sample from Python doc ###
 
     parser: argparse.ArgumentParser
     args: argparse.Namespace
