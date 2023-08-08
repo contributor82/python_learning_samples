@@ -46,8 +46,8 @@ class BuiltInFunctions:
         return sorted(iter)
 
     # Returning tuple sorting by specific field. 
-    def tuple_sorting_by_specific_sorting(self, iter: list[tuple[object]] | list[object], tuple_lambda_expression : object) -> list[object]: 
-        return sorted(iter, key=tuple_lambda_expression)
+    def tuple_sorting_by_specific_sorting(self, input_data: list[tuple[str,str,int]] | list[Student], tuple_lambda_expression : object) -> list[object]: 
+        return sorted(input_data, key=tuple_lambda_expression)
 
     # DO NOT USE: New Generator using itertools.count showing incorrect result 
     def new_iterators(self, start: int, step_val:int): 

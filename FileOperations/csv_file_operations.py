@@ -40,7 +40,7 @@ if __name__ == '__main__':
     csv_file_name: str = "C:\\Data\\Fruits.csv"
     csv_file_ops_instance.read_csv(csv_file_name)
 
-    fruits_data = [["Strawberry", 5, 5], ["Blueberry", 5, 10] ]
+    fruits_data: list[list[str | int]] = [["Strawberry", 5, 5], ["Blueberry", 5, 10] ]
     csv_file_ops_instance.write_csv(csv_file_name, fruits_data)
 
     csv_file_ops_instance.read_csv(csv_file_name)

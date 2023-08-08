@@ -4,44 +4,45 @@ import os
 import struct
 import shutil
 
+
 class FileOperations: 
-    file_handle = None
-    file_data = None
+    file_handle: object 
+    file_data: str | bytes 
 
     # Opening a file explicitely for reading purpose
     def open_file(self, file_name : str, opening_mode: str) -> None: 
         try:
             self.file_handle = open(file_name, opening_mode)
-        except OSError as osError: 
-            print(osError)
+        except OSError as os_error: 
+            print(os_error)
         except Exception as ex: 
             print(ex)
 
     # Closing file explicitely
     def close_file(self) -> None: 
-        if self.file_handle != None and self.file_handle.closed == False : 
+        if not self.file_handle is None and self.file_handle.closed is False: 
             self.file_handle.close()
     
     # Reading file data
     def read_file(self, file_name: str) -> None: 
         try: 
             # with will take care of file to be closed after use. 
-            with open(file_name,'r') as self.file_handle:
-                self.file_data = self.file_handle.read()
-        except OSError as osError: 
-            print(osError)
+            with open(file_name,'r') as handle:
+                self.file_data = handle.read()
+        except OSError as os_error: 
+            print(os_error)
         except Exception as ex: 
             print(ex)
     
     # Reading binary data from file
     def read_binarydata_from_file(self, file_name: str) -> None: 
         try: 
-            with open(file_name,'rb') as self.file_handle:
-                self.file_data = self.file_handle.read(8)
+            with open(file_name,'rb') as handle:
+                self.file_data: bytes = handle.read(8)
                 binary_data_one , binary_data_two, binary_data_three = struct.unpack(">hhl", self.file_data)
                 print("Binary data from file: ", binary_data_one, binary_data_two, binary_data_three)
-        except OSError as osError: 
-            print(osError)
+        except OSError as os_error: 
+            print(os_error)
         except Exception as ex: 
             print(ex)
 
@@ -50,10 +51,10 @@ class FileOperations:
         # # w+ Opens a disk file for updating(reading and writing)
         try: 
             self.file_handle = open(file_name,'w+', encoding='utf-8')
-            data = "This is a file write operation. textfile is getting new string contents. "
+            data: str = "This is a file write operation. textfile is getting new string contents. "
             self.file_handle.write(data)
-        except OSError as osError: 
-            print(osError)
+        except OSError as os_error: 
+            print(os_error)
         except Exception as ex: 
             print(ex)
 
@@ -62,11 +63,11 @@ class FileOperations:
         # # a Opens a file to append the contents to the end of the file.  
         try: 
             self.file_handle = open(file_name,'a+', encoding='utf-8')
-            data = "Appending file contents. "
+            data: str = "Appending file contents. "
             self.file_handle.write(data) 
             self.close_file()
-        except OSError as osError: 
-            print(osError)
+        except OSError as os_error: 
+            print(os_error)
         except Exception as ex: 
             print(ex)
 
@@ -76,10 +77,10 @@ class FileOperations:
             if os.access(file_name, os.F_OK): 
                 os.remove(file_name)
                 print(file_name, " deleted successfully. ")
-        except FileNotFoundError as fileNotFoundError: 
-            print(fileNotFoundError)
-        except OSError as osError: 
-            print(osError)
+        except FileNotFoundError as file_not_found_error: 
+            print(file_not_found_error)
+        except OSError as os_error: 
+            print(os_error)
         except Exception as ex: 
             print(ex)
 
@@ -89,23 +90,23 @@ class FileOperations:
             if os.access(oldfile_name, os.F_OK): 
                 os.rename(oldfile_name, newfile_name)
                 print("File has been renamed successfully. ")
-        except FileNotFoundError as fileNotFoundError: 
-            print(fileNotFoundError)
-        except OSError as osError: 
-            print(osError)
+        except FileNotFoundError as file_not_found_error: 
+            print(file_not_found_error)
+        except OSError as os_error: 
+            print(os_error)
         except Exception as ex: 
             print(ex)
     
     def file_copy(self, source_file_name : str, dest_file_name: str) -> None:
         try:
-            result = shutil.copyfile(source_file_name, dest_file_name)
+            result: str = shutil.copyfile(source_file_name, dest_file_name)
             print(result)
         except Exception as ex: 
             print(ex)
 
     # Listing files present when file extension is given.
-    def file_wildcards(self): 
-        filesList = glob.glob('*.py')
+    def file_wildcards(self) -> None: 
+        filesList: list[str] = glob.glob('*.py')
         print(filesList)
 
     # Returning data for display purpose
@@ -122,8 +123,8 @@ class FileOperations:
                 data = newfile_handle.read().__bytes__().decode(encoding="iso-8859-1").encode(encoding="utf-8")
                 print(data)
 
-        except OSError as osError: 
-            print(osError)
+        except OSError as os_error: 
+            print(os_error)
         except Exception as ex: 
             print(ex)
 
@@ -142,21 +143,21 @@ if __name__ == '__main__':
     # Creating file operation class object. 
     file_instance = FileOperations()
 
-    binary_data_file_name = "C:\\Data\\binarydata.txt"
+    binary_data_file_name: str = "C:\\Data\\binarydata.txt"
     file_instance.read_binarydata_from_file(binary_data_file_name)
 
-    oldfile_name = "C:\\Data\\tempfile.txt"
-    newfile_name = "C:\\Data\\tempfile_one.txt"
+    oldfile_name: str = "C:\\Data\\tempfile.txt"
+    newfile_name: str = "C:\\Data\\tempfile_one.txt"
 
     file_instance.rename_file(oldfile_name,newfile_name )
 
-    latin_data_file_name = 'C:\\Data\\latindata.txt'
+    latin_data_file_name: str = 'C:\\Data\\latindata.txt'
     # file_instance.convert_between_file_encoding(latin_data_file_name)
     # file_instance.convert_latin_data()
 
     file_instance.display_file_data()
 
-    file_name = 'C:\\Data\\textfile.txt'
+    file_name: str = 'C:\\Data\\textfile.txt'
     # Calling file wildcards method
     file_instance.file_wildcards()
 
@@ -164,7 +165,7 @@ if __name__ == '__main__':
     file_instance.read_file(file_name)
 
     # Calling file data and storing returned data in a variable. 
-    data = file_instance.display_file_data()
+    data: str | bytes | None = file_instance.display_file_data()
 
     # Printing returned data. 
     print("Reading current file data: ", data)
@@ -188,7 +189,7 @@ if __name__ == '__main__':
     file_instance.read_file(file_name)
 
     # Calling file display data
-    data = file_instance.display_file_data()
+    data  = file_instance.display_file_data()
 
     # Printing file contents after reading. 
     print("Reading after appending file contents: ", data)
@@ -196,11 +197,11 @@ if __name__ == '__main__':
     # Calling file close explicitely if file has not been closed. 
     file_instance.close_file()
 
-    source_file_name = "C:\\Data\\sourcefile.txt"
-    dest_file_name = "C:\\Data\\destinationfile.txt"
+    source_file_name : str = "C:\\Data\\sourcefile.txt"
+    dest_file_name : str = "C:\\Data\\destinationfile.txt"
     file_instance.file_copy(source_file_name,  dest_file_name)
 
-    del_file_name = "C:\\Data\\delfile.txt"
+    del_file_name: str = "C:\\Data\\delfile.txt"
     file_instance.delete_file(del_file_name)
 
 

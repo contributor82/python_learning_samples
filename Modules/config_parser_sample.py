@@ -38,7 +38,7 @@ class ConfigParserSample:
         ### Function to get section ###
 
         try:
-            section = self.cfg[section_name]
+            section : None | configparser.SectionProxy = self.cfg[section_name]
             print("Section : ", section)
         except Exception as ex:
             print(ex)

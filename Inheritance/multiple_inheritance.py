@@ -4,7 +4,7 @@ class BaseClass1:
     int_base1_member : int = 1
     str_base1_member : str = "Base Class One"
 
-    def display_base1(self): 
+    def display_base1(self) -> str: 
         return self.str_base1_member
 
 # Base Class 2 added with members and display method. 
@@ -12,7 +12,7 @@ class BaseClass2:
     int_base2_member : int = 2
     str_base2_member : str = "Base Class Two"
 
-    def display_base2(self): 
+    def display_base2(self) -> str: 
         return self.str_base2_member
 
 
@@ -21,7 +21,7 @@ class DerivedClass(BaseClass1, BaseClass2):
     int_derived_member : int =2
     str_derived_member : str  = "Derived Class"
 
-    def display_derived(self): 
+    def display_derived(self) -> str: 
         return self.str_derived_member
 
 

@@ -13,7 +13,7 @@ class LogginFromThreads:
         except FileNotFoundError as ex:
             raise(ex)
 
-    def worker_thread(self, args: any): 
+    def worker_thread(self, args: dict[str,bool]): 
         ### Logging from worker thread ###
         try: 
             while not args['stop']: 
@@ -27,7 +27,7 @@ class LogginFromThreads:
         ### Logging from main thread ###
 
         self.config_logging('C:\\Data\\logging_from_threads.log')
-        info = {'stop': False}
+        info: dict[str,bool] = {'stop': False}
         thread = threading.Thread(target=self.worker_thread, args=(info, )) 
         thread.start()
 

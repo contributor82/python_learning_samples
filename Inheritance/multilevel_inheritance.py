@@ -4,7 +4,7 @@ class BaseClass:
     int_base_member: int = 1
     str_base_member: str = "Base Class"
 
-    def display_base(self): 
+    def display_base(self) -> str: 
         return self.str_base_member
 
 # Derived Class inherited from base class and added its members & display method. 
@@ -12,15 +12,15 @@ class DerivedClass1(BaseClass):
     int_derived1_member: int =1
     str_derived1_member: str = "Derived Class One"
 
-    def display_derived1(self): 
+    def display_derived1(self) -> str: 
         return self.str_derived1_member
 
 # Derived Class inherited from base class and added its members & display method. 
 class DerivedClass2(DerivedClass1): 
-    intDerived2Member=2
-    strDerived2Member = "Derived Class Two"
+    intDerived2Member: int =2
+    strDerived2Member: str = "Derived Class Two"
 
-    def display_derived2(self): 
+    def display_derived2(self) -> str: 
         return self.strDerived2Member
 
 

@@ -9,8 +9,8 @@ class LoggingToFile:
     def config_logging(self, log_file: str) -> None: 
         try:
             logging.basicConfig(filename=log_file, filemode='a', encoding='UTF-8', level=logging.DEBUG)
-        except FileNotFoundError as ex:
-            raise(ex)
+        except FileNotFoundError as file_not_found_error:
+            raise(file_not_found_error)
 
     def logging_to_file(self) -> None: 
         try: 
