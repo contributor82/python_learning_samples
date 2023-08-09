@@ -1,41 +1,46 @@
+"""Module for Date time """
 from datetime import date, datetime, timezone
 import time
 
-class DateTimeClass: 
+class DateTimeClass:
+    """Date time class """
 
-    def current_date_dtls(self) -> None: 
+    def current_date_dtls(self) -> None:
+        """Getting current date details method """
         print('Current Date: ', date.today())
         print('Current Day: ', date.today().day)
         print('Current Day: ', date.today().month)
         print('Current Day: ', date.today().year)
 
-    def current_time_dtls(self) -> None: 
+    def current_time_dtls(self) -> None:
+        """Getting current time details method """
         now = date.today()
-        date_time = datetime(now.year, now.month, now.day,now.timetuple().tm_hour, tzinfo=timezone.utc)
+        date_time = datetime(now.year, now.month,
+                             now.day,now.timetuple().tm_hour, tzinfo=timezone.utc)
         print('Current time: ', time.strftime('%H:%M:%S %p'))
         print('Time by Zone UTC: ', date_time.now(timezone.utc).time())
 
-    def date_time_data_concatenation(self) -> None: 
-        current_date = date.today().__str__()
-        current_time = time.strftime('%H:%M:%S %p').__str__()
+    def date_time_data_concatenation(self) -> None:
+        """Date time data concatenaton method """
+        current_date: str = date.today().__str__()
+        current_time: str = time.strftime('%H:%M:%S %p')
 
-        logging_strings = ['DateTime file executed at ', current_date , current_time ]
+        logging_strings: list[str] = ['DateTime file executed at ', current_date , current_time ]
 
         # Created an empty array
-        process_strings = ['']
+        process_strings: list[str] = ['']
 
-        # Running a loop to append list with specifier 
-        for log_str in logging_strings: 
+        # Running a loop to append list with specifier
+        for log_str in logging_strings:
             process_strings.append(log_str)
             process_strings.append(" ")
 
-        # Using join to concatenate at one go to generate final string. 
-        logging_msg = ''.join(process_strings)
+        # Using join to concatenate at one go to generate final string.
+        logging_msg: str = ''.join(process_strings)
 
         print(logging_msg)
 
-if __name__ == '__main__': 
-
+if __name__ == '__main__':
     dt_instance = DateTimeClass()
     dt_instance.current_date_dtls()
     dt_instance.current_time_dtls()
@@ -96,4 +101,3 @@ if __name__ == '__main__':
 
 # Local = LocalTimezone()
 # print(Local.tzname(datetime))
-
