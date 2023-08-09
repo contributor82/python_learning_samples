@@ -2,43 +2,53 @@ import asyncio
 from io import TextIOWrapper
 import time
 
-# Following Async comprehensions seems changed from python 3.10 version hence DO NOT USE. 
-# Below program lines generates errors. 
+# Following Async comprehensions seems changed from python 3.10 version hence DO NOT USE.
+# Below program lines generates errors.
 # result = [async for i in aiter() if i % 2]
 # result = [await fun() for fun in funcs if await condition()]
 
-# Async function with async iterator that async for. 
-# Currently call is never waiting for the completion. 
-# added sleep timer for 100 seconds before printing value but getting RuntimeWarning: corountine 'async_for' was never awaited. 
+# Async function with async iterator that async for.
+# Currently call is never waiting for the completion.
+# added sleep timer for 100 seconds before printing value but getting RuntimeWarning: corountine 'async_for' was never awaited.
 
-# Async comprehensions 
-class AsyncComprehensions: 
+# Async comprehensions
+
+
+class AsyncComprehensions:
+    ### Asynchronous comprehensions class ###
 
     async def sleep(self) -> None:
         ### sleep ###
         await asyncio.sleep(1)
 
-    async def async_for(self, input_data: list[int]) -> None: 
+    async def async_for(self, input_data: list[int]) -> None:
         ### asynchronous for ###
+        try:
+            iterable: list[int] = (input_data)
+            for i in iter(iterable):
+                if (i % 2) == 0:
+                    await self.sleep()
+                    print("async for - printing for even numbers: ", i)
+        except Exception as ex:
+            print(ex)
 
-        iterable: list[int] = (input_data)
-        for i in iter(iterable): 
-            if (i % 2)==0: 
-                await self.sleep()
-                print("async for - printing for even numbers: ", i)
-
-    async def async_with(self, file_name: str ) -> None:
+    async def async_with(self, file_name: str) -> None:
         ### asynchronous with ###
 
         file_handle: TextIOWrapper
-        data:str = ''
-        file_handle = open(file_name,'r')
-        await self.sleep()
-        data = file_handle.read()
-        print("async with - File Data: = ", data)
+        data: str = ''
+        try:
+            file_handle = open(file_name, 'r', encoding='UTF-8')
+            await self.sleep()
+            data = file_handle.read()
+            print("async with - File Data: = ", data)
+        except FileExistsError as file_exists_error:
+            print(file_exists_error)
+        except FileNotFoundError as file_not_found_error:
+            print(file_not_found_error)
 
-    async def counter(self) -> None: 
-        ### counter ### 
+    async def counter(self) -> None:
+        ### counter ###
 
         await asyncio.sleep(1)
         print('1')
@@ -47,18 +57,18 @@ class AsyncComprehensions:
         await asyncio.sleep(3)
         print('3')
 
-    async def gather_all(self, input_data: list[int], file_name: str) -> None: 
+    async def gather_all(self, input_data: list[int], file_name: str) -> None:
         ### aggregating asynchronous results ###
-        
         await asyncio.gather(self.counter(), self.counter(), self.counter(), self.async_for(input_data), self.async_with(file_name))
 
 
 if __name__ == "__main__":
+
     t: float = time.perf_counter()
     ac_instance = AsyncComprehensions()
-    sample_data: list[int] = [1,2,3,4,5]
-    file_name: str = 'C:\\Data\\textfile.txt'
-    asyncio.run(ac_instance.gather_all(sample_data,file_name))
+    sample_data: list[int] = [1, 2, 3, 4, 5]
+    txt_file_name: str = 'C:\\Data\\textfile.txt'
+    asyncio.run(ac_instance.gather_all(sample_data, txt_file_name))
     t2: float = time.perf_counter()
-        
+
     print(f'Total time elapsed: {t2:0.2f} seconds')

@@ -1,12 +1,11 @@
 import sqlite3
 
-
 class DBOperations:
     ### Database operations ###
 
-    con: sqlite3.Connection
-    cur: sqlite3.Cursor
-    data: sqlite3.Cursor
+    con: sqlite3.Connection | None
+    cur: sqlite3.Cursor | None
+    data: sqlite3.Cursor | None
     is_open_connection: bool
 
     def open_connection(self, db_path_name: str) -> bool | None:
@@ -99,6 +98,7 @@ class DBOperations:
     def exec_batch_dml_statements(self, dml_statement: str, sql_parameters: any = None) -> None:
         ### Executing batch DML statements ### 
         try:
+            
             if self.is_open_connection:
                 self.cur = self.con.cursor()
 
@@ -149,9 +149,9 @@ class DBOperations:
 
 if __name__ == '__main__':
     db_instance = DBOperations()
-    db_path_name: str = "C:\\Data\\Students.db"
+    db_path: str = "C:\\Data\\Students.db"
     is_connection_success: bool | None = db_instance.open_connection(
-        db_path_name)
+        db_path)
     if is_connection_success:
 
         db_instance.exec_ddl_statements(

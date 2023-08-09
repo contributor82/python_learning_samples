@@ -1,32 +1,36 @@
-import sys 
+import sys
 import smtplib
 from email.message import EmailMessage
 
 # Sending an email from python script
 # This is as per the python documentation
-class EmailOperations: 
+
+
+class EmailOperations:
+    ### Email operations class ###
     host: str = ""
     port: int = 0
     server: smtplib.SMTP
 
-    # Initializing host and port
-    # Connection error causing send message not working - DO NOT USE
-    def __init__(self, host_address:str , port_num: int) -> None:
+
+    def __init__(self, host_address: str, port_num: int) -> None:
+        ### Initializing host and port ###
+        # Connection error causing send message not working - DO NOT USE
         self.host = host_address
         self.port = port_num
         self.server = smtplib.SMTP(self.host)
 
-    def quit_server(self)-> None: 
+    def quit_server(self) -> None:
+        ### Quit server ###
         self.server.quit()
 
-
-    def send_message_from_file(self, file_name: str, sender: str, recipient: str) -> bool: 
+    def send_message_from_file(self, file_name: str, sender: str, recipient: str) -> bool:
         ### Function to send message from file ###
 
         is_send_msg: bool = False
-        try: 
+        try:
 
-            with open(file_name) as file_handle: 
+            with open(file_name, encoding="UTF-8") as file_handle:
                 msg = EmailMessage()
                 msg.set_content(file_handle.read())
 
@@ -36,60 +40,65 @@ class EmailOperations:
 
                 self.server.send_message(msg)
                 is_send_msg = True
-        except Exception as ex: 
-            print(ex)
+        except Exception as send_msg_ex:
+            print(send_msg_ex)
             is_send_msg = False
         return is_send_msg
 
-    # Send email - causing connection error and not sending message as expected.
-    def send_email(self) -> bool: 
-        ### Function to send email by accepting sender, receiver and message from command line ### 
 
+    def send_email(self) -> bool:
+        ### Function to send email by accepting sender, receiver and message from command line ###
+        # Send email - causing connection error and not sending message as expected.
         is_send_email: bool = False
         try:
-            fromaddr = input("From: ")
-            toaddrs = input("To: ").split(",")
+            fromaddr: str = input("From: ")
+            toaddrs: list[str] = input("To: ").split(",")
             print("Enter message end with ^D: ")
-            msg = ''
-            lineCount =0
-            while True: 
+            msg: str = ""
+            line: str = ""
+            line_cnt: int = 0
+            while True:
                 line = sys.stdin.readline()
-                lineCount += 1
+                line_cnt += 1
                 msg += line
-                if lineCount == 2: 
+                if line_cnt == 2:
                     break
-                
+
             # The actual mail send
-            server = smtplib.SMTP(self.host,self.port)
+            server = smtplib.SMTP(self.host, self.port)
             server.sendmail(fromaddr, toaddrs, msg)
             is_send_email = True
-        except Exception as ex: 
-            print(ex)
+        except Exception as send_email_ex:
+            print(send_email_ex)
             is_send_email = False
         return is_send_email
 
     # Receive email
-    def receive_email(self) -> None: 
+    def receive_email(self) -> None:
         ### Function to receive reply from server ###
 
-        try: 
+        try:
             server = smtplib.SMTP(self.host)
             reply = server.getreply()
             print(reply)
-        except Exception as ex: 
-            print(ex)
-        
-if __name__ == '__main__': 
-    try: 
-        eo_instance = EmailOperations('localhost',25)
-        if eo_instance.send_email() == True : 
+        except Exception as receive_email_ex:
+            print(receive_email_ex)
+
+
+if __name__ == '__main__':
+    try:
+        eo_instance = EmailOperations('localhost', 25)
+        if eo_instance.send_email() is True:
             eo_instance.receive_email()
             eo_instance.quit_server()
 
         eo_from_file_instance = EmailOperations('localhost', 25)
-        if eo_from_file_instance.send_message_from_file("C:\\Data\\msg_file.txt", "private.user1@test.com", "private.user2@test.com") == True: 
+        msg_txt_file: str = "C:\\Data\\msg_file.txt"
+        sender_email: str = "private.user1@test.com"
+        receiver_email:str = "private.user2@test.com"
+        if eo_from_file_instance.send_message_from_file(msg_txt_file, sender_email, receiver_email) is True:
             eo_from_file_instance.receive_email()
             eo_from_file_instance.quit_server()
 
-    except Exception as ex:
-        print(ex)
+    except Exception as main_ex:
+        print(main_ex)

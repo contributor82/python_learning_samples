@@ -8,10 +8,10 @@ class JsonOperations:
     decoded_json = ''
     dct: dict[str, bool | int]
     
-    def encoding_json(self, json_data: dict[str, float | int] ) -> str: 
+    def encoding_json(self, input_data: dict[str, float | int] ) -> str: 
 
         # Compact encoding 
-        self.encoded_json: str = json.dumps(json_data, separators=(',',':'), sort_keys=True, indent=4)
+        self.encoded_json: str = json.dumps(input_data, separators=(',',':'), sort_keys=True, indent=4)
         return self.encoded_json
     
     def decoding_json(self): 

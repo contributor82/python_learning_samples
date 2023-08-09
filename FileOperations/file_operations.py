@@ -6,36 +6,39 @@ import shutil
 
 
 class FileOperations: 
-    file_handle: object 
+    file_handle: object | None
     file_data: str | bytes 
 
-    # Opening a file explicitely for reading purpose
     def open_file(self, file_name : str, opening_mode: str) -> None: 
+        ### Open file method ###
+        # Opening a file explicitely for reading purpose
         try:
-            self.file_handle = open(file_name, opening_mode)
+            self.file_handle = open(file_name, opening_mode, encoding="UTF-8")
         except OSError as os_error: 
             print(os_error)
-        except Exception as ex: 
-            print(ex)
+        except Exception as open_file_ex: 
+            print(open_file_ex)
 
     # Closing file explicitely
     def close_file(self) -> None: 
         if not self.file_handle is None and self.file_handle.closed is False: 
             self.file_handle.close()
     
-    # Reading file data
+    
     def read_file(self, file_name: str) -> None: 
+        ### Reading file data method ###
         try: 
             # with will take care of file to be closed after use. 
-            with open(file_name,'r') as handle:
+            with open(file_name,'r', encoding="UTF-8") as handle:
                 self.file_data = handle.read()
         except OSError as os_error: 
             print(os_error)
         except Exception as ex: 
             print(ex)
     
-    # Reading binary data from file
+    
     def read_binarydata_from_file(self, file_name: str) -> None: 
+        ### Reading binary data from file method ###
         try: 
             with open(file_name,'rb') as handle:
                 self.file_data: bytes = handle.read(8)
@@ -46,8 +49,9 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
 
-    # Write operation currently causing an error. DO NOT USE.
+    
     def write_file(self, file_name: str) -> None:
+        ### Write operation currently causing an error. DO NOT USE. ###
         # # w+ Opens a disk file for updating(reading and writing)
         try: 
             self.file_handle = open(file_name,'w+', encoding='utf-8')
@@ -58,8 +62,9 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
 
-    # Appending file contents
+    
     def append_file(self, file_name: str) -> None:
+        # Appending file contents method ###
         # # a Opens a file to append the contents to the end of the file.  
         try: 
             self.file_handle = open(file_name,'a+', encoding='utf-8')
@@ -71,8 +76,9 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
 
-    # Deleting file
+    
     def delete_file(self, file_name: str) -> None: 
+        ### Deleting file method ###
         try:
             if os.access(file_name, os.F_OK): 
                 os.remove(file_name)
@@ -84,8 +90,9 @@ class FileOperations:
         except Exception as ex: 
             print(ex)
 
-    # Renaming file - causing Access is denied error DO NOT USE
+   
     def rename_file(self, oldfile_name : str, newfile_name: str) -> None: 
+        ### Renaming file method - causing Access is denied error DO NOT USE ###
         try:
             if os.access(oldfile_name, os.F_OK): 
                 os.rename(oldfile_name, newfile_name)
@@ -98,23 +105,28 @@ class FileOperations:
             print(ex)
     
     def file_copy(self, source_file_name : str, dest_file_name: str) -> None:
+        ### File copy method ###
         try:
             result: str = shutil.copyfile(source_file_name, dest_file_name)
             print(result)
         except Exception as ex: 
             print(ex)
 
-    # Listing files present when file extension is given.
+    
     def file_wildcards(self) -> None: 
+        ### File wild cards method
         filesList: list[str] = glob.glob('*.py')
         print(filesList)
 
-    # Returning data for display purpose
+    
     def display_file_data(self) -> str | bytes | None:
+        ### Returning retrieved file data method ###
         return self.file_data   
 
-    # Causing "can't concat str to bytes error even though reading data & called bytes for the conversion. " DO NOT USE
+    
     def convert_between_file_encoding(self, file_name: str) -> None: 
+        ### Convert between file encoding method ###
+        # Causing "can't concat str to bytes error even though reading data & called bytes for the conversion. " DO NOT USE
         try:
             with open(file_name, 'r', encoding="latin-1" ) as self.file_handle: 
                 
@@ -146,10 +158,10 @@ if __name__ == '__main__':
     binary_data_file_name: str = "C:\\Data\\binarydata.txt"
     file_instance.read_binarydata_from_file(binary_data_file_name)
 
-    oldfile_name: str = "C:\\Data\\tempfile.txt"
-    newfile_name: str = "C:\\Data\\tempfile_one.txt"
+    old_file_name: str = "C:\\Data\\tempfile.txt"
+    new_file_name: str = "C:\\Data\\tempfile_one.txt"
 
-    file_instance.rename_file(oldfile_name,newfile_name )
+    file_instance.rename_file(old_file_name, new_file_name )
 
     latin_data_file_name: str = 'C:\\Data\\latindata.txt'
     # file_instance.convert_between_file_encoding(latin_data_file_name)
@@ -157,24 +169,24 @@ if __name__ == '__main__':
 
     file_instance.display_file_data()
 
-    file_name: str = 'C:\\Data\\textfile.txt'
+    txt_file_name: str = 'C:\\Data\\textfile.txt'
     # Calling file wildcards method
     file_instance.file_wildcards()
 
     # Calling file read method 
-    file_instance.read_file(file_name)
+    file_instance.read_file(txt_file_name)
 
     # Calling file data and storing returned data in a variable. 
-    data: str | bytes | None = file_instance.display_file_data()
+    file_data: str | bytes | None = file_instance.display_file_data()
 
     # Printing returned data. 
-    print("Reading current file data: ", data)
+    print("Reading current file data: ", file_data)
 
     # Calling write file operation
-    file_instance.write_file(file_name)
+    file_instance.write_file(txt_file_name)
 
     # Calling read file after write operation
-    file_instance.read_file(file_name)
+    file_instance.read_file(txt_file_name)
 
     # Calling file display data
     data = file_instance.display_file_data()
@@ -183,10 +195,10 @@ if __name__ == '__main__':
     print("Reading after writing file contents: ", data)
 
     # Calling file append
-    file_instance.append_file(file_name)
+    file_instance.append_file(txt_file_name)
 
     # Calling read file after append  operation
-    file_instance.read_file(file_name)
+    file_instance.read_file(txt_file_name)
 
     # Calling file display data
     data  = file_instance.display_file_data()
@@ -197,9 +209,9 @@ if __name__ == '__main__':
     # Calling file close explicitely if file has not been closed. 
     file_instance.close_file()
 
-    source_file_name : str = "C:\\Data\\sourcefile.txt"
-    dest_file_name : str = "C:\\Data\\destinationfile.txt"
-    file_instance.file_copy(source_file_name,  dest_file_name)
+    source_file : str = "C:\\Data\\sourcefile.txt"
+    dest_file : str = "C:\\Data\\destinationfile.txt"
+    file_instance.file_copy(source_file,  dest_file)
 
     del_file_name: str = "C:\\Data\\delfile.txt"
     file_instance.delete_file(del_file_name)

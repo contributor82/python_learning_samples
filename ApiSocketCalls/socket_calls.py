@@ -1,25 +1,18 @@
 import socket
 
-#  Class for Socket calls
-
 
 class SocketCalls:
+    ### Socket calls class ###
     sock: socket.socket
     msg_len: int = 0
     is_connection_made: bool = False
 
-    # Initializing sock variable with socket object
     def __init__(self) -> None:
-
-        # , sock: socket.socket
-        # if sock is None:
-        #     self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # else:
-        #     self.sock = sock
+        ### Initializing sock variable with socket object ###
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    # Establishing socket connection with given host & port
     def connect(self, host: str, port: int) -> None:
+        ### Establishing socket connection with given host & port ###
         try:
             # self.sock.bind((socket.gethostname(), 9000))
             self.sock.connect((host, port))
@@ -28,11 +21,11 @@ class SocketCalls:
             # self.sock.connect((host,port))
             self.is_connection_made = True
             self.sock.setblocking(False)
-        except Exception as ex:
-            print("Connect: ", ex)
+        except ConnectionError as conn_error:
+            print("Connect: ", conn_error)
 
-    # Sending message to established socket connection
     def send_message(self, msg: bytearray) -> None:
+        ### Sending message to established socket connection ###
         self.msg_len = len(msg)
         totalsent: int = 0
         try:
@@ -44,11 +37,11 @@ class SocketCalls:
         except Exception as ex:
             print("send_message: ", ex)
 
-    # Receiving message from established socket connection
-    # Receiving error as of now while receiving message from socket connection
     def receive_message(self) -> bytes | str | None:
         ### Function to receive message from socket ###
-        result : bytes | str | None
+        # Receiving message from established socket connection
+        # Receiving error as of now while receiving message from socket connection
+        result: bytes | str | None
         chunks: list[bytes] = [bytes()]
         bytes_received = 0
         try:
@@ -60,7 +53,7 @@ class SocketCalls:
                 chunks.append(chunk)
                 bytes_received += len(chunk)
             result = b''.join(chunks)
-            
+
         except Exception as ex:
             print("receive_message: ", ex)
             result = ex.__str__()
@@ -80,24 +73,3 @@ if __name__ == '__main__':
         print(" Socket received message as : ", received_msg)
     else:
         print(" Since no connection has been established, no message send and receive possible. ")
-
-
-# https://stackoverflow.com/questions/2778840/socket-error-errno-10013-an-attempt-was-made-to-access-a-socket-in-a-way-forb
-# to know if another process listening to the same port
-
-# netstat -ban
-
-# netstat -ano | find ":5000"
-# taskkill /f /pid process_id
-
-# net stop http
-
-# VS Code
-# Open terminal -> ports tab , delete the port allocated by remote host
-
-# net stop winnat
-# net start winnat
-
-# Firewall - Outbound rule - SQL Server instance MSSQLServer
-
-# python file_name runserver localhost:port_number

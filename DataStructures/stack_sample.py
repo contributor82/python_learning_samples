@@ -17,8 +17,8 @@ class StackSample:
         item: int =0
         try:  
             item = self.stack.pop()
-        except Exception as ex: 
-            print (ex)
+        except Exception as get_stack_element_ex: 
+            print (get_stack_element_ex)
         return item
     
     def display_stack(self) -> None: 

@@ -94,7 +94,7 @@ if __name__ == '__main__':
     sql_lite_instance = SQlLiteShell()
 
     sql_lite_instance.open_connection()
-    line: str = ''
+    line: str = ""
     while True:
         print("SQLLite Menu: ")
         print("1. SQL Command : ")
