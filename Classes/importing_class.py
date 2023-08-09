@@ -1,6 +1,6 @@
-# Class impported from same folder. 
 from bag_class_example import BagClass
 
+# Class impported from same folder. 
 bag_instance = BagClass()
 
 bag_instance.add('Compass Box')

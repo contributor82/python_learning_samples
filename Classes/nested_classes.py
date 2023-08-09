@@ -1,4 +1,6 @@
 class ParentClass: 
+    ### Parent class ### 
+
     int_parent_member: int = 1
     str_parent_member: str = "Parent Class String member"
 
@@ -6,10 +8,13 @@ class ParentClass:
         pass
 
     def parent_display(self) -> str:
+        ### Parent display ###
         return self.str_parent_member
     
     # Inner class or child class or even called as nested class since it is inside the parent class. 
     class ChildClass:
+        ### Child class ###
+
         int_child_member: int = 2
         str_child_member: str = "Child Class String member"
 
@@ -17,6 +22,7 @@ class ParentClass:
             pass
 
         def child_display(self) -> str: 
+            ### Child display ###
             return self.str_child_member
     
 

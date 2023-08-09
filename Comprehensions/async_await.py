@@ -7,7 +7,6 @@ class AsyncAwaitOperations:
     ### Async await operations ###
     data: str = ''
 
-    # Function for setting data
     async def set_data(self) -> str:
         ### Setting data ###
         self.data = "Asynchronous data operations"

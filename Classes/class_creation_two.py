@@ -4,12 +4,12 @@ class TestClass:
     # Class member
     int_member: int = 12345
 
-    # Default Constructor
     def __init__(self) -> None:
+        ### Default Constructor ###
         pass
 
-    # Method
     def display(self) -> str: 
+        ### display method of Test class ###
         return "Hello World"
     
 

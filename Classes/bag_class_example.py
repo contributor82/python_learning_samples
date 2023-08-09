@@ -2,19 +2,23 @@
 # Returning Bag elements. 
 
 class BagClass: 
+    ### Bag class ###
     data: list [str]
 
     def __init__(self) -> None:
         self.data = ['']
 
     def add(self, element: str) -> None:
+        ### Add elements in Bag method ###
         self.data.append(element)
     
     def add_element_twice(self, element: str) -> None: 
+        ### add elements twice in Bag method ###
         self.data.append(element)
         self.data.append(element)
 
     def whats_added_in_bag(self) -> list[str]: 
+        ### pull whats added in bag method ###
         return self.data
         
 

@@ -2,22 +2,27 @@ import asyncio
 
 
 class TcpClient:
+    ### Tcp client class ###
+
     reader: asyncio.StreamReader
     writer: asyncio.StreamWriter
     data: bytes
 
-    # if connection established with host and port then returned reader & writer instances
-    # Currently couldn't establish connection : Error : The remote computer refused the network connection
-    # Due to which reader & writer instances have not been formed.
     async def establish_connection(self, host: str | None, port: int | str | None) -> None:
+        ### Connection establishment ###
+        # if connection established with host and port then returned reader & writer instances
+        # Currently couldn't establish connection : Error : The remote computer refused the network connection
+        # Due to which reader & writer instances have not been formed.
         try:
             self.reader, self.writer = await asyncio.open_connection(host, port)
             print("Connection established..")
         except ConnectionError as ex:
             print(ex)
 
-    # Writing message using writer instance
+
     async def send_message(self, message: str) -> None:
+        ### sending message method ###
+        # Writing message using writer instance
         try:
             print(f'Send: {message!r}')
             self.writer.write(message.encode())
@@ -26,16 +31,20 @@ class TcpClient:
         except Exception as ex:
             print(ex)
 
-    # reading message using reader instance
+    
     async def receive_message(self) -> None:
+        ### receiving message method ### 
+        # reading message using reader instance
         try:
             self.data = await self.reader.read(100)
             print(f'Received: {self.data.decode()!r}')
         except Exception as ex:
             print(ex)
 
-    # closing connection to host and port.
+  
     async def close_connection(self) -> None:
+        ### closing connection method ###
+        # closing connection to host and port.
         try:
             print('Close the connection')
             self.writer.close()

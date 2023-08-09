@@ -1,28 +1,28 @@
 # Class creation in Python
 
-class TestClass: 
+class TestClass:
     # Class member
     int_member: int
     str_member: str
 
-    # Default Constructor
-    def __init__(self)-> None: 
+    def __init__(self) -> None: # type: ignore
+        ### Default constructor ###
         pass
 
-    # Parameterized Constructor. 
-    def __init__(self, int_member : int, str_member: str) -> None:
+    def __init__(self, int_member: int, str_member: str) -> None: # type: ignore
+        ### Parameterized Constructor. ###
         self.int_member = int_member
-        self.str_member = str_member 
+        self.str_member = str_member
 
-    # Method
-    def display(self) -> None: 
-        print ("Integer member: ", self.int_member)
-        print ("String member: ", self.str_member)
-        
+    def display(self) -> None:
+        ### Display class members. ###
+        print("Integer member: ", self.int_member)
+        print("String member: ", self.str_member)
 
-if __name__ == '__main__':    
-# Class Instance creation
-    # tc_instance_one = TestClass() # Not permitted to create an instance with default constructor. 
+
+if __name__ == '__main__':
+    # Class Instance creation
+    # tc_instance_one = TestClass() # Not permitted to create an instance with default constructor.
 
     tc_instance = TestClass(34234, "Test class")
     tc_instance.display()
