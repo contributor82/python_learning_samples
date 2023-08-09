@@ -1,11 +1,12 @@
+"""Module for Json file operations """
 import json
 
 
 class JsonFileOperations:
-    ### Class for Json file operations ###
+    """ Class for Json file operations """
 
     def load_json_data(self, file_name: str) -> str:
-        ### Load json data method ###
+        """ Load json data method """
         # Added try..catch block to capture an exception if any.
 
         load_json_result: str
@@ -17,9 +18,9 @@ class JsonFileOperations:
             load_json_result =  load_json_file_not_found_error.__str__()
         return load_json_result
 
-   
+
     def update_json_file(self, file_name: str,  data: str | bytes | bytearray) -> str:
-        ### Updating Json file with given data ###
+        """ Updating Json file with given data """
         update_json_result: str
         try:
             # File seems opening in write mode but data is not updating and throwing an error
@@ -32,7 +33,7 @@ class JsonFileOperations:
         return update_json_result
 
     def repeated_names_json(self, data: str | bytes | bytearray) -> str:
-        ### Repeated names json method ###
+        """ Repeated names json method """
         loaded_json: str = json.loads(data)
         return loaded_json
 

@@ -1,17 +1,19 @@
+"""Module for Tcp client """
 import asyncio
 
 
 class TcpClient:
-    ### Tcp client class ###
+    """ Tcp client class """
 
     reader: asyncio.StreamReader
     writer: asyncio.StreamWriter
     data: bytes
 
     async def establish_connection(self, host: str | None, port: int | str | None) -> None:
-        ### Connection establishment ###
+        """ Connection establishment """
         # if connection established with host and port then returned reader & writer instances
-        # Currently couldn't establish connection : Error : The remote computer refused the network connection
+        # Currently couldn't establish connection :
+        # Error : The remote computer refused the network connection
         # Due to which reader & writer instances have not been formed.
         try:
             self.reader, self.writer = await asyncio.open_connection(host, port)
@@ -21,7 +23,7 @@ class TcpClient:
 
 
     async def send_message(self, message: str) -> None:
-        ### sending message method ###
+        """ sending message method """
         # Writing message using writer instance
         try:
             print(f'Send: {message!r}')
@@ -31,9 +33,9 @@ class TcpClient:
         except Exception as ex:
             print(ex)
 
-    
+
     async def receive_message(self) -> None:
-        ### receiving message method ### 
+        """ receiving message method """
         # reading message using reader instance
         try:
             self.data = await self.reader.read(100)
@@ -41,9 +43,9 @@ class TcpClient:
         except Exception as ex:
             print(ex)
 
-  
+
     async def close_connection(self) -> None:
-        ### closing connection method ###
+        """ closing connection method """
         # closing connection to host and port.
         try:
             print('Close the connection')
@@ -52,10 +54,6 @@ class TcpClient:
 
         except ConnectionError as con_error:
             print(con_error)
-        except Exception as ex: 
-            print(ex)
-
-
 
 if __name__ == '__main__':
     tcp_client_instance = TcpClient()

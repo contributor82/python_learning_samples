@@ -1,9 +1,10 @@
+"""Module for Sql lite shell """
 import sqlite3
 
 
 class SQlLiteShell:
-    ### SQL lite shell class. ###
-    
+    """ SQL lite shell class. """
+
     con: sqlite3.Connection
     cur: sqlite3.Cursor
     is_open_connection: bool
@@ -11,7 +12,7 @@ class SQlLiteShell:
     data: list[str]
 
     def open_connection(self) -> bool:
-       ### Opening memory connection ###
+        """ Opening memory connection """
 
         self.is_open_connection = False
         try:
@@ -28,7 +29,7 @@ class SQlLiteShell:
         return self.is_open_connection
 
     def accept_command_line_input(self) -> None:
-        ### Accepting SQL as command line input ###
+        """ Accepting SQL as command line input """
 
         print("Enter SQL Command : ")
         self.shell_input = ""
@@ -44,7 +45,7 @@ class SQlLiteShell:
             print(ex)
 
     def exec_sql_statement(self) -> None:
-       ### Executing SQL Statement ###
+        """ Executing SQL Statement """
 
         # if sqlite3.complete_statement(self.shell_input):
         try:
@@ -60,7 +61,7 @@ class SQlLiteShell:
             print(ex)
 
     def display_sql_output(self) -> None:
-        ### Displaying SQL Output ###
+        """ Displaying SQL Output """
 
         try:
             print(self.data)
@@ -73,7 +74,7 @@ class SQlLiteShell:
             print(ex.args[0])
 
     def close_connection(self) -> bool | None:
-        ### Closing connection ###
+        """ Closing connection """
 
         is_close_connection: bool = False
         try:
@@ -92,23 +93,22 @@ class SQlLiteShell:
 if __name__ == '__main__':
     input_exit: str = "Exit"
     sql_lite_instance = SQlLiteShell()
-
     sql_lite_instance.open_connection()
-    line: str = ""
+    input_line: str = ""
     while True:
         print("SQLLite Menu: ")
         print("1. SQL Command : ")
         print("2. Execute Command: ")
         print("3. Display output ")
         print("4. Exit")
-        line = input()
-        match line:
+        input_line = input()
+        match input_line:
             case "1": sql_lite_instance.accept_command_line_input()
             case "2": sql_lite_instance.exec_sql_statement()
             case "3": sql_lite_instance.display_sql_output()
-            case "4": line = "Exit"
+            case "4": input_line = "Exit"
             case _: pass
 
-        if line == input_exit:
+        if input_line == input_exit:
             sql_lite_instance.close_connection()
             break

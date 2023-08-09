@@ -1,31 +1,30 @@
+"""Module for Email operations """
 import sys
 import smtplib
 from email.message import EmailMessage
 
 # Sending an email from python script
 # This is as per the python documentation
-
-
 class EmailOperations:
-    ### Email operations class ###
+    """ Email operations class """
     host: str = ""
     port: int = 0
     server: smtplib.SMTP
 
 
     def __init__(self, host_address: str, port_num: int) -> None:
-        ### Initializing host and port ###
+        """ Initializing host and port """
         # Connection error causing send message not working - DO NOT USE
         self.host = host_address
         self.port = port_num
         self.server = smtplib.SMTP(self.host)
 
     def quit_server(self) -> None:
-        ### Quit server ###
+        """ Quit server """
         self.server.quit()
 
     def send_message_from_file(self, file_name: str, sender: str, recipient: str) -> bool:
-        ### Function to send message from file ###
+        """ Function to send message from file """
 
         is_send_msg: bool = False
         try:
@@ -47,7 +46,7 @@ class EmailOperations:
 
 
     def send_email(self) -> bool:
-        ### Function to send email by accepting sender, receiver and message from command line ###
+        """ Function to send email by accepting sender, receiver and message from command line """
         # Send email - causing connection error and not sending message as expected.
         is_send_email: bool = False
         try:
@@ -75,7 +74,7 @@ class EmailOperations:
 
     # Receive email
     def receive_email(self) -> None:
-        ### Function to receive reply from server ###
+        """ Function to receive reply from server """
 
         try:
             server = smtplib.SMTP(self.host)

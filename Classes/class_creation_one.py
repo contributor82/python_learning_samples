@@ -1,21 +1,17 @@
-# Class creation in Python
+""" Module for class creation in Python """
 
 class TestClass:
-    # Class member
+    """ Test Class  """
     int_member: int
     str_member: str
 
-    def __init__(self) -> None: # type: ignore
-        ### Default constructor ###
-        pass
-
-    def __init__(self, int_member: int, str_member: str) -> None: # type: ignore
-        ### Parameterized Constructor. ###
+    def __init__(self, int_member: int, str_member: str) -> None:
+        """ Parameterized Constructor. """
         self.int_member = int_member
         self.str_member = str_member
 
     def display(self) -> None:
-        ### Display class members. ###
+        """ Display class members. """
         print("Integer member: ", self.int_member)
         print("String member: ", self.str_member)
 

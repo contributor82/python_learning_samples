@@ -1,22 +1,23 @@
+""" Module for abstract class concept """
 from abc import ABC, abstractmethod
 
 
 class Car(ABC):
-    ### Abstract Car class ###
+    """ Abstract Car class """
 
     @abstractmethod
     def get_name(self) -> str:
-        ### get name abstarct method ###
+        """ get name abstarct method """
         return "Car: Abstract"
 
     @classmethod
     def get_num_wheels(self) -> int:
-        ### get number of wheels ###
+        """ get number of wheels """
         return 0
 
     @classmethod
     def get_num_doors(self) -> int:
-        ### get number of doors ###
+        """ get number of doors """
         return 0
 
     # @classmethod
@@ -31,11 +32,11 @@ class Car(ABC):
     #    return result
 
     class Subclass:
-        ### Sub class ###
+        """ Sub class """
 
         @classmethod
         def get_name(self) -> str:
-            ### sub class get name method ###
+            """ sub class get name method """
             return "Sub class"
 
 
@@ -47,17 +48,17 @@ class Sedan(Car):
 
     @classmethod
     def get_name(self) -> str:
-        ### get name class method ###
+        """ get name class method """
         return "sedan"
 
     @classmethod
     def get_num_wheels(self) -> int:
-        ### get number of wheels ###
+        """ get number of wheels """
         return self.wheels
 
     @classmethod
     def get_num_doors(self) -> int:
-        ### get number of doors ###
+        """ get number of doors """
         return self.doors
 
 

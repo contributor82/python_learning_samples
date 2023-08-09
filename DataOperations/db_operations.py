@@ -1,15 +1,16 @@
+""" Module for db operations."""
 import sqlite3
 
 class DBOperations:
-    ### Database operations ###
+    """ Database operations """
 
-    con: sqlite3.Connection | None
-    cur: sqlite3.Cursor | None
-    data: sqlite3.Cursor | None
+    con: sqlite3.Connection
+    cur: sqlite3.Cursor
+    data: sqlite3.Cursor
     is_open_connection: bool
 
     def open_connection(self, db_path_name: str) -> bool | None:
-        ### Opening DB connection ###
+        """ Function opening DB connection. """
         self.is_open_connection = False
         try:
             # In memory DB connection
@@ -27,7 +28,7 @@ class DBOperations:
         return self.is_open_connection
 
     def close_connection(self) -> bool | None:
-        ### Closing connection ###
+        """ Closing connection """
         is_close_connection: bool = False
         try:
             if self.is_open_connection:
@@ -42,48 +43,35 @@ class DBOperations:
         return is_close_connection
 
     def exec_ddl_statements(self, ddl_statement: str) -> None:
-        ### Execute DDL Statements ###
-        # Executing DDL statements sent as an input
-        # Exception if table already exists
+        """ Execute DDL Statements """
         try:
             if self.is_open_connection:
                 self.cur = self.con.cursor()
-
-            if isinstance(self.cur, sqlite3.Cursor):
                 self.data = self.cur.execute(ddl_statement)
         except sqlite3.DataError as sql_data_error:
             print(sql_data_error)
         except sqlite3.Error as sql_error:
             print(sql_error)
-        except Exception as ex:
-            print(ex)
+
 
     def exec_batch_ddl_statements(self, ddl_statement: str) -> None:
-        ### Execute Batch DDL Statements ###
-        # Executing batch DDL statements sent as an input
-        # Exception if table already exists
+        """ Execute Batch DDL Statements """
         try:
             if self.is_open_connection:
                 self.cur = self.con.cursor()
-
-            if isinstance(self.cur, sqlite3.Cursor):
                 self.data = self.cur.executescript(ddl_statement)
         except sqlite3.DataError as sql_data_error:
             print(sql_data_error)
         except sqlite3.Error as sql_error:
             print(sql_error)
-        except Exception as ex:
-            print(ex)
 
-    
-    def exec_dml_statements(self, dml_statement: str, sql_parameters: any = None) -> None:  # type: ignore
-        ### Execcute DML Statements ###
-        # Executing DML statements sent as an input
+    def exec_dml_statements(self, dml_statement: str, sql_parameters = None) -> None:  # type: ignore
+        """ Execcute DML Statements """
         try:
             if self.is_open_connection:
                 self.cur = self.con.cursor()
 
-            if isinstance(self.cur, sqlite3.Cursor) and sql_parameters is not None:
+            if sql_parameters is not None:
                 self.data = self.cur.execute(dml_statement, sql_parameters)
             else:
                 self.data = self.cur.execute(dml_statement)
@@ -91,30 +79,25 @@ class DBOperations:
             print(sql_data_error)
         except sqlite3.Error as sql_error:
             print(sql_error)
-        except Exception as ex:
-            print(ex)
 
 
-    def exec_batch_dml_statements(self, dml_statement: str, sql_parameters: any = None) -> None:
-        ### Executing batch DML statements ### 
+    def exec_batch_dml_statements(self, dml_statement: str, sql_params = None) -> None:
+        """ Executing batch DML statements """
         try:
-            
             if self.is_open_connection:
                 self.cur = self.con.cursor()
 
-            if isinstance(self.cur, sqlite3.Cursor) and sql_parameters is not None:
-                self.data = self.cur.executemany(dml_statement, sql_parameters)
+            if sql_params is not None:
+                self.data = self.cur.executemany(dml_statement, sql_params)
             else:
                 self.data = self.cur.execute(dml_statement)
         except sqlite3.DataError as sql_data_error:
             print(sql_data_error)
         except sqlite3.Error as sql_error:
             print(sql_error)
-        except Exception as ex:
-            print(ex)
 
     def display_data(self) -> None:
-        ### Displaying data received from DML statement such as SELECT. ###
+        """ Displaying data received from DML statement such as SELECT. """
         try:
             print("Table Data: \n")
             if self.data.rowcount > 0:
@@ -127,11 +110,9 @@ class DBOperations:
             print(sql_data_error)
         except sqlite3.Error as sql_error:
             print(sql_error)
-        except Exception as ex:
-            print(ex)
 
     def display_scalar_data(self) -> None:
-        ### Displaying data received from DML statement such as SELECT. ###
+        """ Displaying data received from DML statement such as SELECT. """
         try:
             print("Table Data: \n")
             if self.data.rowcount > 0:
@@ -143,9 +124,6 @@ class DBOperations:
             print(sql_data_error)
         except sqlite3.Error as sql_error:
             print(sql_error)
-        except Exception as ex:
-            print(ex)
-
 
 if __name__ == '__main__':
     db_instance = DBOperations()

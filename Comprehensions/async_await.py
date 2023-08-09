@@ -1,20 +1,20 @@
-
+"""Module for Async and await operations. """
 import asyncio
 import time
 
 
 class AsyncAwaitOperations:
-    ### Async await operations ###
+    """ Async await operations """
     data: str = ''
 
     async def set_data(self) -> str:
-        ### Setting data ###
+        """ Setting data """
         self.data = "Asynchronous data operations"
         await asyncio.sleep(1)
         return self.data
 
     async def get_data(self) -> str:
-        ### Getting data ###
+        """ Getting data """
         stored_data: str = " "
         stored_data = await self.set_data()
         if stored_data == ' ':
@@ -23,17 +23,17 @@ class AsyncAwaitOperations:
         return stored_data
 
     async def task_one(self) -> None:
-        ### task one ###
+        """ task one """
         await asyncio.sleep(1)
         print("First Task")
 
     async def task_two(self) -> None:
-        ### task two ###
+        """ task two """
         await asyncio.sleep(1)
         print("Second Task")
 
     async def task_exec(self) -> None:
-        ### task execution ###
+        """ task execution """
         task1 = asyncio.create_task(self.task_one())
         task2 = asyncio.create_task(self.task_two())
 

@@ -1,18 +1,19 @@
+""" Module for socket functionality """
 import socket
 
 
 class SocketCalls:
-    ### Socket calls class ###
+    """ Socket calls class """
     sock: socket.socket
     msg_len: int = 0
     is_connection_made: bool = False
 
     def __init__(self) -> None:
-        ### Initializing sock variable with socket object ###
+        """ Initializing sock variable with socket object """
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def connect(self, host: str, port: int) -> None:
-        ### Establishing socket connection with given host & port ###
+        """ Establishing socket connection with given host & port """
         try:
             # self.sock.bind((socket.gethostname(), 9000))
             self.sock.connect((host, port))
@@ -25,7 +26,7 @@ class SocketCalls:
             print("Connect: ", conn_error)
 
     def send_message(self, msg: bytearray) -> None:
-        ### Sending message to established socket connection ###
+        """ Sending message to established socket connection """
         self.msg_len = len(msg)
         totalsent: int = 0
         try:
@@ -38,7 +39,7 @@ class SocketCalls:
             print("send_message: ", ex)
 
     def receive_message(self) -> bytes | str | None:
-        ### Function to receive message from socket ###
+        """ Function to receive message from socket """
         # Receiving message from established socket connection
         # Receiving error as of now while receiving message from socket connection
         result: bytes | str | None

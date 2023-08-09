@@ -1,37 +1,36 @@
+"""Module for Pickle operations """
 # Using pickle for object serialization and de-serialization
 # The pickle module is not secure, only unpickle data you trust - Python docs.
 
 import pickle
 
-
 class SampleClass:
-    ### Sample class ###
+    """ Sample class """
     sample_str: str = 'Sample class'
 
-
 class ObjectPickleUnpickle:
-    #### Object serialize de-serialize using pickle ###
+    """# Object serialize de-serialize using pickle """
 
     pickled_bytes: bytes
     unpickled_instance: any
 
     def pickle_object(self, instance_to_serialize: SampleClass) -> None:
-        ### Function to serialize object using pickle ###
+        """ Function to serialize object using pickle """
 
         self.pickled_bytes = pickle.dumps(instance_to_serialize)
 
-    def pickle_data_to_file(self, data: any, file_name: str) -> None:
-       ### Function to pickle data to file ###
+    def pickle_data_to_file(self, pickle_data: any, file_name: str) -> None:
+        """ Function to pickle data to file """
         try:
             with open(file_name, 'wb') as file_handle:
-                pickle.dump(data, file_handle, pickle.HIGHEST_PROTOCOL)
+                pickle.dump(pickle_data, file_handle, pickle.HIGHEST_PROTOCOL)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
         except Exception as ex:
             print(ex)
 
     def unpickled_data_from_file(self, file_name: str) -> None:
-       ### Function to unpickle object ###
+        """ Function to unpickle object """
         try:
             with open(file_name, 'rb') as file_handle:
                 data = pickle.loads(file_handle)
@@ -42,11 +41,11 @@ class ObjectPickleUnpickle:
             print(ex)
 
     def display_pickled_object_stream(self) -> None:
-        ### Function to display pickle serialized object stream ###
+        """ Function to display pickle serialized object stream """
         print("Serialized object Stream using pickle : ", self.pickled_bytes)
 
     def unpickle_object(self) -> None:
-        ### Function to display pickle serialized object stream ###
+        """ Function to display pickle serialized object stream """
         self.unpickled_instance = pickle.loads(self.pickled_bytes)
 
 

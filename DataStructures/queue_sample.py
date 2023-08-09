@@ -1,38 +1,38 @@
+"""Module for Queue sample """
 import queue
 
-
 class QueueSample:
-    ### Queue sample class ###
+    """ Queue sample class """
     fifo_queue: queue.Queue[str]
     lifo_queue: queue.LifoQueue[str]
     priority_queue: queue.PriorityQueue[str]
     simple_queue: queue.SimpleQueue[str]
 
     def init_queue(self, max_size: int) -> None:
-        ### Initialize queue ###
+        """ Initialize queue """
         self.fifo_queue = queue.Queue(max_size)
         self.lifo_queue = queue.LifoQueue(max_size)
         self.priority_queue = queue.PriorityQueue(max_size)
         self.simple_queue = queue.SimpleQueue()
 
     def append_fifo_queue(self, element: str) -> None:
-        ### Append fifo queue method ###
+        """ Append fifo queue method """
         self.fifo_queue.put(element)
 
     def append_lifo_queue(self, element: str) -> None:
-        ### Append lifo queue ###
+        """ Append lifo queue """
         self.lifo_queue.put(element)
 
     def append_priority_queue(self, element: str) -> None:
-        ### Append priority queue ###
+        """ Append priority queue """
         self.priority_queue.put(element)
 
     def append_simple_queue(self, element: str) -> None:
-        ### Append simple queue ###
+        """ Append simple queue """
         self.simple_queue.put(element)
 
     def display_fifo_queue(self) -> None:
-        ### Display fifo queue ###
+        """ Display fifo queue """
         item: str = ""
         try:
             while True:
@@ -44,7 +44,7 @@ class QueueSample:
             print(ex)
 
     def display_lifo_queue(self) -> None:
-        ### Display lifo queue ###
+        """ Display lifo queue """
         item: str = ""
         try:
             while True:
@@ -56,7 +56,7 @@ class QueueSample:
             print(ex)
 
     def display_priority_queue(self) -> None:
-        ### Display priority queue ###
+        """ Display priority queue """
         item: str = ""
         try:
             while True:
@@ -68,7 +68,7 @@ class QueueSample:
             print(ex)
 
     def display_simple_queue(self) -> None:
-        ### Display simple queue ###
+        """ Display simple queue """
         item: str = ""
         try:
             while True:
@@ -81,7 +81,7 @@ class QueueSample:
             print(ex)
 
     def get_fifo_queue_element(self) -> str:
-        ### Get fifo queue element ###
+        """ Get fifo queue element """
         item: str = ""
         try:
             item = self.fifo_queue.get(False)
@@ -90,7 +90,7 @@ class QueueSample:
         return item
 
     def get_lifo_queue_element(self) -> str:
-        ### Get lifo queue element ###
+        """ Get lifo queue element """
         item: str = ""
         try:
             item = self.lifo_queue.get(False)
@@ -99,7 +99,7 @@ class QueueSample:
         return item
 
     def get_priority_queue_element(self) -> str:
-        ### Get priority queue element ###
+        """ Get priority queue element """
         item: str = ""
         try:
             item = self.priority_queue.get(False)
@@ -109,7 +109,7 @@ class QueueSample:
         return item
 
     def get_simple_queue_element(self) -> str:
-        ### Get simple queue element ###
+        """ Get simple queue element """
         item: str = ""
         try:
             item = self.simple_queue.get(False)
@@ -118,7 +118,7 @@ class QueueSample:
         return item
 
     def get_simple_queue_size(self) -> int:
-        ### Get simple queue size ###
+        """ Get simple queue size """
         return self.simple_queue.qsize()
 
 

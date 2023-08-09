@@ -1,11 +1,11 @@
+"""Module for CSV File operations """
 import csv
 
-
 class CSVFileOperations:
-    ### CSV file operations class ###
+    """ CSV file operations class """
 
     def read_csv(self, file_name: str) -> None:
-        ### read CSV file ###
+        """ read CSV file """
         try:
             with open(file_name, encoding="UTF-8") as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=' ', quotechar='|')
@@ -16,7 +16,7 @@ class CSVFileOperations:
 
 
     def read_csv_to_dict(self, file_name: str) -> None:
-        ### Read csv file to dictionary ###
+        """ Read csv file to dictionary """
         try:
             with open(file_name, encoding='UTF-8') as csv_file:
                 csv_dict_reader = csv.DictReader(csv_file)
@@ -28,7 +28,7 @@ class CSVFileOperations:
 
 
     def write_csv(self, file_name: str, fruits_data: list[list[str | int]]) -> None:
-        ### Writing CSV file contents ###
+        """ Writing CSV file contents """
         try:
             with open(file_name, "a", encoding='UTF-8') as csv_file:
                 csv_writer = csv.writer(
