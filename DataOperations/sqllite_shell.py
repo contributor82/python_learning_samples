@@ -1,75 +1,76 @@
 import sqlite3
 
-class SQlLiteShell: 
-    con : sqlite3.Connection
+
+class SQlLiteShell:
+    ### SQL lite shell class. ###
+    
+    con: sqlite3.Connection
     cur: sqlite3.Cursor
     is_open_connection: bool
     shell_input: str = ""
     data: list[str]
 
-    def open_connection(self):
+    def open_connection(self) -> bool:
        ### Opening memory connection ###
 
         self.is_open_connection = False
         try:
             self.con = sqlite3.connect(":memory:")
-            if isinstance(self.con, sqlite3.Connection): 
-                print("Database connection established successfully. ")
-                self.con.isolation_level = None
-                self.cur = self.con.cursor()
-                self.is_open_connection = True
+            print("Database connection established successfully. ")
+            self.con.isolation_level = None
+            self.cur = self.con.cursor()
+            self.is_open_connection = True
 
-        except ConnectionError as ex:
-            print(ex)
+        except ConnectionError as conn_error:
+            print(conn_error)
             self.is_open_connection = False
 
         return self.is_open_connection
 
-    def accept_command_line_input(self): 
+    def accept_command_line_input(self) -> None:
         ### Accepting SQL as command line input ###
 
         print("Enter SQL Command : ")
         self.shell_input = ""
-        try: 
-            while True: 
+        line: str = ""
+        try:
+            while True:
                 line = input()
                 if line == "":
                     break
                 self.shell_input += line
-        
-        except Exception as ex: 
+
+        except Exception as ex:
             print(ex)
 
-    def exec_sql_statement(self): 
+    def exec_sql_statement(self) -> None:
        ### Executing SQL Statement ###
 
-        # if sqlite3.complete_statement(self.shell_input): 
-            try:
-                self.shell_input = self.shell_input.strip()
-                self.cur = self.cur.execute(self.shell_input)
+        # if sqlite3.complete_statement(self.shell_input):
+        try:
+            self.shell_input = self.shell_input.strip()
+            self.cur = self.cur.execute(self.shell_input)
 
-                if self.shell_input.lstrip().upper().startswith("SELECT"):
-                    self.data = self.cur.fetchall()
+            if self.shell_input.lstrip().upper().startswith("SELECT"):
+                self.data = self.cur.fetchall()
 
-            except sqlite3.Error as sql_error: 
-                print(sql_error.args[0])
-            except Exception as ex: 
-                print(ex)
+        except sqlite3.Error as sql_error:
+            print(sql_error.args[0])
+        except Exception as ex:
+            print(ex)
 
+    def display_sql_output(self) -> None:
+        ### Displaying SQL Output ###
 
-    def display_sql_output(self): 
-        ### Displaying SQL Output ### 
-
-        try: 
+        try:
             print(self.data)
 
-        except sqlite3.DataError as sql_data_error: 
+        except sqlite3.DataError as sql_data_error:
             print(sql_data_error.args[0])
-        except sqlite3.Error as sql_error: 
+        except sqlite3.Error as sql_error:
             print(sql_error.args[0])
         except Exception as ex:
             print(ex.args[0])
-
 
     def close_connection(self) -> bool | None:
         ### Closing connection ###
@@ -81,20 +82,20 @@ class SQlLiteShell:
                 print("Database connection closed successfully. ")
                 is_close_connection = True
 
-        except Exception as ex:
-            print(ex)
+        except ConnectionError as conn_error:
+            print(conn_error)
             is_close_connection = False
 
         return is_close_connection
 
 
-if __name__ == '__main__': 
-    input_exit = "Exit"
+if __name__ == '__main__':
+    input_exit: str = "Exit"
     sql_lite_instance = SQlLiteShell()
 
     sql_lite_instance.open_connection()
-
-    while True: 
+    line: str = ''
+    while True:
         print("SQLLite Menu: ")
         print("1. SQL Command : ")
         print("2. Execute Command: ")
@@ -106,12 +107,8 @@ if __name__ == '__main__':
             case "2": sql_lite_instance.exec_sql_statement()
             case "3": sql_lite_instance.display_sql_output()
             case "4": line = "Exit"
+            case _: pass
 
-        if line == input_exit: 
+        if line == input_exit:
             sql_lite_instance.close_connection()
             break
-
-
-   
-
-   

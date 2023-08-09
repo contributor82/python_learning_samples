@@ -48,7 +48,6 @@ class ObjectPickleUnpickle:
         ### Function to display pickle serialized object stream ###
         self.unpickled_instance = pickle.loads(self.pickled_bytes)
 
-    
 if __name__ == '__main__': 
    opu_Instance =  ObjectPickleUnpickle()
    opu_Instance.pickle_object(SampleClass) # type: ignore
@@ -65,6 +64,7 @@ if __name__ == '__main__':
     }
 
     # Data can be of any format for pickling
-    opu_Instance.pickle_data_to_file(data_to_pickle, "C:\\Data\\Serial.pickle")    
-    opu_Instance.unpickled_data_from_file("C:\\Data\\Serial.pickle")    
+    file_name: str = "C:\\Data\\Serial.pickle"
+    opu_Instance.pickle_data_to_file(data_to_pickle, file_name)    
+    opu_Instance.unpickled_data_from_file(file_name)    
 

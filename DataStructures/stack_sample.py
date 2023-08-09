@@ -5,20 +5,24 @@ class StackSample:
     stack = []
 
     def init_stack(self)-> None: 
+        ### Initialize stack ###
         self.stack = [type(int)]
 
     def append_stack(self, element: int) ->  None: 
+        ### Append stack ###
         self.stack.append(element)
 
     def get_stack_element(self) -> int:
+        ### Get stack element ###
+        item: int =0
         try:  
             item = self.stack.pop()
-            return item
         except Exception as ex: 
             print (ex)
-            return 0
+        return item
     
-    def display_stack(self): 
+    def display_stack(self) -> None: 
+        ### Display stack elements ###
         print("Stack: ", self.stack)
 
 
@@ -35,7 +39,6 @@ if __name__ == '__main__':
     ss_instance.append_stack(8)
     ss_instance.append_stack(9)
     ss_instance.append_stack(10)
-    
     ss_instance.display_stack()
 
     print(" Get element from stack : ", ss_instance.get_stack_element())
