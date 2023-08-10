@@ -65,14 +65,15 @@ class DBOperations:
         except sqlite3.Error as sql_error:
             print(sql_error)
 
-    def exec_dml_statements(self, dml_statement: str, sql_parameters = None) -> None:  # type: ignore
+    def exec_dml_statements(self, dml_statement: str,
+                            sql_parameters: any | None = None) -> None:  # type: ignore
         """ Execcute DML Statements """
         try:
             if self.is_open_connection:
                 self.cur = self.con.cursor()
 
             if sql_parameters is not None:
-                self.data = self.cur.execute(dml_statement, sql_parameters)
+                self.data = self.cur.execute(dml_statement, sql_parameters) # type: ignore
             else:
                 self.data = self.cur.execute(dml_statement)
         except sqlite3.DataError as sql_data_error:
@@ -81,14 +82,15 @@ class DBOperations:
             print(sql_error)
 
 
-    def exec_batch_dml_statements(self, dml_statement: str, sql_params = None) -> None:
+    def exec_batch_dml_statements(self, dml_statement: str,
+                                  sql_params: any | None = None) -> None: # type: ignore
         """ Executing batch DML statements """
         try:
             if self.is_open_connection:
                 self.cur = self.con.cursor()
 
             if sql_params is not None:
-                self.data = self.cur.executemany(dml_statement, sql_params)
+                self.data = self.cur.executemany(dml_statement, sql_params) # type: ignore
             else:
                 self.data = self.cur.execute(dml_statement)
         except sqlite3.DataError as sql_data_error:
@@ -148,7 +150,8 @@ if __name__ == '__main__':
 
         db_instance.exec_ddl_statements(
             "CREATE TABLE Marks(MarksId, StudentId, SubjectName, SubjectMarks)")
-        db_instance.exec_batch_dml_statements("INSERT INTO Marks(MarksId, StudentId, SubjectName, SubjectMarks) VALUES(?,?,?,?)",
+        db_instance.exec_batch_dml_statements(" INSERT INTO Marks(MarksId, StudentId, "
+                                               + " SubjectName, SubjectMarks) VALUES(?,?,?,?)",
                                               [(1, 1, "Physics", 75),
                                                (2, 1, "Chemistry", 85),
                                                   (3, 1, "Maths", 90),

@@ -1,7 +1,6 @@
 """Module for Tcp client """
 import asyncio
 
-
 class TcpClient:
     """ Tcp client class """
 

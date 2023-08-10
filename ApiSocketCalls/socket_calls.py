@@ -35,8 +35,8 @@ class SocketCalls:
                 if sent == 0:
                     raise RuntimeError("Socket connection broken. ")
                 totalsent += sent
-        except Exception as ex:
-            print("send_message: ", ex)
+        except OSError as os_error:
+            print("send_message: ", os_error)
 
     def receive_message(self) -> bytes | str | None:
         """ Function to receive message from socket """
@@ -55,9 +55,9 @@ class SocketCalls:
                 bytes_received += len(chunk)
             result = b''.join(chunks)
 
-        except Exception as ex:
-            print("receive_message: ", ex)
-            result = ex.__str__()
+        except OSError as os_error:
+            print("receive_message: ", os_error)
+            result = os_error.args[0]
         return result
 
 
