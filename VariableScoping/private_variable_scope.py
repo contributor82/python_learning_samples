@@ -1,19 +1,20 @@
-# class Mapping: 
+"""Module for private variable scoping """
+# class Mapping:
 
 #     def __init__(self,  iterable):
 #         self.item_list = []
 #         self._update(iterable)
-    
-#     def update(self, iterable): 
-#         for item in iterable: 
+
+#     def update(self, iterable):
+#         for item in iterable:
 #             self.item_list.append(item)
-    
+
 #     _update = update
 
-# class MappingSubClass(Mapping): 
+# class MappingSubClass(Mapping):
 
-#     def update(self, keys, values): 
-#         for item in zip(keys, values): 
+#     def update(self, keys, values):
+#         for item in zip(keys, values):
 #             self.item_list.append(item)
 
 # elements = [1,2,3]
@@ -25,16 +26,20 @@
 # print(obj.item_list)
 
 
-class TrialClass: 
+class TrialClass:
+    """Trail class """
     _int_var: int = 0
     _str_var: str = ""
 
     def __init__(self) -> None:
+        """Initializing class members """
         self._int_var = 1
         self._str_var = "Trial Class"
-    
-    def displayValues(self): 
+
+    def displayValues(self) -> str:
+        """ Displaying values method """
         return  (self._int_var.__str__() + " " + self._str_var)
+
 
 if __name__ == '__main__':
     obj = TrialClass()

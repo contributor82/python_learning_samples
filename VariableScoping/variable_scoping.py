@@ -1,26 +1,29 @@
+"""Module for Variable scope testing """
 
 class ScopeTest:
-    spam = "Initial variable assignment"
-   
+    """Scope test """
+    spam: str = "Initial variable assignment"
+
     def variable_scope(self) -> None:
 
-        # local scope is restricted to function only
+
         def do_local() -> None:
+            """local scope is restricted to function only"""
             spam = "local spam"
 
-
-        # nonlocal scope remains in enclosed scope
         def do_nonlocal() -> None:
-            nonlocal spam 
+            """nonlocal scope remains in enclosed scope"""
+            nonlocal spam
             spam =  "nonlocal spam"
-        
-        # global scope is at the module level and not under the function level.
-        # even though the call has been placed, its reflected value would be accessed
-        # at module level.
+
         def do_global() -> None:
+            """global variable scoping """
+            # global scope is at the module level and not under the function level.
+            # even though the call has been placed, its reflected value would be accessed
+            # at module level.
             global spam
             spam = "global spam"
-            
+
         spam = "test spam"
 
         # Variable value won't change after do_local due to variable scope restriction
@@ -31,11 +34,11 @@ class ScopeTest:
         do_nonlocal()
         print("After nonlocal assignment:", spam)
 
-        # Variable value will change but won't show its changes since the display is at function level and 
+        # Variable value will change but won't show its changes since the display is at function level and
         # not outside
         do_global()
         print("After global assignment:", spam)
-   
+
 if __name__ == '__main__':
     var_scope_instance = ScopeTest()
     print ("Initial variable assigment: ", var_scope_instance.spam)

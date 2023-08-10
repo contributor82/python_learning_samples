@@ -1,10 +1,10 @@
-# argparse is for building command line interface
+"""Module for argparse is for building command line interface"""
 
 import argparse
 
 
 class ArgParseSample:
-    ### Class for Argument Parser Sample from Python doc ###
+    """ Class for Argument Parser Sample from Python doc """
 
     parser: argparse.ArgumentParser
     args: argparse.Namespace
@@ -14,43 +14,44 @@ class ArgParseSample:
             description="Calculate X to the power of Y when X and Y are provided.")
 
     def add_new_argument(self) -> None:
-        ### Function to add new argument to module ###
+        """ Function to add new argument to module """
         try:
             self.parser.add_argument(
                 "-v", "--verbose", help="increase output verbosity", action="store_true")
             self.args = self.parser.parse_args()
             if self.args.verbose:
                 print("verbosity turned on")
-        except Exception as ex:
-            print(ex)
+        except ValueError as new_arg_value_error:
+            print(new_arg_value_error)
 
     def add_positional_argument(self) -> None:
-        ### Function to add positional argument to module ###
+        """ Function to add positional argument to module """
         try:
             self.parser.add_argument(
                 "echo", help="echo the string you use here.. ")
             self.args = self.parser.parse_args()
             print("echo")
-        except Exception as ex:
-            print(ex)
+        except ValueError as positional_arg_value_error:
+            print(positional_arg_value_error)
 
     def add_optional_argument(self) -> None:
-        ### Function to add new argument to module ###
+        """ Function to add new argument to module """
         try:
             self.parser.add_argument(
                 "--verbosity", help="increase output verbosity")
             self.args = self.parser.parse_args()
             if self.args.verbose:
                 print("verbosity turned on")
-        except Exception as ex:
-            print(ex)
+        except Exception as optional_arg_value_error:
+            print(optional_arg_value_error)
 
     def add_combine_positional_optional_argument(self) -> None:
-        ### Function to combine positional and optional argument ###
+        """ Function to combine positional and optional argument """
         try:
             self.parser.add_argument(
                 "square", type=int, help="display square of a given number")
-            # self.parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
+            # self.parser.add_argument("-v", "--verbose",
+            #                           help="increase output verbosity", action="store_true")
             self.parser.add_argument(
                 "-v", "--verbosity", help="increase output verbosity", action="count")
             self.args = self.parser.parse_args()
@@ -65,7 +66,7 @@ class ArgParseSample:
             print(ex)
 
     def add_adv_combine_positional_option_argument(self) -> None:
-        ### Function to combine positional and optional argument ###
+        """ Function to combine positional and optional argument """
         try:
             self.parser.add_argument("x", type=int, help="the base")
             self.parser.add_argument("y", type=int, help="the component")
@@ -83,7 +84,7 @@ class ArgParseSample:
             print(ex)
 
     def add_mutually_exclusive_group_argument(self) -> None:
-        ### Function to add arguments for mutually exclusive group ###
+        """ Function to add arguments for mutually exclusive group """
         try:
             mutually_exclusive_group = self.parser.add_mutually_exclusive_group()
             mutually_exclusive_group.add_argument(
