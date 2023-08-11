@@ -4,11 +4,11 @@ import json
 class ComplexEncoder(json.JSONEncoder):
     """ class ComplexEncoder has not been recognized. """
 
-    def default(self, obj: object) -> any:
+    def default(self, o: object) -> object:
         """ default for checking object complexity """
-        if isinstance(obj,complex):
-            return [obj.real, obj.imag]
-        return json.JSONEncoder.default(self, obj)
+        if isinstance(o,complex):
+            return [o.real, o.imag]
+        return json.JSONEncoder.default(self, o)
 
 
 if __name__ == '__main__':

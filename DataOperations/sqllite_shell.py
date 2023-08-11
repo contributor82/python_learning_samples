@@ -91,7 +91,7 @@ class SQlLiteShell:
 
 
 if __name__ == '__main__':
-    input_exit: str = "Exit"
+    CON_CLOSE: bool = False
     sql_lite_instance = SQlLiteShell()
     sql_lite_instance.open_connection()
     input_line: str = ""
@@ -106,9 +106,8 @@ if __name__ == '__main__':
             case "1": sql_lite_instance.accept_command_line_input()
             case "2": sql_lite_instance.exec_sql_statement()
             case "3": sql_lite_instance.display_sql_output()
-            case "4": input_line = "Exit"
+            case "4": sql_lite_instance.close_connection(); CON_CLOSE = True
             case _: pass
 
-        if input_line == input_exit:
-            sql_lite_instance.close_connection()
+        if CON_CLOSE:
             break

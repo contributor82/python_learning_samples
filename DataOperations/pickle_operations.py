@@ -12,7 +12,7 @@ class ObjectPickleUnpickle:
     """# Object serialize de-serialize using pickle """
 
     pickled_bytes: bytes
-    unpickled_instance: any
+    unpickled_instance: pickle.Unpickler
 
     def pickle_object(self, instance_to_serialize: SampleClass) -> None:
         """ Function to serialize object using pickle """
@@ -26,8 +26,8 @@ class ObjectPickleUnpickle:
                 pickle.dump(pickle_data, file_handle, pickle.HIGHEST_PROTOCOL)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except Exception as ex:
-            print(ex)
+        except pickle.PicklingError as pickling_error:
+            print(pickling_error)
 
     def unpickled_data_from_file(self, file_name: str) -> None:
         """ Function to unpickle object """
@@ -37,8 +37,8 @@ class ObjectPickleUnpickle:
                 print("Unpickled file data : ", data)
         except IOError as io_error:
             print(io_error)
-        except Exception as ex:
-            print(ex)
+        except pickle.PickleError as pickle_error:
+            print(pickle_error)
 
     def display_pickled_object_stream(self) -> None:
         """ Function to display pickle serialized object stream """

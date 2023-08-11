@@ -31,8 +31,8 @@ class AsyncComprehensions:
                 if (i % 2) == 0:
                     await self.sleep()
                     print("async for - printing for even numbers: ", i)
-        except Exception as ex:
-            print(ex)
+        except RuntimeError as run_time_error:
+            print(run_time_error)
 
     async def async_with(self, file_name: str) -> None:
         """ asynchronous with """

@@ -6,13 +6,14 @@ class JsonOperations:
     """Json operations class """
 
     encoded_json: str = ''
-    decoded_json = ''
+    decoded_json: str = ''
     dct: dict[str, bool | int]
 
     def encoding_json(self, input_data: dict[str, float | int] ) -> str:
         """Encoding json method """
         # Compact encoding
-        self.encoded_json: str = json.dumps(input_data, separators=(',',':'), sort_keys=True, indent=4)
+        self.encoded_json: str = json.dumps(input_data,
+                                            separators=(',',':'), sort_keys=True, indent=4)
         return self.encoded_json
 
     def decoding_json(self):
@@ -21,7 +22,9 @@ class JsonOperations:
         self.decoded_json = json.loads(self.encoded_json)
         return self.decoded_json
 
-    def specialized_decoding_json(self, data_dict : dict[str, bool | int]) -> complex | dict[str, bool | int]:
+    def specialized_decoding_json(self,
+                                  data_dict :
+                                  dict[str, bool | int]) -> complex | dict[str, bool | int]:
         """Specialized decoding json method """
         self.dct = data_dict
         if '__complex__' in self.dct :

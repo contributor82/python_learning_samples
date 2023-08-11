@@ -6,7 +6,6 @@ class TestClass:
 
     def __init__(self) -> None:
         """ Default Constructor """
-        pass
 
     def display(self) -> str:
         """ display method of Test class """

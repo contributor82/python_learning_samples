@@ -22,7 +22,7 @@ class DateTimeClass:
 
     def date_time_data_concatenation(self) -> None:
         """Date time data concatenaton method """
-        current_date: str = date.today().__str__()
+        current_date: str = str(date.today())
         current_time: str = time.strftime('%H:%M:%S %p')
 
         logging_strings: list[str] = ['DateTime file executed at ', current_date , current_time ]

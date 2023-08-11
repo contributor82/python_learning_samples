@@ -20,18 +20,18 @@ class LoggingToFile:
             logging.warning("logging:warning - This messagen should be logged in log file. ")
             logging.error("non-ASCII stuff, too, like Øresund and Malmö")
 
-        except Exception as log_to_file_ex:
-            print(log_to_file_ex)
+        except RuntimeError as log_to_file_run_time_error:
+            print(log_to_file_run_time_error)
 
     def get_current_logging_level(self) -> None:
         """Get current logging level method """
         try:
             logger: logging.Logger = logging.getLogger(__name__)
-            effective_level = logger.getEffectiveLevel()
-            level_name = logging.getLevelName(effective_level)
+            effective_level: int = logger.getEffectiveLevel()
+            level_name: str = logging.getLevelName(effective_level)
             print("Current Logging level configured: ", level_name)
-        except Exception as ex:
-            print(ex)
+        except RuntimeError as run_time_error:
+            print(run_time_error)
 
 if __name__ == '__main__':
     log_to_file = LoggingToFile()

@@ -16,8 +16,8 @@ class MemoryAllocationTrace:
             tracemalloc.start()
         except MemoryError as memory_error:
             print(memory_error)
-        except Exception as start_tracemalloc_ex:
-            print(start_tracemalloc_ex)
+        except RuntimeError as start_tracemalloc_run_time_error:
+            print(start_tracemalloc_run_time_error)
 
     def get_top_stats(self) -> None:
         """ Get top stats method """
@@ -45,7 +45,7 @@ class MemoryAllocationTrace:
         """Get snapshot differences method """
         try:
             self.top_stats_difference = self.snapshot2.compare_to(self.snapshot1, 'lineno')
-        except Exception as get_snapshot_diff_ex:
+        except RuntimeError as get_snapshot_diff_ex:
             print(get_snapshot_diff_ex)
 
     def display_stats(self) -> None:
@@ -53,7 +53,7 @@ class MemoryAllocationTrace:
         try:
             for stat in self.top_stats[:10]:
                 print(stat)
-        except Exception as display_stats_ex:
+        except RuntimeError as display_stats_ex:
             print(display_stats_ex)
 
     def display_stats_difference(self) -> None:
@@ -61,7 +61,7 @@ class MemoryAllocationTrace:
         try:
             for stat_diff in self.top_stats_difference[:10]:
                 print(stat_diff)
-        except Exception as ex:
+        except RuntimeError as ex:
             print(ex)
 
 if __name__ == '__main__':

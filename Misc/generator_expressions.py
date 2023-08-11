@@ -24,7 +24,9 @@ class GeneratorExpressions:
         """Expression sum zip method """
         return sum(x*y for x,y in zip(iter1,iter2))
 
-    def max_expression(self,expression :Generator[tuple[float | str, float | str], None, None]):
+    def max_expression(self,expression :
+                       Generator[tuple[float | str, float | str], None,
+                                 None]) -> tuple[float | str, float | str]:
         """Max expression method """
         return max(expression)
 

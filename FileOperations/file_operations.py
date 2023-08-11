@@ -18,8 +18,8 @@ class FileOperations:
             self.file_handle = open(file_name, opening_mode, encoding="UTF-8")
         except OSError as os_error:
             print(os_error)
-        except Exception as open_file_ex:
-            print(open_file_ex)
+        except FileNotFoundError as file_not_found_error:
+            print(file_not_found_error)
 
     # Closing file explicitely
     def close_file(self) -> None:

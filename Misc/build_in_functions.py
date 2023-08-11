@@ -51,7 +51,7 @@ class BuiltInFunctions:
         """Tuple sorting by specific field method"""
         return sorted(input_data, key=tuple_lambda_expression)
 
-    def new_iterators(self, start: int, step_val:int):
+    def new_iterators(self, start: int, step_val:int) -> itertools.count[int]:
         """New iterators method - DO NOT USE"""
         return itertools.count(start, step_val)
 
@@ -95,4 +95,4 @@ if __name__ == '__main__':
     print("Sorted students tuple by specific field (age): ",
           bif_instance.tuple_sorting_by_specific_sorting(student_objects,
                                                          lambda student: student.age))
-    # print("New Iterators: ", bif_instance.new_iterators(0,5) )
+    print("New Iterators: ", bif_instance.new_iterators(0,5) )

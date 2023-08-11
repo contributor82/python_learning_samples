@@ -15,7 +15,8 @@ class JsonFileOperations:
                 load_json_result = json.load(file_handle)
 
         except FileNotFoundError as load_json_file_not_found_error:
-            load_json_result =  load_json_file_not_found_error.__str__()
+
+            load_json_result =  str(load_json_file_not_found_error)
         return load_json_result
 
 
@@ -29,7 +30,7 @@ class JsonFileOperations:
                 json.dump(data, file_handle, sort_keys=True, indent=4)
                 update_json_result = "File updated"
         except FileNotFoundError as update_json_file_not_found_err:
-            update_json_result = update_json_file_not_found_err.__str__()
+            update_json_result = str(update_json_file_not_found_err)
         return update_json_result
 
     def repeated_names_json(self, data: str | bytes | bytearray) -> str:
@@ -42,17 +43,17 @@ if __name__ == '__main__':
     json_file_name: str = "Data\\sample.json"
     print("JSON Data: ", json_file_ops_instance.load_json_data(json_file_name))
 
-    data_to_write = '{ "name": "dummy", "age": 28, gender": "Male" }'
+    DATA_TO_WRITE = '{ "name": "dummy", "age": 28, gender": "Male" }'
     txt_file_name: str = "Data\\json_to_write.txt"
     result: str = json_file_ops_instance.update_json_file(
-        txt_file_name, data_to_write)
+        txt_file_name, DATA_TO_WRITE)
     print("JSON File update :", result)
 
-    weird_json = '{ "x": 1, "x": 2, "x": 3  }'
+    WEIRED_JSON = '{ "x": 1, "x": 2, "x": 3  }'
 
-    print("Weird JSON  : ", weird_json)
+    print("Weird JSON  : ", WEIRED_JSON)
     print("Processed weird json : ",
-          json_file_ops_instance.repeated_names_json(weird_json))
+          json_file_ops_instance.repeated_names_json(WEIRED_JSON))
 
 # Command line options to echo json
 # echo '{1.2:3.4}' | python -m json.tool

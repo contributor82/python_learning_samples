@@ -29,8 +29,8 @@ class TcpClient:
             self.writer.write(message.encode())
             await self.writer.drain()
             print("Message sent.. ")
-        except Exception as ex:
-            print(ex)
+        except RuntimeError as run_time_error:
+            print(run_time_error)
 
 
     async def receive_message(self) -> None:
@@ -39,8 +39,8 @@ class TcpClient:
         try:
             self.data = await self.reader.read(100)
             print(f'Received: {self.data.decode()!r}')
-        except Exception as ex:
-            print(ex)
+        except RuntimeError as run_time_error:
+            print(run_time_error)
 
 
     async def close_connection(self) -> None:
