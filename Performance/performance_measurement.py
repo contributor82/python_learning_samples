@@ -18,7 +18,8 @@ class PerformanceMeasurement:
     def perf_check(self) -> None:
         """Performance check method """
         # Swap number function statements have been evaluated for performance.
-        result: float = Timer('temp = num1; num1 = num2; num2 = temp ', 'num1 = 1; num2 = 2').timeit()
+        result: float = Timer('temp = num1; num1 = num2; num2 = temp ',
+                              'num1 = 1; num2 = 2').timeit()
         print(result)
 
 if __name__ == '__main__':

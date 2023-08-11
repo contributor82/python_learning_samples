@@ -5,7 +5,7 @@ class ScopeTest:
     spam: str = "Initial variable assignment"
 
     def variable_scope(self) -> None:
-
+        """Variable scoping """
 
         def do_local() -> None:
             """local scope is restricted to function only"""
@@ -34,7 +34,8 @@ class ScopeTest:
         do_nonlocal()
         print("After nonlocal assignment:", spam)
 
-        # Variable value will change but won't show its changes since the display is at function level and
+        # Variable value will change but won't show its
+        # changes since the display is at function level and
         # not outside
         do_global()
         print("After global assignment:", spam)
@@ -44,5 +45,6 @@ if __name__ == '__main__':
     print ("Initial variable assigment: ", var_scope_instance.spam)
 
     var_scope_instance.variable_scope()
-    # Since spam variable became global, its changed value will be displayed at module level to access
+    # Since spam variable became global, its changed
+    # value will be displayed at module level to access
     print("In global scope:", spam)

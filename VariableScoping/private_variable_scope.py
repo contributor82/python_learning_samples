@@ -28,22 +28,22 @@
 
 class TrialClass:
     """Trail class """
-    _int_var: int = 0
-    _str_var: str = ""
+    int_var: int = 0
+    str_var: str = ""
 
     def __init__(self) -> None:
         """Initializing class members """
-        self._int_var = 1
-        self._str_var = "Trial Class"
+        self.int_var = 1
+        self.str_var = "Trial Class"
 
-    def displayValues(self) -> str:
+    def display_values(self) -> str:
         """ Displaying values method """
-        return  (self._int_var.__str__() + " " + self._str_var)
+        return  str(self.int_var) + " " + self.str_var
 
 
 if __name__ == '__main__':
     obj = TrialClass()
-    obj._int_var = 5
-    obj._str_var = "No Private variable scoping in Python"
+    obj.int_var = 5
+    obj.str_var = "No Private variable scoping in Python"
 
-    print (obj.displayValues())
+    print (obj.display_values())
