@@ -40,8 +40,8 @@ class QueueSample:
                 print(f'Working on FIFO Queue item {item}')
                 print(f'Finished on FIFO Queue item {item}')
                 self.fifo_queue.task_done()
-        except Exception as ex:
-            print(ex)
+        except queue.Empty as queue_empty:
+            print(queue_empty)
 
     def display_lifo_queue(self) -> None:
         """ Display lifo queue """
@@ -52,8 +52,8 @@ class QueueSample:
                 print(f'Working on LIFO Queue item {item}')
                 print(f'Finished on LIFO Queue item {item}')
                 self.lifo_queue.task_done()
-        except Exception as ex:
-            print(ex)
+        except queue.Empty as queue_empty:
+            print(queue_empty)
 
     def display_priority_queue(self) -> None:
         """ Display priority queue """
@@ -64,8 +64,8 @@ class QueueSample:
                 print(f'Working on Priority Queue item {item}')
                 print(f'Finished on Priority Queue item {item}')
                 self.priority_queue.task_done()
-        except Exception as ex:
-            print(ex)
+        except queue.Empty as queue_empty:
+            print(queue_empty)
 
     def display_simple_queue(self) -> None:
         """ Display simple queue """
@@ -77,16 +77,16 @@ class QueueSample:
                 print(f'Finished on Simple Queue item {item}')
                 if self.simple_queue.empty() is True:
                     break
-        except Exception as ex:
-            print(ex)
+        except queue.Empty as queue_empty:
+            print(queue_empty)
 
     def get_fifo_queue_element(self) -> str:
         """ Get fifo queue element """
         item: str = ""
         try:
             item = self.fifo_queue.get(False)
-        except Exception as ex:
-            print(ex)
+        except queue.Empty as queue_empty:
+            print(queue_empty)
         return item
 
     def get_lifo_queue_element(self) -> str:
@@ -94,8 +94,8 @@ class QueueSample:
         item: str = ""
         try:
             item = self.lifo_queue.get(False)
-        except Exception as ex:
-            print(ex)
+        except queue.Empty as queue_empty:
+            print(queue_empty)
         return item
 
     def get_priority_queue_element(self) -> str:
@@ -104,8 +104,8 @@ class QueueSample:
         try:
             item = self.priority_queue.get(False)
             return item
-        except Exception as ex:
-            print(ex)
+        except queue.Empty as queue_empty:
+            print(queue_empty)
         return item
 
     def get_simple_queue_element(self) -> str:
@@ -113,8 +113,8 @@ class QueueSample:
         item: str = ""
         try:
             item = self.simple_queue.get(False)
-        except Exception as ex:
-            print(ex)
+        except queue.Empty as queue_empty:
+            print(queue_empty)
         return item
 
     def get_simple_queue_size(self) -> int:

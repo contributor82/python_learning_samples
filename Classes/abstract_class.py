@@ -77,4 +77,5 @@ if __name__ == '__main__':
     subclass_instance = Car.Subclass()
     print("Abstract class Car's subclass Subclass instance created. ")
     print("get_name call ", subclass_instance.get_name())
-    # print(sedan_instance.__subclasshook__()) # exception because it looks for tuple as subclass even though there is no subclass
+    # print(sedan_instance.__subclasshook__()) # exception because
+    # it looks for tuple as subclass even though there is no subclass

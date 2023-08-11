@@ -6,9 +6,8 @@
 # It uses idle worker thread before using maxWorker worker threads.
 # Avoid using this for long running task.
 # Exception in main thread must be caught to signal threads to exit out gracefully.
-
-from asyncio import Future
 import concurrent.futures
+from urllib.error import URLError
 import urllib.request
 
 class ThreadPoolExecutorSample:
@@ -23,31 +22,37 @@ class ThreadPoolExecutorSample:
     def load_url(self, url : str, timeout : float | None) -> object:
         """ Load url method for opening url and reading bytes. """
         try:
-            with urllib.request.urlopen(url, timeout=timeout) as conn:
-                 return conn.read()
-        except Exception as ex:
+            with urllib.request.urlopen(url, timeout = timeout) as conn:
+                return conn.read()
+        except URLError as ex:
             print(ex)
 
 
     def execute_async(self, max_workers : int | None) -> None:
         """Execute async """
         # Using ThreadPoolExecutor as executor to process the call
-        data_from_url : str
+        data_from_url : object
         url: str = ""
         try:
+
             with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                url_collection: dict[Future[object], str] = { executor.submit(self.load_url, url, 60): url
-                                                             for url in self.urls }
-                for future in concurrent.futures.as_completed(url_collection):
-                    url = url_collection[future]
+                url_collection: dict[concurrent.futures.Future[object], str] = {
+                    executor.submit(self.load_url, url, 60):
+                    url for url in self.urls }
+                for completed_future in concurrent.futures.as_completed(url_collection):
+                    url = url_collection[completed_future]
                     try:
-                        data_from_url = future.result()
-                    except Exception as exc:
-                        print("%r generated an exception: %s" % (url, exc))
+                        data_from_url = completed_future.result()
+                    except concurrent.futures.CancelledError as cancelled_error:
+                        print(cancelled_error)
+                    except concurrent.futures.TimeoutError as time_out_error:
+                        print(f"{url!r} generated an exception {time_out_error.args[0]!r}")
+                        # print("%r generated an exception: %s" % (url, exc))
                     else:
-                        print('%r page is %d bytes' % (url, len(data_from_url)))
-        except Exception as ex:
-            print(ex)
+                        print(f"{url!r} page is { len(str(data_from_url)) } bytes")
+                        # print('%r page is %d bytes' % (url, len(str(data_from_url))))
+        except RuntimeError as run_time_error:
+            print(run_time_error)
 
 if __name__ == '__main__':
     async_exec_instance = ThreadPoolExecutorSample()
