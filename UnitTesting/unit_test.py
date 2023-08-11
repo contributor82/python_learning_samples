@@ -1,13 +1,13 @@
 """Module for unit testing """
+import sys
+
+sys.path.append('../StringOperations')
+from string_methods import StringMethods
 import unittest
 
-# To have python detect written test cases, the method name should start with 'test' as prefix
 
-import sys
-sys.path.append(r"\StringOperations")
-from string_methods import StringMethods
-
-
+# To have python detect written test cases,
+# the method name should start with 'test' as prefix
 class TestStringMethods(unittest.TestCase):
     """Test string methods class """
     def test_string_method_instance(self) -> None:

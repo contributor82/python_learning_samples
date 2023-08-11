@@ -1,14 +1,15 @@
 """Module for testing class methods """
+import sys
+
+sys.path.append('../Classes')
+from bag_class_example import BagClass
+import unittest
+
 # Following Import class statement is giving an error hence taken entire class
 # for unit testing sample.
 
 # Importing BagClass from BagClassExample.py file
 
-import sys
-sys.path.append("\\Classes\\bag_class_example.py")
-from ..Classes.bag_class_example import BagClass
-
-import unittest
 
 class TestBagClass(unittest.TestCase):
     """Test bag class """

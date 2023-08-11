@@ -2,7 +2,8 @@
 import itertools
 import random
 import sys
-sys.path.append('\\Misc\\student_class.py')
+
+sys.path.append('./Misc')
 from student_class import Student
 
 # Any purpose of accessing this laptop or mirroring it?
@@ -51,7 +52,7 @@ class BuiltInFunctions:
         """Tuple sorting by specific field method"""
         return sorted(input_data, key=tuple_lambda_expression)
 
-    def new_iterators(self, start: int, step_val:int) -> itertools.count[int]:
+    def new_iterators(self, start: int, step_val:int) -> object:
         """New iterators method - DO NOT USE"""
         return itertools.count(start, step_val)
 
