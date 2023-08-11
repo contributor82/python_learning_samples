@@ -1,5 +1,4 @@
 """Module for test statistical Functions"""
-from typing import Iterable
 import unittest
 
 
@@ -8,7 +7,8 @@ class TestStatisticalFunctions(unittest.TestCase):
 
     def average(self, values: list[int] | object ) -> float:
         """ getting average of list of numbers method """
-        return sum(values)/len(values)
+        avg_val: float = sum(values)/len(values)
+        return avg_val
 
     def test_average(self) -> str | None | Exception:
         """ Test average method """
