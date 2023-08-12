@@ -1,9 +1,6 @@
 """Module for organizing unit tests """
-import sys
-sys.path.append("\\UnitTesting\\widget_class.py")
-from widget_class import Widget
 import unittest
-
+from widget_class import Widget
 
 
 class DefaultWidgetSizeTestCase(unittest.TestCase):
@@ -29,10 +26,10 @@ class DefaultWidgetSizeTestCase(unittest.TestCase):
 
 def suite() -> unittest.TestSuite:
     """Running test suite """
-    suite : unittest.TestSuite = unittest.TestSuite()
-    suite.addTest(DefaultWidgetSizeTestCase('test_default_widget_size'))
-    suite.addTest(DefaultWidgetSizeTestCase('test_widget_resize'))
-    return suite
+    test_suite : unittest.TestSuite = unittest.TestSuite()
+    test_suite.addTest(DefaultWidgetSizeTestCase('test_default_widget_size'))
+    test_suite.addTest(DefaultWidgetSizeTestCase('test_widget_resize'))
+    return test_suite
 
 # if not with suite use following
 # if __name__ == '__main__':

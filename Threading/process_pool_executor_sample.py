@@ -40,7 +40,8 @@ class ProcessPoolExecutorSample:
         with concurrent.futures.ProcessPoolExecutor() as executor:
             for number, prime in zip(self.prime_numbers,
                                      executor.map(self.is_prime_num, self.prime_numbers)):
-                print('%d is prime: %s' % (number, prime))
+                # print('%d is prime: %s' % (number, prime))
+                print(f'{number} is prime: {prime}')
 
 if __name__ == '__main__':
     ppes_instance = ProcessPoolExecutorSample([1,3,5,7,9])

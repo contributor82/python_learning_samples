@@ -50,8 +50,8 @@ class AsyncZip(threading.Thread):
             print('Finished background zip of: ', self.in_file)
         except OSError as os_error:
             print("Operating System Error: ", os_error)
-        except Exception as ex:
-            print("Exception: ", ex)
+        except zipfile.error as zip_file_error:
+            print("Exception: ", zip_file_error.args[0])
 
 
 if __name__ == '__main__':

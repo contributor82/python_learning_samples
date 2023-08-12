@@ -11,7 +11,7 @@ import time
 
 class ThreadingUsingQueue:
     """Threading using queue """
-    thread_queue = queue.Queue[str]
+    thread_queue: queue.Queue[str]
 
     def __init__(self, max_size: int) -> None:
         """Initializing thread using queue """

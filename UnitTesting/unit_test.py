@@ -31,7 +31,7 @@ class TestStringMethods(unittest.TestCase):
     def test_split(self) -> None:
         """ Testing string split method """
         # Using Assert raise for exception case
-        input_str: str = 'Hello World'
+        input_str: str = 'Hello World!'
         self.assertEqual(input_str.split(), ['Hello', 'World'])
 
         with self.assertRaises(TypeError):

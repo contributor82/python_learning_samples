@@ -4,19 +4,13 @@ import sys
 sys.path.append('../Classes')
 from bag_class_example import BagClass
 
-# Following Import class statement is giving an error hence taken entire class
-# for unit testing sample.
-
-# Importing BagClass from BagClassExample.py file
-
-
 class TestBagClass(unittest.TestCase):
     """Test bag class """
     bag_instance = BagClass()
 
     def test_bag_class_instance(self) -> None:
         """Test Bag class instance method """
-        self.assertTrue(isinstance(self.bag_instance, BagClass))
+        self.assertTrue(isinstance(self.bag_instance, BagClass)) #type: ignore
 
     def test_bag_class_add(self) -> None:
         """Test Bag class add method """

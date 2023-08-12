@@ -1,5 +1,4 @@
 """ Isolated Asynchronous IO test """
-
 import unittest
 from unittest import IsolatedAsyncioTestCase
 
@@ -8,7 +7,7 @@ from unittest import IsolatedAsyncioTestCase
 class Test(IsolatedAsyncioTestCase):
     """Test class """
     events: list[str] = ['']
-    _async_connection = None
+    _async_connection =  None
 
 
     def setUp(self) -> None:
@@ -28,7 +27,7 @@ class Test(IsolatedAsyncioTestCase):
         """ Test response method """
         self.events.append("test_response")
         response = await self._async_connection.get("https://example.com") # type: ignore
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200) # type: ignore
         self.addAsyncCleanup(self.on_cleanup)
 
     def tear_down(self) -> None:
@@ -37,7 +36,7 @@ class Test(IsolatedAsyncioTestCase):
 
     async def async_tear_down(self) -> None:
         """ Async tear down method """
-        await self._async_connection.close()
+        await self._async_connection.close() # type: ignore
         self.events.append("asyncTearDown")
 
     async def on_cleanup(self) -> None:
