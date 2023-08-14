@@ -4,23 +4,23 @@
 
 class BagClass:
     """ Bag class """
-    data: list [str]
+    items: list [str]
 
     def __init__(self) -> None:
-        self.data = ['']
+        self.items = ['']
 
     def add(self, element: str) -> None:
         """ Add elements in Bag method """
-        self.data.append(element)
+        self.items.append(element)
 
     def add_element_twice(self, element: str) -> None:
         """ add elements twice in Bag method """
-        self.data.append(element)
-        self.data.append(element)
+        self.items.append(element)
+        self.items.append(element)
 
     def whats_added_in_bag(self) -> list[str]:
         """ pull whats added in bag method """
-        return self.data
+        return self.items
 
 if __name__ == '__main__':
         # print("In module TestClassMethods __package__ and __name__ : ", __package__, __name__)

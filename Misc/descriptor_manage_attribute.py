@@ -11,20 +11,21 @@ class LoggedAgeAccess:
 
     def __get__(self, obj: object, objtype: object | None = None)-> None | object:
         """Logging and getting person age """
-        value: object = obj.age #type: ignore
-        logging.info('Accessing %r giving %r', 'age', value)
-        return value
+        value: object = obj._age #type: ignore    # Dynamic object with managed attribute
+        logging.info('Accessing %r giving %r', 'age', value) # type: ignore
+        return value # type: ignore
 
     def __set__(self, obj: object, value: object) -> None:
         """Logging and setting persson age """
-        logging.info('updating %r to %r', 'age', value)
-        obj.age = value #type : ignore
+        logging.info('Updating %r to %r', 'age', value)
+        obj._age = value # type: ignore
 
 
 class Person:
     """Person class """
-    age = LoggedAgeAccess()
-    name: str = ""
+    age = LoggedAgeAccess()  # here age is activing as a member of
+                             # class Person but a managed attribute
+    name: str = "" # A member of class person but a regular attribute.
 
     def __init__(self, person_name: str, person_age: int) -> None:
         """Initializing age and name """
@@ -39,8 +40,8 @@ class Person:
 
 if __name__ == '__main__':
     person_one = Person('Person one', 26)
-    print("Using Manage attribute: Person name: ",
-          person_one.name, " age: ", person_one.age) #type: ignore
+    # print("Using Manage attribute: Person name: ",
+    #       person_one.name, " age: ", person_one.age) #type: ignore
     person_one.birthday()
-    print("After birthday call, Person name: ",
-          person_one.name, " age: ", person_one.age) #type: ignore
+    # print("After birthday call, Person name: ",
+    #       person_one.name, " age: ", person_one.age) #type: ignore
