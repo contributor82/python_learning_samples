@@ -51,6 +51,17 @@ class DictionarySample:
             result = run_time_error
         return result
 
+    def get_dictionary_item(self,
+                            input_dict: dict[str, object]) ->  tuple[str, object] | RuntimeError:
+        """Get dictionary item """
+        item: tuple[str, object] | RuntimeError
+        try:
+            item = input_dict.popitem()
+        except RuntimeError as run_time_error:
+            item = run_time_error
+        return item
+
+
 
 if __name__ == '__main__':
 
@@ -85,3 +96,11 @@ if __name__ == '__main__':
     print("Dictionary before sorting : ", dict_x)
     sort_dict:dict[str,object] | RuntimeError =  dict_sample_instance.sort_dictionary(dict_x)
     print("Dictionary after sorting : ", sort_dict)
+
+    vehicle_types: dict[str, object] = {"Type1": "Two wheeler", "Type2": "Three wheeler",
+                                        "Type3": "Four wheeler", "Type4": "Six wheeler",
+                                        "Type5": "Eight Wheeler"}
+    print("Dictionary as input : ", vehicle_types)
+    vehicle_item:tuple [str,object]|RuntimeError = dict_sample_instance.get_dictionary_item(
+        vehicle_types)
+    print("Popped item from dictionary: ", vehicle_item)
