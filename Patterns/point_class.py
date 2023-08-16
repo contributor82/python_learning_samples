@@ -8,5 +8,5 @@ class Point:
         self.int_x = x_val
         self.int_y = y_val
 
-if __name__ == '__main__':
-    pt_instance = Point(5,10)
+# if __name__ == '__main__':
+#     pt_instance = Point(5,10)

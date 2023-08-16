@@ -1,5 +1,6 @@
 """Module for average central location stat functions """
-from statistics import median, mean, fmean, geometric_mean, harmonic_mean, median_low, median_high, median_grouped, mode, multimode, quantiles
+from statistics import median, mean, fmean, geometric_mean, harmonic_mean
+from statistics import median_low, median_high, median_grouped, mode, multimode, quantiles
 from math import isnan
 from itertools import filterfalse
 from fractions import Fraction
@@ -20,7 +21,7 @@ class StatsFuncAvgCentralLocations:
 
     def mean_of_data(self, input_data: list[Fraction | Decimal | float]) -> float:
         """ Sum of the data values divided by number of data values """
-        return mean(input_data)
+        return mean(input_data) # type: ignore
 
     def fmean_of_data(self, input_data: list[float]) -> float:
         """ Faster than mean, always returns float."""
@@ -30,7 +31,8 @@ class StatsFuncAvgCentralLocations:
         """ The central tendency or typical value of data values as opposed to arithmatic mean """
         return geometric_mean(input_data)
 
-    def harmonic_mean_of_data(self, input_data: list[int | float], weight: list[int | float]) -> float:
+    def harmonic_mean_of_data(self, input_data: list[int | float],
+                              weight: list[int | float]) -> float:
         """ Reciprocal of the data values """
         # 3/(1/a + 1/b + 1/c) when a,b,c values are given
 
@@ -59,7 +61,8 @@ class StatsFuncAvgCentralLocations:
 
     def stat_mode(self, input_data: list[int | str]) -> int | str:
         """ Returns the single most data point of discrete or nominal data """
-        # there are multiple modes with the same frequency, returns the first one encountered in the data
+        # there are multiple modes with the same frequency,
+        # returns the first one encountered in the data
 
         return mode(input_data)
 
@@ -68,11 +71,12 @@ class StatsFuncAvgCentralLocations:
         # returns more than one result if there are multiple modes.
         return multimode(input_data)
 
-    def stat_quantiles(self, input_data: list[int], interval: int, method_val: any) -> list[float]:
+    def stat_quantiles(self, input_data: list[int],
+                       interval: int, method_val: object) -> list[float]:
         """ Divides data into n continuous intervals and returns a list of n-1 cut points """
         # For meaninful results, the data points should be greater than n intervals
         # method values : exclusive or inclusive.
-        return quantiles(input_data, n=interval, method=method_val)
+        return quantiles(input_data, n=interval, method=method_val) # type: ignore
 
 if __name__ == '__main__':
     stats_funcs_instance = StatsFuncAvgCentralLocations()
@@ -83,7 +87,7 @@ if __name__ == '__main__':
     clean_data: list[float] = stats_funcs_instance.strip_nan_values(sample_data)
     print("strip NaN values from input_data:  ", clean_data)
     print("Sorted clean input_data:  ", stats_funcs_instance.sort_data(clean_data))
-    print("mean of data : ", stats_funcs_instance.mean_of_data(clean_data))
+    print("mean of data : ", stats_funcs_instance.mean_of_data(clean_data)) # type: ignore
     fraction_input_data: list[Fraction | Decimal | float] = [
         Fraction(3, 7), Fraction(1, 21), Fraction(5, 3), Fraction(1, 3)]
 
@@ -99,7 +103,8 @@ if __name__ == '__main__':
     print("Fast, floating arithmatic mean of data : ",
           stats_funcs_instance.fmean_of_data(clean_data))
 
-    # Suppose a car travels 40 km/hr for 5 km, and when traffic clears, speeds-up to 60 km/hr for the remaining 30 km of the journey.
+    # Suppose a car travels 40 km/hr for 5 km, and when traffic clears,
+    # speeds-up to 60 km/hr for the remaining 30 km of the journey.
     # What is the average speed?
     car_speed_in_kmhr: list[int | float] = [40, 60]
     distance_traveled_in_km: list[int | float] = [5, 30]
@@ -142,5 +147,7 @@ if __name__ == '__main__':
                    103, 107, 101, 81, 109, 104]
 
     print("sample data for quantile : ", quantile_sample_data)
-    result: list[float] = [round(q, 1) for q in stats_funcs_instance.stat_quantiles(quantile_sample_data, 10, 'exclusive')]
+    result: list[float] = [round(q, 1) for q in
+                           stats_funcs_instance.stat_quantiles(quantile_sample_data,
+                                                               10, 'exclusive')]
     print(" Quantile of sample input_data: ", result)

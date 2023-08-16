@@ -11,6 +11,8 @@ class LoggingToFile:
                                 encoding='UTF-8', level=logging.DEBUG)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
+        except FileExistsError as file_exists_error:
+            print(file_exists_error)
 
     def logging_to_file(self) -> None:
         """Logging to file method """

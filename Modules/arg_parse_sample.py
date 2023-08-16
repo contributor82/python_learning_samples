@@ -42,8 +42,8 @@ class ArgParseSample:
             self.args = self.parser.parse_args()
             if self.args.verbose:
                 print("verbosity turned on")
-        except Exception as optional_arg_value_error:
-            print(optional_arg_value_error)
+        except argparse.ArgumentError as argument_error:
+            print(argument_error)
 
     def add_combine_positional_optional_argument(self) -> None:
         """ Function to combine positional and optional argument """
@@ -62,8 +62,8 @@ class ArgParseSample:
                 print(f"{self.args.square}^2 == {result}")
             else:
                 print(result)
-        except Exception as ex:
-            print(ex)
+        except argparse.ArgumentError as argument_error:
+            print(argument_error)
 
     def add_adv_combine_positional_option_argument(self) -> None:
         """ Function to combine positional and optional argument """
@@ -80,8 +80,8 @@ class ArgParseSample:
             elif self.args.verbosity >= 1:
                 print(f"{self.args.x}^{self.args.y} == ", end="")
             print(result)
-        except Exception as ex:
-            print(ex)
+        except argparse.ArgumentError as argument_error:
+            print(argument_error)
 
     def add_mutually_exclusive_group_argument(self) -> None:
         """ Function to add arguments for mutually exclusive group """
@@ -104,8 +104,8 @@ class ArgParseSample:
                 print(f"{self.args.x} to the power {self.args.y} equals {result}")
             else:
                 print(f"{self.args.x}^{self.args.y} == {result}")
-        except Exception as ex:
-            print(ex)
+        except argparse.ArgumentError as argument_error:
+            print(argument_error)
 
 
 if __name__ == '__main__':

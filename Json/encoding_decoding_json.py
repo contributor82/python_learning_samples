@@ -33,10 +33,19 @@ class JsonOperations:
 
 
 if __name__ == '__main__':
-    json_ops_instance = JsonOperations()
-    json_data : dict[str, float | int] = {'Height':5.3, 'Weight': 65}  # Json data
-    print("Original Data: ", json_data)
-    print("After encoding : ", json_ops_instance.encoding_json(json_data))
-    print("After decoding: ", json_ops_instance.decoding_json())
-    json_str: dict[str, bool | int] = {"__complex__": True, "real": 1, "imag": 2}
-    print(json_ops_instance.specialized_decoding_json(json_str))
+    try:
+        json_ops_instance = JsonOperations()
+        json_data : dict[str, float | int] = {'Height':5.3, 'Weight': 65}  # Json data
+        print("Original Data: ", json_data)
+        print("After encoding : ", json_ops_instance.encoding_json(json_data))
+        print("After decoding: ", json_ops_instance.decoding_json())
+        json_str: dict[str, bool | int] = {"__complex__": True, "real": 1, "imag": 2}
+        print(json_ops_instance.specialized_decoding_json(json_str))
+    except TypeError as type_error:
+        print(type_error)
+    except RecursionError as recursion_error:
+        print(recursion_error)
+    except json.JSONDecodeError as json_decode_error:
+        print(json_decode_error)
+    except OSError as os_error:
+        print(os_error)

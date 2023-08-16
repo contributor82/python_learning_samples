@@ -15,6 +15,8 @@ class LogginFromThreads:
                                 format='%(relativeCreated)6d,→%(threadName)s %(message)s')
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
+        except FileExistsError as file_exists_error:
+            print(file_exists_error)
 
     def worker_thread(self, args: dict[str,bool]) -> None:
         """ Logging from worker thread """
