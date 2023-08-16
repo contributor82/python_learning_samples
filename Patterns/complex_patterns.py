@@ -36,9 +36,9 @@ class ComplexPatterns:
 
         try:
             match point:
-                case Point(int_x,int_y) if int_x == int_y:
+                case Point(int_x,int_y) if int_x == int_y: #type: ignore
                     print(f"The point is located at diagonal Y=X at {int_y}")
-                case Point(x_var,y_var): print("Point is not on the diagonal. ")
+                case Point(x_var,y_var): print("Point is not on the diagonal. ") #type: ignore
                 case _: pass
                 # case (Point(x=x,y=y), Point(x=x,y=y) as p2):
                 # print(" Subpattern capturing using as. ") # Subpattern gives an error
