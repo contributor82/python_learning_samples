@@ -15,13 +15,21 @@ class EmailOperations:
     def __init__(self, host_address: str, port_num: int) -> None:
         """ Initializing host and port """
         # Connection error causing send message not working - DO NOT USE
-        self.host = host_address
-        self.port = port_num
-        self.server = smtplib.SMTP(self.host)
+        try:
+            self.host = host_address
+            self.port = port_num
+            self.server = smtplib.SMTP(self.host)
+
+        except smtplib.SMTPConnectError as connection_error:
+            print(connection_error)
 
     def quit_server(self) -> None:
         """ Quit server """
-        self.server.quit()
+        try:
+            self.server.quit()
+        except smtplib.SMTPServerDisconnected as con_disconnected_error:
+            print(con_disconnected_error)
+
 
     def send_message_from_file(self, file_name: str, sender: str, recipient: str) -> bool:
         """ Function to send message from file """
@@ -39,8 +47,11 @@ class EmailOperations:
 
                 self.server.send_message(msg)
                 is_send_msg = True
-        except Exception as send_msg_ex:
-            print(send_msg_ex)
+        except FileNotFoundError as file_not_found_error:
+            print(file_not_found_error)
+            is_send_msg = False
+        except smtplib.SMTPDataError as data_error:
+            print(data_error)
             is_send_msg = False
         return is_send_msg
 
@@ -67,8 +78,8 @@ class EmailOperations:
             server = smtplib.SMTP(self.host, self.port)
             server.sendmail(fromaddr, toaddrs, msg)
             is_send_email = True
-        except Exception as send_email_ex:
-            print(send_email_ex)
+        except smtplib.SMTPDataError as data_error:
+            print(data_error)
             is_send_email = False
         return is_send_email
 
@@ -80,8 +91,10 @@ class EmailOperations:
             server = smtplib.SMTP(self.host)
             reply = server.getreply()
             print(reply)
-        except Exception as receive_email_ex:
-            print(receive_email_ex)
+        except smtplib.SMTPResponseException as response_ex:
+            print(response_ex)
+        except smtplib.SMTPException as ex:
+            print(ex)
 
 
 if __name__ == '__main__':
@@ -95,9 +108,10 @@ if __name__ == '__main__':
         msg_txt_file: str = "C:\\Data\\msg_file.txt"
         sender_email: str = "private.user1@test.com"
         receiver_email:str = "private.user2@test.com"
-        if eo_from_file_instance.send_message_from_file(msg_txt_file, sender_email, receiver_email) is True:
+        if eo_from_file_instance.send_message_from_file(msg_txt_file, sender_email,
+                                                        receiver_email) is True:
             eo_from_file_instance.receive_email()
             eo_from_file_instance.quit_server()
 
-    except Exception as main_ex:
-        print(main_ex)
+    except smtplib.SMTPException as smtp_exception:
+        print(smtp_exception)

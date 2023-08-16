@@ -18,8 +18,8 @@ class StackSample:
         item: int =0
         try:
             item = self.stack.pop()
-        except Exception as get_stack_element_ex:
-            print (get_stack_element_ex)
+        except UnboundLocalError as unbound_local_error:
+            print (unbound_local_error)
         return item
 
     def display_stack(self) -> None:

@@ -62,15 +62,18 @@ class SocketCalls:
 
 
 if __name__ == '__main__':
+    try:
+        sc_instance = SocketCalls()
+        # host and port specified
+        sc_instance.connect("127.0.0.1", 3000)
 
-    sc_instance = SocketCalls()
-    # host and port specified
-    sc_instance.connect("127.0.0.1", 3000)
-
-    if sc_instance.is_connection_made is True:
-        msg_data = bytearray("Hello, Socket calls.", encoding='utf-8')
-        sc_instance.send_message(msg_data)
-        received_msg: bytes | str | None = sc_instance.receive_message()
-        print(" Socket received message as : ", received_msg)
-    else:
-        print(" Since no connection has been established, no message send and receive possible. ")
+        if sc_instance.is_connection_made is True:
+            msg_data = bytearray("Hello, Socket calls.", encoding='utf-8')
+            sc_instance.send_message(msg_data)
+            received_msg: bytes | str | None = sc_instance.receive_message()
+            print(" Socket received message as : ", received_msg)
+        else:
+            print(" Since no connection has been established," +
+                  "no message send and receive possible. ")
+    except OSError as main_os_error:
+        print(main_os_error)

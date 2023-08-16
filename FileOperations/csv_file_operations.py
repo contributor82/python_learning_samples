@@ -1,6 +1,7 @@
 """Module for CSV File operations """
 import csv
 
+
 class CSVFileOperations:
     """ CSV file operations class """
 
@@ -8,11 +9,13 @@ class CSVFileOperations:
         """ read CSV file """
         try:
             with open(file_name, encoding="UTF-8") as csv_file:
-                csv_reader = csv.reader(csv_file, delimiter=' ', quotechar='|')
+                csv_reader = csv.reader(csv_file, delimiter=' ', quotechar='|') # type: ignore
                 for row in csv_reader:
                     print(row)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
+        except FileExistsError as file_exists_error:
+            print(file_exists_error)
 
 
     def read_csv_to_dict(self, file_name: str) -> None:
@@ -25,6 +28,8 @@ class CSVFileOperations:
                           row['baby_weight_pound'])
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
+        except FileExistsError as file_exists_error:
+            print(file_exists_error)
 
 
     def write_csv(self, file_name: str, fruits_data: list[list[str | int]]) -> None:
@@ -38,19 +43,24 @@ class CSVFileOperations:
                     csv_writer.writerow(fruits_row)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
+        except FileExistsError as file_exists_error:
+            print(file_exists_error)
 
 
 if __name__ == '__main__':
-    csv_file_ops_instance = CSVFileOperations()
+    try:
+        csv_file_ops_instance = CSVFileOperations()
 
-    fruits_csv_file_name: str = "C:\\Data\\Fruits.csv"
-    csv_file_ops_instance.read_csv(fruits_csv_file_name)
+        fruits_csv_file_name: str = "C:\\Data\\Fruits.csv"
+        csv_file_ops_instance.read_csv(fruits_csv_file_name)
 
-    sample_fruits_data: list[list[str | int]] = [
-        ["Strawberry", 5, 5], ["Blueberry", 5, 10]]
-    csv_file_ops_instance.write_csv(fruits_csv_file_name, sample_fruits_data)
+        sample_fruits_data: list[list[str | int]] = [
+            ["Strawberry", 5, 5], ["Blueberry", 5, 10]]
+        csv_file_ops_instance.write_csv(fruits_csv_file_name, sample_fruits_data)
 
-    csv_file_ops_instance.read_csv(fruits_csv_file_name)
+        csv_file_ops_instance.read_csv(fruits_csv_file_name)
 
-    babynames_csv_file_name: str = "C:\\Data\\Babynames.csv"
-    csv_file_ops_instance.read_csv_to_dict(babynames_csv_file_name)
+        babynames_csv_file_name: str = "C:\\Data\\Babynames.csv"
+        csv_file_ops_instance.read_csv_to_dict(babynames_csv_file_name)
+    except csv.Error as csv_error:
+        print(csv_error)

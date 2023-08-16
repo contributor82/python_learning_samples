@@ -1,10 +1,11 @@
 """ Module for Fast Api operations. """
 from fastapi import FastAPI
-from typing import Union
-from pydantic import BaseModel
+from typing import Union #type : ignore
+from pydantic import BaseModel #type : ignore
 import uvicorn
 
 class Item(BaseModel):
+    """Item Model class """
     name: str
     data:list[str]
 
@@ -16,18 +17,22 @@ class ApiController():
 
     @app.get("/root/")
     async def read_root():
+        """Read root """
         return  {"item_name": "Default item", "item_id": 1}
 
     @app.get("/root/items/{item_id}")
-    async def read_items(item_id: int, q: Union[str, None]=None):
-        return {"item_id": item_id, "q": q}
+    async def read_items(item_id: int, input_union: Union[str, None]=None):
+        """Read Items """
+        return {"item_id": item_id, "q": input_union}
 
     @app.post("/root/items/{item_id}")
     async def write_item(item_id: int, item: Item):
-        return {"item": Item, "item_id": item_id}
+        """Write item"""
+        return {"item": item, "item_id": item_id}
 
     @app.put("/root/items/{item_id}")
     async def update_item(item_id: int, item: Item):
+        """Update item"""
         return {"item_name": item.name, "item_data": item.data, "item_id": item_id}
 
 

@@ -46,5 +46,8 @@ class AsyncAwaitOperations:
 
 
 if __name__ == '__main__':
-    aao_instance = AsyncAwaitOperations()
-    asyncio.run(aao_instance.task_exec())
+    try:
+        aao_instance = AsyncAwaitOperations()
+        asyncio.run(aao_instance.task_exec())
+    except SystemError as system_error:
+        print(system_error)

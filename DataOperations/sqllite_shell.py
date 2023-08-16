@@ -41,8 +41,8 @@ class SQlLiteShell:
                     break
                 self.shell_input += line
 
-        except Exception as ex:
-            print(ex)
+        except IOError as io_error:
+            print(io_error)
 
     def exec_sql_statement(self) -> None:
         """ Executing SQL Statement """
@@ -57,8 +57,7 @@ class SQlLiteShell:
 
         except sqlite3.Error as sql_error:
             print(sql_error.args[0])
-        except Exception as ex:
-            print(ex)
+
 
     def display_sql_output(self) -> None:
         """ Displaying SQL Output """
@@ -70,10 +69,8 @@ class SQlLiteShell:
             print(sql_data_error.args[0])
         except sqlite3.Error as sql_error:
             print(sql_error.args[0])
-        except Exception as ex:
-            print(ex.args[0])
 
-    def close_connection(self) -> bool | None:
+    def close_connection(self) -> bool:
         """ Closing connection """
 
         is_close_connection: bool = False
@@ -91,7 +88,6 @@ class SQlLiteShell:
 
 
 if __name__ == '__main__':
-    CON_CLOSE: bool = False
     sql_lite_instance = SQlLiteShell()
     sql_lite_instance.open_connection()
     input_line: str = ""
@@ -102,12 +98,11 @@ if __name__ == '__main__':
         print("3. Display output ")
         print("4. Exit")
         input_line = input()
+        if input_line == "4":
+            sql_lite_instance.close_connection()
         match input_line:
             case "1": sql_lite_instance.accept_command_line_input()
             case "2": sql_lite_instance.exec_sql_statement()
             case "3": sql_lite_instance.display_sql_output()
-            case "4": sql_lite_instance.close_connection(); CON_CLOSE = True
+            case "4": break
             case _: pass
-
-        if CON_CLOSE:
-            break

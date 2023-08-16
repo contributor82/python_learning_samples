@@ -19,7 +19,7 @@ class ObjectPickleUnpickle:
 
         self.pickled_bytes = pickle.dumps(instance_to_serialize)
 
-    def pickle_data_to_file(self, pickle_data: any, file_name: str) -> None:
+    def pickle_data_to_file(self, pickle_data: object, file_name: str) -> None:
         """ Function to pickle data to file """
         try:
             with open(file_name, 'wb') as file_handle:
@@ -33,7 +33,7 @@ class ObjectPickleUnpickle:
         """ Function to unpickle object """
         try:
             with open(file_name, 'rb') as file_handle:
-                data = pickle.loads(file_handle)
+                data = pickle.loads(file_handle) # type: ignore
                 print("Unpickled file data : ", data)
         except IOError as io_error:
             print(io_error)
