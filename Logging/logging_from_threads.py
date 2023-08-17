@@ -28,24 +28,32 @@ class LogginFromThreads:
             print(thread_error)
 
 
-    def main_thread(self) -> None:
+    def main_thread(self, log_file_path: str) -> None:
         """ Logging from main thread """
+        try:
+            self.config_logging(log_file_path)
+            info: dict[str,bool] = {'stop': False}
+            thread = threading.Thread(target=self.worker_thread, args=(info, ))
+            thread.start()
 
-        self.config_logging('C:\\Data\\logging_from_threads.log')
-        info: dict[str,bool] = {'stop': False}
-        thread = threading.Thread(target=self.worker_thread, args=(info, ))
-        thread.start()
-
-        while True:
-            try:
-                logging.debug("Hi, I am from main thread. ")
-                time.sleep(0.75)
-            except KeyboardInterrupt as key_board_interrupt_ex:
-                info['stop']= True
-                print(key_board_interrupt_ex)
-                break
-        thread.join()
+            while True:
+                try:
+                    logging.debug("Hi, I am from main thread. ")
+                    time.sleep(0.75)
+                except KeyboardInterrupt as key_board_interrupt_ex:
+                    info['stop']= True
+                    print(key_board_interrupt_ex)
+                    break
+            thread.join()
+        except threading.ThreadError as thread_error:
+            print(thread_error)
 
 if __name__ == '__main__':
-    threads_logging_instance = LogginFromThreads()
-    threads_logging_instance.main_thread()
+    try:
+        threads_logging_instance = LogginFromThreads()
+        logging_file_path: str = 'C:\\Data\\logging_from_threads.log'
+        threads_logging_instance.main_thread(logging_file_path)
+    except ValueError as value_error:
+        print(value_error)
+    except SystemError as system_error:
+        print(system_error)

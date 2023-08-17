@@ -36,8 +36,13 @@ class LoggingToFile:
             print(run_time_error)
 
 if __name__ == '__main__':
-    log_to_file = LoggingToFile()
-    log_file_name: str = 'C:\\Data\\datalog.log'
-    log_to_file.config_logging(log_file_name)
-    log_to_file.logging_to_file()
-    log_to_file.get_current_logging_level()
+    try:
+        log_to_file = LoggingToFile()
+        log_file_name: str = 'C:\\Data\\datalog.log'
+        log_to_file.config_logging(log_file_name)
+        log_to_file.logging_to_file()
+        log_to_file.get_current_logging_level()
+    except ValueError as value_error:
+        print(value_error)
+    except SystemError as system_error:
+        print(system_error)
