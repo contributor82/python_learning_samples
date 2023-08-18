@@ -3,15 +3,25 @@ from unittest.mock import MagicMock
 
 class ProdClass:
     """Product class """
+    num_list: list[int] = []
 
     def get_max(self, num1: int, num2: int , num3: int) -> int:
         """Get max of three numbers method """
-        num_list: list[int] = []
-        num_list.append(num1)
-        num_list.append(num2)
-        num_list.append(num3)
-        return max(num_list)
+        self.num_list.append(num1)
+        self.num_list.append(num2)
+        self.num_list.append(num3)
+        return max(self.num_list)
 
+    def get_min(self, num1: int, num2: int , num3: int) -> int:
+        """Get max of three numbers method """
+        self.num_list.append(num1)
+        self.num_list.append(num2)
+        self.num_list.append(num3)
+        return min(self.num_list)
+
+    def get_num_list(self) -> list[int]:
+        """Get number list"""
+        return self.num_list
 
 if __name__ == '__main__':
     pc_instance = ProdClass()

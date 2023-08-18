@@ -13,10 +13,10 @@ class LogginFromThreads:
             logging.basicConfig(filename=log_file, filemode='a',
                                 encoding='UTF-8', level=logging.DEBUG,
                                 format='%(relativeCreated)6d,→%(threadName)s %(message)s')
-        except FileNotFoundError as file_not_found_error:
-            print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
+        except FileNotFoundError as config_log_file_not_found_error:
+            print(config_log_file_not_found_error)
+        except FileExistsError as config_log_file_exists_error:
+            print(config_log_file_exists_error)
 
     def worker_thread(self, args: dict[str,bool]) -> None:
         """ Logging from worker thread """

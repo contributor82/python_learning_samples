@@ -15,3 +15,9 @@ class Student:
     def __repr__(self) -> str:
         """Canonical string representation of string object method """
         return repr((self.name, self.grade, self.age))
+
+    def display_details(self) -> None:
+        """Display student details """
+        print("Name: ", self.name,
+              "Age: ", self.age,
+               "Grade: ", self.grade )

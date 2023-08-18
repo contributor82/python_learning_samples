@@ -18,7 +18,6 @@ class BaseClass:
         """Display base members """
         print("Int: ", self.int_base_member, " String: ", self.str_base_member)
 
-# Derived Class inherited from base class and added its members & display method.
 class DerivedClass1(BaseClass):
     """ Derived class one """
 

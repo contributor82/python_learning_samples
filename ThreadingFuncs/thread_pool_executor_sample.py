@@ -21,12 +21,14 @@ class ThreadPoolExecutorSample:
 
     def load_url(self, url : str, timeout : float | None) -> object:
         """ Load url method for opening url and reading bytes. """
+        url_data: object | None
         try:
             with urllib.request.urlopen(url, timeout = timeout) as conn:
-                return conn.read()
+                url_data = conn.read()
         except URLError as ex:
             print(ex)
-
+            url_data = None
+        return url_data
 
     def execute_async(self, max_workers : int | None) -> None:
         """Execute async """
@@ -36,7 +38,7 @@ class ThreadPoolExecutorSample:
         try:
 
             with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                url_collection: dict[concurrent.futures.Future[object], str] = {
+                url_collection: dict[concurrent.futures.Future[object | None], str] = {
                     executor.submit(self.load_url, url, 60):
                     url for url in self.urls }
                 for completed_future in concurrent.futures.as_completed(url_collection):

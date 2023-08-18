@@ -1,4 +1,4 @@
-"""Module for descriptor manage attribute """
+"""Module for descriptor manyears_old attribute """
 import logging
 
 # Converts function into bound methods
@@ -7,57 +7,56 @@ logging.basicConfig(level=logging.INFO)
 
 class LoggedAccess:
     """Logged Access """
-    public_name : str
-    private_name : str
+    public_make : str
+    private_make : str
     # def __init__(self) -> None:
     #     """Initializing logging """
 
-    def __set_name__(self, owner: object, name: str) -> None:
-        self.public_name = name
-        self.private_name = "_" + name
+    def __set_name__(self, owner: object, make: str) -> None:
+        self.public_make = make
+        self.private_make = "_" + make
 
     def __get__(self, obj: object, objtype: object | None = None)-> None | object:
-        """Logging and getting  age """
-        value = getattr(obj, self.private_name) # Getting a named attribute
-        logging.info('Accessing %r giving %r', self.public_name, value)
+        """Logging and getting  years_old """
+        value = getattr(obj, self.private_make) # Getting a maked attribute
+        logging.info('Accessing %r giving %r', self.public_make, value)
         return value
 
     def __set__(self, obj: object, value: object) -> None:
-        """Logging and setting persson age """
-        logging.info('Updating %r to %r', self.public_name, value)
-        setattr(obj, self.private_name, value) # Sets the named attribute
+        """Logging and setting persson years_old """
+        logging.info('Updating %r to %r', self.public_make, value)
+        setattr(obj, self.private_make, value) # Sets the maked attribute
 
 
-class Person:
-    """Person class """
-    name: object | None = LoggedAccess()
-    age: object | None = LoggedAccess()
+class Vehicle:
+    """Vehicle class """
+    make: object | None = LoggedAccess()
+    years_old: object | None = LoggedAccess()
 
-    def __init__(self, person_name: str, person_age: int) -> None:
-        """Initializing age and name """
-        self.name = person_name
-        self.age = person_age
+    def __init__(self, vehicle_make: str, vehicle_years_old: int) -> None:
+        """Initializing years_old and make """
+        self.make = vehicle_make
+        self.years_old = vehicle_years_old
 
 
     def birthday(self) -> None:
-        """Person's birthday so increasing age by one """
-        self.age = self.age + 1 #type: ignore
+        """Vehicle's birthday so increasing years_old by one """
+        self.years_old = self.years_old + 1 #type: ignore
 
-    def display_person_dtls(self)-> None:
+    def display_vehicle_dtls(self)-> None:
         """Display person details """
-        print("name: ", self.name, " age: ", self.age)
-
+        print("make: ", self.make, " years_old: ", self.years_old)
 
 if __name__ == '__main__':
-    vars(vars(Person)['name'])
-    vars(vars(Person)['age'])
-    person_first_instance = Person('Person one', 26)
-    # print("Using Manage attribute: Person name: ",
-    #       person_one.name, " age: ", person_one.age) #type: ignore
-    person_first_instance.birthday()
-    person_first_instance.display_person_dtls()
-    # print("After birthday call, Person name: ",
-    #       person_one.name, " age: ", person_one.age) #type: ignore
-    person_second_instance = Person('Person second', 28)
-    person_second_instance.birthday()
-    person_second_instance.display_person_dtls()
+    vars(vars(Vehicle)['make'])
+    vars(vars(Vehicle)['years_old'])
+    vehicle_first_instance = Vehicle('Vehicle one', 26)
+    # print("Using Manyears_old attribute: Vehicle make: ",
+    #       vehicle_one.make, " years_old: ", vehicle_one.years_old) #type: ignore
+    vehicle_first_instance.birthday()
+    vehicle_first_instance.display_vehicle_dtls()
+    # print("After birthday call, Vehicle make: ",
+    #       vehicle_one.make, " years_old: ", vehicle_one.years_old) #type: ignore
+    vehicle_second_instance = Vehicle('Vehicle second', 28)
+    vehicle_second_instance.birthday()
+    vehicle_second_instance.display_vehicle_dtls()

@@ -21,18 +21,20 @@ class ProcessPoolExecutorSample:
 
     def is_prime_num(self, num: int) -> bool:
         """is given number prime or not method """
+        is_prime: bool = True
         if num < 2:
-            return False
+            is_prime = False
         elif num == 2:
-            return True
+            is_prime = True
         elif num % 2 == 0:
-            return False
+            is_prime = False
 
         sqrt_n = int(math.floor(math.sqrt(num)))
         for i in range(3, sqrt_n + 1, 2 ):
             if num % i ==0:
-                return False
-        return True
+                is_prime = False
+                break
+        return is_prime
 
     def execute_process_pool(self) -> None:
         """Execute process pool method """

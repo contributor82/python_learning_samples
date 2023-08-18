@@ -8,6 +8,10 @@ class InteractiveStartupFileExec:
     def __init__(self) -> None:
         self.file_name = os.environ.get('PYTHONSTARTUP')
 
+    def get_startup_file_name(self)-> str | None:
+        """Get startup file name """
+        return self.file_name
+
     def startup_file_exe(self) -> None:
         """Start up file exe method """
         try:

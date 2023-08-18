@@ -4,15 +4,14 @@ import logging
 class LoggingToFile:
     """Logging to file class """
 
-    def config_logging(self, log_file: str) -> None:
-        """Configure logging method """
+    def __init__(self, log_file_name: str) -> None:
+        """Initializing basic logging configuration """
         try:
-            logging.basicConfig(filename=log_file, filemode='a',
+            logging.basicConfig(filename=log_file_name, filemode='a',
                                 encoding='UTF-8', level=logging.DEBUG)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
+
 
     def logging_to_file(self) -> None:
         """Logging to file method """
@@ -21,7 +20,6 @@ class LoggingToFile:
             logging.info("logging:info - This message should be logged in log file. ")
             logging.warning("logging:warning - This messagen should be logged in log file. ")
             logging.error("non-ASCII stuff, too, like Øresund and Malmö")
-
         except RuntimeError as log_to_file_run_time_error:
             print(log_to_file_run_time_error)
 
@@ -37,9 +35,7 @@ class LoggingToFile:
 
 if __name__ == '__main__':
     try:
-        log_to_file = LoggingToFile()
-        log_file_name: str = 'C:\\Data\\datalog.log'
-        log_to_file.config_logging(log_file_name)
+        log_to_file = LoggingToFile('C:\\Data\\datalog.log')
         log_to_file.logging_to_file()
         log_to_file.get_current_logging_level()
     except ValueError as value_error:
