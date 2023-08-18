@@ -1,7 +1,6 @@
 
 """Module for regular expressions"""
 import re as regExp
-from typing import LiteralString
 
 class StringPatternMatching:
     """ Module for String pattern matching """
@@ -17,7 +16,7 @@ class StringPatternMatching:
         result: str = regExp.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')
         return result
 
-    def string_replace(self) -> LiteralString:
+    def string_replace(self) -> str:
         """String replacement method """
         return 'tea for too'.replace('too','two')
 

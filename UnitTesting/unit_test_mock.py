@@ -1,5 +1,4 @@
 """Module for unit test mock """
-from typing import Self
 from unittest.mock import patch
 
 class TempClass:
@@ -23,9 +22,6 @@ class TempClass:
         self.int_member = 5
         return self.int_member
 
-    def display_values(self) -> Self:
-        """Returning display values """
-        return self
 
 # Used patch() decorator/context to make it easy to mock classes & objects.
 
