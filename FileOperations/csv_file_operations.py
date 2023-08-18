@@ -14,8 +14,6 @@ class CSVFileOperations:
                     print(row)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
 
 
     def read_csv_to_dict(self, file_name: str) -> None:
@@ -28,8 +26,6 @@ class CSVFileOperations:
                           row['baby_weight_pound'])
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
 
 
     def write_csv(self, file_name: str, fruits_data: list[list[str | int]]) -> None:
@@ -43,8 +39,6 @@ class CSVFileOperations:
                     csv_writer.writerow(fruits_row)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
 
 
 if __name__ == '__main__':

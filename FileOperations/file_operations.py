@@ -15,11 +15,10 @@ class FileOperations:
         """ Open file method """
         # Opening a file explicitely for reading purpose
         try:
-            self.file_handle = open(file_name, opening_mode, encoding="UTF-8")
+            with open(file_name, opening_mode, encoding="UTF-8") as handle:
+                self.file_handle = handle
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
 
 
     def close_file(self) -> None:
@@ -32,12 +31,10 @@ class FileOperations:
         """ Reading file data method """
         try:
             # with will take care of file to be closed after use.
-            with open(file_name,'r', encoding="UTF-8") as handle:
-                self.file_data = handle.read() # type: ignore
+            with open(file_name,'r', encoding="UTF-8") as self.file_handle:
+                self.file_data = self.file_handle.read() # type: ignore
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
 
 
     def read_binarydata_from_file(self, file_name: str) -> None:
@@ -51,35 +48,30 @@ class FileOperations:
                       binary_data_three)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
 
 
     def write_file(self, file_name: str) -> None:
         """ Write operation currently causing an error. DO NOT USE. """
         # # w+ Opens a disk file for updating(reading and writing)
         try:
-            self.file_handle = open(file_name,'w+', encoding='utf-8')
-            data: str = "This is a file write operation. textfile is getting new string contents. "
-            self.file_handle.write(data)
+            with open(file_name,'w+', encoding='utf-8') as handle:
+                self.file_handle = handle
+                data: str = "This is a file write operation."
+                self.file_handle.write(data)
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
 
 
     def append_file(self, file_name: str) -> None:
         """Appending file contents method"""
         # # a Opens a file to append the contents to the end of the file.
         try:
-            self.file_handle = open(file_name,'a+', encoding='utf-8')
-            data: str = "Appending file contents. "
-            self.file_handle.write(data)
-            self.close_file()
+            with open(file_name,'a+', encoding='utf-8') as self.file_handle:
+                data: str = "Appending file contents. "
+                self.file_handle.write(data)
+                self.close_file()
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
 
 
     def delete_file(self, file_name: str) -> None:
@@ -104,8 +96,6 @@ class FileOperations:
                 print("File has been renamed successfully. ")
         except FileNotFoundError as file_not_found_error:
             print(file_not_found_error)
-        except FileExistsError as file_exists_error:
-            print(file_exists_error)
         except OSError as os_error:
             print(os_error)
 

@@ -9,6 +9,14 @@ class Point:
         self.int_x = x_val
         self.int_y = y_val
 
+    def get_point_x_val(self)->int:
+        """Get point x val"""
+        return self.int_x
+
+    def get_point_y_val(self)->int:
+        """Get point y val"""
+        return self.int_y
+
     def display(self)-> None:
         """Displaying point class members """
         print("int x: ", self.int_x, " int y: ", self.int_y)
