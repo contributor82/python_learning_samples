@@ -6,9 +6,18 @@ class BaseClass1:
     int_base1_member : int = 1
     str_base1_member : str = "Base Class One"
 
-    def display_base1(self) -> str:
-        """Display base class one string member """
+    def get_str_base_member(self) -> str:
+        """ Display base class string member """
         return self.str_base1_member
+
+    def get_int_base_member(self)-> int:
+        """ Get int base member """
+        return self.int_base1_member
+
+    def display_base1(self)-> None:
+        """Display base class one string member """
+        print("Int: ", self.int_base1_member, " String: ", self.str_base1_member)
+
 
 # Base Class 2 added with members and display method.
 class BaseClass2:
@@ -17,9 +26,17 @@ class BaseClass2:
     int_base2_member : int = 2
     str_base2_member : str = "Base Class Two"
 
-    def display_base2(self) -> str:
-        """Display base class two string member """
+    def get_str_base_member(self) -> str:
+        """ Display base class string member """
         return self.str_base2_member
+
+    def get_int_base_member(self)-> int:
+        """ Get int base member """
+        return self.int_base2_member
+
+    def display_base2(self)-> None:
+        """Display base class two string member """
+        print("Int: ", self.int_base2_member, " String: ", self.str_base2_member)
 
 
 # Derived Class inherited from base class and added its members & display method.
@@ -37,10 +54,13 @@ if __name__ == '__main__':
     derived_instance = DerivedClass()
 
     # Invoked Base class One method
-    print("Base Class One method invocation: ",  derived_instance.display_base1())
+    print("Base Class One method invocation: ")
+    derived_instance.display_base1()
 
     # Invoked Base class Two method
-    print("Base Class Two method invocation: ",  derived_instance.display_base2())
+    print("Base Class Two method invocation: ")
+    derived_instance.display_base2()
 
     # Invoked Derived class method.
-    print("Derived Class method invocation: ",  derived_instance.display_derived())
+    print("Derived Class method invocation: ")
+    derived_instance.display_derived()

@@ -2,6 +2,6 @@
 from enum import Enum
 class Color(Enum):
     """Color enumeration class """
-    RED = 0,
-    GREEN = 1,
+    RED = 0
+    GREEN = 1
     BLUE = 2

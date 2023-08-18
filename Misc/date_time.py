@@ -4,28 +4,37 @@ import time
 
 class DateTimeClass:
     """Date time class """
+    current_date : date
+
+    def __init__(self) -> None:
+        """Initialize class members """
+        self.current_date = date.today()
 
     def current_date_dtls(self) -> None:
         """Getting current date details method """
-        print('Current Date: ', date.today())
-        print('Current Day: ', date.today().day)
-        print('Current Day: ', date.today().month)
-        print('Current Day: ', date.today().year)
+        print('Current Date: ', self.current_date)
+        print('Current Day: ', self.current_date.day)
+        print('Current Day: ', self.current_date.month)
+        print('Current Day: ', self.current_date.year)
 
     def current_time_dtls(self) -> None:
         """Getting current time details method """
-        now = date.today()
-        date_time = datetime(now.year, now.month,
-                             now.day,now.timetuple().tm_hour, tzinfo=timezone.utc)
+
+        date_time = datetime(self.current_date.year,
+                             self.current_date.month,
+                             self.current_date.day,
+                             self.current_date.timetuple().tm_hour,
+                             tzinfo=timezone.utc)
         print('Current time: ', time.strftime('%H:%M:%S %p'))
         print('Time by Zone UTC: ', date_time.now(timezone.utc).time())
 
     def date_time_data_concatenation(self) -> None:
         """Date time data concatenaton method """
-        current_date: str = str(date.today())
         current_time: str = time.strftime('%H:%M:%S %p')
 
-        logging_strings: list[str] = ['DateTime file executed at ', current_date , current_time ]
+        logging_strings: list[str] = ['DateTime file executed at ',
+                                      str(self.current_date) ,
+                                      current_time ]
 
         # Created an empty array
         process_strings: list[str] = ['']

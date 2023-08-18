@@ -12,6 +12,14 @@ class Student:
         self.gpa = gpa
         self.name = name
 
+    def display_student(self) -> None:
+        """Display Student """
+        print("name: ", self.name, " gpa: ", self.gpa)
+
+
+    def calculate_gpa(self) -> None:
+        """Calcualte gpa"""
+        print("In progress")
 
 class GeneratorExpressions:
     """Generator expressions class """

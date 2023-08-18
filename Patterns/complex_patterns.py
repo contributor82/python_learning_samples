@@ -34,6 +34,7 @@ class ComplexPatterns:
     def complex_pattern_with_guard(self, point: Point) -> None:
         """Complex pattern with guard method """
 
+
         try:
             match point:
                 case Point(int_x,int_y) if int_x == int_y: #type: ignore

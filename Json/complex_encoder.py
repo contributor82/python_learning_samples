@@ -10,7 +10,6 @@ class ComplexEncoder(json.JSONEncoder):
             return [o.real, o.imag]
         return json.JSONEncoder.default(self, o)
 
-
 if __name__ == '__main__':
     try:
         complex_encode_instance = ComplexEncoder()

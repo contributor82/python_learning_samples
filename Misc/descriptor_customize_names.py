@@ -30,8 +30,8 @@ class LoggedAccess:
 
 class Person:
     """Person class """
-    name = LoggedAccess()
-    age = LoggedAccess()
+    name: object | None = LoggedAccess()
+    age: object | None = LoggedAccess()
 
     def __init__(self, person_name: str, person_age: int) -> None:
         """Initializing age and name """
@@ -43,6 +43,10 @@ class Person:
         """Person's birthday so increasing age by one """
         self.age = self.age + 1 #type: ignore
 
+    def display_person_dtls(self)-> None:
+        """Display person details """
+        print("name: ", self.name, " age: ", self.age)
+
 
 if __name__ == '__main__':
     vars(vars(Person)['name'])
@@ -51,7 +55,9 @@ if __name__ == '__main__':
     # print("Using Manage attribute: Person name: ",
     #       person_one.name, " age: ", person_one.age) #type: ignore
     person_first_instance.birthday()
+    person_first_instance.display_person_dtls()
     # print("After birthday call, Person name: ",
     #       person_one.name, " age: ", person_one.age) #type: ignore
     person_second_instance = Person('Person second', 28)
     person_second_instance.birthday()
+    person_second_instance.display_person_dtls()

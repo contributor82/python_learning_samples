@@ -16,7 +16,7 @@ class JsonOperations:
                                             separators=(',',':'), sort_keys=True, indent=4)
         return self.encoded_json
 
-    def decoding_json(self):
+    def decoding_json(self)-> str:
         """Decoding json method """
         # Basic decoding
         self.decoded_json = json.loads(self.encoded_json)

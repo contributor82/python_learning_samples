@@ -13,7 +13,8 @@ class StatFuncMeasuresOfSpread:
     def variance_of_data(self, input_data: list[int | float],
                          mean_of_data: int | None = None) -> int | float:
         """ Returns the sample variance of data """
-        # If mean of data has already been calculated then pass it to xbar to avoid recalculating.
+        # If mean of data has already been calculated
+        # then pass it to xbar to avoid recalculating.
         return variance(input_data, xbar=mean_of_data)
 
     def population_variance_of_data(self, input_data: list[int | float],

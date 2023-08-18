@@ -2,7 +2,6 @@
 import itertools
 import random
 import sys
-
 sys.path.append('./Misc')
 from student_class import Student #type:ignore
 

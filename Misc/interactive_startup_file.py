@@ -3,14 +3,19 @@ import os
 
 class InteractiveStartupFileExec:
     """Interactive Startup file exec class """
+    file_name: str | None
+
+    def __init__(self) -> None:
+        self.file_name = os.environ.get('PYTHONSTARTUP')
 
     def startup_file_exe(self) -> None:
         """Start up file exe method """
         try:
-            file_name: str | None = os.environ.get('PYTHONSTARTUP')
-            if file_name and os.path.isfile(file_name):
-                with open(file_name, encoding="UTF-8") as file_handle:
-                    startup_file: str = file_handle.read()
+            startup_file: str
+
+            if self.file_name and os.path.isfile(self.file_name):
+                with open(self.file_name, encoding="UTF-8") as file_handle:
+                    startup_file = file_handle.read()
                 exec(startup_file)
             else:
                 print("No startup file found. ")

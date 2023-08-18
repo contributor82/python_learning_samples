@@ -6,9 +6,17 @@ class BaseClass:
     int_base_member: int = 1
     str_base_member: str = "Base Class"
 
-    def display_base(self) -> str:
-        """ Display base class string member method """
+    def get_str_base_member(self) -> str:
+        """ Display base class string member """
         return self.str_base_member
+
+    def get_int_base_member(self)-> int:
+        """ Get int base member """
+        return self.int_base_member
+
+    def display_base(self)-> None:
+        """Display base members """
+        print("Int: ", self.int_base_member, " String: ", self.str_base_member)
 
 # Derived Class inherited from base class and added its members & display method.
 class DerivedClass1(BaseClass):
@@ -41,8 +49,8 @@ if __name__ == '__main__':
     derived2_instance = DerivedClass2()
 
     # Invoked Base class method
-    print("Base Class method invocation using first derived class object : ",
-          derived1_instance.display_base())
+    print("Base Class method invocation using first derived class object : ")
+    derived1_instance.display_base()
 
     # Invoked Derived class one method.
     print("Derived Class One method invocation: ",  derived1_instance.display_derived1())

@@ -23,7 +23,7 @@ class LoggedAgeAccess:
 
 class Person:
     """Person class """
-    age = LoggedAgeAccess()  # here age is activing as a member of
+    age: object | None = LoggedAgeAccess()  # here age is activing as a member of
                              # class Person but a managed attribute
     name: str = "" # A member of class person but a regular attribute.
 
@@ -37,11 +37,16 @@ class Person:
         """Person's birthday so increasing age by one """
         self.age = self.age + 1 #type: ignore
 
+    def display_person_dtls(self)-> None:
+        """Person's details """
+        print("name: ", self.name, " age: ", self.age)
+
 
 if __name__ == '__main__':
     person_one = Person('Person one', 26)
-    # print("Using Manage attribute: Person name: ",
-    #       person_one.name, " age: ", person_one.age) #type: ignore
+    print("Using Manage attribute: Person name: ",
+          person_one.name, " age: ", person_one.age) #type: ignore
     person_one.birthday()
-    # print("After birthday call, Person name: ",
-    #       person_one.name, " age: ", person_one.age) #type: ignore
+    print("After birthday call, Person name: ",
+          person_one.name, " age: ", person_one.age) #type: ignore
+    person_one.display_person_dtls()

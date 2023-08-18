@@ -2,9 +2,10 @@
 # Here Default class has been created accepting dictionary Key Value pair and returns a pair.
 # String formmat_mpa further grabs key and maps with associated value.
 
-class Default(dict[str, int| str]):
+class Default(dict[str,int| str]):
     """Default class """
     def __missing__(self, key: object) -> object:
+        """Missing key"""
         return key
 
 if __name__ == '__main__':

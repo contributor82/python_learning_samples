@@ -5,8 +5,13 @@ class Point:
     int_y: int
 
     def __init__(self, x_val:int, y_val:int) -> None:
+        """Initializing point class members """
         self.int_x = x_val
         self.int_y = y_val
+
+    def display(self)-> None:
+        """Displaying point class members """
+        print("int x: ", self.int_x, " int y: ", self.int_y)
 
 # if __name__ == '__main__':
 #     pt_instance = Point(5,10)
