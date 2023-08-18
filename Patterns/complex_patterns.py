@@ -1,5 +1,6 @@
 """Module for Complex Patterns and a wildcard"""
-
+import sys
+assert sys.version_info >= (3,10)
 from point_class import Point
 from color_enum import Color
 

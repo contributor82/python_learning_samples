@@ -4,6 +4,7 @@ import sys
 sys.path.append('../StringOperations')
 from string_methods import StringMethods # type: ignore
 
+
 # To have python detect written test cases,
 # the method name should start with 'test' as prefix
 class TestStringMethods(unittest.TestCase):

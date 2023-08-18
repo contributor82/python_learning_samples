@@ -1,4 +1,6 @@
 """Module for simple Pattern : Match to a literal"""
+import sys
+assert sys.version_info >= (3,10)
 from point_class import Point
 
 

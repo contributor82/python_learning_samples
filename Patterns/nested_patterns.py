@@ -1,5 +1,6 @@
 """ Module for Nested patterns: patterns can be arbitrarily nested."""
-
+import sys
+assert sys.version_info >= (3,10)
 from point_class import Point
 
 class NestedPatterns:

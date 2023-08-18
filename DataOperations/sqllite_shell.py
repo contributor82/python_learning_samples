@@ -1,5 +1,7 @@
 """Module for Sql lite shell """
 import sqlite3
+import sys
+assert sys.version_info >= (3,10)
 
 
 class SQlLiteShell:
