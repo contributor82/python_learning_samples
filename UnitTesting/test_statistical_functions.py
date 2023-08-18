@@ -18,10 +18,10 @@ class TestStatisticalFunctions(unittest.TestCase):
             print('test_average: avg_val = ', avg_val)
             self.assertEqual(avg_val,40.0)
             test_result = avg_val
+            self.assertTrue(test_result, 40)
         except AssertionError as assert_error:
             test_result = assert_error
-        self.assertTrue(test_result, 40)
-        self.assertTrue(test_result, AssertionError)
+            self.assertTrue(test_result, AssertionError)
 
     def test_average_by_rounding_value(self) -> None:
         """Test average by rounding value method """
@@ -46,10 +46,11 @@ class TestStatisticalFunctions(unittest.TestCase):
             print('test_average_type_error: avg_val = ', avg_val)
             with self.assertRaises(TypeError):
                 test_result = True
+                self.assertTrue(test_result, True)
         except AssertionError as assertion_error:
             test_result = assertion_error
-        self.assertTrue(test_result, True)
-        self.assertTrue(test_result, AssertionError)
+            self.assertTrue(test_result, AssertionError)
+
 
     def test_average_zero_division_error(self) -> None:
         """Test average zero division error method """
@@ -61,10 +62,10 @@ class TestStatisticalFunctions(unittest.TestCase):
                 test_result = True
         except ZeroDivisionError as zero_division_error:
             test_result = zero_division_error
+            self.assertTrue(test_result, ZeroDivisionError)
         except AssertionError as assertion_error:
             test_result = assertion_error
-        self.assertTrue(test_result, ZeroDivisionError)
-        self.assertTrue(test_result, AssertionError)
+            self.assertTrue(test_result, AssertionError)
 
 if __name__ == '__main__':
     unittest.main()

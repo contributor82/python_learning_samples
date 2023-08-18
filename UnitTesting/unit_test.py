@@ -1,10 +1,8 @@
 """Module for unit testing """
-import sys
-
-sys.path.append('../StringOperations')
-from string_methods import StringMethods
 import unittest
-
+import sys
+sys.path.append('../StringOperations')
+from string_methods import StringMethods # type: ignore
 
 # To have python detect written test cases,
 # the method name should start with 'test' as prefix
@@ -12,8 +10,8 @@ class TestStringMethods(unittest.TestCase):
     """Test string methods class """
     def test_string_method_instance(self) -> None:
         """Test string method class instance method """
-        smInstance = StringMethods()
-        self.assertIsInstance(smInstance, StringMethods)
+        sm_instance = StringMethods()
+        self.assertIsInstance(sm_instance, StringMethods)
 
 
     def test_upper(self) -> None:
@@ -31,11 +29,15 @@ class TestStringMethods(unittest.TestCase):
     def test_split(self) -> None:
         """ Testing string split method """
         # Using Assert raise for exception case
+        the_exception: TypeError
         input_str: str = 'Hello World!'
         self.assertEqual(input_str.split(), ['Hello', 'World'])
 
-        with self.assertRaises(TypeError):
-            input_str.split(2)
+        with self.assertRaises(TypeError) as type_error:
+            input_str.split(2) # type: ignore
+        the_exception = type_error.exception
+        self.assertEqual(the_exception.error_code, 3) # type: ignore
+
 
 if __name__ == '__main__':
     unittest.main()
@@ -45,4 +47,3 @@ if __name__ == '__main__':
 # python -m unittest unit_test.py
 # Enables higher level of verbosity when adding -v
 # python -m unittest unit_test.py -v
-

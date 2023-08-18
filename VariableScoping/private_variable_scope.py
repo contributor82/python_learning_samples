@@ -36,6 +36,11 @@ class TrialClass:
         self.int_var = 1
         self.str_var = "Trial Class"
 
+    def update_values(self, int_val: int, str_val: str)-> None:
+        """Updating class members """
+        self.int_var = int_val
+        self.str_var = str_val
+
     def display_values(self) -> str:
         """ Displaying values method """
         return  str(self.int_var) + " " + self.str_var
@@ -43,7 +48,5 @@ class TrialClass:
 
 if __name__ == '__main__':
     obj = TrialClass()
-    obj.int_var = 5
-    obj.str_var = "No Private variable scoping in Python"
-
+    obj.update_values(5, "No Private variable scoping in Python")
     print (obj.display_values())

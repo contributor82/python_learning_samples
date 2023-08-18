@@ -39,10 +39,16 @@ class ProcessPoolExecutorSample:
         # Executing process tool executor to run thread asynchronously.
         with concurrent.futures.ProcessPoolExecutor() as executor:
             for number, prime in zip(self.prime_numbers,
-                                     executor.map(self.is_prime_num, self.prime_numbers)):
+                                     executor.map(self.is_prime_num,
+                                                  self.prime_numbers)):
                 # print('%d is prime: %s' % (number, prime))
                 print(f'{number} is prime: {prime}')
 
 if __name__ == '__main__':
-    ppes_instance = ProcessPoolExecutorSample([1,3,5,7,9])
-    ppes_instance.execute_process_pool()
+    try:
+        ppes_instance = ProcessPoolExecutorSample([1,3,5,7,9])
+        ppes_instance.execute_process_pool()
+    except concurrent.futures.TimeoutError as time_out_error:
+        print(time_out_error)
+    except concurrent.futures.CancelledError as cancelled_error:
+        print(cancelled_error)

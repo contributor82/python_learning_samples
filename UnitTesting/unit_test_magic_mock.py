@@ -15,11 +15,11 @@ class ProdClass:
 
 if __name__ == '__main__':
     pc_instance = ProdClass()
-    pc_instance.method = MagicMock(return_value=4)
+    pc_instance.method = MagicMock(return_value=4) # type: ignore
 
     # MagicMock will mock the method call based on the number of arguments &
     # return value
     # assert called with given function arguments not matched then assertion error
     # will be thrown.
-    pc_instance.method(3,4,2, key='value')
-    pc_instance.method.assert_called_with(3,4,5,key='value')
+    pc_instance.method(3,4,2, key='value') # type: ignore
+    pc_instance.method.assert_called_with(3,4,5,key='value') # type: ignore

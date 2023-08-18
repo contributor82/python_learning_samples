@@ -28,7 +28,6 @@ class AsyncZip(threading.Thread):
         for i in range(num_range):
             thread = threading.Thread(target=self.thread_task, args=(str(i), i))
             thread.start()
-
         time.sleep(10)
 
     def run(self) -> None:
@@ -38,16 +37,16 @@ class AsyncZip(threading.Thread):
                 print(self.out_file, " is a zipfile")
 
             # Reading files from zip file.
-            zip_file_instance = zipfile.ZipFile(self.out_file, 'r',zipfile.ZIP_DEFLATED)
+            with zipfile.ZipFile(self.out_file, 'r',zipfile.ZIP_DEFLATED) as zip_file_instance:
 
-            # Prints file name list present in archive folder.
-            print("Files present in zip file: ", zip_file_instance.namelist())
+                # Prints file name list present in archive folder.
+                print("Files present in zip file: ", zip_file_instance.namelist())
 
-            # Zip File extraction
-            for file_zip_info in zip_file_instance.filelist:
-                zip_file_instance.extract(file_zip_info, path=self.extraction_path)
+                # Zip File extraction
+                for file_zip_info in zip_file_instance.filelist:
+                    zip_file_instance.extract(file_zip_info, path=self.extraction_path)
 
-            print('Finished background zip of: ', self.in_file)
+                print('Finished background zip of: ', self.in_file)
         except OSError as os_error:
             print("Operating System Error: ", os_error)
         except zipfile.error as zip_file_error:
@@ -55,11 +54,16 @@ class AsyncZip(threading.Thread):
 
 
 if __name__ == '__main__':
-    txt_file_path: str = "C:\\Data\\mydata.txt"
-    zip_file_path: str = "C:\\Data\\mydata_archive.zip"
-    zip_files_extraction_path : str = "\\Data\\mydata_archive"
-    background = AsyncZip(txt_file_path, zip_file_path, zip_files_extraction_path)
-    background.start()
-    print(" The main program continues to run in foreground. ")
-    background.join()
-    print('Main program waited until the background was done. ')
+    try:
+        txt_file_path: str = "C:\\Data\\mydata.txt"
+        zip_file_path: str = "C:\\Data\\mydata_archive.zip"
+        zip_files_extraction_path : str = "\\Data\\mydata_archive"
+        background = AsyncZip(txt_file_path, zip_file_path, zip_files_extraction_path)
+        background.start()
+        print(" The main program continues to run in foreground. ")
+        background.join()
+        print('Main program waited until the background was done. ')
+    except threading.ThreadError as thread_error:
+        print(thread_error)
+    except TypeError as type_error:
+        print(type_error)

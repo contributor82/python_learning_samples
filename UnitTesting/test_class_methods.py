@@ -2,7 +2,7 @@
 import unittest
 import sys
 sys.path.append('../Classes')
-from bag_class_example import BagClass
+from bag_class_example import BagClass #type: ignore
 
 class TestBagClass(unittest.TestCase):
     """Test bag class """
