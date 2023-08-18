@@ -11,15 +11,13 @@ class EmailOperations:
     port: int = 0
     server: smtplib.SMTP
 
-
     def __init__(self, host_address: str, port_num: int) -> None:
         """ Initializing host and port """
         # Connection error causing send message not working - DO NOT USE
         try:
             self.host = host_address
             self.port = port_num
-            self.server = smtplib.SMTP(self.host)
-
+            self.server = smtplib.SMTP(self.host, self.port)
         except smtplib.SMTPConnectError as connection_error:
             print(connection_error)
 
@@ -36,7 +34,6 @@ class EmailOperations:
 
         is_send_msg: bool = False
         try:
-
             with open(file_name, encoding="UTF-8") as file_handle:
                 msg = EmailMessage()
                 msg.set_content(file_handle.read())
@@ -75,8 +72,7 @@ class EmailOperations:
                     break
 
             # The actual mail send
-            server = smtplib.SMTP(self.host, self.port)
-            server.sendmail(fromaddr, toaddrs, msg)
+            self.server.sendmail(fromaddr, toaddrs, msg)
             is_send_email = True
         except smtplib.SMTPDataError as data_error:
             print(data_error)
@@ -88,14 +84,12 @@ class EmailOperations:
         """ Function to receive reply from server """
 
         try:
-            server = smtplib.SMTP(self.host)
-            reply = server.getreply()
+            reply = self.server.getreply()
             print(reply)
         except smtplib.SMTPResponseException as response_ex:
             print(response_ex)
         except smtplib.SMTPException as ex:
             print(ex)
-
 
 if __name__ == '__main__':
     try:

@@ -4,10 +4,7 @@
 
 class BagClass:
     """ Bag class """
-    items: list [str]
-
-    def __init__(self) -> None:
-        self.items = ['']
+    items: list [str] = ['']
 
     def add(self, element: str) -> None:
         """ Add elements in Bag method """

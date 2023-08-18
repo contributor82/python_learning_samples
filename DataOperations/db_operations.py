@@ -4,49 +4,49 @@ import sqlite3
 class DBOperations:
     """ Database operations """
 
-    con: sqlite3.Connection
+    db_con: sqlite3.Connection
     cur: sqlite3.Cursor
     data: sqlite3.Cursor
-    is_open_connection: bool
+    is_con_open: bool
 
     def open_connection(self, db_path_name: str) -> bool | None:
         """ Function opening DB connection. """
-        self.is_open_connection = False
+        self.is_con_open = False
         try:
             # In memory DB connection
-            # self.con = sqlite3.connect(":memory:")
+            # self.db_con = sqlite3.connect(":memory:")
 
             # DB file will be opened if exists or created new to establish connection
-            self.con = sqlite3.connect(db_path_name)
+            self.db_con = sqlite3.connect(db_path_name)
             print("Database connection established successfully. ")
-            self.is_open_connection = True
+            self.is_con_open = True
 
         except ConnectionError as conn_error:
             print(conn_error)
-            self.is_open_connection = False
+            self.is_con_open = False
 
-        return self.is_open_connection
+        return self.is_con_open
 
     def close_connection(self) -> bool | None:
         """ Closing connection """
-        is_close_connection: bool = False
+        is_con_close: bool = False
         try:
-            if self.is_open_connection:
-                self.con.close()
+            if self.is_con_open:
+                self.db_con.close()
                 print("Database connection closed successfully. ")
-                is_close_connection = True
+                is_con_close = True
 
         except ConnectionError as conn_error:
             print(conn_error)
-            is_close_connection = False
+            is_con_close = False
 
-        return is_close_connection
+        return is_con_close
 
     def exec_ddl_statements(self, ddl_statement: str) -> None:
         """ Execute DDL Statements """
         try:
-            if self.is_open_connection:
-                self.cur = self.con.cursor()
+            if self.is_con_open:
+                self.cur = self.db_con.cursor()
                 self.data = self.cur.execute(ddl_statement)
         except sqlite3.DataError as sql_data_error:
             print(sql_data_error)
@@ -57,8 +57,8 @@ class DBOperations:
     def exec_batch_ddl_statements(self, ddl_statement: str) -> None:
         """ Execute Batch DDL Statements """
         try:
-            if self.is_open_connection:
-                self.cur = self.con.cursor()
+            if self.is_con_open:
+                self.cur = self.db_con.cursor()
                 self.data = self.cur.executescript(ddl_statement)
         except sqlite3.DataError as sql_data_error:
             print(sql_data_error)
@@ -69,8 +69,8 @@ class DBOperations:
                             sql_parameters: list[int | str] | None = None) -> None:  # type: ignore
         """ Execcute DML Statements """
         try:
-            if self.is_open_connection:
-                self.cur = self.con.cursor()
+            if self.is_con_open:
+                self.cur = self.db_con.cursor()
 
             if sql_parameters is not None:
                 self.data = self.cur.execute(dml_statement, sql_parameters) # type: ignore
@@ -87,8 +87,8 @@ class DBOperations:
                                   list[tuple[int, int, str, int]] | None) -> None: # type: ignore
         """ Executing batch DML statements """
         try:
-            if self.is_open_connection:
-                self.cur = self.con.cursor()
+            if self.is_con_open:
+                self.cur = self.db_con.cursor()
 
             if sql_params is not None:
                 self.data = self.cur.executemany(dml_statement, sql_params) # type: ignore

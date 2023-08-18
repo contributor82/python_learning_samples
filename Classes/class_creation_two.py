@@ -7,6 +7,10 @@ class TestClass:
     def __init__(self) -> None:
         """ Default Constructor """
 
+    def get_int_member(self) -> int:
+        """ Get int member """
+        return self.int_member
+
     def display(self) -> str:
         """ display method of Test class """
         return "Hello World"

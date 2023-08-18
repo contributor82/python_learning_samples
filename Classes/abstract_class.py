@@ -33,12 +33,18 @@ class Car(ABC):
 
     class Subclass:
         """ Sub class """
+        int_member: int = 0
+        str_member: str = ''
 
         @classmethod
         def get_name(cls) -> str:
             """ sub class get name method """
             return "Sub class"
 
+        @classmethod
+        def display(cls) -> None:
+            """ sub class member method """
+            print("int: ", cls.int_member, "str: ", cls.str_member)
 
 class Sedan(Car):
     """Derived class Sedan from Abstract class Car"""

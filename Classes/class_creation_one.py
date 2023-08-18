@@ -10,6 +10,14 @@ class TestClass:
         self.int_member = int_member
         self.str_member = str_member
 
+    def get_int_member(self) -> int:
+        """ Get int member """
+        return self.int_member
+
+    def get_str_member(self) -> str:
+        """ Get str member """
+        return self.str_member
+
     def display(self) -> None:
         """ Display class members. """
         print("Integer member: ", self.int_member)

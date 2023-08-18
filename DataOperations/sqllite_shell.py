@@ -5,7 +5,7 @@ import sqlite3
 class SQlLiteShell:
     """ SQL lite shell class. """
 
-    con: sqlite3.Connection
+    mem_con: sqlite3.Connection
     cur: sqlite3.Cursor
     is_open_connection: bool
     shell_input: str = ""
@@ -13,24 +13,20 @@ class SQlLiteShell:
 
     def open_connection(self) -> bool:
         """ Opening memory connection """
-
         self.is_open_connection = False
         try:
-            self.con = sqlite3.connect(":memory:")
+            self.mem_con = sqlite3.connect(":memory:")
             print("Database connection established successfully. ")
-            self.con.isolation_level = None
-            self.cur = self.con.cursor()
+            self.mem_con.isolation_level = None
+            self.cur = self.mem_con.cursor()
             self.is_open_connection = True
-
         except ConnectionError as conn_error:
             print(conn_error)
             self.is_open_connection = False
-
         return self.is_open_connection
 
     def accept_command_line_input(self) -> None:
         """ Accepting SQL as command line input """
-
         print("Enter SQL Command : ")
         self.shell_input = ""
         line: str = ""
@@ -40,7 +36,6 @@ class SQlLiteShell:
                 if line == "":
                     break
                 self.shell_input += line
-
         except IOError as io_error:
             print(io_error)
 
@@ -61,10 +56,8 @@ class SQlLiteShell:
 
     def display_sql_output(self) -> None:
         """ Displaying SQL Output """
-
         try:
             print(self.data)
-
         except sqlite3.DataError as sql_data_error:
             print(sql_data_error.args[0])
         except sqlite3.Error as sql_error:
@@ -72,18 +65,15 @@ class SQlLiteShell:
 
     def close_connection(self) -> bool:
         """ Closing connection """
-
         is_close_connection: bool = False
         try:
             if self.is_open_connection:
-                self.con.close()
+                self.mem_con.close()
                 print("Database connection closed successfully. ")
                 is_close_connection = True
-
         except ConnectionError as conn_error:
             print(conn_error)
             is_close_connection = False
-
         return is_close_connection
 
 

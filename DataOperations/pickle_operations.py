@@ -6,7 +6,21 @@ import pickle
 
 class SampleClass:
     """ Sample class """
-    sample_str: str = 'Sample class'
+    sample_int: int
+    sample_str: str
+
+    def __init__(self) -> None:
+        """Initialize Sample class members """
+        self.sample_int = 0
+        self.sample_str = 'Sample class'
+
+    def get_sample_int(self)-> int:
+        """" Get sample int method """
+        return self.sample_int
+
+    def get_sample_str(self)-> str:
+        """" Get sample str method """
+        return self.sample_str
 
 class ObjectPickleUnpickle:
     """# Object serialize de-serialize using pickle """
@@ -50,13 +64,14 @@ class ObjectPickleUnpickle:
 
 
 if __name__ == '__main__':
-    opu_Instance = ObjectPickleUnpickle()
-    opu_Instance.pickle_object(SampleClass)  # type: ignore
-    opu_Instance.display_pickled_object_stream()
+    opu_instance = ObjectPickleUnpickle()
+    sample_instance = SampleClass()
+    opu_instance.pickle_object(sample_instance)  # type: ignore
+    opu_instance.display_pickled_object_stream()
 
-    opu_Instance.unpickle_object()
-    if opu_Instance.unpickled_instance is SampleClass:
-        print(opu_Instance.unpickled_instance.sample_str)
+    opu_instance.unpickle_object()
+    if opu_instance.unpickled_instance is SampleClass:
+        print(opu_instance.unpickled_instance.get_sample_str())
 
         data_to_pickle = {
             'NumSeries': [1, 2.0, 3+4j],
@@ -66,5 +81,5 @@ if __name__ == '__main__':
 
         # Data can be of any format for pickling
         pickle_file_name: str = "C:\\Data\\Serial.pickle"
-        opu_Instance.pickle_data_to_file(data_to_pickle, pickle_file_name)
-        opu_Instance.unpickled_data_from_file(pickle_file_name)
+        opu_instance.pickle_data_to_file(data_to_pickle, pickle_file_name)
+        opu_instance.unpickled_data_from_file(pickle_file_name)

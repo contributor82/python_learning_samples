@@ -7,10 +7,11 @@ from pydantic import BaseModel #type : ignore
 import uvicorn
 
 
-class Item(BaseModel):
-    """Item Model class """
+class Gadget(BaseModel):
+    """Gadget Model class """
+    id: int
     name: str
-    data:list[str]
+    price:float
 
 # app = FastAPI()
 
@@ -27,25 +28,25 @@ class ApiController:
         app: FastAPI = self.app
 
         @app.get("/")
-        async def read_root()-> dict[str, str | int]: #type : ignore
+        async def read()-> dict[str, str | int]: #type : ignore
             """Read root """
-            return  {"item_name": "Default item", "item_id": 1}
+            return  {"name": "Default Gadget", "id": 1}
 
-        @app.get("/items/{item_id}")
-        async def read_item(item_id: int,
+        @app.get("/gadgets/{gadget_id}")
+        async def read_gadget(gadget_id: int,
                             input_qry: Union[str, None]=None) -> dict[str, str | int]:
-            """Read Items """
-            return {"item_id": item_id, "q": input_qry} # type: ignore
+            """Read gadgets """
+            return {"gadget_id": gadget_id, "q": input_qry} # type: ignore
 
-        @app.post("/items/{item_id}")
-        async def write_item(item_id: int, item: Item) -> dict[str, Item | int]:
-            """Write item"""
-            return {"item": item, "item_id": item_id}
+        @app.post("/gadgets/{gadget_id}")
+        async def write_gadget(gadget_id: int, gadget: Gadget) -> dict[str, Gadget | int]:
+            """Write Gadget"""
+            return {"Gadget": gadget, "gadget_id": gadget_id}
 
-        @app.put("/items/{item_id}")
-        async def update_item(item_id: int, item: Item) -> dict[str, str | list[str] | int]:
-            """Update item"""
-            return {"item_name": item.name, "item_data": item.data, "item_id": item_id}
+        @app.put("/gadgets/{gadget_id}")
+        async def update_gadget(gadget_id: int, gadget: Gadget) -> dict[str, str | float]:
+            """Update Gadget"""
+            return {"name": gadget.name, "price": gadget.price, "id": gadget_id}
 
 
         uvicorn_config =  uvicorn.Config(app, host='localhost',port=8080)
