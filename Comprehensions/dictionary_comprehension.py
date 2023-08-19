@@ -21,8 +21,8 @@ class DictionaryComprehensions:
 
 if __name__ == '__main__':
     dc_instance = DictionaryComprehensions()
-    print('Dictionary comprehension for the given range: ",
+    print('Dictionary comprehension for the given range: ',
           dc_instance.get_dict_comprehension(10))
     fruits: list[str] = ['Mango', 'Strawberry', 'Pear', 'Apple']
-    print('List of fruits before formulating dict: ", fruits)
-    print('After dictionary formulation: ", dc_instance.formulating_dict(fruits))
+    print('List of fruits before formulating dict: ', fruits)
+    print('After dictionary formulation: ', dc_instance.formulating_dict(fruits))

@@ -30,7 +30,7 @@ class AsyncComprehensions:
             for i in iter(iterable):
                 if (i % 2) == 0:
                     await self.sleep()
-                    print('async for - printing for even numbers: ", i)
+                    print('async for - printing for even numbers: ', i)
         except RuntimeError as run_time_error:
             print(run_time_error)
 
@@ -43,7 +43,7 @@ class AsyncComprehensions:
             file_handle = open(file_name, 'r', encoding='UTF-8')
             await self.sleep()
             data = file_handle.read()
-            print('async with - File Data: = ", data)
+            print('async with - File Data: = ', data)
         except FileExistsError as file_exists_error:
             print(file_exists_error)
         except FileNotFoundError as file_not_found_error:
@@ -65,7 +65,7 @@ class AsyncComprehensions:
                              self.async_for(input_data), self.async_with(file_name))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     t: float = time.perf_counter()
     ac_instance = AsyncComprehensions()

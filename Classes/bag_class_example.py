@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
 # Commented since class has been invoked from another file.
     bag_instance = BagClass()
-    bag_instance.add("Compass box')
-    bag_instance.add_element_twice("Book')
-    bag_instance.add_element_twice("Notebook')
-    print('What is added in the bag: ", bag_instance.whats_added_in_bag())
+    bag_instance.add('Compass box')
+    bag_instance.add_element_twice('Book')
+    bag_instance.add_element_twice('Notebook')
+    print('What is added in the bag: ', bag_instance.whats_added_in_bag())

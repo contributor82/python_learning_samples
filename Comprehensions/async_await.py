@@ -9,13 +9,13 @@ class AsyncAwaitOperations:
 
     async def set_data(self) -> str:
         """ Setting data """
-        self.data = "Asynchronous data operations"
+        self.data = 'Asynchronous data operations'
         await asyncio.sleep(1)
         return self.data
 
     async def get_data(self) -> str:
         """ Getting data """
-        stored_data: str = " "
+        stored_data: str = ' '
         stored_data = await self.set_data()
         if stored_data == ' ':
             raise StopAsyncIteration
@@ -37,13 +37,12 @@ class AsyncAwaitOperations:
         task1 = asyncio.create_task(self.task_one())
         task2 = asyncio.create_task(self.task_two())
 
-        print(f"Starting task execution at {time.strftime('%X')}')
+        print(f'Starting task execution at {time.strftime("%X")}')
 
         await task1
         await task2
 
-        print(f"finished task execution at {time.strftime('%X')}')
-
+        print(f'finished task execution at {time.strftime("%X")}')
 
 if __name__ == '__main__':
     try:

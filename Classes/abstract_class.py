@@ -8,7 +8,7 @@ class Car(ABC):
     @abstractmethod
     def get_name(self) -> str:
         """ get name abstarct method """
-        return "Car: Abstract"
+        return 'Car: Abstract'
 
     @classmethod
     def get_num_wheels(cls) -> int:
@@ -39,12 +39,12 @@ class Car(ABC):
         @classmethod
         def get_name(cls) -> str:
             """ sub class get name method """
-            return "Sub class"
+            return 'Sub class'
 
         @classmethod
         def display(cls) -> None:
             """ sub class member method """
-            print('int: ", cls.int_member, "str: ", cls.str_member)
+            print('int: ', cls.int_member, 'str: ', cls.str_member)
 
 class Sedan(Car):
     """Derived class Sedan from Abstract class Car"""
@@ -54,7 +54,7 @@ class Sedan(Car):
 
     def get_name(self) -> str:
         """ get name class method """
-        return "sedan"
+        return 'sedan'
 
     @classmethod
     def get_num_wheels(cls) -> int:
@@ -71,16 +71,16 @@ class Sedan(Car):
 Car.register(Car.Subclass)  # registers virtual subclass of ABC
 
 if __name__ == '__main__':
-    print('Abstract class Car: Is instance created : ", isinstance((), Car))
+    print('Abstract class Car: Is instance created : ', isinstance((), Car))
     sedan_instance = Sedan()
     print('Derived class Sedan instance created')
-    print('Sedan doors: ", sedan_instance.get_num_doors())
-    print('Sedan wheels: ", sedan_instance.get_num_wheels())
-    print('get_name call ", sedan_instance.get_name())
+    print('Sedan doors: ', sedan_instance.get_num_doors())
+    print('Sedan wheels: ', sedan_instance.get_num_wheels())
+    print('get_name call ', sedan_instance.get_name())
 
-    print('Is Car.Subclass is a subclass: ", issubclass(Car.Subclass, ABC))
+    print('Is Car.Subclass is a subclass: ', issubclass(Car.Subclass, ABC))
     subclass_instance = Car.Subclass()
-    print('Abstract class Car's subclass instance is created. ')
-    print('get_name call ", subclass_instance.get_name())
+    print('Abstract class Car subclass instance is created. ')
+    print('get_name call ', subclass_instance.get_name())
     # print(sedan_instance.__subclasshook__()) # exception because
     # it looks for tuple as subclass even though there is no subclass

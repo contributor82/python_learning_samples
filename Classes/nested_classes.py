@@ -3,7 +3,7 @@ class ParentClass:
     """ Parent class """
 
     int_parent_member: int = 1
-    str_parent_member: str = "Parent Class String member"
+    str_parent_member: str = 'Parent Class String member'
 
     def __init__(self) -> None:
         pass
@@ -18,7 +18,7 @@ class ParentClass:
 
     def parent_display(self) -> None:
         """ Parent display """
-        print('int: ", self.int_parent_member, "str: ", self.str_parent_member)
+        print('int: ', self.int_parent_member, 'str: ', self.str_parent_member)
 
     class ChildClass:
         """ Child class """
@@ -26,7 +26,7 @@ class ParentClass:
         # since it is inside the parent class.
 
         int_child_member: int = 2
-        str_child_member: str = "Child Class String member"
+        str_child_member: str = 'Child Class String member'
 
         def __init_subclass__(cls) -> None:
             pass
@@ -41,7 +41,7 @@ class ParentClass:
 
         def child_display(self) -> None:
             """ Child display """
-            print('int: ", self.int_child_member, "str: ", self.str_child_member)
+            print('int: ', self.int_child_member, 'str: ', self.str_child_member)
 
 if __name__ == '__main__':
     parent_instance = ParentClass()
