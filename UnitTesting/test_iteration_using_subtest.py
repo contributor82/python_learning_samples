@@ -18,7 +18,7 @@ class Numbertests(unittest.TestCase):
         # Using subtest, the failure would display till the end
         # with more detail information to diagnose the failure.
         for i in range(0,6):
-            print("i = ", i, " i % 2 = ", (i %2))
+            print('i = ', i, ' i % 2 = ', (i %2))
             with self.subTest(i=i):
                 self.assertEqual(i % 2, 0)
 

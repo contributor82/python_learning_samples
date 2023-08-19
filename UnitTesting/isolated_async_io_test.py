@@ -11,7 +11,7 @@ class Test(IsolatedAsyncioTestCase):
 
 
     def setUp(self) -> None:
-        self.events.append("setUp")
+        self.events.append('setUp')
 
     async def async_connection(self) -> None:
         """ Async connection method """
@@ -21,27 +21,27 @@ class Test(IsolatedAsyncioTestCase):
     async def async_set_up(self) -> None:
         """ Asynchronous set up method """
         self._async_connection = await self.async_connection()
-        self.events.append("asyncSetUp")
+        self.events.append('asyncSetUp')
 
     async def test_response(self) -> None:
         """ Test response method """
-        self.events.append("test_response")
-        response = await self._async_connection.get("https://example.com") # type: ignore
+        self.events.append('test_response')
+        response = await self._async_connection.get('https://example.com') # type: ignore
         self.assertEqual(response.status_code, 200) # type: ignore
         self.addAsyncCleanup(self.on_cleanup)
 
     def tear_down(self) -> None:
         """Tear down method """
-        self.events.append("tearDown")
+        self.events.append('tearDown')
 
     async def async_tear_down(self) -> None:
         """ Async tear down method """
         await self._async_connection.close() # type: ignore
-        self.events.append("asyncTearDown")
+        self.events.append('asyncTearDown')
 
     async def on_cleanup(self) -> None:
         """On clean up method"""
-        self.events.append("on_cleanup")
+        self.events.append('on_cleanup')
 
 if __name__ == '__main__':
     unittest.main()

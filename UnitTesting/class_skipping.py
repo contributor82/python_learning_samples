@@ -2,7 +2,7 @@
 
 import unittest
 
-@unittest.skip("Skipping class")
+@unittest.skip('Skipping class')
 class SkippedTestClass(unittest.TestCase):
     """Skipping test class """
 

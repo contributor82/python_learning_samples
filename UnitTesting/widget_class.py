@@ -1,6 +1,6 @@
 """Module for widget class """
 class Widget:
-    "Widget class"
+    """Widget class"""
     widget_name: str = ''
     x_val : int =0
     y_val : int =0

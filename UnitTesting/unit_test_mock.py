@@ -5,12 +5,12 @@ class TempClass:
     """Temp class """
 
     int_member: int = 1
-    str_member: str = ""
+    str_member: str = ''
 
     def __init__(self) -> None:
         """Initializing class members """
         self.int_member = 1
-        self.str_member = "Temp Class string member"
+        self.str_member = 'Temp Class string member'
 
     def initial_data_values(self, new_val: int) -> int:
         """Setting initial data values method """

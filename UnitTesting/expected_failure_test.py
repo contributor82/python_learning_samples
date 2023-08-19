@@ -8,13 +8,13 @@ class ExpectedFailureClass(unittest.TestCase):
     @unittest.expectedFailure
     def test_fail(self) -> None:
         """test fail method """
-        self.assertEqual(1,0, "Broken")
+        self.assertEqual(1,0, 'Broken')
 
     def skip_unless_has_attr(self, obj: object, attr: str) -> (object):
         """Skip unless has attribute method """
         if hasattr(obj, attr):
             return lambda func: func
-        reason: str = "{obj!r} doesn't have {attr!r}"
+        reason: str = '{obj!r} does not have {attr!r}'
         return unittest.skip(reason)
 
 
