@@ -16,7 +16,7 @@ class TcpClient:
         # Due to which reader & writer instances have not been formed.
         try:
             self.reader, self.writer = await asyncio.open_connection(host, port)
-            print("Connection established..")
+            print('Connection established..')
         except ConnectionError as ex:
             print(ex)
 
@@ -28,7 +28,7 @@ class TcpClient:
             print(f'Send: {message!r}')
             self.writer.write(message.encode())
             await self.writer.drain()
-            print("Message sent.. ")
+            print('Message sent.. ')
         except RuntimeError as run_time_error:
             print(run_time_error)
 

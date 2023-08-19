@@ -27,8 +27,8 @@ class InternetAccess:
     def display_url_contents(self)-> None:
         """Display URL contents """
         if len(self.url_contents) > 0:
-            print("Url: ", self.url)
-            print("Contents: ", self.url_contents)
+            print('Url: ', self.url)
+            print('Contents: ', self.url_contents)
 
 
 if __name__ == '__main__':

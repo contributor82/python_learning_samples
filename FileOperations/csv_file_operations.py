@@ -8,7 +8,7 @@ class CSVFileOperations:
     def read_csv(self, file_name: str) -> None:
         """ read CSV file """
         try:
-            with open(file_name, encoding="UTF-8") as csv_file:
+            with open(file_name, encoding='UTF-8') as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=' ', quotechar='|') # type: ignore
                 for row in csv_reader:
                     print(row)
@@ -31,7 +31,7 @@ class CSVFileOperations:
     def write_csv(self, file_name: str, fruits_data: list[list[str | int]]) -> None:
         """ Writing CSV file contents """
         try:
-            with open(file_name, "a", encoding='UTF-8') as csv_file:
+            with open(file_name, 'a', encoding='UTF-8') as csv_file:
                 csv_writer = csv.writer(
                     csv_file, delimiter=',', quoting=csv.QUOTE_MINIMAL)
 
@@ -45,16 +45,16 @@ if __name__ == '__main__':
     try:
         csv_file_ops_instance = CSVFileOperations()
 
-        fruits_csv_file_name: str = "C:\\Data\\Fruits.csv"
+        fruits_csv_file_name: str = 'C:\\Data\\Fruits.csv'
         csv_file_ops_instance.read_csv(fruits_csv_file_name)
 
         sample_fruits_data: list[list[str | int]] = [
-            ["Strawberry", 5, 5], ["Blueberry", 5, 10]]
+            ['Strawberry', 5, 5], ['Blueberry', 5, 10]]
         csv_file_ops_instance.write_csv(fruits_csv_file_name, sample_fruits_data)
 
         csv_file_ops_instance.read_csv(fruits_csv_file_name)
 
-        babynames_csv_file_name: str = "C:\\Data\\Babynames.csv"
+        babynames_csv_file_name: str = 'C:\\Data\\Babynames.csv'
         csv_file_ops_instance.read_csv_to_dict(babynames_csv_file_name)
     except csv.Error as csv_error:
         print(csv_error)

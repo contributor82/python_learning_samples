@@ -13,12 +13,9 @@ class DBOperations:
         """ Function opening DB connection. """
         self.is_con_open = False
         try:
-            # In memory DB connection
-            # self.db_con = sqlite3.connect(":memory:")
-
             # DB file will be opened if exists or created new to establish connection
             self.db_con = sqlite3.connect(db_path_name)
-            print("Database connection established successfully. ")
+            print('Database connection established successfully. ')
             self.is_con_open = True
 
         except ConnectionError as conn_error:
@@ -33,7 +30,7 @@ class DBOperations:
         try:
             if self.is_con_open:
                 self.db_con.close()
-                print("Database connection closed successfully. ")
+                print('Database connection closed successfully. ')
                 is_con_close = True
 
         except ConnectionError as conn_error:
@@ -102,13 +99,13 @@ class DBOperations:
     def display_data(self) -> None:
         """ Displaying data received from DML statement such as SELECT. """
         try:
-            print("Table Data: \n")
+            print('Table Data: \n')
             records: list[object] = self.data.fetchall()
             for row in records:
                 print(row)
             # else:
             #      print(
-            #          "There is a problem in the connection or No records available to display. ")
+            #          "There is a problem in the connection or No records available to display. ')
         except sqlite3.DataError as sql_data_error:
             print(sql_data_error)
         except sqlite3.Error as sql_error:
@@ -117,11 +114,11 @@ class DBOperations:
     def display_scalar_data(self) -> None:
         """ Displaying data received from DML statement such as SELECT. """
         try:
-            print("Table Data: \n")
-            print("Scalar Value: ", self.data.fetchone())
+            print('Table Data: \n')
+            print('Scalar Value: ', self.data.fetchone())
             # else:
             #     print(
-            #         "There is a problem in the connection or No records available to display. ")
+            #         "There is a problem in the connection or No records available to display. ')
         except sqlite3.DataError as sql_data_error:
             print(sql_data_error)
         except sqlite3.Error as sql_error:
@@ -129,7 +126,7 @@ class DBOperations:
 
 if __name__ == '__main__':
     db_instance = DBOperations()
-    db_path: str = "C:\\Data\\sample_data.db"
+    db_path: str = 'C:\\Data\\sample_data.db'
     is_connection_success: bool | None = db_instance.open_connection(
         db_path)
     if is_connection_success:
@@ -139,42 +136,42 @@ if __name__ == '__main__':
 
         parameters: list[int | str] = []
         parameters.append(1)
-        parameters.append("Scott")
+        parameters.append('Scott')
 
         db_instance.exec_dml_statements(
-            "INSERT INTO Student VALUES(?,?)", parameters) # (1, "Scott")
+            'INSERT INTO Student VALUES(?,?)', parameters) # (1, 'Scott')
         parameters.clear()
         parameters.append(2)
-        parameters.append("Martin")
+        parameters.append('Martin')
         db_instance.exec_dml_statements(
-            "INSERT INTO Student VALUES(?,?)", parameters)
-        db_instance.exec_dml_statements("SELECT StudentId, Name FROM Student", None)
+            'INSERT INTO Student VALUES(?,?)', parameters)
+        db_instance.exec_dml_statements('SELECT StudentId, Name FROM Student', None)
         db_instance.display_data()
 
         db_instance.exec_dml_statements(
-            "SELECT COUNT(StudentId) as num_of_students FROM Student",  None)
+            'SELECT COUNT(StudentId) as num_of_students FROM Student',  None)
         db_instance.display_scalar_data()
 
         db_instance.exec_ddl_statements(
-            "CREATE TABLE Marks(MarksId, StudentId, SubjectName, SubjectMarks)")
+            'CREATE TABLE Marks(MarksId, StudentId, SubjectName, SubjectMarks)')
 
-        batch_parameters: list[tuple[int, int, str, int]] = [(1, 1, "Physics", 75),
-                                               (2, 1, "Chemistry", 85),
-                                                  (3, 1, "Maths", 90),
-                                                  (4, 1, "Biology", 78)]
-        db_instance.exec_batch_dml_statements(" INSERT INTO Marks(MarksId, StudentId, "
-                                               + " SubjectName, SubjectMarks) VALUES(?,?,?,?)",
+        batch_parameters: list[tuple[int, int, str, int]] = [(1, 1, 'Physics', 75),
+                                               (2, 1, 'Chemistry', 85),
+                                                  (3, 1, 'Maths', 90),
+                                                  (4, 1, 'Biology', 78)]
+        db_instance.exec_batch_dml_statements(' INSERT INTO Marks(MarksId, StudentId, '
+                                               + ' SubjectName, SubjectMarks) VALUES(?,?,?,?)',
                                               batch_parameters)
 
         db_instance.exec_dml_statements(
-            "SELECT MarksId, StudentId, SubjectName, SubjectMarks FROM Marks", None)
+            'SELECT MarksId, StudentId, SubjectName, SubjectMarks FROM Marks', None)
         db_instance.display_data()
 
-        db_instance.exec_batch_ddl_statements("""
+        db_instance.exec_batch_ddl_statements('''
                                     BEGIN;
                                     CREATE TABLE Person(PersonId, FirstName, LastName, Age);
                                     CREATE TABLE Book(BookId, Title, Author, Published);
                                     CREATE TABLE Publisher(PublisherId, Name, Address);
                                     COMMIT;
-                                        """)
+                                        ''')
         db_instance.close_connection()

@@ -10,20 +10,20 @@ class SampleClass:
     sample_str: str
 
     def __init__(self) -> None:
-        """Initialize Sample class members """
+        """ Initialize Sample class members """
         self.sample_int = 0
         self.sample_str = 'Sample class'
 
     def get_sample_int(self)-> int:
-        """" Get sample int method """
+        """ Get sample int method """
         return self.sample_int
 
     def get_sample_str(self)-> str:
-        """" Get sample str method """
+        """ Get sample str method """
         return self.sample_str
 
 class ObjectPickleUnpickle:
-    """# Object serialize de-serialize using pickle """
+    """ Object serialize de-serialize using pickle """
 
     pickled_bytes: bytes
     unpickled_instance: pickle.Unpickler
@@ -48,7 +48,7 @@ class ObjectPickleUnpickle:
         try:
             with open(file_name, 'rb') as file_handle:
                 data = pickle.loads(file_handle) # type: ignore
-                print("Unpickled file data : ", data)
+                print('Unpickled file data : ', data)
         except IOError as io_error:
             print(io_error)
         except pickle.PickleError as pickle_error:
@@ -56,7 +56,7 @@ class ObjectPickleUnpickle:
 
     def display_pickled_object_stream(self) -> None:
         """ Function to display pickle serialized object stream """
-        print("Serialized object Stream using pickle : ", self.pickled_bytes)
+        print('Serialized object Stream using pickle : ', self.pickled_bytes)
 
     def unpickle_object(self) -> None:
         """ Function to display pickle serialized object stream """
@@ -75,11 +75,11 @@ if __name__ == '__main__':
 
         data_to_pickle = {
             'NumSeries': [1, 2.0, 3+4j],
-            'ByteSeries': ("character string", b"byte string"),
+            'ByteSeries': ('character string', b'byte string'),
             'BooleanSeries': {None, True, False}
         }
 
         # Data can be of any format for pickling
-        pickle_file_name: str = "C:\\Data\\Serial.pickle"
+        pickle_file_name: str = 'C:\\Data\\Serial.pickle'
         opu_instance.pickle_data_to_file(data_to_pickle, pickle_file_name)
         opu_instance.unpickled_data_from_file(pickle_file_name)

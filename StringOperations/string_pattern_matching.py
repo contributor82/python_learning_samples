@@ -63,7 +63,7 @@ class StringPatternMatching:
     def is_string_prefix_with(self, prefix: str, input_str: str) -> bool:
         """Is string prefix with method """
         result = False
-        prefix_str: str =  "^" + prefix
+        prefix_str: str =  '^' + prefix
         is_str_prefix_with_pattern_match: regExp.Match[str] | None = regExp.search(
             prefix_str, input_str)
         if is_str_prefix_with_pattern_match is not None:
@@ -72,7 +72,7 @@ class StringPatternMatching:
 
     def detect_double_words(self, input_str: str) -> str:
         """Detect double words method """
-        final_str: str | None = ""
+        final_str: str | None = ''
         search_pattern: regExp.Pattern[str] = regExp.compile(r'\b(\w+)\s+\1\b')
         result: regExp.Match[str] | None = search_pattern.search(input_str)
         if result is not None:
@@ -84,15 +84,15 @@ if __name__ == '__main__':
         spm_instance = StringPatternMatching()
         print(spm_instance.regex_findall())
         print(spm_instance.regex_sub())
-        print("909037863858 has all digits  only: ",
+        print('909037863858 has all digits  only: ',
             spm_instance.is_digit_string('909037863858'))
-        print("ALPSDKNaskdknkasdn has characters only: ",
+        print('ALPSDKNaskdknkasdn has characters only: ',
             spm_instance.is_non_digit_string('ALPSDKNaskdknkasdn'))
-        print("kksdfkn_ANALSN_ has alphanumeric characters only : ",
+        print('kksdfkn_ANALSN_ has alphanumeric characters only : ',
             spm_instance.is_alphanumeric('kksdfkn_ANALSN_'))
-        print("&&#$*U&%21123 has non-alphanumeric characters : ",
+        print('&&#$*U&%21123 has non-alphanumeric characters : ',
             spm_instance.is_non_alphanumeric('&&#$*U&%21123'))
-        print(" Hello World! is this string prefix with word 'Hello' : ",
+        print(' Hello World! is this string prefix with word Hello : ',
             spm_instance.is_string_prefix_with('Hello', 'Hello World!'))
         print('Using string replace on tea for too string:',
             spm_instance.string_replace())

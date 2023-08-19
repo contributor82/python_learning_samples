@@ -14,12 +14,12 @@ class Student:
 
     def display_student(self) -> None:
         """Display Student """
-        print("name: ", self.name, " gpa: ", self.gpa)
+        print('name: ', self.name, ' gpa: ', self.gpa)
 
 
     def calculate_gpa(self) -> None:
         """Calcualte gpa"""
-        print("In progress")
+        print('In progress')
 
 class GeneratorExpressions:
     """Generator expressions class """
@@ -45,12 +45,12 @@ class GeneratorExpressions:
 
 if __name__ == '__main__':
     ge_instance = GeneratorExpressions()
-    print("Sum Expression: ", ge_instance.sum_expression(10))
+    print('Sum Expression: ', ge_instance.sum_expression(10))
 
     xvec: list[int] = [10,20,30]
     yvec: list[int] = [7,5,3]
 
-    print("Sum zip expression: ", ge_instance.sum_zip_expression(xvec, yvec))
+    print('Sum zip expression: ', ge_instance.sum_zip_expression(xvec, yvec))
 
     # page is not defined by pylance
     # unique_words = set(word for line in page for word in line.split())
@@ -63,13 +63,13 @@ if __name__ == '__main__':
 
     # print (valedictorian)
     print(graduates)
-    print("Max GPA earned Student using max expression : ",
+    print('Max GPA earned Student using max expression : ',
           ge_instance.max_expression((student['gpa'], student['name']) for student in graduates))
 
     str_to_reverse: str = 'golf'
     # # Reversing the string using expression in list.
-    print("Original String: '", str_to_reverse,
-          "' After expression using list to reverse the string: ",
+    print('Original String: ', str_to_reverse,
+          ' After expression using list to reverse the string: ',
           ge_instance.string_reversal(str_to_reverse))
 
     # # Reversing the string and printing character by character.

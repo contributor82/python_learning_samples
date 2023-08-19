@@ -18,6 +18,6 @@ class Student:
 
     def display_details(self) -> None:
         """Display student details """
-        print("Name: ", self.name,
-              "Age: ", self.age,
-               "Grade: ", self.grade )
+        print('Name: ', self.name,
+              'Age: ', self.age,
+              'Grade: ', self.grade )

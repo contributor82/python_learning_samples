@@ -19,7 +19,7 @@ class Point:
 
     def display(self)-> None:
         """Displaying point class members """
-        print("int x: ", self.int_x, " int y: ", self.int_y)
+        print('int x: ', self.int_x, ' int y: ', self.int_y)
 
 # if __name__ == '__main__':
 #     pt_instance = Point(5,10)

@@ -44,7 +44,7 @@ class Car(ABC):
         @classmethod
         def display(cls) -> None:
             """ sub class member method """
-            print("int: ", cls.int_member, "str: ", cls.str_member)
+            print('int: ", cls.int_member, "str: ", cls.str_member)
 
 class Sedan(Car):
     """Derived class Sedan from Abstract class Car"""
@@ -71,16 +71,16 @@ class Sedan(Car):
 Car.register(Car.Subclass)  # registers virtual subclass of ABC
 
 if __name__ == '__main__':
-    print("Abstract class Car: Is instance created : ", isinstance((), Car))
+    print('Abstract class Car: Is instance created : ", isinstance((), Car))
     sedan_instance = Sedan()
-    print("Derived class Sedan instance created")
-    print("Sedan doors: ", sedan_instance.get_num_doors())
-    print("Sedan wheels: ", sedan_instance.get_num_wheels())
-    print("get_name call ", sedan_instance.get_name())
+    print('Derived class Sedan instance created')
+    print('Sedan doors: ", sedan_instance.get_num_doors())
+    print('Sedan wheels: ", sedan_instance.get_num_wheels())
+    print('get_name call ", sedan_instance.get_name())
 
-    print("Is Car.Subclass is a subclass: ", issubclass(Car.Subclass, ABC))
+    print('Is Car.Subclass is a subclass: ", issubclass(Car.Subclass, ABC))
     subclass_instance = Car.Subclass()
-    print("Abstract class Car's subclass instance is created. ")
-    print("get_name call ", subclass_instance.get_name())
+    print('Abstract class Car's subclass instance is created. ')
+    print('get_name call ", subclass_instance.get_name())
     # print(sedan_instance.__subclasshook__()) # exception because
     # it looks for tuple as subclass even though there is no subclass

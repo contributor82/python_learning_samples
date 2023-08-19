@@ -16,10 +16,10 @@ class LoggingToFile:
     def logging_to_file(self) -> None:
         """Logging to file method """
         try:
-            logging.debug("logging:debug - This message should be logged in log file. ")
-            logging.info("logging:info - This message should be logged in log file. ")
-            logging.warning("logging:warning - This messagen should be logged in log file. ")
-            logging.error("non-ASCII stuff, too, like Øresund and Malmö")
+            logging.debug('logging:debug - This message should be logged in log file. ')
+            logging.info('logging:info - This message should be logged in log file. ')
+            logging.warning('logging:warning - This messagen should be logged in log file. ')
+            logging.error('non-ASCII stuff, too, like Øresund and Malmö')
         except RuntimeError as log_to_file_run_time_error:
             print(log_to_file_run_time_error)
 
@@ -29,7 +29,7 @@ class LoggingToFile:
             logger: logging.Logger = logging.getLogger(__name__)
             effective_level: int = logger.getEffectiveLevel()
             level_name: str = logging.getLevelName(effective_level)
-            print("Current Logging level configured: ", level_name)
+            print('Current Logging level configured: ', level_name)
         except RuntimeError as run_time_error:
             print(run_time_error)
 

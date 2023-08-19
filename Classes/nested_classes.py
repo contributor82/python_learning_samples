@@ -18,7 +18,7 @@ class ParentClass:
 
     def parent_display(self) -> None:
         """ Parent display """
-        print("int: ", self.int_parent_member, "str: ", self.str_parent_member)
+        print('int: ", self.int_parent_member, "str: ", self.str_parent_member)
 
     class ChildClass:
         """ Child class """
@@ -41,12 +41,12 @@ class ParentClass:
 
         def child_display(self) -> None:
             """ Child display """
-            print("int: ", self.int_child_member, "str: ", self.str_child_member)
+            print('int: ", self.int_child_member, "str: ", self.str_child_member)
 
 if __name__ == '__main__':
     parent_instance = ParentClass()
-    print("Parent class String value: ")
+    print('Parent class String value: ')
     parent_instance.parent_display()
     child_instance = parent_instance.ChildClass()
-    print("Child class String value: ")
+    print('Child class String value: ')
     child_instance.child_display()

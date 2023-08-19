@@ -20,12 +20,12 @@ class BagClass:
         return self.items
 
 if __name__ == '__main__':
-        # print("In module TestClassMethods __package__ and __name__ : ", __package__, __name__)
-        # print("In module products sys.path[0], __package__ ==", sys.path[0], __package__)
+        # print('In module TestClassMethods __package__ and __name__ : ", __package__, __name__)
+        # print('In module products sys.path[0], __package__ ==", sys.path[0], __package__)
 
 # Commented since class has been invoked from another file.
     bag_instance = BagClass()
-    bag_instance.add("Compass box")
-    bag_instance.add_element_twice("Book")
-    bag_instance.add_element_twice("Notebook")
-    print("What is added in the bag: ", bag_instance.whats_added_in_bag())
+    bag_instance.add("Compass box')
+    bag_instance.add_element_twice("Book')
+    bag_instance.add_element_twice("Notebook')
+    print('What is added in the bag: ", bag_instance.whats_added_in_bag())

@@ -6,7 +6,7 @@ class Apartment:
     num_of_rooms: int
     sqft_area: float
     num_of_bath_rooms: int
-    str_base_member: str = "Apartment Base Class"
+    str_base_member: str = 'Apartment Base Class'
 
     def __init__(self) -> None:
         self.num_of_rooms = 0
@@ -27,16 +27,17 @@ class Apartment:
 
     def display_apartment(self)-> None:
         """Display base members """
-        print("Rooms : ", self.num_of_rooms,
-              "Area: ", self.sqft_area,
-              "Bath rooms: ", self.num_of_bath_rooms,
-              "Name : ", self.str_base_member)
+
+        print('Rooms : ', self.num_of_rooms,
+              'Area: ', self.sqft_area,
+              'Bath rooms: ', self.num_of_bath_rooms,
+              'Name : ', self.str_base_member)
 
 
 class TwoBedApartment(Apartment):
     """ Derived class """
     duplex: bool
-    str_derived_member: str = "Two bed apartment Derived Class"
+    str_derived_member: str = 'Two bed apartment Derived Class'
 
     def get_str_derived_member(self) -> str:
         """ Display derived class string member """
@@ -48,16 +49,16 @@ class TwoBedApartment(Apartment):
 
     def display_derived(self) -> None:
         """ Displaying derived class string member """
-        print(" Is duplex : ", self.duplex, " Name: ", self.str_derived_member)
+        print(' Is duplex : ', self.duplex, ' Name: ', self.str_derived_member)
 
 if __name__ == '__main__':
     # Derived Class instance created.
     two_bed_apt_instance = TwoBedApartment()
 
     # Invoked Base class method
-    print("Base Class method invocation: ")
+    print('Base Class method invocation: ')
     two_bed_apt_instance.display_apartment()
 
     # Invoked Derived class method.
-    print("Derived Class method invocation: ")
+    print('Derived Class method invocation: ')
     two_bed_apt_instance.display_derived()

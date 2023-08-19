@@ -19,7 +19,7 @@ class ThreadingUsingQueue:
 
     def pulling_job_from_queue(self) -> None:
         """Pulling job from queue method """
-        print("Running worker ")
+        print('Running worker ')
         time.sleep(0.1)
         item: int
         while True:
@@ -44,7 +44,7 @@ class ThreadingUsingQueue:
     def starting_worker_pool(self, worker_range_val: int) -> None:
         """Starting worker pool method """
         for i in range(worker_range_val):
-            thread_name: str = f"Worker {(i+1)}"
+            thread_name: str = f'Worker {(i+1)}'
             thread = threading.Thread(target=self.pulling_job_from_queue, name=thread_name)
             thread.start()
 

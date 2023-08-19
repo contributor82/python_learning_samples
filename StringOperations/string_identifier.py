@@ -18,7 +18,7 @@ if __name__ == '__main__':
     # Verify if string is valid.
     str_identifier_instance = StringIdentifier()
     str_to_validate: str = 'Hello'
-    print("Original String: ", str_to_validate, "Is String valid identifier : ",
+    print('Original String: ', str_to_validate, 'Is String valid identifier : ',
           str_identifier_instance.is_string_valid_identifier(str_to_validate))
-    print("Original String: ", str_to_validate, "Is string keyword: ",
+    print('Original String: ', str_to_validate, 'Is string keyword: ',
           str_identifier_instance.is_string_keyword(str_to_validate))

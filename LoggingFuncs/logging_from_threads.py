@@ -38,7 +38,7 @@ class LogginFromThreads:
 
             while True:
                 try:
-                    logging.debug("Hi, I am from main thread. ")
+                    logging.debug('Hi, I am from main thread. ')
                     time.sleep(0.75)
                 except KeyboardInterrupt as key_board_interrupt_ex:
                     info['stop']= True

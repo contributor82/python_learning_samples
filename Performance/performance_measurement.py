@@ -7,9 +7,9 @@ class PerformanceMeasurement:
     def swap_numbers(self, num_one: int, num_two: int) -> None:
 
         """Swap numbers method """
-        print ('Numbers before swapping : num_one = ', num_one, " num_two = ", num_two)
+        print ('Numbers before swapping : num_one = ', num_one, ' num_two = ', num_two)
         num_one, num_two = num_two, num_one
-        print ('Numbers after swapping : num_one = ', num_one, " num_two = ", num_two)
+        print ('Numbers after swapping : num_one = ', num_one, ' num_two = ', num_two)
 
 
     def perf_check(self) -> None:

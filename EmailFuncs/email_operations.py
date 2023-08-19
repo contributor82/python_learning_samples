@@ -7,7 +7,7 @@ from email.message import EmailMessage
 # This is as per the python documentation
 class EmailOperations:
     """ Email operations class """
-    host: str = ""
+    host: str = ''
     port: int = 0
     server: smtplib.SMTP
 
@@ -34,7 +34,7 @@ class EmailOperations:
 
         is_send_msg: bool = False
         try:
-            with open(file_name, encoding="UTF-8") as file_handle:
+            with open(file_name, encoding='UTF-8') as file_handle:
                 msg = EmailMessage()
                 msg.set_content(file_handle.read())
 
@@ -58,11 +58,11 @@ class EmailOperations:
         # Send email - causing connection error and not sending message as expected.
         is_send_email: bool = False
         try:
-            fromaddr: str = input("From: ")
-            toaddrs: list[str] = input("To: ").split(",")
-            print("Enter message end with ^D: ")
-            msg: str = ""
-            line: str = ""
+            fromaddr: str = input('From: ')
+            toaddrs: list[str] = input('To: ').split(',')
+            print('Enter message end with ^D: ')
+            msg: str = ''
+            line: str = ''
             line_cnt: int = 0
             while True:
                 line = sys.stdin.readline()
@@ -99,9 +99,9 @@ if __name__ == '__main__':
             eo_instance.quit_server()
 
         eo_from_file_instance = EmailOperations('localhost', 25)
-        msg_txt_file: str = "C:\\Data\\msg_file.txt"
-        sender_email: str = "private.user1@test.com"
-        receiver_email:str = "private.user2@test.com"
+        msg_txt_file: str = 'C:\\Data\\msg_file.txt'
+        sender_email: str = 'private.user1@test.com'
+        receiver_email:str = 'private.user2@test.com'
         if eo_from_file_instance.send_message_from_file(msg_txt_file, sender_email,
                                                         receiver_email) is True:
             eo_from_file_instance.receive_email()

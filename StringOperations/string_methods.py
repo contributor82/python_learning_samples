@@ -77,93 +77,93 @@ if __name__ == '__main__':
 
     org_str: str = 'python'
 
-    print ("Original String: '", org_str,  "' First letter from string: ",
+    print('Original String: ', org_str,  ' First letter from string: ',
            sm_instance.get_first_letter_from_string(org_str))
-    print("Original String: '", org_str,  "'Last letter from word: ",
+    print('Original String: ', org_str,  'Last letter from word: ',
           sm_instance.get_last_letter_from_string(org_str))
     # letters from the beginning position 0
-    print("Original String: '", org_str,  "' First three letters: ",
+    print('Original String: ', org_str,  ' First three letters: ',
           sm_instance.get_first_few_letters_from_string(org_str,3))
     # letters from the beginning position 1
-    print("Original String: '", org_str,  "' First two letters from position 1 : ",
+    print('Original String: ', org_str,  ' First two letters from position 1 : ',
           sm_instance.get_few_letters_from_string(org_str,1,3))
-    print("Getting string length using len string method: ", len("Hello World!"))
-    print("Original String: '", org_str,
-          "' Capitalized first letter of the string using capitalize string method: ",
+    print('Getting string length using len string method: ', len('Hello World!'))
+    print('Original String: ', org_str,
+          ' Capitalized first letter of the string using capitalize string method: ',
           sm_instance.get_first_letter_in_cap_case(org_str))
 
     word_to_case_fold: str = 'NewPython'
 
-    print("Original String: '", word_to_case_fold,
-          "' Case folded given string using casefold string method : ",
+    print('Original String: ', word_to_case_fold,
+          ' Case folded given string using casefold string method : ',
           sm_instance.get_string_case_fold(word_to_case_fold))
 
-    print("Original String: '", org_str,
-          "' Centered a given string by padding given character in remaining spaces: ",
-          sm_instance.get_string_centered_by_padding(org_str,10, "n"))
+    print('Original String: ', org_str,
+          ' Centered a given string by padding given character in remaining spaces: ',
+          sm_instance.get_string_centered_by_padding(org_str,10, 'n'))
 
-    nested_str: str = "String hiding inside string."
+    nested_str: str = 'String hiding inside string.'
 
-    print("Original String: '", nested_str,
-          "'  SubString: ring", " Substring count using count string method: ",
-          sm_instance.get_substring_count(nested_str, "ring", 1,30))
+    print('Original String: ', nested_str,
+          '  SubString: ring', ' Substring count using count string method: ',
+          sm_instance.get_substring_count(nested_str, 'ring', 1,30))
 
-    original_str: str = "Original"
+    original_str: str = 'Original'
 
-    print("Original String: '", original_str,
-          "' Encoded String using encode string method : ",
+    print('Original String: ', original_str,
+          ' Encoded String using encode string method : ',
           sm_instance.get_encoded_string(original_str, 'utf-16', 'strict') )
 
     # str_to_decode = b'x80abc'
     #str_to_decode = 'ê' # not converting to utf-8
 
-    #print("Original String: ", str_to_decode,
+    #print('Original String: ", str_to_decode,
     # " Decoded String using decode string method : ",
-    # sm_instance.get_decoded_string(str_to_decode,"utf-8-sig", "strict"))
-    print("Original String: '", original_str,
-          "' True if original string ends with given letter using endswith string method: ",
-          sm_instance.get_string_ends_with("l", 1, 10)  )
+    # sm_instance.get_decoded_string(str_to_decode,"utf-8-sig", "strict'))
+    print('Original String: ', original_str,
+          ' True if original string ends with given letter using endswith string method: ',
+          sm_instance.get_string_ends_with('l', 1, 10)  )
 
     tab_str: str = '01\t012\t0123\t01234'
 
-    print("Original String: '", tab_str,
-          "' \n Expanding string with the specified tab size using expandtabs string method : ",
+    print('Original String: ', tab_str,
+          ' \n Expanding string with the specified tab size using expandtabs string method : ',
           sm_instance.get_expanded_string(tab_str, 8) )
 
-    # print("Original String: '", original_str,
+    # print('Original String: '", original_str,
     # "' Finding substring position in the given string using find string method:  ",
     # original_str.find("gi",1,10))
 
-    # print("Original String: ", original_str,
+    # print('Original String: ", original_str,
     # " Finding substring position in the given string using index string method:  ",
     # original_str.index("gi",1,10))
 
-    # print("Original String: ", original_str,
+    # print('Original String: ", original_str,
     # " Finding substring position in the given string
     # using index string method ValueError if string not found:  ",
     # original_str.index("di",1,10))
 
     # str = "The sum of 1 + 2 is {0}"
 
-    # print("Original String : ",
+    # print('Original String : ",
     # str,
     # " Formatted string using format string method:  ", str.format(1+2))
 
-    lower_str: str = "lower_str"
+    lower_str: str = 'lower_str'
 
-    print("Original String : ",
+    print(' Original String : ',
           lower_str,
-          " Checking if string is lower using islower string method: ",
+          ' Checking if string is lower using islower string method: ',
           sm_instance.is_string_lower_case(lower_str) )
 
-    upper_str: str = "upper_str"
+    upper_str: str = 'upper_str'
 
-    print("Original String : ", upper_str,
-          " Checking if string is upper using isupper string method: ",
+    print('Original String : ', upper_str,
+          ' Checking if string is upper using isupper string method: ',
           sm_instance.is_string_upper_case(upper_str) )
 
-    white_space_str: str = "  " # True if all chars as white space.  False otherwise.
+    white_space_str: str = '  ' # True if all chars as white space.  False otherwise.
 
-    print("Original String : ", white_space_str,
-          " Checking if string has white space using isspace string method: ",
+    print('Original String : ', white_space_str,
+          ' Checking if string has white space using isspace string method: ',
           sm_instance.contains_white_space(white_space_str))

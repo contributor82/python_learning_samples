@@ -34,7 +34,7 @@ class ThreadPoolExecutorSample:
         """Execute async """
         # Using ThreadPoolExecutor as executor to process the call
         data_from_url : object
-        url: str = ""
+        url: str = ''
         try:
 
             with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -48,10 +48,10 @@ class ThreadPoolExecutorSample:
                     except concurrent.futures.CancelledError as cancelled_error:
                         print(cancelled_error)
                     except concurrent.futures.TimeoutError as time_out_error:
-                        print(f"{url!r} generated an exception {time_out_error.args[0]!r}")
-                        # print("%r generated an exception: %s" % (url, exc))
+                        print(f'{url!r} generated an exception {time_out_error.args[0]!r}')
+                        # print('%r generated an exception: %s" % (url, exc))
                     else:
-                        print(f"{url!r} page is { len(str(data_from_url)) } bytes")
+                        print(f'{url!r} page is { len(str(data_from_url)) } bytes')
                         # print('%r page is %d bytes' % (url, len(str(data_from_url))))
         except RuntimeError as run_time_error:
             print(run_time_error)

@@ -35,8 +35,7 @@ class StatsFuncAvgCentralLocations:
                               weight: list[int | float]) -> float:
         """ Reciprocal of the data values """
         # 3/(1/a + 1/b + 1/c) when a,b,c values are given
-
-        return harmonic_mean(input_data, weights=weight)
+        return harmonic_mean(input_data, weight)
 
     def median_low_of_data(self, input_data: list[float]) -> float:
         """ Returns low median of numeric data values """
@@ -81,26 +80,26 @@ class StatsFuncAvgCentralLocations:
 if __name__ == '__main__':
     stats_funcs_instance = StatsFuncAvgCentralLocations()
     sample_data: list [float] = [20.7, float('NaN'), 19.2, 18.3, float('NaN'), 14.4] # type: ignore
-    print("data elements : ", sample_data)
-    print("sorted data : ", stats_funcs_instance.sort_data(sample_data))
-    print("median of data : ", stats_funcs_instance.median_of_data(sample_data))
+    print('data elements : ', sample_data)
+    print('sorted data : ', stats_funcs_instance.sort_data(sample_data))
+    print('median of data : ', stats_funcs_instance.median_of_data(sample_data))
     clean_data: list[float] = stats_funcs_instance.strip_nan_values(sample_data)
-    print("strip NaN values from input_data:  ", clean_data)
-    print("Sorted clean input_data:  ", stats_funcs_instance.sort_data(clean_data))
-    print("mean of data : ", stats_funcs_instance.mean_of_data(clean_data)) # type: ignore
+    print('strip NaN values from input_data:  ', clean_data)
+    print('Sorted clean input_data:  ', stats_funcs_instance.sort_data(clean_data))
+    print('mean of data : ', stats_funcs_instance.mean_of_data(clean_data)) # type: ignore
     fraction_input_data: list[Fraction | Decimal | float] = [
         Fraction(3, 7), Fraction(1, 21), Fraction(5, 3), Fraction(1, 3)]
 
-    print("mean of fraction data : ",
+    print('mean of fraction data : ',
           stats_funcs_instance.mean_of_data(fraction_input_data))
 
     decimal_input_data: list[Fraction | Decimal | float] = [
-        Decimal("0.25"), Decimal("0.178"), Decimal("0.26"), Decimal("0.65")]
+        Decimal('0.25'), Decimal('0.178'), Decimal('0.26'), Decimal('0.65')]
 
-    print("mean of decimal data : ",
+    print('mean of decimal data : ',
           stats_funcs_instance.mean_of_data(decimal_input_data))
 
-    print("Fast, floating arithmatic mean of data : ",
+    print('Fast, floating arithmatic mean of data : ',
           stats_funcs_instance.fmean_of_data(clean_data))
 
     # Suppose a car travels 40 km/hr for 5 km, and when traffic clears,
@@ -108,36 +107,36 @@ if __name__ == '__main__':
     # What is the average speed?
     car_speed_in_kmhr: list[int | float] = [40, 60]
     distance_traveled_in_km: list[int | float] = [5, 30]
-    print("harmonic mean of data : ", stats_funcs_instance.harmonic_mean_of_data(
+    print('harmonic mean of data : ', stats_funcs_instance.harmonic_mean_of_data(
         car_speed_in_kmhr, distance_traveled_in_km))
 
-    print("geometric mean of data : ",
+    print('geometric mean of data : ',
           stats_funcs_instance.geometric_mean_of_data(clean_data))
 
-    print("median high of data : ",
+    print('median high of data : ',
           stats_funcs_instance.median_high_of_data(clean_data))
 
-    print("median low of data : ",
+    print('median low of data : ',
           stats_funcs_instance.median_low_of_data(clean_data))
 
-    print("median grouped of data : ",
+    print('median grouped of data : ',
           stats_funcs_instance.median_grouped_of_data(clean_data))
 
     numeric_data_elements: list[int | str] = [
         1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6]
-    print("numeric data elements: ", numeric_data_elements)
-    print("mode of numeric input_data: ",
+    print('numeric data elements: ', numeric_data_elements)
+    print('mode of numeric input_data: ',
           stats_funcs_instance.stat_mode(numeric_data_elements))
 
     alphabetic_data_elements: list[int | str] = [
-        "blue", "blue", "blue", "red", "red", "green", "red"]
-    print("alphabetic elements: ", alphabetic_data_elements)
-    print("mode of alphabetic data elements: ",
+        'blue', 'blue', 'blue', 'red', 'red', 'green', 'red']
+    print('alphabetic elements: ', alphabetic_data_elements)
+    print('mode of alphabetic data elements: ',
           stats_funcs_instance.stat_mode(alphabetic_data_elements))
 
-    alphabetic_multidata_elements: str = "aabbccdddddeeeeefffffg"
-    print("Numeric multidata elements: ", alphabetic_multidata_elements)
-    print("mode of input_data: ", stats_funcs_instance.stat_multimode(
+    alphabetic_multidata_elements: str = 'aabbccdddddeeeeefffffg'
+    print('Numeric multidata elements: ', alphabetic_multidata_elements)
+    print('mode of input_data: ', stats_funcs_instance.stat_multimode(
         alphabetic_multidata_elements))
 
     quantile_sample_data: list[int] = [105, 129, 87, 86, 111, 111, 89, 81, 108, 92, 110,
@@ -146,8 +145,8 @@ if __name__ == '__main__':
                    111, 75, 87, 102, 121, 111, 88, 89, 101, 106, 95,
                    103, 107, 101, 81, 109, 104]
 
-    print("sample data for quantile : ", quantile_sample_data)
+    print('sample data for quantile : ', quantile_sample_data)
     result: list[float] = [round(q, 1) for q in
                            stats_funcs_instance.stat_quantiles(quantile_sample_data,
                                                                10, 'exclusive')]
-    print(" Quantile of sample input_data: ", result)
+    print(' Quantile of sample input_data: ', result)

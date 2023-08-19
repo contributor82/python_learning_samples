@@ -2,14 +2,14 @@
 
 class StringConcatenations:
     """String concatenation class """
-    str1: str = "String One"
-    str2: str = "String Two"
-    str3: str = "String Three"
-    str4: str = "String Four"
+    str1: str = 'String One'
+    str2: str = 'String Two'
+    str3: str = 'String Three'
+    str4: str = 'String Four'
 
     def string_concat_using_plus_operator(self) -> str:
         """String Concatenation using + operator method """
-        return self.str1 + " " + self.str2 + " " + self.str3 + " " + self.str4
+        return self.str1 + ' ' + self.str2 + ' ' + self.str3 + ' ' + self.str4
 
 
     def string_concat_using_join(self) -> str:
@@ -23,7 +23,7 @@ class StringConcatenations:
         # Running a loop to append list with specifier
         for str_specifier in mystrings:
             process_strings.append(str_specifier)
-            process_strings.append(" ")
+            process_strings.append(' ')
 
         # Using join to concatenate at one go to generate final string.
         final_str: str = ''.join(process_strings)

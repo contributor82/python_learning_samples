@@ -67,40 +67,40 @@ if __name__ == '__main__':
 
     dict_sample_instance = DictionarySample()
 
-    dict_x:dict[str, object] = {"Key1": "Value1 from X", "Key2": "Value2 from X"}
-    dict_y:dict[str, object] = {"Key3": "Value3 from Y", "Key4": "Value4 from Y"}
+    dict_x:dict[str, object] = {'Key1': 'Value1 from X', 'Key2': 'Value2 from X'}
+    dict_y:dict[str, object] = {'Key3': 'Value3 from Y', 'Key4': 'Value4 from Y'}
 
-    print(" Dictionary X: ", dict_x)
-    print(" Dictionary Y: ", dict_y)
+    print(' Dictionary X: ', dict_x)
+    print(' Dictionary Y: ', dict_y)
     dict_merge:dict[str,object] | RuntimeError = dict_sample_instance.dictioanry_merge(dict_x,
                                                                                         dict_y)
-    print("Merged Dictionary : ", dict_merge)
+    print('Merged Dictionary : ', dict_merge)
 
     str_list: list[str] = ['one', 'two', 'three']
     num_list: list[object] = [1,2,3]
 
-    print(" Key List: ", str_list)
-    print(" Value List: ", num_list)
+    print(' Key List: ', str_list)
+    print(' Value List: ', num_list)
     new_dict:dict[str,object] | RuntimeError = dict_sample_instance.create_dictionary(str_list,
                                                                                        num_list)
-    print("Creating Dictionary from Keys & Values list : ", new_dict)
+    print('Creating Dictionary from Keys & Values list : ', new_dict)
 
-    print("Dictionary before reversing elements: ", dict_x)
+    print('Dictionary before reversing elements: ', dict_x)
     reverse_dict:dict[str, object] | RuntimeError =  dict_sample_instance.reverse_dictionary(dict_x)
-    print("Dictionary after reversing elements: ", reverse_dict)
+    print('Dictionary after reversing elements: ', reverse_dict)
 
     dict_x.clear()
-    dict_x = {"Key1": "Value1 from X", "Key2": "Value2 from X",
-              "Key4": "Value4 from X", "Key3": "Value3 from X"}
+    dict_x = {'Key1': 'Value1 from X', 'Key2': 'Value2 from X',
+              'Key4': 'Value4 from X', 'Key3': 'Value3 from X'}
 
-    print("Dictionary before sorting : ", dict_x)
+    print('Dictionary before sorting : ', dict_x)
     sort_dict:dict[str,object] | RuntimeError =  dict_sample_instance.sort_dictionary(dict_x)
-    print("Dictionary after sorting : ", sort_dict)
+    print('Dictionary after sorting : ', sort_dict)
 
-    vehicle_types: dict[str, object] = {"Type1": "Two wheeler", "Type2": "Three wheeler",
-                                        "Type3": "Four wheeler", "Type4": "Six wheeler",
-                                        "Type5": "Eight Wheeler"}
-    print("Dictionary as input : ", vehicle_types)
+    vehicle_types: dict[str, object] = {'Type1': 'Two wheeler', 'Type2': 'Three wheeler',
+                                        'Type3': 'Four wheeler', 'Type4': 'Six wheeler',
+                                        'Type5': 'Eight Wheeler'}
+    print('Dictionary as input : ', vehicle_types)
     vehicle_item:tuple [str,object]|RuntimeError = dict_sample_instance.get_dictionary_item(
         vehicle_types)
-    print("Popped item from dictionary: ", vehicle_item)
+    print('Popped item from dictionary: ', vehicle_item)

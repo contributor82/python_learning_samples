@@ -9,6 +9,6 @@ class Default(dict[str,int| str]):
         return key
 
 if __name__ == '__main__':
-    input_str: str = "{name} is from {country}"
-    print(input_str.format_map(Default(name="John", country="USA")))
+    input_str: str = '{name} is from {country}'
+    print(input_str.format_map(Default(name='John', country='USA')))
     print(Default(one=1))

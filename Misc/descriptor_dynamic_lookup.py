@@ -13,7 +13,7 @@ class DirectorySize:
 
     def display_dir_list(self)-> None:
         """Display directory size"""
-        print("Directory list : ", self.dir_list)
+        print('Directory list : ', self.dir_list)
 
 
 class Directory:
@@ -27,11 +27,11 @@ class Directory:
 
     def display_dir_path(self)-> None:
         """Display directory path """
-        print("Directory path : ", self.dir_path)
+        print('Directory path : ', self.dir_path)
 
     def display_dir_size(self)-> None:
         """Display directory size """
-        print("Directory size: ", self.dir_size)
+        print('Directory size: ', self.dir_size)
 
 
 if __name__ == '__main__':
@@ -41,6 +41,6 @@ if __name__ == '__main__':
     # A call to _get_ will be placed upon dir_size member invocation.
     # Directory instance will also be passed with it to access its members
     # Pulling the number of files present in the given directory path.
-    # print("Directory size: ", dir_instance.dir_size) # type: ignore
+    # print('Directory size: ", dir_instance.dir_size) # type: ignore
     dir_instance.display_dir_path()
     dir_instance.display_dir_size()

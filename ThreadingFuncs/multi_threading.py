@@ -34,13 +34,13 @@ class AsyncZip(threading.Thread):
         try:
             # checking given file is a zip file
             if zipfile.is_zipfile(self.out_file):
-                print(self.out_file, " is a zipfile")
+                print(self.out_file, ' is a zipfile')
 
             # Reading files from zip file.
             with zipfile.ZipFile(self.out_file, 'r',zipfile.ZIP_DEFLATED) as zip_file_instance:
 
                 # Prints file name list present in archive folder.
-                print("Files present in zip file: ", zip_file_instance.namelist())
+                print('Files present in zip file: ', zip_file_instance.namelist())
 
                 # Zip File extraction
                 for file_zip_info in zip_file_instance.filelist:
@@ -48,19 +48,19 @@ class AsyncZip(threading.Thread):
 
                 print('Finished background zip of: ', self.in_file)
         except OSError as os_error:
-            print("Operating System Error: ", os_error)
+            print('Operating System Error: ', os_error)
         except zipfile.error as zip_file_error:
-            print("Exception: ", zip_file_error.args[0])
+            print('Exception: ', zip_file_error.args[0])
 
 
 if __name__ == '__main__':
     try:
-        txt_file_path: str = "C:\\Data\\mydata.txt"
-        zip_file_path: str = "C:\\Data\\mydata_archive.zip"
-        zip_files_extraction_path : str = "\\Data\\mydata_archive"
+        txt_file_path: str = 'C:\\Data\\mydata.txt'
+        zip_file_path: str = 'C:\\Data\\mydata_archive.zip'
+        zip_files_extraction_path : str = '\\Data\\mydata_archive'
         background = AsyncZip(txt_file_path, zip_file_path, zip_files_extraction_path)
         background.start()
-        print(" The main program continues to run in foreground. ")
+        print(' The main program continues to run in foreground. ')
         background.join()
         print('Main program waited until the background was done. ')
     except threading.ThreadError as thread_error:

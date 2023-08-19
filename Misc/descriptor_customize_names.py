@@ -14,7 +14,7 @@ class LoggedAccess:
 
     def __set_name__(self, owner: object, make: str) -> None:
         self.public_make = make
-        self.private_make = "_" + make
+        self.private_make = '_' + make
 
     def __get__(self, obj: object, objtype: object | None = None)-> None | object:
         """Logging and getting  years_old """
@@ -45,17 +45,17 @@ class Vehicle:
 
     def display_vehicle_dtls(self)-> None:
         """Display person details """
-        print("make: ", self.make, " years_old: ", self.years_old)
+        print('make: ', self.make, ' years_old: ', self.years_old)
 
 if __name__ == '__main__':
     vars(vars(Vehicle)['make'])
     vars(vars(Vehicle)['years_old'])
     vehicle_first_instance = Vehicle('Vehicle one', 26)
-    # print("Using Manyears_old attribute: Vehicle make: ",
+    # print('Using Manyears_old attribute: Vehicle make: ",
     #       vehicle_one.make, " years_old: ", vehicle_one.years_old) #type: ignore
     vehicle_first_instance.birthday()
     vehicle_first_instance.display_vehicle_dtls()
-    # print("After birthday call, Vehicle make: ",
+    # print('After birthday call, Vehicle make: ",
     #       vehicle_one.make, " years_old: ", vehicle_one.years_old) #type: ignore
     vehicle_second_instance = Vehicle('Vehicle second', 28)
     vehicle_second_instance.birthday()

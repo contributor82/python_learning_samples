@@ -36,24 +36,24 @@ class ListComprehensions:
 lc_instance = ListComprehensions()
 
 squares_list: list[int] = [0]
-print("Initial Squares list: ", squares_list)
+print('Initial Squares list: ', squares_list)
 squares_list = lc_instance.list_appending(squares_list, 10)
-print("After appending list using loop & append  function: ", squares_list)
+print('After appending list using loop & append  function: ', squares_list)
 
 new_squares = []
-print("Initial Squares list: ", new_squares)
+print('Initial Squares list: ', new_squares)
 
 new_squares: list[int] = lc_instance.list_appending_using_lambda_expression(10)
-print("After appending list using lambda expression: ", new_squares)
+print('After appending list using lambda expression: ', new_squares)
 
 new_squares_two = []
-print("Initial Squares list: ", new_squares_two)
+print('Initial Squares list: ', new_squares_two)
 
 new_squares_two: list[int] = lc_instance.list_appending_expression(10)
-print("After appending list using for loop: ", new_squares)
+print('After appending list using for loop: ', new_squares)
 
 duplicated_items_in_list: list[int] = [
     1, 2, 1, 4, 2, 4, 3, 5, 6, 7, 3, 4, 8, 9, 8, 5, 10]
-print("Duplicated Items list: ", duplicated_items_in_list)
-print("After removing duplicates from given list: ",
+print('Duplicated Items list: ', duplicated_items_in_list)
+print('After removing duplicates from given list: ',
       lc_instance.list_remove_duplicates(duplicated_items_in_list))

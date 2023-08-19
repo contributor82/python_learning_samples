@@ -17,15 +17,15 @@ if __name__ == '__main__':
     try:
         lambda_exp_instance = LambdaExpressions()
         incrementor: object = lambda_exp_instance.make_incrementor(10)
-        print("Make incrementor for 10 using lambda expressions : ", incrementor(0), # type: ignore
+        print('Make incrementor for 10 using lambda expressions : ', incrementor(0), # type: ignore
             incrementor(1)) # type: ignore
         pairs:list [tuple[int, str]] = [(1, 'one'), (3,'three'),
                                           (5,'five'), (2,'two'), (4, 'four')]
         sorted_pairs:list[
             tuple[int, str]] = lambda_exp_instance.sort_list_using_lambda_expression(
             pairs, lambda pair: pair[0]) # type: ignore
-        print("pairs before sorting: ", pairs)
-        print("pairs after sorting: ", sorted_pairs)
+        print('pairs before sorting: ', pairs)
+        print('pairs after sorting: ', sorted_pairs)
     except ValueError as value_error:
         print(value_error)
     except TypeError as type_error:

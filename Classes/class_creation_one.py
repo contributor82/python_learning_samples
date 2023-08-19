@@ -20,15 +20,15 @@ class TestClass:
 
     def display(self) -> None:
         """ Display class members. """
-        print("Integer member: ", self.int_member)
-        print("String member: ", self.str_member)
+        print('Integer member: ", self.int_member)
+        print('String member: ", self.str_member)
 
 
 if __name__ == '__main__':
     # Class Instance creation
     # tc_instance_one = TestClass() # Not permitted to create an instance with default constructor.
 
-    tc_instance = TestClass(34234, "Test class")
+    tc_instance = TestClass(34234, "Test class')
     tc_instance.display()
 
     tc_instance.int_member = 123123

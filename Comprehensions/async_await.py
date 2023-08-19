@@ -25,24 +25,24 @@ class AsyncAwaitOperations:
     async def task_one(self) -> None:
         """ task one """
         await asyncio.sleep(1)
-        print("First Task")
+        print('First Task')
 
     async def task_two(self) -> None:
         """ task two """
         await asyncio.sleep(1)
-        print("Second Task")
+        print('Second Task')
 
     async def task_exec(self) -> None:
         """ task execution """
         task1 = asyncio.create_task(self.task_one())
         task2 = asyncio.create_task(self.task_two())
 
-        print(f"Starting task execution at {time.strftime('%X')}")
+        print(f"Starting task execution at {time.strftime('%X')}')
 
         await task1
         await task2
 
-        print(f"finished task execution at {time.strftime('%X')}")
+        print(f"finished task execution at {time.strftime('%X')}')
 
 
 if __name__ == '__main__':

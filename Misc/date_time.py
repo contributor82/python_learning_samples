@@ -42,7 +42,7 @@ class DateTimeClass:
         # Running a loop to append list with specifier
         for log_str in logging_strings:
             process_strings.append(log_str)
-            process_strings.append(" ")
+            process_strings.append(' ')
 
         # Using join to concatenate at one go to generate final string.
         logging_msg: str = ''.join(process_strings)

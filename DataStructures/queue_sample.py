@@ -33,7 +33,7 @@ class QueueSample:
 
     def display_fifo_queue(self) -> None:
         """ Display fifo queue """
-        item: str = ""
+        item: str = ''
         try:
             while True:
                 item = self.fifo_queue.get(False)
@@ -45,7 +45,7 @@ class QueueSample:
 
     def display_lifo_queue(self) -> None:
         """ Display lifo queue """
-        item: str = ""
+        item: str = ''
         try:
             while True:
                 item = self.lifo_queue.get(False)
@@ -57,7 +57,7 @@ class QueueSample:
 
     def display_priority_queue(self) -> None:
         """ Display priority queue """
-        item: str = ""
+        item: str = ''
         try:
             while True:
                 item = self.priority_queue.get(False)
@@ -69,7 +69,7 @@ class QueueSample:
 
     def display_simple_queue(self) -> None:
         """ Display simple queue """
-        item: str = ""
+        item: str = ''
         try:
             while True:
                 item = self.simple_queue.get(False)
@@ -82,7 +82,7 @@ class QueueSample:
 
     def get_fifo_queue_element(self) -> str:
         """ Get fifo queue element """
-        item: str = ""
+        item: str = ''
         try:
             item = self.fifo_queue.get(False)
         except queue.Empty as queue_empty:
@@ -91,7 +91,7 @@ class QueueSample:
 
     def get_lifo_queue_element(self) -> str:
         """ Get lifo queue element """
-        item: str = ""
+        item: str = ''
         try:
             item = self.lifo_queue.get(False)
         except queue.Empty as queue_empty:
@@ -100,7 +100,7 @@ class QueueSample:
 
     def get_priority_queue_element(self) -> str:
         """ Get priority queue element """
-        item: str = ""
+        item: str = ''
         try:
             item = self.priority_queue.get(False)
             return item
@@ -110,7 +110,7 @@ class QueueSample:
 
     def get_simple_queue_element(self) -> str:
         """ Get simple queue element """
-        item: str = ""
+        item: str = ''
         try:
             item = self.simple_queue.get(False)
         except queue.Empty as queue_empty:
@@ -126,31 +126,31 @@ if __name__ == '__main__':
     qs_instance = QueueSample()
     qs_instance.init_queue(10)
 
-    qs_instance.append_fifo_queue("Fifo Element 1")
-    qs_instance.append_fifo_queue("Fifo Element 2")
-    qs_instance.append_fifo_queue("Fifo Element 3")
-    qs_instance.append_fifo_queue("Fifo Element 4")
+    qs_instance.append_fifo_queue('Fifo Element 1')
+    qs_instance.append_fifo_queue('Fifo Element 2')
+    qs_instance.append_fifo_queue('Fifo Element 3')
+    qs_instance.append_fifo_queue('Fifo Element 4')
 
-    qs_instance.append_lifo_queue("Lifo Element 1")
-    qs_instance.append_lifo_queue("Lifo Element 2")
-    qs_instance.append_lifo_queue("Lifo Element 3")
-    qs_instance.append_lifo_queue("Lifo Element 4")
+    qs_instance.append_lifo_queue('Lifo Element 1')
+    qs_instance.append_lifo_queue('Lifo Element 2')
+    qs_instance.append_lifo_queue('Lifo Element 3')
+    qs_instance.append_lifo_queue('Lifo Element 4')
 
-    qs_instance.append_priority_queue("Priority Element 1")
-    qs_instance.append_priority_queue("Priority Element 2")
-    qs_instance.append_priority_queue("Priority Element 3")
-    qs_instance.append_priority_queue("Priority Element 4")
+    qs_instance.append_priority_queue('Priority Element 1')
+    qs_instance.append_priority_queue('Priority Element 2')
+    qs_instance.append_priority_queue('Priority Element 3')
+    qs_instance.append_priority_queue('Priority Element 4')
 
-    qs_instance.append_simple_queue("Simple Element 1")
-    qs_instance.append_simple_queue("Simple Element 2")
-    qs_instance.append_simple_queue("Simple Element 3")
-    qs_instance.append_simple_queue("Simple Element 4")
+    qs_instance.append_simple_queue('Simple Element 1')
+    qs_instance.append_simple_queue('Simple Element 2')
+    qs_instance.append_simple_queue('Simple Element 3')
+    qs_instance.append_simple_queue('Simple Element 4')
 
-    print(" fifo queue element: ", qs_instance.get_fifo_queue_element())
-    print(" lifo queue element: ", qs_instance.get_lifo_queue_element())
-    print(" priority queue element: ", qs_instance.get_priority_queue_element())
-    print(" simple queue element: ", qs_instance.get_simple_queue_element())
-    print(" simple queue size: ", qs_instance.get_simple_queue_size())
+    print(' fifo queue element: ', qs_instance.get_fifo_queue_element())
+    print(' lifo queue element: ', qs_instance.get_lifo_queue_element())
+    print(' priority queue element: ', qs_instance.get_priority_queue_element())
+    print(' simple queue element: ', qs_instance.get_simple_queue_element())
+    print(' simple queue size: ', qs_instance.get_simple_queue_size())
 
     qs_instance.display_fifo_queue()
     qs_instance.display_lifo_queue()

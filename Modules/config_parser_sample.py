@@ -44,7 +44,7 @@ class ConfigParserSample:
 
         try:
             cfg_section : None | configparser.SectionProxy = self.cfg[section_name]
-            print("Section : ", cfg_section)
+            print('Section : ', cfg_section)
         except configparser.NoSectionError as no_section_error:
             print(no_section_error)
         except configparser.Error as config_parse_error:
@@ -60,8 +60,8 @@ class ConfigParserSample:
 
 if __name__ == '__main__':
     cp_instance = ConfigParserSample()
-    cp_instance.input_string(""" [s]
-                                list = a b c d e f g """)
+    cp_instance.input_string(''' [s]
+                                list = a b c d e f g ''')
     cp_instance.get_string()
-    cp_instance.is_section_present("s")
-    cp_instance.get_section("s")
+    cp_instance.is_section_present('s')
+    cp_instance.get_section('s')

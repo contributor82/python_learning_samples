@@ -61,14 +61,14 @@ class MathOperations:
 
 if __name__ == '__main__':
     mo_instance =  MathOperations()
-    print("Ceiling of num (5.8) :", mo_instance.ceiling_of_num(5.8))
-    print("Flooring of num (5.8) :", mo_instance.flooring_of_num(5.8))
-    print("Arc cosine of num (15.0) : ", mo_instance.arc_cosine(15.0))
-    print("Inverse hyperbolic cosine of num (15.0) : ", mo_instance.inverse_hyperbolic_cosine(15.0))
-    print("Binomial Coefficient (100,10): ", mo_instance.binomial_coefficient(100, 10))
-    print("Coefficient perm (100,None): ", mo_instance.coefficient_perm(100, None))
-    print("Copy sign of x & y (10.50, -2.5) :  ", mo_instance.copy_sign(10.50, -2.5))
-    print("Greatest common divisor of 15,5,25: ", mo_instance.greatest_common_divisor(15,5,25))
-    print("Least common multiple of 15,10,0: ", mo_instance.least_common_multiple(15,10,0))
-    print("Product of all elements [10,15,5.2,20] : ",
+    print('Ceiling of num (5.8) :', mo_instance.ceiling_of_num(5.8))
+    print('Flooring of num (5.8) :', mo_instance.flooring_of_num(5.8))
+    print('Arc cosine of num (15.0) : ', mo_instance.arc_cosine(15.0))
+    print('Inverse hyperbolic cosine of num (15.0) : ', mo_instance.inverse_hyperbolic_cosine(15.0))
+    print('Binomial Coefficient (100,10): ', mo_instance.binomial_coefficient(100, 10))
+    print('Coefficient perm (100,None): ', mo_instance.coefficient_perm(100, None))
+    print('Copy sign of x & y (10.50, -2.5) :  ', mo_instance.copy_sign(10.50, -2.5))
+    print('Greatest common divisor of 15,5,25: ', mo_instance.greatest_common_divisor(15,5,25))
+    print('Least common multiple of 15,10,0: ', mo_instance.least_common_multiple(15,10,0))
+    print('Product of all elements [10,15,5.2,20] : ',
             mo_instance.product_of_all_elements([10,15,5.2,20]))

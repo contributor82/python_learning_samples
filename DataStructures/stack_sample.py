@@ -24,7 +24,7 @@ class StackSample:
 
     def display_stack(self) -> None:
         """ Display stack elements """
-        print("Stack: ", self.stack)
+        print('Stack: ', self.stack)
 
 
 if __name__ == '__main__':
@@ -42,4 +42,4 @@ if __name__ == '__main__':
     ss_instance.append_stack(10)
     ss_instance.display_stack()
 
-    print(" Get element from stack : ", ss_instance.get_stack_element())
+    print(' Get element from stack : ', ss_instance.get_stack_element())

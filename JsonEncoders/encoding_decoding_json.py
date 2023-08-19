@@ -28,7 +28,7 @@ class JsonOperations:
         """Specialized decoding json method """
         self.dct = data_dict
         if '__complex__' in self.dct :
-            return complex(self.dct["real"], self.dct['imag'])
+            return complex(self.dct['real'], self.dct['imag'])
         return self.dct
 
 
@@ -36,10 +36,10 @@ if __name__ == '__main__':
     try:
         json_ops_instance = JsonOperations()
         json_data : dict[str, float | int] = {'Height':5.3, 'Weight': 65}  # Json data
-        print("Original Data: ", json_data)
-        print("After encoding : ", json_ops_instance.encoding_json(json_data))
-        print("After decoding: ", json_ops_instance.decoding_json())
-        json_str: dict[str, bool | int] = {"__complex__": True, "real": 1, "imag": 2}
+        print('Original Data: ', json_data)
+        print('After encoding : ', json_ops_instance.encoding_json(json_data))
+        print('After decoding: ', json_ops_instance.decoding_json())
+        json_str: dict[str, bool | int] = {'__complex__': True, 'real': 1, 'imag': 2}
         print(json_ops_instance.specialized_decoding_json(json_str))
     except TypeError as type_error:
         print(type_error)
