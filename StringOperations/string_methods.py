@@ -44,9 +44,9 @@ class StringMethods:
     #def get_decoded_string(self, input_str: str, decoding_format: str, error_level:str):
     #    return input_str.decode(decoding_format, error_level)
 
-    def get_string_ends_with(self, letter : str, start: int, end: int) -> bool:
+    def get_string_ends_with(self, input_str: str, letter : str, start: int, end: int) -> bool:
         """Get True/false if string ends with method """
-        return original_str.endswith(letter,start,end)
+        return input_str.endswith(letter,start,end)
 
     def get_expanded_string(self, input_str: str, size_num: int) -> str:
         """Get expanded string """
@@ -64,9 +64,32 @@ class StringMethods:
         """Get string upper case method """
         return input_str.isupper()
 
+    def compare_strings(self, input_str1: str, input_str2: str)-> bool:
+        """Compare two strings and return True/False """
+        are_strings_equal: bool = True
+        len_input_str1: int = len(input_str1)
+        len_input_str2: int = len(input_str2)
+        index: int =0
+        if len_input_str1 == len_input_str2:
+            for index in range(len_input_str1):
+                if input_str1[index] != input_str2[index]:
+                    are_strings_equal = False
+                    break
+        else:
+            print(" Given input strings are not of equal size. ")
+            are_strings_equal = False
+
+        return are_strings_equal
 
 if __name__ == '__main__':
     sm_instance = StringMethods()
+
+    string_one: str = "HelloXJFNscndurn36254xnf3@#$$76%^*(&)A=_/;:::DJDIINmnidvin2514$%&*N"
+    string_two: str = "HelloXJFNscndurn36254xnf3@#$$76%^*(&)A=_/;:::DJDIINmnidvin2514$%&*N"
+
+    print("String one: ", string_one,
+          "\n String two: ", string_two,
+          "\n Strings equal: ", sm_instance.compare_strings(string_one, string_two))
 
     print('C:\n folder1\n folder2')
     print('\\n is considered as new line character. ')
@@ -122,7 +145,7 @@ if __name__ == '__main__':
     # sm_instance.get_decoded_string(str_to_decode,"utf-8-sig", "strict'))
     print('Original String: ', original_str,
           ' True if original string ends with given letter using endswith string method: ',
-          sm_instance.get_string_ends_with('l', 1, 10)  )
+          sm_instance.get_string_ends_with(original_str,'l', 1, 10)  )
 
     tab_str: str = '01\t012\t0123\t01234'
 
