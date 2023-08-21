@@ -14,20 +14,15 @@ class ProductFuncs:
     def load_products(self, csv_file_name: str) -> None:
         """Load products method """
         try:
-         with open(csv_file_name, encoding='utf-8',
-                   mode='r') as csv_file_handle:
-            csv_dict_reader = csv.DictReader(csv_file_handle)
-            for row in csv_dict_reader:
-                product_instance = Product()
-                product_instance.product_id = int(
-                    row['product_id'])
-                product_instance.name = row['name']
-                product_instance.unit_price = float(
-                    row['unit_price'])
-                product_instance.quantity = int(
-                    row['quantity'])
-                self.product_list.append(
-                    product_instance)
+            with open(csv_file_name, encoding='utf-8',mode='r') as csv_file_handle:
+                csv_dict_reader = csv.DictReader(csv_file_handle)
+                for row in csv_dict_reader:
+                    product_instance = Product()
+                    product_instance.product_id = int(row['product_id'])
+                    product_instance.name = row['name']
+                    product_instance.unit_price = float(row['unit_price'])
+                    product_instance.quantity = int(row['quantity'])
+                    self.product_list.append(product_instance)
         except ArgumentError as argument_error:
             print(argument_error)
         except KeyError as key_error:
