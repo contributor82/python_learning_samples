@@ -1,7 +1,32 @@
 """Module for Product functions """
 from argparse import ArgumentError
 import csv
-from product import Product
+
+class Product:
+    """product class """
+    product_id: int
+    name: str
+    unit_price: float
+    quantity: int
+
+    def __init__(self) -> None:
+        """Initializing class members """
+        self.product_id=0
+        self.name=''
+        self.unit_price = 0.0
+        self.quantity =0
+
+    def get_product_stock(self) -> dict[str, int | str]:
+        """Get Product Stock """
+        return {"product_id": self.product_id, "name": self.name, "quantity": self.quantity}
+
+    def display_product_dtls(self)-> None:
+        """Display product details """
+        print("Product ID: ", self.product_id,
+              "Name: ", self.name,
+              "Unit Price:", self.unit_price,
+              "Quantity: ", self.quantity)
+
 
 class ProductFuncs:
     """Product functions """
@@ -27,8 +52,8 @@ class ProductFuncs:
             print(argument_error)
         except KeyError as key_error:
             print(key_error)
-        except FileNotFoundError as file_not_found_error:
-            print(file_not_found_error)
+        except FileNotFoundError as csv_file_not_found_error:
+            print(csv_file_not_found_error)
         except OSError as os_error:
             print(os_error)
 
