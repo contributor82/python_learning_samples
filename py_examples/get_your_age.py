@@ -1,4 +1,5 @@
 """Module for knowing your age """
+__all__ = ['KnowYourAge']
 from datetime import datetime
 class KnowYourAge:
     """Know your age class """

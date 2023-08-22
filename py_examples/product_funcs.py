@@ -1,39 +1,39 @@
 """Module for Product functions """
 
+__all__ = ['ProductFuncs']
+
 from argparse import ArgumentError
 import csv
-from . import product_class
 
+class Product:
+    """product class """
+    product_id: int
+    name: str
+    unit_price: float
+    quantity: int
 
-# class Product:
-#     """product class """
-#     product_id: int
-#     name: str
-#     unit_price: float
-#     quantity: int
+    def __init__(self) -> None:
+        """Initializing class members """
+        self.product_id=0
+        self.name=''
+        self.unit_price = 0.0
+        self.quantity =0
 
-#     def __init__(self) -> None:
-#         """Initializing class members """
-#         self.product_id=0
-#         self.name=''
-#         self.unit_price = 0.0
-#         self.quantity =0
+    def get_product_stock(self) -> dict[str, int | str]:
+        """Get Product Stock """
+        return {"product_id": self.product_id, "name": self.name, "quantity": self.quantity}
 
-#     def get_product_stock(self) -> dict[str, int | str]:
-#         """Get Product Stock """
-#         return {"product_id": self.product_id, "name": self.name, "quantity": self.quantity}
-
-#     def display_product_dtls(self)-> None:
-#         """Display product details """
-#         print("Product ID: ", self.product_id,
-#               "Name: ", self.name,
-#               "Unit Price:", self.unit_price,
-#               "Quantity: ", self.quantity)
+    def display_product_dtls(self)-> None:
+        """Display product details """
+        print("Product ID: ", self.product_id,
+              "Name: ", self.name,
+              "Unit Price:", self.unit_price,
+              "Quantity: ", self.quantity)
 
 
 class ProductFuncs:
     """Product functions """
-    product_list: list[product_class.Product]
+    product_list: list[Product]
 
     def __init__(self) -> None:
         """Initializing product list"""
@@ -45,7 +45,7 @@ class ProductFuncs:
             with open(csv_file_name, encoding='utf-8',mode='r') as csv_file_handle:
                 csv_dict_reader = csv.DictReader(csv_file_handle)
                 for row in csv_dict_reader:
-                    product_instance = product_class.Product()
+                    product_instance = Product()
                     product_instance.product_id = int(row['product_id'])
                     product_instance.name = row['name']
                     product_instance.unit_price = float(row['unit_price'])
@@ -76,9 +76,9 @@ class ProductFuncs:
             print(type_error)
 
 
-    def find_product_by_name(self, product_name:str) -> product_class.Product | None:
+    def find_product_by_name(self, product_name:str) -> Product | None:
         """Find product by name method """
-        found_product: product_class.Product | None = None
+        found_product: Product | None = None
         try:
             for prod in self.product_list:
                 if prod.name == product_name:
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     product_funcs_instance = ProductFuncs()
     product_funcs_instance.load_products('C:\\Data\\products.csv')
     product_funcs_instance.display_products_with_calculated_stock_price()
-    product: product_class.Product | None =  product_funcs_instance.find_product_by_name(
+    product: Product | None =  product_funcs_instance.find_product_by_name(
         'Product two')
 
     if not product is None:

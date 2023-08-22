@@ -1,7 +1,7 @@
 """Module for bag class """
 # An example using class to add elements in Bag collection
 # Returning Bag elements.
-
+__all__ = ['BagClass']
 class BagClass:
     """ Bag class """
     items: list [str] = ['']
