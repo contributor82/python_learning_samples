@@ -1,4 +1,6 @@
 """Module for point """
+
+__all__ = ['Point']
 class Point:
     """Point class """
     int_x: int
@@ -21,5 +23,5 @@ class Point:
         """Displaying point class members """
         print('int x: ', self.int_x, ' int y: ', self.int_y)
 
-# if __name__ == '__main__':
-#     pt_instance = Point(5,10)
+if __name__ == '__main__':
+    pt_instance = Point(5,10)
