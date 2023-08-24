@@ -5,11 +5,11 @@
 
 version: 2
 updates:
-  - package-ecosystem: "python-learning-samples" # See documentation for possible values
+  - package-ecosystem: "python_learning_samples" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-      
+
 - package-ecosystem: "docker"
     directory: "/"
     schedule:

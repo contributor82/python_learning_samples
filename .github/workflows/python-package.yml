@@ -5,9 +5,9 @@ name: Python package
 
 on:
   push:
-    branches: [ "python-learning-samples" ]
+    branches: [ "python_learning_samples" ]
   pull_request:
-    branches: [ "python-learning-samples" ]
+    branches: [ "python_learning_samples" ]
 
 jobs:
   build:
