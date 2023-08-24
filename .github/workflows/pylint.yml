@@ -1,3 +1,5 @@
+# This workflow will perform Python linting operations
+
 name: Pylint
 
 on: [push]
