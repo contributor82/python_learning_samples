@@ -1,6 +1,7 @@
 """Module for Json file operations """
 import json
-
+import os
+path = os.path
 
 class JsonFileOperations:
     """ Class for Json file operations """
@@ -9,26 +10,27 @@ class JsonFileOperations:
         """ Load json data method """
         # Added try..catch block to capture an exception if any.
 
-        load_json_result: str
+        load_json_result: str = ''
         try:
-            with open(file_name, encoding='UTF-8') as file_handle:
-                load_json_result = json.load(file_handle)
+            if path.isfile(file_name):
+                with open(file_name, encoding='UTF-8') as file_handle:
+                    load_json_result = json.load(file_handle)
 
         except FileNotFoundError as load_json_file_not_found_error:
-
             load_json_result =  str(load_json_file_not_found_error)
         return load_json_result
 
 
     def update_json_file(self, file_name: str,  data: str | bytes | bytearray) -> str:
         """ Updating Json file with given data """
-        update_json_result: str
+        update_json_result: str = ''
         try:
-            # File seems opening in write mode but data is not updating and throwing an error
-            with open(file_name, 'w', encoding='UTF-8') as file_handle:
-                # This statement is running but file is not getting updated as expected.
-                json.dump(data, file_handle, sort_keys=True, indent=4)
-                update_json_result = 'File updated'
+            if path.isfile(file_name):
+                # File seems opening in write mode but data is not updating and throwing an error
+                with open(file_name, 'w', encoding='UTF-8') as file_handle:
+                    # This statement is running but file is not getting updated as expected.
+                    json.dump(data, file_handle, sort_keys=True, indent=4)
+                    update_json_result = 'File updated'
         except FileNotFoundError as update_json_file_not_found_err:
             update_json_result = str(update_json_file_not_found_err)
         return update_json_result
