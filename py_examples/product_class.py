@@ -1,6 +1,5 @@
 """"Module for product"""
 import sys
-__all__ = ['Product']
 class Product:
     """product class """
     product_id: int

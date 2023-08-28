@@ -1,12 +1,39 @@
 """Module for Product functions """
 
-__all__ = ['ProductFuncs']
-
 from argparse import ArgumentError
 import csv
-import importlib
-product_class = importlib.import_module('product_class', 'py_examples')
-Product = product_class.Product
+
+# Using import module to import product class from the same directory
+# import importlib
+# product_class = importlib.import_module('product_class', 'py_examples')
+
+# A direct import from product class from the same directory
+from product_class import Product
+
+# class Product:
+#     """product class """
+#     product_id: int
+#     name: str
+#     unit_price: float
+#     quantity: int
+
+#     def __init__(self) -> None:
+#         """Initializing class members """
+#         self.product_id=0
+#         self.name=''
+#         self.unit_price = 0.0
+#         self.quantity =0
+
+#     def get_product_stock(self) -> dict[str, int | str]:
+#         """Get Product Stock """
+#         return {"product_id": self.product_id, "name": self.name, "quantity": self.quantity}
+
+#     def display_product_dtls(self)-> None:
+#         """Display product details """
+#         print("Product ID: ", self.product_id,
+#               "Name: ", self.name,
+#               "Unit Price:", self.unit_price,
+#               "Quantity: ", self.quantity)
 
 class ProductFuncs:
     """Product functions """
