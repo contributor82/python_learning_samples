@@ -4,8 +4,8 @@ from typing import Self
 
 class SingletonClass:
     """ Singleton Class  """
-    int_member: int = 0
-    str_member: str = ''
+    integer_member: int = 0
+    string_member: str = ''
     instance: object = None
 
     def __instancecheck__(self, __instance: object) -> bool:
@@ -14,12 +14,13 @@ class SingletonClass:
 
     def __new__(cls) -> Self:
         """New method """
+        returnable_obj: Self
         if not cls.instance is None:
-            return cls.instance # type: ignore
+            returnable_obj = cls.instance # type: ignore
         else:
             cls.instance = super().__new__(cls)
-            return cls.instance
-
+            returnable_obj = cls.instance
+        return returnable_obj # type: ignore
 
     def get_instance(self, instance: object) -> Self:
         """Getting single instance of a class """
@@ -27,26 +28,26 @@ class SingletonClass:
             instance = SingletonClass()
         return instance # type: ignore
 
-    def get_int_member(self) -> int:
+    def get_integer_member(self) -> int:
         """ Get int member """
-        return self.int_member
+        return self.integer_member
 
-    def get_str_member(self) -> str:
+    def get_string_member(self) -> str:
         """ Get str member """
-        return self.str_member
+        return self.string_member
 
     def display(self) -> None:
         """ Display class members. """
-        print('Integer member: ', self.int_member)
-        print('String member: ', self.str_member)
+        print('Integer member: ', self.integer_member)
+        print('String member: ', self.string_member)
 
 
 if __name__ == '__main__':
 
     sc_instance_one = SingletonClass()
 
-    sc_instance_one.int_member = 34234
-    sc_instance_one.str_member = 'Singleton Class'
+    sc_instance_one.integer_member = 34234
+    sc_instance_one.string_member = 'Singleton Class'
 
     sc_instance_two = SingletonClass()
     # sc_instance_three = SingletonClass()
@@ -57,15 +58,15 @@ if __name__ == '__main__':
 
     sc_instance_one.display()
 
-    # tc_instance_one.int_member = 123123
-    # tc_instance_one.str_member = 'Singleton class one'
+    # tc_instance_one.integer_member = 123123
+    # tc_instance_one.string_member = 'Singleton class one'
 
     sc_instance_one.display()
 
     # tc_instance_two: SingletonClass = tc_instance_one.get_instance(tc_instance_one)
 
-    # tc_instance_two.int_member = 54858056
-    # tc_instance_two.str_member = 'Singleton class two'
+    # tc_instance_two.integer_member = 54858056
+    # tc_instance_two.string_member = 'Singleton class two'
 
     sc_instance_two.display()
 
