@@ -1,4 +1,5 @@
 """Module for File operations """
+import fileinput
 import glob
 import codecs
 import os
@@ -103,6 +104,18 @@ class FileOperations:
         except OSError as os_error:
             print(os_error)
 
+    def read_multiple_files(self, files_list: list[str]) -> None:
+        """Reading multiple files"""
+        try:
+            with fileinput.input(files=files_list, encoding='utf-8') as files_handle:
+                for line in files_handle:
+                    print(line)
+
+        except FileNotFoundError as read_mltples_file_not_found_error:
+            print(read_mltples_file_not_found_error)
+        except OSError as read_mltples_os_error:
+            print(read_mltples_os_error)
+
     def file_copy(self, source_file_name: str, dest_file_name: str) -> None:
         """ File copy method """
         try:
@@ -114,10 +127,24 @@ class FileOperations:
         except shutil.SpecialFileError as special_file_error:
             print(special_file_error)
 
-    def file_wildcards(self) -> None:
+    def file_wildcards(self,path_name: str) -> None:
         """ File wild cards method """
-        files_list: list[str] = glob.glob('*.py')
-        print(files_list)
+        files_list: list[str]
+        try:
+            files_list = glob.glob(path_name)
+            print(files_list)
+        except OSError as file_wildcards_os_error:
+            print(file_wildcards_os_error)
+
+    def get_files_using_wildcards(self,path_name: str) -> list[str]:
+        """ File wild cards method """
+        files_list: list[str] = ['']
+        try:
+            files_list = glob.glob(path_name)
+        except OSError as get_files_os_error:
+            print(get_files_os_error)
+        return files_list
+
 
     def display_file_data(self) -> str | bytes | None:
         """ Returning retrieved file data method """
@@ -160,65 +187,75 @@ if __name__ == '__main__':
         # Creating file operation class object.
         file_instance = FileOperations()
 
-        binary_data_file_name: str = 'C:\\Data\\binarydata.txt'
-        file_instance.read_binarydata_from_file(binary_data_file_name)
+        # binary_data_file_name: str = 'C:\\Data\\binarydata.txt'
+        # file_instance.read_binarydata_from_file(binary_data_file_name)
 
-        old_file_name: str = 'C:\\Data\\tempfile.txt'
-        new_file_name: str = 'C:\\Data\\tempfile_one.txt'
+        # old_file_name: str = 'C:\\Data\\tempfile.txt'
+        # new_file_name: str = 'C:\\Data\\tempfile_one.txt'
 
-        file_instance.rename_file(old_file_name, new_file_name)
+        # file_instance.rename_file(old_file_name, new_file_name)
 
-        latin_data_file_name: str = 'C:\\Data\\latindata.txt'
-        # file_instance.convert_between_file_encoding(latin_data_file_name)
-        # file_instance.convert_latin_data()
+        # latin_data_file_name: str = 'C:\\Data\\latindata.txt'
+        # # file_instance.convert_between_file_encoding(latin_data_file_name)
+        # # file_instance.convert_latin_data()
 
-        file_instance.display_file_data()
+        # file_instance.display_file_data()
 
-        txt_file_name: str = 'C:\\Data\\textfile.txt'
-        # Calling file wildcards method
-        file_instance.file_wildcards()
+        # txt_file_name: str = 'C:\\Data\\textfile.txt'
+        # # Calling file wildcards method
+        # file_instance.file_wildcards('*.py')
 
-        # Calling file read method
-        file_instance.read_file(txt_file_name)
+        # # Calling file read method
+        # file_instance.read_file(txt_file_name)
+
+        # Getting files from folder
+        files: list[str] = file_instance.get_files_using_wildcards('C:\\Data1\\*.*')
+        print('Reading data from files: ', files)
+        # Reading multiple files
+        file_instance.read_multiple_files(files)
 
         # Calling file data and storing returned data in a variable.
-        file_contents: str | bytes | None = file_instance.display_file_data()
+        # file_contents: str | bytes | None = file_instance.display_file_data()
 
-        # Printing returned data.
-        print('Reading current file data: ', file_contents)
+        # # Printing returned data.
+        # print('Reading current file data: ', file_contents)
 
-        # Calling write file operation
-        file_instance.write_file(txt_file_name)
+        # # Calling write file operation
+        # file_instance.write_file(txt_file_name)
 
-        # Calling read file after write operation
-        file_instance.read_file(txt_file_name)
+        # # Calling read file after write operation
+        # file_instance.read_file(txt_file_name)
 
-        # Calling file display data
-        file_contents = file_instance.display_file_data()
+        # # Calling file display data
+        # file_contents = file_instance.display_file_data()
 
-        # Printing file contents after reading.
-        print('Reading after writing file contents: ', file_contents)
+        # # Printing file contents after reading.
+        # print('Reading after writing file contents: ', file_contents)
 
-        # Calling file append
-        file_instance.append_file(txt_file_name)
+        # # Calling file append
+        # file_instance.append_file(txt_file_name)
 
-        # Calling read file after append  operation
-        file_instance.read_file(txt_file_name)
+        # # Calling read file after append  operation
+        # file_instance.read_file(txt_file_name)
 
-        # Calling file display data
-        file_contents = file_instance.display_file_data()
+        # # Calling file display data
+        # file_contents = file_instance.display_file_data()
 
-        # Printing file contents after reading.
-        print('Reading after appending file contents: ', file_contents)
+        # # Printing file contents after reading.
+        # print('Reading after appending file contents: ', file_contents)
 
-        # Calling file close explicitely if file has not been closed.
-        file_instance.close_file()
+        # # Calling file close explicitely if file has not been closed.
+        # file_instance.close_file()
 
-        source_file: str = 'C:\\Data\\sourcefile.txt'
-        dest_file: str = 'C:\\Data\\destinationfile.txt'
-        file_instance.file_copy(source_file,  dest_file)
+        # source_file: str = 'C:\\Data\\sourcefile.txt'
+        # dest_file: str = 'C:\\Data\\destinationfile.txt'
+        # file_instance.file_copy(source_file,  dest_file)
 
-        del_file_name: str = 'C:\\Data\\delfile.txt'
-        file_instance.delete_file(del_file_name)
+        # del_file_name: str = 'C:\\Data\\delfile.txt'
+        # file_instance.delete_file(del_file_name)
+
+
+
+
     except IOError as io_error:
         print(io_error)
