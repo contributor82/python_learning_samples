@@ -1,6 +1,5 @@
 """ Module for Singleton class creation in Python """
-
-from typing import Self
+from typing import Self # type: ignore
 
 class SingletonClass:
     """ Singleton Class  """

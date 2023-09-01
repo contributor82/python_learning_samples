@@ -1,4 +1,6 @@
 """Module for zip importer"""
+import sys
+assert sys.version_info >= (3,10)
 import zipimport
 
 
