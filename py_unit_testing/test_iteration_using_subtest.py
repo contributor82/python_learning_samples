@@ -1,7 +1,6 @@
 """Module for test iteration using subtest"""
-# Distinguishing test iteration using subtests
 import unittest
-
+# Distinguishing test iteration using subtests
 class Numbertests(unittest.TestCase):
     """Number tests class"""
 

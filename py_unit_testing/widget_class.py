@@ -28,3 +28,6 @@ class Widget:
     def dispose(self) -> None:
         """Disposing class instance """
         self.dispose()
+
+if __name__ == '__main__':
+    widget_instance = Widget('Widget class')

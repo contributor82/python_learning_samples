@@ -1,5 +1,4 @@
 """Module for expected failure test case"""
-
 import unittest
 
 class ExpectedFailureClass(unittest.TestCase):

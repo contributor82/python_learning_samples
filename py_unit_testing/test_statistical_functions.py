@@ -1,7 +1,6 @@
 """Module for test statistical Functions"""
 import unittest
 
-
 class TestStatisticalFunctions(unittest.TestCase):
     """ Test statistical functions method """
 
