@@ -39,23 +39,37 @@ class InternetAccess:
 
     def copy_response_to_temp(self, user_provided_temp_file: str) -> None:
         """Copy received response to temp file """
-        # Copying object showing success but object contents not appearing in the file.
+        # Direct object writing is not working.
+        # Temporary file creation is failing even though file path is appearing.
+        # Therefor, applied alternative of creating temp file first, writing contents in it
+        # and then, copying file to user given file.
+        # but due to temporary file wrapper use, file copy operation is failing.
         try:
             self.open_url()
-            # type(HTTPResponse)
             if not self.response_object is None and self.response_object.code == 200: # type: ignore
                 if user_provided_temp_file != '' and os.path.isfile(user_provided_temp_file):
                     with open(user_provided_temp_file, mode='wb+') as user_temp_file:
-                            print('Temp file name: ', user_provided_temp_file)
-                            shutil.copyfileobj(self.response_object, user_temp_file) # type: ignore
+                            print('User Temp file name: ', user_provided_temp_file)
+                            with tempfile.NamedTemporaryFile(mode='wb+', prefix='response_') as new_temp_file:
+                                print('Temp file name: ', new_temp_file.name)
+                                for url_content_line in self.url_contents:
+                                    encoded_data = url_content_line.encode("utf-8")
+                                    bytes_array = bytearray(encoded_data)
+                                    new_temp_file.write(bytes_array) # type: ignore
+                                shutil.copyfile(new_temp_file, user_temp_file) # type: ignore
+                            # shutil.copyfileobj(self.url_contents,user_temp_file) # type: ignore
                 else:
                     with tempfile.NamedTemporaryFile(delete=False) as temp_file:
                             print('Temp file name: ', temp_file.name)
                             shutil.copyfileobj(self.response_object, temp_file) # type: ignore
-
+                            shutil.copyfileobj(self.url_contents,temp_file) # type: ignore
                     print(' Response copied successfully. ')
             else:
                 raise HTTPError(str(self.url),-1,'Response Error','Empty headers', None) # type: ignore
+        except AttributeError as temp_file_attribute_error:
+            print(temp_file_attribute_error)
+        except ValueError as temp_file_value_error:
+            print(temp_file_value_error)
         except FileNotFoundError as temp_file_not_found_error:
             print(temp_file_not_found_error)
         except OverflowError as obj_overflow_error:
@@ -67,5 +81,7 @@ if __name__ == '__main__':
     internet_access_instance = InternetAccess('http://worldtimeapi.org/api/timezone/etc/UTC.txt')
     internet_access_instance.open_url()
     internet_access_instance.display_url_contents()
-    internet_access_instance.copy_response_to_temp('')
     internet_access_instance.copy_response_to_temp('C:\\Data\\response_holder_file.txt')
+    internet_access_instance.copy_response_to_temp('')
+
+
