@@ -3,6 +3,7 @@ import zipimport
 
 
 class ZipImporterModule:
+    """Zip importer module class"""
     zip_import_instance: zipimport.zipimporter
 
     def __init__(self, zip_file_path: str) -> None:
@@ -19,8 +20,8 @@ class ZipImporterModule:
     def get_zip_file_data(self, file_path:str) -> None:
         """ Get zip file """
         try:
-           zip_file_data: bytes = self.zip_import_instance.get_data(file_path)
-           print(zip_file_data)
+            zip_file_data: bytes = self.zip_import_instance.get_data(file_path)
+            print(zip_file_data)
         except FileNotFoundError as zip_file_not_found_error:
             print(zip_file_not_found_error)
         except zipimport.ZipImportError as get_zip_import_error:
