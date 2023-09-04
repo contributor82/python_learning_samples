@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{806e125e-823d-46c0-88f7-7ae6437adebb}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>__init__.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".vs\python-learning\ColorByRegexConfig.txt" />
+    <Content Include="Data\binarydata.txt" />
+    <Content Include="Data\delfile.txt" />
+    <Content Include="Data\destinationfile.txt" />
+    <Content Include="Data\json_to_write.txt" />
+    <Content Include="Data\latindata.txt" />
+    <Content Include="Data\sourcefile.txt" />
+    <Content Include="Data\tempfile.txt" />
+    <Content Include="Data\textfile.txt" />
+    <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="py_api_socket_calls\socket_calls.py" />
+    <Compile Include="py_class_creation\abstract_class.py" />
+    <Compile Include="py_class_creation\class_creation_one.py" />
+    <Compile Include="py_class_creation\class_creation_two.py" />
+    <Compile Include="py_class_creation\nested_classes.py" />
+    <Compile Include="py_class_creation\__init__.py" />
+    <Compile Include="py_class_creation\__main__.py" />
+    <Compile Include="py_comprehensions\async_await.py" />
+    <Compile Include="py_comprehensions\async_comprehensions.py" />
+    <Compile Include="py_comprehensions\dictionary_comprehension.py" />
+    <Compile Include="py_comprehensions\tcp_echo_client.py" />
+    <Compile Include="py_comprehensions\__init__.py" />
+    <Compile Include="py_comprehensions\__main__.py" />
+    <Compile Include="py_data_operations\db_operations.py" />
+    <Compile Include="py_data_operations\mem_db_operations.py" />
+    <Compile Include="py_data_operations\pickle_operations.py" />
+    <Compile Include="py_data_operations\__init__.py" />
+    <Compile Include="py_data_operations\__main__.py" />
+    <Compile Include="py_data_structures\deque_creation.py" />
+    <Compile Include="py_data_structures\dictionary_funcs.py" />
+    <Compile Include="py_data_structures\list_comprehension.py" />
+    <Compile Include="py_data_structures\queue_creation.py" />
+    <Compile Include="py_data_structures\stack_creation.py" />
+    <Compile Include="py_data_structures\__init__.py" />
+    <Compile Include="py_data_structures\__main__.py" />
+    <Compile Include="py_descriptors\descriptor_customize_names.py" />
+    <Compile Include="py_descriptors\descriptor_dynamic_lookup.py" />
+    <Compile Include="py_descriptors\descriptor_manage_attribute.py" />
+    <Compile Include="py_descriptors\__init__.py" />
+    <Compile Include="py_descriptors\__main__.py" />
+    <Compile Include="py_email_funcs\email_operations.py" />
+    <Compile Include="py_email_funcs\__init__.py" />
+    <Compile Include="py_email_funcs\__main__.py" />
+    <Compile Include="py_examples\bag_class.py" />
+    <Compile Include="py_examples\get_your_age.py" />
+    <Compile Include="py_examples\product.py" />
+    <Compile Include="py_examples\product_funcs.py" />
+    <Compile Include="py_examples\__init__.py" />
+    <Compile Include="py_file_operations\csv_file_operations.py" />
+    <Compile Include="py_file_operations\file_operations.py" />
+    <Compile Include="py_file_operations\json_file_operations.py" />
+    <Compile Include="py_file_operations\xml_file_operations.py" />
+    <Compile Include="py_file_operations\__init__.py" />
+    <Compile Include="py_file_operations\__main__.py" />
+    <Compile Include="py_inheritance\multilevel_inheritance.py" />
+    <Compile Include="py_inheritance\multiple_inheritance.py" />
+    <Compile Include="py_inheritance\single_inheritance.py" />
+    <Compile Include="py_inheritance\__init__.py" />
+    <Compile Include="py_inheritance\__main__.py" />
+    <Compile Include="py_json_encoders\complex_encoder.py" />
+    <Compile Include="py_json_encoders\encoding_decoding_json.py" />
+    <Compile Include="py_json_encoders\__init__.py" />
+    <Compile Include="py_json_encoders\__main__.py" />
+    <Compile Include="py_local\py_cmd_exec_local.py" />
+    <Compile Include="py_local\py_module_import.py" />
+    <Compile Include="py_local\__init__.py" />
+    <Compile Include="py_local\__main__.py" />
+    <Compile Include="py_logging_funcs\assert_logging.py" />
+    <Compile Include="py_logging_funcs\logging_from_threads.py" />
+    <Compile Include="py_logging_funcs\logging_to_file.py" />
+    <Compile Include="py_logging_funcs\__init__.py" />
+    <Compile Include="py_logging_funcs\__main__.py" />
+    <Compile Include="py_misc\as_a_calculator.py" />
+    <Compile Include="py_misc\build_in_functions.py" />
+    <Compile Include="py_misc\date_time.py" />
+    <Compile Include="py_misc\file_wild_cards.py" />
+    <Compile Include="py_misc\generator_expressions.py" />
+    <Compile Include="py_misc\lambda_expressions.py" />
+    <Compile Include="py_misc\math_operations.py" />
+    <Compile Include="py_misc\memory_allocation_trace.py" />
+    <Compile Include="py_misc\os_interface.py" />
+    <Compile Include="py_misc\student_class.py" />
+    <Compile Include="py_misc\__init__.py" />
+    <Compile Include="py_misc\__main__.py" />
+    <Compile Include="py_modules\arg_parse_module.py" />
+    <Compile Include="py_modules\config_parser_module.py" />
+    <Compile Include="py_modules\ssl_module.py" />
+    <Compile Include="py_modules\stats_module_avg_central_loc.py" />
+    <Compile Include="py_modules\stats_module_measures_of_spread.py" />
+    <Compile Include="py_modules\stats_module_relation_between_inputs.py" />
+    <Compile Include="py_modules\urllib_module.py" />
+    <Compile Include="py_modules\zipimporter_module.py" />
+    <Compile Include="py_modules\__init__.py" />
+    <Compile Include="py_modules\__main__.py" />
+    <Compile Include="py_patterns\color_enum.py" />
+    <Compile Include="py_patterns\db_factory_class.py" />
+    <Compile Include="py_patterns\nested_patterns.py" />
+    <Compile Include="py_patterns\point_class.py" />
+    <Compile Include="py_patterns\simple_patterns.py" />
+    <Compile Include="py_patterns\singleton_class.py" />
+    <Compile Include="py_patterns\__init__.py" />
+    <Compile Include="py_patterns\__main__.py" />
+    <Compile Include="py_perf_funcs\perf_measurement.py" />
+    <Compile Include="py_perf_funcs\__init__.py" />
+    <Compile Include="py_perf_funcs\__main__.py" />
+    <Compile Include="py_string_operations\string_concatenations.py" />
+    <Compile Include="py_string_operations\string_format_mapping.py" />
+    <Compile Include="py_string_operations\string_identifier.py" />
+    <Compile Include="py_string_operations\string_methods.py" />
+    <Compile Include="py_string_operations\string_pattern_matching.py" />
+    <Compile Include="py_string_operations\string_prefix_methods.py" />
+    <Compile Include="py_string_operations\__init__.py" />
+    <Compile Include="py_string_operations\__main__.py" />
+    <Compile Include="py_threading_funcs\multi_threading.py" />
+    <Compile Include="py_threading_funcs\process_pool_executor_funcs.py" />
+    <Compile Include="py_threading_funcs\threading_using_queue.py" />
+    <Compile Include="py_threading_funcs\thread_pool_executor_funcs.py" />
+    <Compile Include="py_threading_funcs\__init__.py" />
+    <Compile Include="py_threading_funcs\__main__.py" />
+    <Compile Include="py_unit_testing\class_skipping.py" />
+    <Compile Include="py_unit_testing\expected_failure_test.py" />
+    <Compile Include="py_unit_testing\isolated_async_io_test.py" />
+    <Compile Include="py_unit_testing\organizing_unit_tests.py" />
+    <Compile Include="py_unit_testing\skipping_test_and_expected_failure.py" />
+    <Compile Include="py_unit_testing\test_class_methods.py" />
+    <Compile Include="py_unit_testing\test_iteration_using_subtest.py" />
+    <Compile Include="py_unit_testing\test_module_load.py" />
+    <Compile Include="py_unit_testing\test_statistical_functions.py" />
+    <Compile Include="py_unit_testing\unit_test_magic_mock.py" />
+    <Compile Include="py_unit_testing\unit_test_mock.py" />
+    <Compile Include="py_unit_testing\widget_class.py" />
+    <Compile Include="py_unit_testing\__init__.py" />
+    <Compile Include="py_unit_testing\__main__.py" />
+    <Compile Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\" />
+    <Folder Include=".vs\python-learning" />
+    <Folder Include="Data" />
+    <Folder Include="py_api_socket_calls" />
+    <Folder Include="py_class_creation" />
+    <Folder Include="py_comprehensions" />
+    <Folder Include="py_data_operations" />
+    <Folder Include="py_data_structures" />
+    <Folder Include="py_descriptors" />
+    <Folder Include="py_email_funcs" />
+    <Folder Include="py_examples" />
+    <Folder Include="py_file_operations" />
+    <Folder Include="py_inheritance" />
+    <Folder Include="py_json_encoders" />
+    <Folder Include="py_local" />
+    <Folder Include="py_logging_funcs" />
+    <Folder Include="py_misc" />
+    <Folder Include="py_modules" />
+    <Folder Include="py_patterns" />
+    <Folder Include="py_perf_funcs" />
+    <Folder Include="py_string_operations" />
+    <Folder Include="py_threading_funcs" />
+    <Folder Include="py_unit_testing" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.11" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

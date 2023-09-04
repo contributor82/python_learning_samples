@@ -1,5 +1,4 @@
 """"Module for product"""
-import sys
 class Product:
     """product class """
     product_id: int
@@ -26,6 +25,7 @@ class Product:
               "Quantity: ", self.quantity)
 
 
+
 if __name__ == '__main__':
-    print(" package: ", __package__, " name: ", __name__)
-    print(" sys.path[0]: ", sys.path[0], " package: ", __package__)
+    prod_instance = Product()
+    print(prod_instance.get_product_stock())
