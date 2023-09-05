@@ -72,7 +72,7 @@ class StringPatternMatching:
 
     def detect_double_words(self, input_str: str) -> str:
         """Detect double words method """
-        final_str: str | None = ''
+        final_str: str = ''
         search_pattern: regExp.Pattern[str] = regExp.compile(r'\b(\w+)\s+\1\b')
         result: regExp.Match[str] | None = search_pattern.search(input_str)
         if result is not None:

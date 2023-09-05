@@ -9,7 +9,7 @@ assert sys.version_info >= (3,10)
 #point_class = importlib.import_module('point_class', 'py_patterns')
 #Point = point_class.Point
 
-from py_patterns.point_class import Point
+from ..py_patterns.point_class import Point
 
 
 class SimplePatterns:
