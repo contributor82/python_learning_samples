@@ -1,9 +1,11 @@
 """ Module for Nested patterns: patterns can be arbitrarily nested."""
 import sys
 assert sys.version_info >= (3,10)
-import importlib
-point_class =  importlib.import_module('point_class','py_patterns')
-Point = point_class.Point
+#import importlib
+#point_class =  importlib.import_module('point_class','py_patterns')
+#Point = point_class.Point
+
+from ..py_patterns.point_class import Point
 
 class NestedPatterns:
     """Nested patterns class """
@@ -34,19 +36,19 @@ class NestedPatterns:
             print(nested_pattern_one_value_error)
 
 
-    def nested_pattern_sample_two(self, points : list[Point | None]) -> None:
+    def nested_pattern_sample_two(self, points_verify : list[Point | None]) -> None:
         """Nested pattern sample two method """
         # In this nested pattern sample function, a list input is matched against the case pattern
         # and output is printed.
         # currently not matching pattern as expected
         try:
-            match points:
-                case []: print("No points in the list")
-                case [Point(x=0,y=0)]: print("Origin is the only point in the list")
-                case [Point(x_val=0,y_val=5)]: print("A single point x,y in the list")
-                case [Point(x=0,y=0),Point(x=0,y=5)]:
+            match points_verify: #type: ignore
+                case []: print("No points in the list") #type: ignore
+                case [Point(x=0,y=0)]: print("Origin is the only point in the list") #type: ignore
+                case [Point(x_val=0,y_val=5)]: print("A single point x,y in the list") #type: ignore
+                case [Point(x=0,y=0),Point(x=0,y=5)]: #type: ignore
                     print("Two points on Y axis y1, y2 are in the list")
-                case [Point(0,0),Point(0,5)]:
+                case [Point(0,0),Point(0,5)]: #type: ignore
                     print("Two points on Y axis.")
                 case _:
                     print("Something found in the list")
@@ -58,7 +60,7 @@ class NestedPatterns:
 if __name__ == '__main__':
     nested_patterns_instance = NestedPatterns()
     #Created points list and passing for pattern matching.
-    dict_one = {}
+    dict_one: dict[int | str, Point | str ] = {}
     nested_patterns_instance.nested_pattern_sample_one(dict_one)
 
     dict_two: dict[int | str, Point | str ] = {1:Point(0,0) }
@@ -76,7 +78,7 @@ if __name__ == '__main__':
     points_list_trial_one: list[Point | None] = []
     nested_patterns_instance.nested_pattern_sample_two(points_list_trial_one)
 
-    points_list_trial_two: list[Point | None] = [Point, Point]
+    points_list_trial_two: list[Point | None] = [Point, Point] #type: ignore
     nested_patterns_instance.nested_pattern_sample_two(points_list_trial_two)
 
     points_list_trial_three: list[Point | None] = [Point(x_val=0,y_val=0), Point(x_val=0, y_val=5)]

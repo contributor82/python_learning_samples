@@ -1,9 +1,11 @@
 """Module for built in functions in Python """
 import itertools
 import random
-import importlib
-student_class = importlib.import_module('student_class', 'py_misc')
-Student = student_class.Student
+#import importlib
+#student_class = importlib.import_module('student_class', 'py_misc')
+#Student = student_class.Student
+
+from ..py_misc.student_class import Student
 # import sys
 # sys.path.append('./Misc')
 # from student_class import Student #type:ignore
@@ -58,7 +60,6 @@ class BuiltInFunctions:
         """New iterators method - DO NOT USE"""
         return itertools.count(start, step_val)
 
-
 if __name__ == '__main__':
     try:
         bif_instance = BuiltInFunctions()
@@ -86,10 +87,11 @@ if __name__ == '__main__':
 
         print("Students tuple prior sorting : ", students)
         print("Sorted students tuple: ", bif_instance.tuple_sorting(students))
+        stud_field_val: int | str = lambda student: student[0] # type: ignore
+
         print("Sorted students tuple by specific field (name): ",
             bif_instance.tuple_sorting_by_specific_sorting(students,
-                                                            lambda
-                                                            student: student[0])) # type: ignore
+                                                            stud_field_val)) # type: ignore
 
         student_objects: list[Student] = [
             Student('Sachin', 'A', 15),
@@ -98,10 +100,11 @@ if __name__ == '__main__':
         ]
 
         print("Students prior sorting by age : ", student_objects)
+        stud_field_val = lambda student: student.age # type: ignore
+
         print("Sorted students tuple by specific field (age): ",
             bif_instance.tuple_sorting_by_specific_sorting(student_objects,
-                                                            lambda
-                                                            student: student.age)) # type: ignore
+                                                            stud_field_val)) # type: ignore
         print("New Iterators: ", bif_instance.new_iterators(0,5))
     except ValueError as value_error:
         print(value_error)

@@ -11,12 +11,12 @@ class OperatingSystemInterface:
         """Getting module functions list method """
         return dir(os)
 
-    def get_module_help(self) -> object:
-        """Getting module help """
-        return help(os)
+    #def get_module_help(self) -> None:
+    #    """Getting module help """
+    #    print('Module Help: ', help(os))
 
 if __name__ == '__main__':
     os_interface_instance = OperatingSystemInterface()
     print('Current Working directory: ', os_interface_instance.get_current_working_dir())
     print('Module Functions list: ', os_interface_instance.get_module_func_list())
-    print('Module Help: ', os_interface_instance.get_module_help())
+    # os_interface_instance.get_module_help()

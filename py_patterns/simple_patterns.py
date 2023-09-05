@@ -67,14 +67,14 @@ class SimplePatterns:
         # appropriate output.
         try:
             match point:
-                case Point(x=0, y=0): print("Origin is the point's location")
-                case Point(x=0, y=y_val): #type: ignore
+                case Point(int_x=0, int_y=0): print("Origin is the point's location")
+                case Point(int_x=0, int_y=y_val): #type: ignore
                     print(f"Y={y_val} and the point is on y axis") #type: ignore
-                case Point(x=x_val, y=0): #type: ignore
+                case Point(int_x=x_val, int_y=0): #type: ignore
                     print(f"X={x_val} and the point is on x axis") #type: ignore
-                case Point(x=x_val, y=y_val): #type: ignore
+                case Point(int_x=x_val, int_y=y_val): #type: ignore
                     print(f"X={x_val} and Y={y_val} and the point is on x & y axis")
-                case Point(): print("The point is on somewhere on the graph")
+                case Point(5,10): print("The point is on somewhere on the graph") #type: ignore
                 case _: print("No point")
         except TypeError as type_error:
             print(type_error)
