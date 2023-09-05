@@ -15,7 +15,7 @@ class SingletonClass:
         """New method """
         returnable_obj: Self
         if cls.instance is None:
-           cls.instance = super().__new__(cls)
+            cls.instance = super().__new__(cls)
         returnable_obj = cls.instance # type: ignore
         return returnable_obj # type: ignore
 

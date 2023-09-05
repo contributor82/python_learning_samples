@@ -40,17 +40,17 @@ if __name__ == '__main__':
     squares_list = lc_instance.list_appending(squares_list, 10)
     print('After appending list using loop & append  function: ', squares_list)
 
-    new_squares = []
-    print('Initial Squares list: ', new_squares)
+    empty_squares: list[str] = []
+    print('Initial Squares list: ', empty_squares)
 
     new_squares: list[int] = lc_instance.list_appending_using_lambda_expression(10)
     print('After appending list using lambda expression: ', new_squares)
 
-    new_squares_two = []
-    print('Initial Squares list: ', new_squares_two)
+    empty_squares_two : list[str] = []
+    print('Initial Squares list: ', empty_squares_two)
 
     new_squares_two: list[int] = lc_instance.list_appending_expression(10)
-    print('After appending list using for loop: ', new_squares)
+    print('After appending list using for loop: ', new_squares_two)
 
     duplicated_items_in_list: list[int] = [
         1, 2, 1, 4, 2, 4, 3, 5, 6, 7, 3, 4, 8, 9, 8, 5, 10]

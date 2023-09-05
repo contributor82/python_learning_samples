@@ -11,14 +11,14 @@ class Widget:
         self.x_val =0
         self.y_val =0
 
-    def size(self) -> tuple[int, int]:
+    def size_widget(self) -> tuple[int, int]:
         """Sizing members method """
         self.x_val = 50
         self.y_val = 50
 
         return (self.x_val, self.y_val)
 
-    def resize(self,resize_x: int,resize_y: int) -> tuple[int, int]:
+    def resize_widget(self,resize_x: int,resize_y: int) -> tuple[int, int]:
         """Resizing members method """
         self.x_val = resize_x
         self.y_val = resize_y
@@ -27,7 +27,7 @@ class Widget:
 
     def dispose(self) -> None:
         """Disposing class instance """
-        self.dispose()
+        self.dispose() # type: ignore
 
 if __name__ == '__main__':
     widget_instance = Widget('Widget class')

@@ -16,13 +16,13 @@ class DefaultWidgetSizeTestCase(unittest.TestCase):
     def test_default_widget_size(self) -> None:
         """ Test default widget size method """
         self.set_up()
-        self.assertEqual(self.widget.size(), (50, 50), 'Default sizing')
+        self.assertEqual(self.widget.size_widget(), (50, 50), 'Default sizing')
 
     def test_widget_resize(self) -> None:
         """ Test widget resize method """
         self.set_up()
-        self.widget.resize(100,150)
-        self.assertEqual(self.widget.size(), (100, 150), 'Wrong size after resize')
+        self.widget.resize_widget(100,150)
+        self.assertEqual(self.widget.size_widget(), (100, 150), 'Wrong size after resize')
 
     def tear_down(self) -> None:
         """ Test tear down method """

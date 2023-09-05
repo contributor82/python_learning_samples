@@ -55,8 +55,8 @@ if __name__ == '__main__':
     print('Derived Class One method invocation: ',  derived1_instance.display_derived1())
 
     # Invoked Base class method
-    print('Base Class method invocation using second derived class object : ',
-          derived2_instance.display_base())
+    print('Base Class method invocation using second derived class object : \n')
+    derived2_instance.display_base()
 
     # Invoked Derived class one method.
     print('Derived Class One method invocation: ',  derived2_instance.display_derived1())

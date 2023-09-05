@@ -1,7 +1,7 @@
 """Module for Product functions """
 import csv
 from argparse import ArgumentError
-from product import Product
+from .product_class import Product
 
 class ProductFuncs:
     """Product functions """

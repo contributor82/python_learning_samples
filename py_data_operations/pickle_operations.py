@@ -3,24 +3,7 @@
 # The pickle module is not secure, only unpickle data you trust - Python docs.
 
 import pickle
-
-class SampleClass:
-    """ Sample class """
-    sample_int: int
-    sample_str: str
-
-    def __init__(self) -> None:
-        """ Initialize Sample class members """
-        self.sample_int = 0
-        self.sample_str = 'Sample class'
-
-    def get_sample_int(self)-> int:
-        """ Get sample int method """
-        return self.sample_int
-
-    def get_sample_str(self)-> str:
-        """ Get sample str method """
-        return self.sample_str
+from .sample_class import SampleClass
 
 class ObjectPickleUnpickle:
     """ Object serialize de-serialize using pickle """
@@ -28,7 +11,7 @@ class ObjectPickleUnpickle:
     pickled_bytes: bytes
     unpickled_instance: pickle.Unpickler
 
-    def pickle_object(self, instance_to_serialize: SampleClass) -> None:
+    def pickle_object(self, instance_to_serialize: SampleClass) -> None:#type: ignore
         """ Function to serialize object using pickle """
 
         self.pickled_bytes = pickle.dumps(instance_to_serialize)
@@ -65,13 +48,13 @@ class ObjectPickleUnpickle:
 
 if __name__ == '__main__':
     opu_instance = ObjectPickleUnpickle()
-    sample_instance = SampleClass()
-    opu_instance.pickle_object(sample_instance)  # type: ignore
+    sample_instance = SampleClass() #type: ignore
+    opu_instance.pickle_object(sample_instance)  #type: ignore
     opu_instance.display_pickled_object_stream()
 
     opu_instance.unpickle_object()
     if opu_instance.unpickled_instance is SampleClass:
-        print(opu_instance.unpickled_instance.get_sample_str())
+        print(opu_instance.unpickled_instance.get_sample_str()) #type: ignore
 
         data_to_pickle = {
             'NumSeries': [1, 2.0, 3+4j],
