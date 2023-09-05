@@ -11,7 +11,7 @@ class OperatingSystemInterface:
         """Getting module functions list method """
         return dir(os)
 
-    def get_module_help(self) -> None:
+    def get_module_help(self) -> object:
         """Getting module help """
         return help(os)
 

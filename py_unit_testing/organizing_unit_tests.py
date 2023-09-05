@@ -1,9 +1,9 @@
 """Module for organizing unit tests """
 import unittest
-import importlib
-
-widget_class = importlib.import_module('widget_class', 'py_unit_testing')
-Widget = widget_class.Widget
+#import importlib
+#widget_class = importlib.import_module('widget_class', 'py_unit_testing')
+#Widget = widget_class.Widget
+from .widget_class import Widget
 
 class DefaultWidgetSizeTestCase(unittest.TestCase):
     """ Default widget size test case class """

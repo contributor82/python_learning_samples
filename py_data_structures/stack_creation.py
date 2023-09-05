@@ -3,11 +3,11 @@
 
 class StackCreation:
     """Stack creation class """
-    stack = []
+    stack: list[int] = [int] # type: ignore
 
-    def init_stack(self)-> None:
-        """ Initialize stack """
-        self.stack = [type(int)]
+    #def init_stack(self)-> None:
+    #    """ Initialize stack """
+    #    self.stack = [int]
 
     def append_stack(self, element: int) ->  None:
         """ Append stack """
@@ -29,7 +29,7 @@ class StackCreation:
 
 if __name__ == '__main__':
     sc_instance = StackCreation()
-    sc_instance.init_stack()
+    # sc_instance.init_stack()
     sc_instance.append_stack(1)
     sc_instance.append_stack(2)
     sc_instance.append_stack(3)

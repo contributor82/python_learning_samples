@@ -5,9 +5,11 @@ import sys
 # sys.path.append('../py_patterns/point_class')
 # import point_class
 assert sys.version_info >= (3,10)
-import importlib
-point_class = importlib.import_module('point_class', 'py_patterns')
-Point = point_class.Point
+#import importlib
+#point_class = importlib.import_module('point_class', 'py_patterns')
+#Point = point_class.Point
+
+from py_patterns.point_class import Point
 
 
 class SimplePatterns:
@@ -38,18 +40,19 @@ class SimplePatterns:
             error_msg = str(value_error)
         return error_msg
 
-    def match_point(self, point: tuple[int,int] | str) -> None:
+    def match_point(self, point_verify: tuple[int,int] | str) -> None:
         """Match point method """
         # Simple Pattern : Patterns with a literal and variable
         # In this example, point(x,y) has been used for pattern matching to print
         # what values have been passed.
         try:
-            match point:
+            match point_verify:
                 case (0, 0): print('Origin')
                 case (0,y_val): print(f"Y={y_val}")
                 case (x_val,0): print(f"X={x_val}")
                 case (x_val,y_val): print(f"X={x_val}, Y={y_val}")
                 case '_': raise ValueError #type: ignore
+                case _: pass
         except TypeError as type_error:
             print(type_error)
         except ValueError as value_error:
@@ -81,6 +84,6 @@ class SimplePatterns:
 if __name__ == '__main__':
     sp_instance = SimplePatterns()
     print("Http Error : ", sp_instance.http_error(418))
-    sp_instance.match_point(point=(5,5))
+    sp_instance.match_point((5,5))
     input_point = Point(2,3)
     sp_instance.location(input_point)
