@@ -15,3 +15,7 @@ class NormalDB:
             cls.normal_db_instance = super().__new__(cls)
         return_normal_db_obj = cls.normal_db_instance # type: ignore
         return return_normal_db_obj
+
+    def display(self)-> None:
+        """Display"""
+        print("Normal DB")

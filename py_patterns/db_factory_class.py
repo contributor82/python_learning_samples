@@ -1,7 +1,8 @@
 """Module for Database factory """
+from typing import Self
 from .memdb_class import MemDB
 from .normaldb_class import NormalDB
-from typing import Self
+
 
 class DbFactory:
     """Database factory """
@@ -37,32 +38,30 @@ class DbFactory:
 
 
 if __name__ == '__main__':
-    db_factory_instance =  DbFactory()
-    db_factory_instance.get_factory_name()
+    db_factory_instance_one: DbFactory =  DbFactory()
+    db_factory_instance_one.get_factory_name()
 
-    db_factory_instance_two =  DbFactory()
+    db_factory_instance_two: DbFactory =  DbFactory()
     db_factory_instance_two.get_factory_name()
 
-    print(db_factory_instance is db_factory_instance_two)
+    print(db_factory_instance_one is db_factory_instance_two)
 
-    db_instance_one: object = None
-    db_instance_one = db_factory_instance.get_db_instance('memory')
+    db_instance_one: object | None = None #type: ignore
+    db_instance_one = db_factory_instance_one.get_db_instance('memory')
     if not db_instance_one is None:
         print(type(db_instance_one).__name__)
 
-    db_instance_two: object = None
-    db_instance_two = db_factory_instance.get_db_instance('memory')
+    db_instance_two: object | None = None #type: ignore
+    db_instance_two = db_factory_instance_one.get_db_instance('memory')
     if not db_instance_two is None:
         print(type(db_instance_two).__name__)
         print(db_instance_one is db_instance_two)
 
-    db_instance_one = None
-    db_instance_one = db_factory_instance.get_db_instance('db')
+    db_instance_one = db_factory_instance_one.get_db_instance('db')
     if not db_instance_one is None:
         print(type(db_instance_one).__name__)
 
-    db_instance_two = None
-    db_instance_two = db_factory_instance.get_db_instance('db')
+    db_instance_two = db_factory_instance_one.get_db_instance('db')
     if not db_instance_two is None:
         print(type(db_instance_two).__name__)
         print(db_instance_one is db_instance_two)

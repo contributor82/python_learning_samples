@@ -14,3 +14,7 @@ class MemDB:
             cls.mem_db_instance = super().__new__(cls)
         return_mem_db_obj = cls.mem_db_instance # type: ignore
         return return_mem_db_obj
+
+    def display(self)-> None:
+        """Display"""
+        print("Memory DB")

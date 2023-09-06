@@ -60,6 +60,11 @@ class BuiltInFunctions:
         """New iterators method - DO NOT USE"""
         return itertools.count(start, step_val)
 
+
+def get_student_age()-> int:
+    """Get Student's age """
+    return lambda student: student.age # type: ignore
+
 if __name__ == '__main__':
     try:
         bif_instance = BuiltInFunctions()
@@ -87,7 +92,7 @@ if __name__ == '__main__':
 
         print("Students tuple prior sorting : ", students)
         print("Sorted students tuple: ", bif_instance.tuple_sorting(students))
-        stud_field_val: int | str = lambda student: student[0] # type: ignore
+        stud_field_val: int | str = lambda student: student[0] #type: ignore
 
         print("Sorted students tuple by specific field (name): ",
             bif_instance.tuple_sorting_by_specific_sorting(students,
@@ -100,11 +105,11 @@ if __name__ == '__main__':
         ]
 
         print("Students prior sorting by age : ", student_objects)
-        stud_field_val = lambda student: student.age # type: ignore
+        stud_field_val = get_student_age() # lambda student: student.age #type: ignore
 
         print("Sorted students tuple by specific field (age): ",
             bif_instance.tuple_sorting_by_specific_sorting(student_objects,
-                                                            stud_field_val)) # type: ignore
+                                                            stud_field_val)) #type: ignore
         print("New Iterators: ", bif_instance.new_iterators(0,5))
     except ValueError as value_error:
         print(value_error)
