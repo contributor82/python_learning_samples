@@ -32,17 +32,15 @@ class XMLFileOperations:
         node_occurrences: list[Element] = [Element('')]
         try:
             search_xml_document: DOMEventStream = pulldom.parse(self.xml_file_path)
-            for node in search_xml_document: #type: ignore
-                # event == pulldom.START_DOCUMENT and
-                if node.nodeName == element: # type: ignore
+            for event, node in search_xml_document: #type: ignore
+                if event == pulldom.START_DOCUMENT and node.nodeName == element: # type: ignore
                     search_xml_document.expandNode(node) #type: ignore
                     node_occurrences.append(node) #type: ignore
-                else:
-                    if len(node.childNodes) > 0: # type: ignore
-                        for child_node in node.childNodes: #type: ignore
-                            if child_node.nodeName == element: #type: ignore
-                                search_xml_document.expandNode(child_node) #type: ignore
-                                node_occurrences.append(node) # type: ignore
+                elif len(node.childNodes) > 0: # type: ignore
+                    for child_node in node.childNodes: #type: ignore
+                        if child_node.nodeName == element: #type: ignore
+                            search_xml_document.expandNode(child_node) #type: ignore
+                            node_occurrences.append(node) # type: ignore
 
         except ParseError as get_node_occ_parse_error:
             print(get_node_occ_parse_error)
@@ -53,28 +51,44 @@ class XMLFileOperations:
 
         return node_occurrences
 
+    def get_num_of_nodes(self, element_name: str, dom_event_stream: DOMEventStream)-> int:
+        """Get number of nodes """
+        num_of_nodes: int =0
+        for node in dom_event_stream: #type: ignore
+            # event == pulldom.START_DOCUMENT and
+            if node.nodeName == element_name: # type: ignore
+                dom_event_stream.expandNode(node) #type: ignore
+                num_of_nodes += 1
+            elif len(node.childNodes) > 0: # type: ignore
+                for child_node in node.childNodes: # type: ignore
+                    if child_node.nodeName == element_name: # type: ignore
+                        dom_event_stream.expandNode(child_node) # type: ignore
+                        num_of_nodes += 1
+        return num_of_nodes
+
+
     def get_node_count(self, element: str)-> int:
         """Get node count """
         node_count: int =0
         try:
             search_xml_document: DOMEventStream = pulldom.parse(self.xml_file_path)
-            for node in search_xml_document: #type: ignore
-                # event == pulldom.START_DOCUMENT and
-                if node.nodeName == element: # type: ignore
+            # node_count = self.get_num_of_nodes(element, search_xml_document)
+            for event, node in search_xml_document: #type: ignore
+                if event == pulldom.START_DOCUMENT and node.nodeName == element: #type: ignore
                     search_xml_document.expandNode(node) #type: ignore
                     node_count += 1
-                else:
-                    if len(node.childNodes) > 0: # type: ignore
-                        for child_node in node.childNodes: # type: ignore
-                            if child_node.nodeName == element: # type: ignore
-                                search_xml_document.expandNode(child_node) # type: ignore
-                                node_count += 1
+                elif len(node.childNodes) > 0: #type: ignore
+                    for child_node in node.childNodes: #type: ignore
+                        if child_node.nodeName == element: #type: ignore
+                            search_xml_document.expandNode(child_node) #type: ignore
+                            node_count += 1
         except ParseError as get_node_xml_parse_error:
             print(get_node_xml_parse_error)
         except ValueError as get_node_value_error:
             print(get_node_value_error)
         except TypeError as get_node_type_error:
             print(get_node_type_error)
+
         return node_count
 
 if __name__ == '__main__':
@@ -82,11 +96,11 @@ if __name__ == '__main__':
     xml_file_ops_instance.parse_xml()
     print("\n\n ")
 
-    print('Node Name: ', 'indentOptions')
+    print('Node Name: ', 'codeStyleSettings')
 
-    node_occurs: list[Element] = xml_file_ops_instance.get_node_occurrences('indentOptions')
+    node_occurs: list[Element] = xml_file_ops_instance.get_node_occurrences('codeStyleSettings')
     print('Node occurrences: ')
     for node_occ in node_occurs:
         print(node_occ.toxml())
 
-    print('Node count: ', xml_file_ops_instance.get_node_count('indentOptions'))
+    print('Node count: ', xml_file_ops_instance.get_node_count('codeStyleSettings'))
