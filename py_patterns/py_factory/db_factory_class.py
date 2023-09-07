@@ -1,7 +1,7 @@
 """Module for Database factory """
 from typing import Self
-from .memdb_class import MemDB
-from .normaldb_class import NormalDB
+from memdb_class import MemDB
+from normaldb_class import NormalDB
 
 
 class DbFactory:
