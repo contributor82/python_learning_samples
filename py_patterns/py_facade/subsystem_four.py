@@ -7,7 +7,7 @@ class SubsystemFour(Subsystem):
 
     def __init__(self) -> None:
         """Initializing Subsystem four class """
-        pass
+        print("Initializing Subsystem four")
 
     def operation_one(self)-> None:
         """Operation one method"""

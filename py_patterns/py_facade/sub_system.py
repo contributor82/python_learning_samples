@@ -5,7 +5,7 @@ class Subsystem:
 
     def __init__(self) -> None:
         """Initializing Subsystem """
-        pass
+        print("Initializing Subsystem ")
 
     def sub_system_main_one(self)-> None:
         """Sub system one """
