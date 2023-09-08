@@ -5,10 +5,6 @@ from sub_system import Subsystem
 class SubsystemOne(Subsystem):
     """Subsystem one class"""
 
-    def __init__(self) -> None:
-        """Initializing Subsystem one class """
-        print("Initializing Subsystem One ")
-
     def sub_system_one(self)-> None:
         """Sub system one """
         print ("Sub system one ")
