@@ -6,8 +6,8 @@ class ClientTwo:
     generate_request: Facade
 
     def __init__(self) -> None:
+        """Initializing generate request """
         self.generate_request = Facade()
-
 
     def create_request(self)-> None:
         """create request """

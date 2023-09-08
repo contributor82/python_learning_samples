@@ -6,6 +6,7 @@ class SubsystemFour(Subsystem):
     """Subsystem Four class"""
 
     def __init__(self) -> None:
+        """Initializing Subsystem four class """
         pass
 
     def operation_one(self)-> None:

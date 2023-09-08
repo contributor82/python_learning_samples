@@ -8,6 +8,7 @@ from subsystem_four import SubsystemFour
 
 
 class Facade:
+    """Facade class"""
     sub_sys_one: SubsystemOne = SubsystemOne()
     sub_sys_two: SubsystemTwo = SubsystemTwo()
     sub_sys_three: SubsystemThree = SubsystemThree()
@@ -16,6 +17,7 @@ class Facade:
     client_request: list[Subsystem]
 
     def __init__(self) -> None:
+        """Initializing client request """
         self.client_request = []
 
     def get_client_request(self, request: list[str]) -> None:
@@ -28,7 +30,7 @@ class Facade:
                 elif request_param == 'Two':
                     self.client_request.append(self.sub_sys_two)
                 elif request_param == 'Three':
-                   self.client_request.append(self.sub_sys_three)
+                    self.client_request.append(self.sub_sys_three)
                 elif request_param == 'Four':
                     self.client_request.append(self.sub_sys_four)
         else:
@@ -38,7 +40,7 @@ class Facade:
     def process_client_request(self) -> None:
         """Process Client Request """
 
-        if len(self.client_request):
+        if len(self.client_request) > 0: # type: ignore
             for request_item in self.client_request:
                 if request_item is self.sub_sys_one:
                     self.sub_sys_one.operation_one()
