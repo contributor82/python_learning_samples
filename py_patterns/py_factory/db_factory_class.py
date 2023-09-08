@@ -1,5 +1,4 @@
 """Module for Database factory """
-from typing import Self
 from memdb_class import MemDB
 from normaldb_class import NormalDB
 
@@ -8,12 +7,12 @@ class DbFactory:
     """Database factory """
     db_factory_instance: object = None
     name: str = 'Database factory'
-    mem_db_instance: MemDB = MemDB()
-    normal_db_instance: NormalDB = NormalDB()
+    mem_db_instance: MemDB = MemDB() # type: ignore
+    normal_db_instance: NormalDB = NormalDB() # type: ignore
 
-    def __new__(cls) -> Self:
+    def __new__(cls) -> object:
         """ Database factory class single instance  """
-        return_db_factory_obj: Self
+        return_db_factory_obj: object
         if cls.db_factory_instance is None:
             cls.db_factory_instance = super().__new__(cls)
 
@@ -38,10 +37,10 @@ class DbFactory:
 
 
 if __name__ == '__main__':
-    db_factory_instance_one: DbFactory =  DbFactory()
+    db_factory_instance_one: DbFactory =  DbFactory() # type: ignore
     db_factory_instance_one.get_factory_name()
 
-    db_factory_instance_two: DbFactory =  DbFactory()
+    db_factory_instance_two: DbFactory =  DbFactory() # type: ignore
     db_factory_instance_two.get_factory_name()
 
     print(db_factory_instance_one is db_factory_instance_two)
