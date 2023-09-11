@@ -7,7 +7,7 @@ class ClientTwo:
 
     def __init__(self) -> None:
         """Initializing generate request """
-        self.generate_request = Facade()
+        self.generate_request = Facade() # type: ignore
 
     def create_request(self)-> None:
         """create request """

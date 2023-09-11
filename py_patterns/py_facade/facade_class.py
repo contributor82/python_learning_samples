@@ -14,11 +14,22 @@ class Facade:
     sub_sys_three: SubsystemThree = SubsystemThree()
     sub_sys_four: SubsystemFour = SubsystemFour()
     sub_sys: Subsystem
-    client_request: list[Subsystem]
+    client_request: list[Subsystem] = []
+    facade_instance: object = None
 
-    def __init__(self) -> None:
-        """Initializing client request """
-        self.client_request = []
+    # def __init__(self) -> None:
+    #     """Initializing client request """
+    #     self.client_request = []
+
+    def __new__(cls) -> object:
+        """Getting only single instance of facade """
+        returnable_obj: object
+        if cls.facade_instance is None:
+            cls.facade_instance = super().__new__(cls)
+
+        returnable_obj = cls.facade_instance # type: ignore
+        return returnable_obj # type: ignore
+
 
     def get_client_request(self, request: list[str]) -> None:
         """Get Client Request """
