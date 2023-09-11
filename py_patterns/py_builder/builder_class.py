@@ -9,6 +9,15 @@ class BuilderProductClass:
     int_member: int = 0
     str_member: str = ""
     product: BaseProduct | None
+    builder_instance : object = None
+
+    def __new__(cls) -> object:
+        return_builder_obj: object = None
+        if cls.builder_instance is None:
+            cls.builder_instance = super().__new__(cls)
+
+        return_builder_obj = cls.builder_instance
+        return return_builder_obj
 
     def build_product(self)-> None:
         """Build Product """

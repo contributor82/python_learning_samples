@@ -13,7 +13,7 @@ class ClientOneClass:
 
     def __init__(self) -> None:
         """Initializing Client one class """
-        self.director_class =  DirectorClass(BuilderProductClass(), DerivedProductTwo())
+        self.director_class =  DirectorClass(BuilderProductClass(), DerivedProductTwo()) # type: ignore
 
 
     def develop_product(self)-> None:

@@ -9,11 +9,23 @@ class DirectorClass:
     """Class for director"""
     builder_product_class: BuilderProductClass
     product_request: BaseProduct
+    director_instance: object = None
 
-    def __init__(self, builder_product: BuilderProductClass, prod_req:BaseProduct) -> None:
-        """Initializing client one class"""
-        self.builder_class = builder_product
-        self.product_request = prod_req
+    # def __init__(self, builder_product: BuilderProductClass, prod_req:BaseProduct) -> None:
+    #     """Initializing client one class"""
+    #     self.builder_class = builder_product
+    #     self.product_request = prod_req
+
+    def __new__(cls, builder_product: BuilderProductClass, prod_req:BaseProduct) -> object:
+        return_director_obj = None
+        """Director class instance """
+        if cls.director_instance is None:
+            cls.director_instance = super().__new__(cls)
+            cls.builder_class = builder_product
+            cls.product_request = prod_req
+
+        return_director_obj = cls.director_instance
+        return return_director_obj
 
     def build_product(self)-> None:
         """Build Product """
