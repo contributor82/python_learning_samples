@@ -32,14 +32,16 @@ class UrlUsingCert:
     def enable_https_cert_verification(self)-> None:
         """Enable https cert verification by creating context """
         try:
-            self.ssl_context = ssl._create_default_https_context(cafile= self.cert_file_path) #type:ignore
+            self.ssl_context = ssl._create_default_https_context( #type:ignore
+                cafile= self.cert_file_path) #type:ignore
         except OSError as enable_https_cert_os_error:
             print(enable_https_cert_os_error)
 
     def open_url_with_cert(self) -> None:
         """Open internet url and read data method """
         try:
-            with urllib.request.urlopen(self.url, context=self.ssl_context) as response:
+            with urllib.request.urlopen(self.url,
+                                        context=self.ssl_context) as response:
                 self.response_object = response
                 for line in response:
                     line = line.decode() # Convert bytes to a str
@@ -54,8 +56,9 @@ class UrlUsingCert:
         except AttributeError as url_attr_error:
             print(url_attr_error)
 
+
 if __name__ == '__main__':
-   url_using_cert_instance =  UrlUsingCert('https://localhost:443',
+   url_using_cert_instance = UrlUsingCert('https://localhost:443',
                                            'C:\\Users\vaibh\\.cert\\localhost.pfx')
    url_using_cert_instance.enable_http_cert_verification()
    url_using_cert_instance.open_url_with_cert()
