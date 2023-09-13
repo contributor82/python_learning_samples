@@ -11,11 +11,6 @@ class DirectorClass:
     product_request: BaseProduct
     director_instance: object = None
 
-    # def __init__(self, builder_product: BuilderProductClass, prod_req:BaseProduct) -> None:
-    #     """Initializing client one class"""
-    #     self.builder_class = builder_product
-    #     self.product_request = prod_req
-
     def __new__(cls, builder_product: BuilderProductClass, prod_req:BaseProduct) -> object:
         return_director_obj = None
         """Director class instance """
