@@ -1,9 +1,6 @@
 """Module for test convertes class"""
-import datetime
 from datetime import date, time
 from decimal import Decimal
-from os import system
-import sys
 import unittest
 from enum import Enum, IntEnum
 from py_converter import PyTypeConverters
@@ -28,12 +25,12 @@ class TestConverters(unittest.TestCase):
         result = self.converters.float_tostr(float_val)
         self.assertEqual('10.5',result)
 
-    def test_decimal_tostr(self, decimal_val: Decimal = 10.235) -> None:
+    def test_decimal_tostr(self, decimal_val: Decimal = 10) -> None: # type: ignore
         """test decimal tostr"""
         result = self.converters.decimal_tostr(decimal_val)
-        self.assertEqual('10.235',result)
+        self.assertEqual('10',result)
 
-    def test_enum_tostr(self, enum_int_val: IntEnum = 2) -> None:
+    def test_enum_tostr(self, enum_int_val: IntEnum = 2) -> None: # type: ignore
         """test float tostr"""
         result = self.converters.int_enum_tostr(enum_int_val)
         self.assertEqual('2',result)

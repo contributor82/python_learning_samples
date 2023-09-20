@@ -12,7 +12,6 @@ class Color(Enum):
     GREEN = 1
     BLUE = 2
 
-
 class PyTypeConverters:
     """Py Type Converters"""
 
@@ -84,11 +83,10 @@ class PyTypeConverters:
 
         return matched_format
 
+
     def str_todate(self,date_str: str)-> date:
         """String to date conversion """
-        year: int =0
-        month: int = 0
-        day: int = 0
+        year, month, day = 0,0,0
         try:
             date_str_len = len(date_str)
             if date_str_len > 10:
@@ -98,8 +96,8 @@ class PyTypeConverters:
             match date_format:
                 case  'dd-mm-yyyy' | 'dd-mm-yy':
                     for str_piece in date_str_pieces:
-                        int_piece =  int(str_piece)
-                        len_str_piece: int = len(str_piece)
+                        int_piece = int(str_piece)
+                        len_str_piece:int = len(str_piece)
                         if day == 0:
                             if len_str_piece in (1,2) and int_piece in range(1,32):
                                 day = int_piece
@@ -107,14 +105,16 @@ class PyTypeConverters:
                             if len_str_piece in (1,2) and int_piece in range(1,13):
                                 month = int_piece
                         elif year == 0:
-                            if len_str_piece in (4,2) and int_piece in range(1,date.today().year +1):
+                            if len_str_piece in (4,2) and int_piece in range(
+                                1,date.today().year +1):
                                 year = int_piece
                 case 'yyyy-mm-dd' | 'yy-mm-dd':
                     for str_piece in date_str_pieces:
                         int_piece =  int(str_piece)
                         len_str_piece: int = len(str_piece)
                         if year == 0:
-                            if len_str_piece in (4,2) and int_piece in range(1,date.today().year+1):
+                            if len_str_piece in (4,2) and int_piece in range(
+                                1,date.today().year+1):
                                 year = int_piece
                         elif month == 0:
                             if len_str_piece in (1,2) and int_piece in range(1,13):
