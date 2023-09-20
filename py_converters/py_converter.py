@@ -94,9 +94,9 @@ class PyTypeConverters:
             if date_str_len > 10:
                 raise ValueError('Invalid date string.')
             date_format: str = self.get_str_date_format(date_str)
+            date_str_pieces: list[str] = date_str.split('-')
             match date_format:
                 case  'dd-mm-yyyy' | 'dd-mm-yy':
-                    date_str_pieces: list[str] = date_str.split('-')
                     for str_piece in date_str_pieces:
                         int_piece =  int(str_piece)
                         len_str_piece: int = len(str_piece)
@@ -110,7 +110,6 @@ class PyTypeConverters:
                             if len_str_piece in (4,2) and int_piece in range(1,date.today().year +1):
                                 year = int_piece
                 case 'yyyy-mm-dd' | 'yy-mm-dd':
-                    date_str_pieces: list[str] = date_str.split('-')
                     for str_piece in date_str_pieces:
                         int_piece =  int(str_piece)
                         len_str_piece: int = len(str_piece)
