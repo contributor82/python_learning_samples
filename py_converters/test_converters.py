@@ -4,7 +4,6 @@ from decimal import Decimal
 import unittest
 from enum import Enum, IntEnum
 from py_converter import PyTypeConverters
-from typing import Type
 class Color(Enum):
     """Color enumeration class """
     RED = 0
@@ -67,7 +66,7 @@ class TestConverters(unittest.TestCase):
         result: Decimal = self.converters.str_todecimal(decimal_val)
         self.assertEqual(10.0,result)
 
-    def test_str_toenum(self, enum_type: Enum = Color, enum_val: str = "RED") -> None:
+    def test_str_toenum(self, enum_type: Enum = Color, enum_val: str = "RED") -> None: #type: ignore
         """test string to enum conversion """
         result: Enum = self.converters.str_toenum(enum_type, enum_val)
         self.assertEqual(Color.RED,result)
