@@ -72,9 +72,14 @@ class TestConverters(unittest.TestCase):
         result: Enum = self.converters.str_toenum(enum_type, enum_val)
         self.assertEqual(Color.RED,result)
 
-    def test_str_todate(self, date_val: str = '2023-09-24')->None:
+    def test_str_todate_one(self, date_val_one: str = '2023-09-24')->None:
         """test string to date conversion """
-        result: date = self.converters.str_todate(date_val)
+        result: date = self.converters.str_todate(date_val_one)
+        self.assertEqual(date(2023,9,24),result)
+
+    def test_str_todate_two(self, date_val_two: str = '24-09-2023')->None:
+        """test string to date conversion """
+        result: date = self.converters.str_todate(date_val_two)
         self.assertEqual(date(2023,9,24),result)
 
 if __name__ == '__main__':
