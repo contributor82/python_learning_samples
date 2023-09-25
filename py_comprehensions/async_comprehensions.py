@@ -14,8 +14,6 @@ import time
 # but getting RuntimeWarning: corountine 'async_for' was never awaited.
 
 # Async comprehensions
-
-
 class AsyncComprehensions:
     """ Asynchronous comprehensions class """
 
@@ -36,7 +34,6 @@ class AsyncComprehensions:
 
     async def async_with(self, file_name: str) -> None:
         """ asynchronous with """
-
         file_handle: TextIOWrapper
         data: str = ''
         try:
@@ -51,7 +48,6 @@ class AsyncComprehensions:
 
     async def counter(self) -> None:
         """ counter """
-
         await asyncio.sleep(1)
         print('1')
         await asyncio.sleep(2)
@@ -66,12 +62,10 @@ class AsyncComprehensions:
 
 
 if __name__ == '__main__':
-
     t: float = time.perf_counter()
     ac_instance = AsyncComprehensions()
     sample_data: list[int] = [1, 2, 3, 4, 5]
     txt_file_name: str = 'C:\\Data\\textfile.txt'
     asyncio.run(ac_instance.gather_all(sample_data, txt_file_name))
     t2: float = time.perf_counter()
-
     print(f'Total time elapsed: {t2:0.2f} seconds')
