@@ -1,6 +1,6 @@
 """Module for tkinter Hello World"""
 
-from tkinter import *
+from tkinter import * #type: ignore
 from tkinter import ttk
 
 class TkUse:
@@ -34,7 +34,10 @@ class TkUse:
 
     def create_line(self)-> None:
         """Create line"""
-        ttk.Separator(self.frm, orient=HORIZONTAL).grid(column=0, row=5, columnspan=37, sticky=('W', 'E'))
+        ttk.Separator(self.frm, orient=HORIZONTAL).grid(column=0,
+                                                        row=5,
+                                                        columnspan=37,
+                                                        sticky='E')
 
     def display(self)-> None:
         """Display frame with button and label """
