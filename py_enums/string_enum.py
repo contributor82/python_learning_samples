@@ -1,6 +1,6 @@
 """Module for Message types enum """
 
-from enum import Enum, StrEnum, _simple_enum, auto #type: ignore
+from enum import StrEnum, _simple_enum #type: ignore
 
 @_simple_enum(StrEnum) #type: ignore
 class MessageTypes:

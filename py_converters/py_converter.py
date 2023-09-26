@@ -51,9 +51,10 @@ class PyTypeConverters:
         """String to decimal conversion """
         return Decimal(decimal_str)
 
-    def str_toenum(self, enum_type: Enum, enum_str: str) -> Enum:
-        """String to enumeration conversion """
-        return Enum.__getattribute__(enum_type,enum_str)
+    # Causing (unnecessary-dunder-call)
+    # def str_toenum(self, enum_type: Enum, enum_str: str) -> Enum:
+    #     """String to enumeration conversion """
+    #     return Enum.__getattribute__(enum_type,enum_str)
 
     # def str_tointenum(self, int_enum_str: str) -> IntEnum:
     #     return  IntEnum(int(int_enum_str))
@@ -64,9 +65,9 @@ class PyTypeConverters:
     def get_str_date_format(self,input_str: str)->str:
         """ Get string date format """
         matched_format: str = ''
+        #dd-mm-yyyy:\d{1,2}-\d{1,2}-\d{4}
+        #yyyy-mm-dd:\d{4}-\d{1,2}-\d{1,2}
 
-        # \d{1,2}-\d{1,2}-\d{4} - dd-mm-yyyy
-        # \d{4}-\d{1,2}-\d{1,2} - yyyy-mm-dd
         dd_mm_yyyy_or_yy_format:  regExp.Match[str] | None = None
         yyyy_or_yy_mm_dd_format: regExp.Match[str] | None = None
 
@@ -80,13 +81,55 @@ class PyTypeConverters:
             matched_format = 'dd-mm-yyyy'
         elif yyyy_or_yy_mm_dd_format is not None:
             matched_format = 'yyyy-mm-dd'
-
         return matched_format
 
+    def get_dd_mm_yyyy_or_dd_mm_yy(self,
+                                   date_pieces : list[str]) -> tuple[int, int, int]:
+        """Get dd-mm-yyyy or dd-mm-yy values"""
+        year: int = 0
+        month:int = 0
+        day: int = 0
+        for str_piece in date_pieces:
+            int_piece = int(str_piece)
+            len_str_piece:int = len(str_piece)
+            if day == 0:
+                if len_str_piece in (1,2) and int_piece in range(1,32):
+                    day = int_piece
+            elif month == 0:
+                if len_str_piece in (1,2) and int_piece in range(1,13):
+                    month = int_piece
+            elif year == 0:
+                if len_str_piece in (4,2) and int_piece in range(
+                    1,date.today().year +1):
+                    year = int_piece
+        return day, month, year
+
+    def get_yyyy_mm_dd_or_yy_mm_dd(self,date_pieces_vals:list[str] ) -> tuple [int, int, int]:
+        """Get yyyy mm dd or yy mm dd values """
+        year: int = 0
+        month:int = 0
+        day: int = 0
+        for str_piece in date_pieces_vals:
+            int_piece =  int(str_piece)
+            len_str_piece: int = len(str_piece)
+            if year == 0:
+                if len_str_piece in (4,2) and int_piece in range(
+                    1,date.today().year+1):
+                    year = int_piece
+            elif month == 0:
+                if len_str_piece in (1,2) and int_piece in range(1,13):
+                    month = int_piece
+            elif day ==0:
+                if len_str_piece in (1,2) and int_piece in range(1,32):
+                    day = int_piece
+        return year, month, day
 
     def str_todate(self,date_str: str)-> date:
         """String to date conversion """
-        year, month, day = 0,0,0
+        year: int = 0
+        month:int = 0
+        day: int = 0
+
         try:
             date_str_len = len(date_str)
             if date_str_len > 10:
@@ -95,42 +138,46 @@ class PyTypeConverters:
             date_str_pieces: list[str] = date_str.split('-')
             match date_format:
                 case  'dd-mm-yyyy' | 'dd-mm-yy':
-                    for str_piece in date_str_pieces:
-                        int_piece = int(str_piece)
-                        len_str_piece:int = len(str_piece)
-                        if day == 0:
-                            if len_str_piece in (1,2) and int_piece in range(1,32):
-                                day = int_piece
-                        elif month == 0:
-                            if len_str_piece in (1,2) and int_piece in range(1,13):
-                                month = int_piece
-                        elif year == 0:
-                            if len_str_piece in (4,2) and int_piece in range(
-                                1,date.today().year +1):
-                                year = int_piece
+                    day,month,year = self.get_dd_mm_yyyy_or_dd_mm_yy(
+                        date_str_pieces)
+
+                    # for str_piece in date_str_pieces:
+                    #     int_piece = int(str_piece)
+                    #     len_str_piece:int = len(str_piece)
+                    #     if day == 0:
+                    #         if len_str_piece in (1,2) and int_piece in range(1,32):
+                    #             day = int_piece
+                    #     elif month == 0:
+                    #         if len_str_piece in (1,2) and int_piece in range(1,13):
+                    #             month = int_piece
+                    #     elif year == 0:
+                    #         if len_str_piece in (4,2) and int_piece in range(
+                    #             1,date.today().year +1):
+                    #             year = int_piece
                 case 'yyyy-mm-dd' | 'yy-mm-dd':
-                    for str_piece in date_str_pieces:
-                        int_piece =  int(str_piece)
-                        len_str_piece: int = len(str_piece)
-                        if year == 0:
-                            if len_str_piece in (4,2) and int_piece in range(
-                                1,date.today().year+1):
-                                year = int_piece
-                        elif month == 0:
-                            if len_str_piece in (1,2) and int_piece in range(1,13):
-                                month = int_piece
-                        elif day ==0:
-                            if len_str_piece in (1,2) and int_piece in range(1,32):
-                                day = int_piece
+                    year,month,day = self.get_yyyy_mm_dd_or_yy_mm_dd(
+                        date_str_pieces)
+                    # for str_piece in date_str_pieces:
+                    #     int_piece =  int(str_piece)
+                    #     len_str_piece: int = len(str_piece)
+                    #     if year == 0:
+                    #         if len_str_piece in (4,2) and int_piece in range(
+                    #             1,date.today().year+1):
+                    #             year = int_piece
+                    #     elif month == 0:
+                    #         if len_str_piece in (1,2) and int_piece in range(1,13):
+                    #             month = int_piece
+                    #     elif day ==0:
+                    #         if len_str_piece in (1,2) and int_piece in range(1,32):
+                    #             day = int_piece
                 case _: pass
         except SyntaxError as syntax_error:
             print(syntax_error)
-
         return date(year, month, day)
 
 if __name__ == '__main__':
     py_type_instance =  PyTypeConverters()
     print(py_type_instance.str_todecimal('10.0'))
-    result: Enum =  py_type_instance.str_toenum(Color, 'BLUE') # type: ignore
-    print(result)
+    # result: Enum =  py_type_instance.str_toenum(Color, 'BLUE') # type: ignore
+    # print(result)
     print(py_type_instance.str_todate('12-10-2010'))

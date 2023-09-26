@@ -7,5 +7,3 @@ class VehicleTypes:
     Sedan = auto()
     Suv = auto()
     HatchBack = auto()
-
-

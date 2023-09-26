@@ -66,10 +66,12 @@ class TestConverters(unittest.TestCase):
         result: Decimal = self.converters.str_todecimal(decimal_val)
         self.assertEqual(10.0,result)
 
-    def test_str_toenum(self, enum_type: Enum = Color, enum_val: str = "RED") -> None: #type: ignore
-        """test string to enum conversion """
-        result: Enum = self.converters.str_toenum(enum_type, enum_val)
-        self.assertEqual(Color.RED,result)
+    # def test_str_toenum(self,
+    # enum_type: Enum = Color,
+    # enum_val: str = "RED") -> None: #type: ignore
+    #     """test string to enum conversion """
+    #     result: Enum = self.converters.str_toenum(enum_type, enum_val)
+    #     self.assertEqual(Color.RED,result)
 
     def test_str_todate_one(self, date_val_one: str = '2023-09-24')->None:
         """test string to date conversion """
