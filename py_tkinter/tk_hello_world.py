@@ -1,7 +1,7 @@
 """Module for tkinter Hello World"""
 
-from tkinter import * #type: ignore
-from tkinter import ttk
+# from tkinter import * #type: ignore
+from tkinter import Tk, ttk, HORIZONTAL
 
 class TkUse:
     """Tkinter use"""
@@ -37,7 +37,7 @@ class TkUse:
         ttk.Separator(self.frm, orient=HORIZONTAL).grid(column=0,
                                                         row=5,
                                                         columnspan=37,
-                                                        sticky='E')
+                                                        sticky='WE')
 
     def display(self)-> None:
         """Display frame with button and label """
