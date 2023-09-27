@@ -3,7 +3,7 @@ from datetime import date, time
 from decimal import Decimal
 import unittest
 from enum import Enum, IntEnum
-from py_converter import PyTypeConverters
+from .py_converter import PyTypeConverters
 class Color(Enum):
     """Color enumeration class """
     RED = 0
