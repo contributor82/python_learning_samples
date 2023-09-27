@@ -1,9 +1,8 @@
 """Module for using class enumeration"""
-
-from color_enum import Color
-from vehicle_type_enum import VehicleTypes
-from string_enum import MessageTypes
-from int_enum import Numbers
+from color_enum import Color #type: ignore
+from vehicle_type_enum import VehicleTypes #type: ignore
+from string_enum import MessageTypes #type: ignore
+from int_enum import Numbers #type: ignore
 
 class UsingEnums:
     """Module for using enumeration  """
