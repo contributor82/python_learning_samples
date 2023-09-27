@@ -1,5 +1,4 @@
 """Module for Message types enum """
-
 from enum import StrEnum, _simple_enum #type: ignore
 
 @_simple_enum(StrEnum) #type: ignore
