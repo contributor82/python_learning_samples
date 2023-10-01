@@ -13,7 +13,7 @@ class SQlLiteShell:
     shell_input: str = ''
     data: list[str] = ['']
 
-    def open_connection(self) -> bool:
+    def memory_db_connect(self) -> bool:
         """ Opening memory connection """
         self.is_open_connection = False
         try:
@@ -41,7 +41,7 @@ class SQlLiteShell:
         except IOError as io_error:
             print(io_error)
 
-    def exec_sql_statement(self) -> None:
+    def exec_sql_query(self) -> None:
         """ Executing SQL Statement """
 
         # if sqlite3.complete_statement(self.shell_input):
@@ -56,7 +56,7 @@ class SQlLiteShell:
             print(sql_error.args[0])
 
 
-    def display_sql_output(self) -> None:
+    def display_data(self) -> None:
         """ Displaying SQL Output """
         try:
             if len(self.data) > 0:
@@ -70,7 +70,7 @@ class SQlLiteShell:
         except sqlite3.Error as sql_error:
             print(sql_error.args[0])
 
-    def close_connection(self) -> bool:
+    def memory_db_disconnect(self) -> bool:
         """ Closing connection """
         is_close_connection: bool = False
         try:
@@ -86,7 +86,7 @@ class SQlLiteShell:
 
 if __name__ == '__main__':
     sql_lite_instance = SQlLiteShell()
-    sql_lite_instance.open_connection()
+    sql_lite_instance.memory_db_connect()
     input_line: str = ''
     while True:
         print('SQLLite Menu: ')
@@ -96,10 +96,10 @@ if __name__ == '__main__':
         print('4. Exit')
         input_line = input()
         if input_line == '4':
-            sql_lite_instance.close_connection()
+            sql_lite_instance.memory_db_disconnect()
         match input_line:
             case '1': sql_lite_instance.accept_command_line_input()
-            case '2': sql_lite_instance.exec_sql_statement()
-            case '3': sql_lite_instance.display_sql_output()
+            case '2': sql_lite_instance.exec_sql_query()
+            case '3': sql_lite_instance.display_data()
             case '4': break
             case _: pass

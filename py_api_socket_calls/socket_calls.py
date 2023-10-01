@@ -23,7 +23,7 @@ class SocketCalls:
         self.host = host_address
         self.port = port_number
 
-    def connect_socket(self) -> None:
+    def socket_connect(self) -> None:
         """ Establishing socket connection with given host & port """
         try:
             # Approach one : settimeout, connect, accept
@@ -43,7 +43,7 @@ class SocketCalls:
         except ConnectionError as conn_error:
             print("Connect: ", conn_error)
 
-    def close_socket(self) -> None:
+    def socket_disconnect(self) -> None:
         """ Close socket connection """
         try:
             self.sock.shutdown(socket.SHUT_RDWR)
@@ -104,14 +104,14 @@ if __name__ == '__main__':
         host_name: str = socket.gethostbyname(socket.gethostname())
         sc_instance = SocketCalls(host_name, 3000)
         # host and port specified
-        sc_instance.connect_socket()
+        sc_instance.socket_connect()
 
         if sc_instance.is_connection_made is True:
             msg_data = bytearray("Hello, Socket calls.", encoding='utf-8')
             sc_instance.send_message(msg_data)
             received_msg: bytes | str | None = sc_instance.receive_message()
             print(" Socket received message as : ", received_msg)
-            sc_instance.close_socket()
+            sc_instance.socket_disconnect()
         else:
             print(" Since no connection has been established," +
                   "no message send and receive possible. ")

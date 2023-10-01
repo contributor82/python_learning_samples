@@ -9,7 +9,7 @@ class DBOperations:
     data: sqlite3.Cursor
     is_con_open: bool
 
-    def open_connection(self, db_path_name: str) -> bool | None:
+    def db_connect(self, db_path_name: str) -> bool | None:
         """ Function opening DB connection. """
         self.is_con_open = False
         try:
@@ -24,7 +24,7 @@ class DBOperations:
 
         return self.is_con_open
 
-    def close_connection(self) -> bool | None:
+    def db_disconnect(self) -> bool | None:
         """ Closing connection """
         is_con_close: bool = False
         try:
@@ -39,7 +39,7 @@ class DBOperations:
 
         return is_con_close
 
-    def exec_ddl_statements(self, ddl_statement: str) -> None:
+    def exec_ddl_query(self, ddl_statement: str) -> None:
         """ Execute DDL Statements """
         try:
             if self.is_con_open:
@@ -51,7 +51,7 @@ class DBOperations:
             print(sql_error)
 
 
-    def exec_batch_ddl_statements(self, ddl_statement: str) -> None:
+    def exec_batch_ddl_query(self, ddl_statement: str) -> None:
         """ Execute Batch DDL Statements """
         try:
             if self.is_con_open:
@@ -62,7 +62,7 @@ class DBOperations:
         except sqlite3.Error as sql_error:
             print(sql_error)
 
-    def exec_dml_statements(self, dml_statement: str,
+    def exec_dml_query(self, dml_statement: str,
                             sql_parameters: list[int | str] | None = None) -> None:  # type: ignore
         """ Execcute DML Statements """
         try:
@@ -79,7 +79,7 @@ class DBOperations:
             print(sql_error)
 
 
-    def exec_batch_dml_statements(self, dml_statement: str,
+    def exec_batch_dml_query(self, dml_statement: str,
                                   sql_params:
                                   list[tuple[int, int, str, int]] | None) -> None: # type: ignore
         """ Executing batch DML statements """
@@ -127,51 +127,51 @@ class DBOperations:
 if __name__ == '__main__':
     db_instance = DBOperations()
     db_path: str = 'C:\\Data\\sample_data.db'
-    is_connection_success: bool | None = db_instance.open_connection(
+    is_connection_success: bool | None = db_instance.db_connect(
         db_path)
     if is_connection_success:
 
-        db_instance.exec_ddl_statements(
+        db_instance.exec_ddl_query(
             'CREATE TABLE Student(StudentId, Name)')
 
         parameters: list[int | str] = []
         parameters.append(1)
         parameters.append('Scott')
 
-        db_instance.exec_dml_statements(
+        db_instance.exec_dml_query(
             'INSERT INTO Student VALUES(?,?)', parameters) # (1, 'Scott')
         parameters.clear()
         parameters.append(2)
         parameters.append('Martin')
-        db_instance.exec_dml_statements(
+        db_instance.exec_dml_query(
             'INSERT INTO Student VALUES(?,?)', parameters)
-        db_instance.exec_dml_statements('SELECT StudentId, Name FROM Student', None)
+        db_instance.exec_dml_query('SELECT StudentId, Name FROM Student', None)
         db_instance.display_data()
 
-        db_instance.exec_dml_statements(
+        db_instance.exec_dml_query(
             'SELECT COUNT(StudentId) as num_of_students FROM Student',  None)
         db_instance.display_scalar_data()
 
-        db_instance.exec_ddl_statements(
+        db_instance.exec_ddl_query(
             'CREATE TABLE Marks(MarksId, StudentId, SubjectName, SubjectMarks)')
 
         batch_parameters: list[tuple[int, int, str, int]] = [(1, 1, 'Physics', 75),
                                                (2, 1, 'Chemistry', 85),
                                                   (3, 1, 'Maths', 90),
                                                   (4, 1, 'Biology', 78)]
-        db_instance.exec_batch_dml_statements(' INSERT INTO Marks(MarksId, StudentId, '
+        db_instance.exec_batch_dml_query(' INSERT INTO Marks(MarksId, StudentId, '
                                                + ' SubjectName, SubjectMarks) VALUES(?,?,?,?)',
                                               batch_parameters)
 
-        db_instance.exec_dml_statements(
+        db_instance.exec_dml_query(
             'SELECT MarksId, StudentId, SubjectName, SubjectMarks FROM Marks', None)
         db_instance.display_data()
 
-        db_instance.exec_batch_ddl_statements('''
+        db_instance.exec_batch_ddl_query('''
                                     BEGIN;
                                     CREATE TABLE Person(PersonId, FirstName, LastName, Age);
                                     CREATE TABLE Book(BookId, Title, Author, Published);
                                     CREATE TABLE Publisher(PublisherId, Name, Address);
                                     COMMIT;
                                         ''')
-        db_instance.close_connection()
+        db_instance.db_disconnect()
