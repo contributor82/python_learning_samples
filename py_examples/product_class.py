@@ -1,4 +1,5 @@
 """"Module for product"""
+
 class Product:
     """product class """
     product_id: int
@@ -15,7 +16,7 @@ class Product:
 
     def get_product_stock(self) -> dict[str, int | str]:
         """Get Product Stock """
-        return {"product_id": self.product_id, "name": self.name, "quantity": self.quantity}
+        return {"product_id": self.product_id, "name": self.name, "unit_price": self.unit_price, "quantity": self.quantity}
 
     def display_product_dtls(self)-> None:
         """Display product details """
