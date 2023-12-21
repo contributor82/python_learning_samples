@@ -9,135 +9,134 @@ class NumpyUse:
     def __init__(self) -> None:
         self.name = "NumpyUse"
 
-    def printName(self) -> None:
+    def print_name(self) -> None:
         print("Name is : ", self.name)
 
-    def printArray(self, arr: ndarray[int]) -> None: # type: ignore
+    def print_array(self, arr: ndarray[int]) -> None: # type: ignore
         print("Array is : ", arr.tolist())
 
-    def printArrayShape(self, arr: ndarray[int]) -> None: # type: ignore
+    def print_array_shape(self, arr: ndarray[int]) -> None: # type: ignore
         print("Array shape is : ", arr.shape)
 
-    def printArrayDimension(self, arr: ndarray[int]) -> None: # type: ignore
+    def print_array_dimension(self, arr: ndarray[int]) -> None: # type: ignore
         print("Array dimension is : ", arr.ndim)
 
-    def printArrayExpandDimension(self, arr: ndarray[int]) -> None: # type: ignore
+    def print_array_expand_dimension(self, arr: ndarray[int]) -> None: # type: ignore
         print("Array before expand dimension is : ", arr) # type: ignore
         arr = np.expand_dims(arr, axis=0) # type: ignore
         print("Array after expand dimension is : ",arr) # type: ignore
         arr = arr.shape # type: ignore
         print("Array after shape is : ",arr) # type: ignore
 
-    def printArraySize(self, arr: ndarray[int]) -> None:# type: ignore
+    def print_array_size(self, arr: ndarray[int]) -> None:# type: ignore
         print("Array size is : ", arr.size)
 
-    def printArrayDataType(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array data type is : ", arr.dtype)
+    def print_array_data_type(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array data type is : ", arr.dtype) # type: ignore
 
-    def printArrayItemSize(self, arr: ndarray[int]) -> None: # type: ignore
+    def print_array_item_size(self, arr: ndarray[int]) -> None: # type: ignore
         print("Array item size is : ", arr.itemsize)
 
-    def printArrayData(self, arr: ndarray[int]) -> None: # type: ignore
+    def print_array_data(self, arr: ndarray[int]) -> None: # type: ignore
         print("Array data is : ", arr.data)
 
-    def printArrayFlags(self, arr: ndarray[int]) -> None: # type: ignore
+    def print_array_flags(self, arr: ndarray[int]) -> None: # type: ignore
         print("Array flags is : ", arr.flags)
 
-    def printArrayStrides(self, arr: ndarray[int]) -> None: # type: ignore
+    def print_array_strides(self, arr: ndarray[int]) -> None: # type: ignore
         print("Array strides is : ", arr.strides)
 
-    def printArrayTranspose(self, arr: ndarray[int]) -> None:  # type: ignore
-        print("Array transpose is : ", arr.transpose())
+    def print_array_transpose(self, arr: ndarray[int]) -> None:  # type: ignore
+        print("Array transpose is : ", arr.transpose()) # type: ignore
 
-    def printArrayFlatten(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array flatten is : ", arr.flatten())
+    def print_array_flatten(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array flatten is : ", arr.flatten()) # type: ignore
 
-    def printArrayReshape(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before reshape is : ", arr)
-        arr = arr.reshape(2,4)
-        print("Array after reshape is : ", arr)
+    def print_array_reshape(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before reshape is : ", arr) # type: ignore
+        arr = arr.reshape(2,4) # type: ignore
+        print("Array after reshape is : ", arr) # type: ignore
 
-    def printArrayResize(self, arr: ndarray[int]) -> None: # type: ignore
-        print("array before resize is : ", arr)
+    def print_array_resize(self, arr: ndarray[int]) -> None: # type: ignore
+        print("array before resize is : ", arr) # type: ignore
         print("Array resize is : ", arr.resize(2,4))
-        print("Array after resize is : ", arr)
+        print("Array after resize is : ", arr) # type: ignore
 
-    def printArrayAppend(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before append is : ", arr)
-        arr = np.append(arr, [1,2,3,4,5,6,7,8])
-        print("Array append is : ", arr)
-        print("Array after append is : ", arr)
+    def print_array_append(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before append is : ", arr) # type: ignore
+        arr = np.append(arr, [1,2,3,4,5,6,7,8]) # type: ignore
+        print("Array append is : ", arr) # type: ignore
+        print("Array after append is : ", arr) # type: ignore
 
-    def printArrayInsert(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before insert is : ", arr)
-        arr = np.insert(arr, 2, [1,2,3,4,5,6,7,8])
-        print("Array after insert is : ", arr)
+    def print_array_insert(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before insert is : ", arr) # type: ignore
+        arr = np.insert(arr, 2, [1,2,3,4,5,6,7,8]) # type: ignore
+        print("Array after insert is : ", arr) # type: ignore
 
-    def printArrayDelete(self, arr: ndarray[int]) -> None:# type: ignore
-        print("Array before delete is : ", arr)
-        print("Array delete is : ", np.delete(arr, 2))
-        print("Array after delete is : ", arr)
+    def print_array_delete(self, arr: ndarray[int]) -> None:# type: ignore
+        print("Array before delete is : ", arr) # type: ignore
+        print("Array delete is : ", np.delete(arr, 2)) # type: ignore
+        print("Array after delete is : ", arr) # type: ignore
 
-    def printArrayConcatenate(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before concatenate is : ", arr)
-        arr = np.concatenate((arr, [1,2,3,4,5,6,7,8]))
-        print("Array concatenate is : ", arr)
-        print("Array after concatenate is : ", arr)
+    def print_array_concatenate(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before concatenate is : ", arr) # type: ignore
+        arr = np.concatenate((arr, [1,2,3,4,5,6,7,8])) # type: ignore
+        print("Array concatenate is : ", arr) # type: ignore
+        print("Array after concatenate is : ", arr) # type: ignore
 
-    def printArrayStack(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before stack is : ", arr)
-        arr = np.stack((arr, [1,2,3,4,5,6,7,8]))
-        print("Array stack is : ", arr)
-        print("Array after stack is : ", arr)
+    def print_array_stack(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before stack is : ", arr) # type: ignore
+        arr = np.stack((arr, [1,2,3,4,5,6,7,8])) # type: ignore
+        print("Array stack is : ", arr) # type: ignore
+        print("Array after stack is : ", arr) # type: ignore
 
-    # def printArrayVStack(self, arr: np.ndarray):
-    def printExpressionOfArray(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before expression is : ", arr)
-        print("Array expression is 0:3 : ", arr[0:3])
-        print("Array expression is arr < 5 : ", arr[arr < 5])
+    # def print_array_VStack(self, arr: np.ndarray):
+    def print_expression_of_array(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before expression is : ", arr) # type: ignore
+        print("Array expression is 0:3 : ", arr[0:3]) # type: ignore
+        print("Array expression is arr < 5 : ", arr[arr < 5]) # type: ignore
 
-    def printArrayDivisibleBy2(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before expression is : ", arr)
-        arr = arr[arr % 2 == 0]
-        print("Array expression is arr % 2 == 0 : ", arr)
+    def print_array_divisible_by2(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before expression is : ", arr) # type: ignore
+        arr = arr[arr % 2 == 0] # type: ignore
+        print("Array expression is arr % 2 == 0 : ", arr) # type: ignore
 
-    def printArrayUsingLogicalOperator(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before expression is : ", arr)
-        arr = arr[(arr > 2) & (arr < 5)]
-        print("Array expression is arr[(arr > 2) & (arr < 5)] : ", arr)
+    def print_array_using_logical_operator(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before expression is : ", arr) # type: ignore
+        arr = arr[(arr > 2) & (arr < 5)] # type: ignore
+        print("Array expression is arr[(arr > 2) & (arr < 5)] : ", arr) # type: ignore
 
 if __name__ == '__main__':
     numpy_use_instance = NumpyUse()
 
-    numpy_use_instance.printName()
-    numpy_use_instance.printArray(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayShape(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayDimension(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_name()
+    numpy_use_instance.print_array(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_shape(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_dimension(np.array([1,2,3,4,5,6,7,8])) # type: ignore
 
-    numpy_use_instance.printArraySize(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayDataType(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayItemSize(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayData(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_size(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_data_type(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_item_size(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_data(np.array([1,2,3,4,5,6,7,8])) # type: ignore
 
-    numpy_use_instance.printArrayFlags(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayStrides(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayTranspose(np.array([[1,2,3,4],[5,6,7,8]])) # type: ignore
-    numpy_use_instance.printArrayFlatten(np.array([[1,2,3,4],[5,6,7,8]])) # type: ignore
+    numpy_use_instance.print_array_flags(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_strides(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_transpose(np.array([[1,2,3,4],[5,6,7,8]])) # type: ignore
+    numpy_use_instance.print_array_flatten(np.array([[1,2,3,4],[5,6,7,8]])) # type: ignore
 
-    numpy_use_instance.printArrayReshape(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayResize(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayExpandDimension(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_reshape(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_resize(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_expand_dimension(np.array([1,2,3,4,5,6,7,8])) # type: ignore
 
-    numpy_use_instance.printArrayAppend(np.array([9,10,11,12,13,14,15,16])) # type: ignore
-    numpy_use_instance.printArrayInsert(np.array([17,18,19,20,21,22,23,24])) # type: ignore
-    numpy_use_instance.printArrayDelete(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayConcatenate(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayStack(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_append(np.array([9,10,11,12,13,14,15,16])) # type: ignore
+    numpy_use_instance.print_array_insert(np.array([17,18,19,20,21,22,23,24])) # type: ignore
+    numpy_use_instance.print_array_delete(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_concatenate(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_stack(np.array([1,2,3,4,5,6,7,8])) # type: ignore
 
-
-    numpy_use_instance.printExpressionOfArray(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayDivisibleBy2(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.printArrayUsingLogicalOperator(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_expression_of_array(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_divisible_by2(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_using_logical_operator(np.array([1,2,3,4,5,6,7,8])) # type: ignore
 
 
 

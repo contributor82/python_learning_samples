@@ -6,10 +6,11 @@ class KnowYourAge:
 
     def __init__(self) -> None:
         """Initializing current date from datetime """
-        self.current_date: datetime = datetime.today()
+        self.current_date = datetime.today()
 
     def get_your_age(self, birth_year: int)-> int:
         """Get your age """
+
         age: int = self.current_date.year - birth_year
         return age
 
@@ -31,11 +32,11 @@ class KnowYourAge:
 
 if __name__ == '__main__':
     know_ur_age_instance = KnowYourAge()
-    print(' Birth year: ', know_ur_age_instance.current_date,
+    print(' Birth year: ', know_ur_age_instance.current_date.year - 10,
           '\n Age: ', know_ur_age_instance.get_your_age(know_ur_age_instance.current_date.year-10))
 
     birth_date_as_input: datetime = know_ur_age_instance.current_date  # datetime(2023,8,20)
 
     print(' Birth date: ', str(birth_date_as_input.date()),
-          '\n Week day: ',
-          know_ur_age_instance.get_day_of_your_birth_date(birth_date_as_input))
+            '\n Week day: ',
+            know_ur_age_instance.get_day_of_your_birth_date(birth_date_as_input))
