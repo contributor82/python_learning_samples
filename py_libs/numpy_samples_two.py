@@ -107,6 +107,28 @@ class NumpyUse:
         print("Unique rows indices are : ", indices)
         print("Unique rows occurence count are : ", counts) #type: ignore
 
+    def print_array_reshape(self, arr: ndarray[int]) -> None:    #type: ignore
+        print("Array is : ", arr.tolist())
+        print("Array reshape(2,3) is : ", arr.reshape(2,3)) #type: ignore
+        print("Array reshape(3,2) is : ", arr.reshape(3,2)) #type: ignore
+
+    def print_array_transpose(self, arr: ndarray[int]) -> None:    #type: ignore
+        print("Array is : ", arr.tolist())
+        print("Array transpose is : ", arr.transpose()) #type: ignore
+
+    def print_array_reverse(self, arr: ndarray[int]) -> None:    #type: ignore
+        print("Array is : ", arr.tolist())
+        print("Array reverse using arr[::-1] is : ", arr[::-1]) #type: ignore
+        print("Array reverse using np.flip(arr) is : ", np.flip(arr)) #type: ignore
+
+    def print_array_reverse_rows(self, arr: ndarray[int]) -> None:    #type: ignore
+        print("Array is : ", arr.tolist())
+        print("Array reverse rows is : ", np.flip(arr, axis=0)) #type: ignore
+
+    def print_array_reverse_columns(self, arr: ndarray[int]) -> None:    #type: ignore
+        print("Array is : ", arr.tolist())
+        print("Array reverse columns is : ", np.flip(arr, axis=1)) #type: ignore
+
 if __name__ == '__main__':
     print("NumpyUse class is used to demonstrate the use of numpy library")
     print("Array from numpy library samples")
@@ -139,5 +161,11 @@ if __name__ == '__main__':
     numpy_use_instance.print_unique_array(np.array([[1,1,2,2,3], [6,7,8,9,10],[1,2,8,9,10]])) #type: ignore
     numpy_use_instance.print_unique_array_with_counts(np.array([[1,1,2,2,3], [6,7,8,9,10],[1,2,8,9,10]])) #type: ignore
     numpy_use_instance.print_unique_array_rows(np.array([[1,2,3,4,5], [6,7,8,9,10],[1,2,3,4,5]])) #type: ignore
-    numpy_use_instance.print_unique_array_columns(np.array([[1,2,3,4,5], [6,7,8,9,10],[1,2,3,4,5]])) #type: ignore
-    numpy_use_instance.print_unique_rows_indices_occurence_count(np.array([[1,2,3,4,5], [6,7,8,9,10],[1,2,3,4,5]])) #type: ignore
+    numpy_use_instance.print_unique_array_columns(np.array([[1,2,3,4,5], [6,7,8,9,10],[11,12,13,14,15],[1,2,3,4,5]])) #type: ignore
+    numpy_use_instance.print_unique_rows_indices_occurence_count(np.array([[1,2,3,4,5], [6,7,8,9,10],[11,12,13,14,15],[1,2,3,4,5]])) #type: ignore
+
+    numpy_use_instance.print_array_reshape(np.arange(1,7)) #type: ignore
+    numpy_use_instance.print_array_transpose(np.array([[0,1,2], [3,4,5]])) #type: ignore
+    numpy_use_instance.print_array_reverse(np.arange(1,7)) #type: ignore
+    numpy_use_instance.print_array_reverse_rows(np.arange(1,7).reshape(2,3)) #type: ignore
+    numpy_use_instance.print_array_reverse_columns(np.arange(1,7).reshape(2,3)) #type: ignore
