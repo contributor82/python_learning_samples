@@ -129,6 +129,24 @@ class NumpyUse:
         print("Array is : ", arr.tolist())
         print("Array reverse columns is : ", np.flip(arr, axis=1)) #type: ignore
 
+    def print_array_flatten(self, arr: ndarray[int]) -> None:    #type: ignore
+        print("Array is : ", arr.tolist())
+        print("Array flatten is : ", arr.flatten()) #type: ignore
+
+    def print_array_ravel(self, arr: ndarray[int]) -> None:    #type: ignore
+        print("Array is : ", arr.tolist())
+        arr2 = arr.ravel() #type: ignore
+        print("Array ravel is : ", arr2) #type: ignore
+        arr2[0] = 98
+        print("Parent Array after ravel and changed value : ", arr.tolist())
+        print("Array ravel after changed value : ", arr2.tolist())
+
+
+    def print_help_func(self, func_name: str) -> None:
+        print("Help for ", func_name)
+        print(help(func_name))
+
+
 if __name__ == '__main__':
     print("NumpyUse class is used to demonstrate the use of numpy library")
     print("Array from numpy library samples")
@@ -169,3 +187,8 @@ if __name__ == '__main__':
     numpy_use_instance.print_array_reverse(np.arange(1,7)) #type: ignore
     numpy_use_instance.print_array_reverse_rows(np.arange(1,7).reshape(2,3)) #type: ignore
     numpy_use_instance.print_array_reverse_columns(np.arange(1,7).reshape(2,3)) #type: ignore
+
+    numpy_use_instance.print_array_flatten(np.array([[1,2,3,4,5], [6,7,8,9,10],[11,12,13,14,15]])) #type: ignore
+    numpy_use_instance.print_array_ravel(np.array([[1,2,3,4,5], [6,7,8,9,10],[11,12,13,14,15]])) #type: ignore
+
+    numpy_use_instance.print_help_func("max")

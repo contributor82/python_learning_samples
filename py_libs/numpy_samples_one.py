@@ -1,7 +1,7 @@
 """Array from numpy library samples"""""
 
 import numpy as np
-from numpy import ndarray
+from numpy import ndarray, save
 
 class NumpyUse:
     """NumpyUse class is used to demonstrate the use of numpy library"""
@@ -78,10 +78,10 @@ class NumpyUse:
         print("Array delete is : ", np.delete(arr, 2)) # type: ignore
         print("Array after delete is : ", arr) # type: ignore
 
-    def print_array_concatenate(self, arr: ndarray[int]) -> None: # type: ignore
-        print("Array before concatenate is : ", arr) # type: ignore
-        arr = np.concatenate((arr, [1,2,3,4,5,6,7,8])) # type: ignore
-        print("Array concatenate is : ", arr) # type: ignore
+    def print_array_concatenate(self, arr1: ndarray[int], arr2:ndarray[int]) -> None: # type: ignore
+        print("Array 1 before concatenate is : ", arr1) # type: ignore
+        print("Array 2 before concatenate is : ", arr2) # type: ignore
+        arr = np.concatenate((arr1, arr2)) # type: ignore
         print("Array after concatenate is : ", arr) # type: ignore
 
     def print_array_stack(self, arr: ndarray[int]) -> None: # type: ignore
@@ -105,6 +105,29 @@ class NumpyUse:
         print("Array before expression is : ", arr) # type: ignore
         arr = arr[(arr > 2) & (arr < 5)] # type: ignore
         print("Array expression is arr[(arr > 2) & (arr < 5)] : ", arr) # type: ignore
+
+    def print_array_sort(self, arr: ndarray[int]) -> None: # type: ignore
+        print("Array before sorting : ", arr) # type: ignore
+        arr = np.sort(arr) # type: ignore
+        print("Array after sorting : ", arr) # type: ignore
+
+    def print_mean_square_error(self, n: int, predictions: ndarray[int], labels: ndarray[int]) -> None: # type: ignore
+        print("n value : ", n)
+        print("predictions value : ", predictions) # type: ignore
+        print("labels value : ", labels) # type: ignore
+        print("Mean Square Error : ", np.sum(np.square(predictions - labels)) / n) # type: ignore
+
+    def save_array(self, arr: ndarray[int]) -> None:# type: ignore
+        print("Array to save : ", arr) # type: ignore
+        save('C:\\Data\\numpy_array.npy', arr) # type: ignore
+        print("Array saved successfully")
+
+    def load_array_from_file(self, file_name: str) -> None:
+        arr = np.load(file_name) # type: ignore
+        print("Array loaded successfully : ", arr) # type: ignore
+
+    def print_linear_space_array(self) -> None:
+        print("Array with linear space : ", np.linspace(0,2,9))
 
 if __name__ == '__main__':
     numpy_use_instance = NumpyUse()
@@ -131,13 +154,19 @@ if __name__ == '__main__':
     numpy_use_instance.print_array_append(np.array([9,10,11,12,13,14,15,16])) # type: ignore
     numpy_use_instance.print_array_insert(np.array([17,18,19,20,21,22,23,24])) # type: ignore
     numpy_use_instance.print_array_delete(np.array([1,2,3,4,5,6,7,8])) # type: ignore
-    numpy_use_instance.print_array_concatenate(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_concatenate(np.array([1,2,3,4,5,6,7,8]), np.array([10,11,12,13,14, 15])) # type: ignore
     numpy_use_instance.print_array_stack(np.array([1,2,3,4,5,6,7,8])) # type: ignore
 
     numpy_use_instance.print_expression_of_array(np.array([1,2,3,4,5,6,7,8])) # type: ignore
     numpy_use_instance.print_array_divisible_by2(np.array([1,2,3,4,5,6,7,8])) # type: ignore
     numpy_use_instance.print_array_using_logical_operator(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.print_array_sort(np.array([2, 1, 5, 3, 7, 4, 6, 8])) # type: ignore
 
+    numpy_use_instance.print_mean_square_error(3, np.array([1,1,1,1,1,1,1,1]), np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.save_array(np.array([1,2,3,4,5,6,7,8])) # type: ignore
+    numpy_use_instance.load_array_from_file('C:\\Data\\numpy_array.npy') # type: ignore
+
+    numpy_use_instance.print_linear_space_array()
 
 
 # a = np.arange(15)
@@ -161,11 +190,7 @@ if __name__ == '__main__':
 
 # print("Array with linear space : ", np.linspace(0,2,9))
 
-# arr = np.array([2, 1, 5, 3, 7, 4, 6, 8])
-# print("Array before sorting : ", arr)
 
-# arr = np.sort(arr)
-# print("Array after sorting : ", arr)
 
 # randomNubers = np.random.random((2,3))
 # print("Array with random numbers : ", randomNubers)
