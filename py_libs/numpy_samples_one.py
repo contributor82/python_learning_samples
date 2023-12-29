@@ -140,8 +140,9 @@ class NumpyUse:
         """Prints the array using logical operator"""
         print("Array before expression is : ", arr)  # type: ignore
         arr = arr[(arr > 2) & (arr < 5)]  # type: ignore
-        # type: ignore
-        print("Array expression is arr[(arr > 2) & (arr < 5)] : ", arr)
+
+        print("Array expression is arr[(arr > 2) & (arr < 5)] : ",
+              arr)  # type: ignore
 
     def print_array_sort(self, arr: ndarray[int]) -> None:  # type: ignore
         """Prints the array after sorting"""

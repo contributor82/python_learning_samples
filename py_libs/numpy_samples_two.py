@@ -21,7 +21,9 @@ class NumpyUse:
         print("Array is : ", arr.tolist())
 
     # type: ignore
-    def print_vertically_stacked_array(self, arr1: ndarray[int], arr2: ndarray[int]) -> None:
+    def print_vertically_stacked_array(self,
+                                       arr1: ndarray[int],  # type: ignore
+                                       arr2: ndarray[int]) -> None:  # type: ignore
         """Print the vertically stacked array"""
         print("Array 1 is : ", arr1.tolist())
         print("Array 2 is : ", arr2.tolist())
@@ -29,7 +31,9 @@ class NumpyUse:
               np.vstack((arr1, arr2)))  # type: ignore
 
     # type: ignore
-    def print_horizontally_stacked_array(self, arr1: ndarray[int], arr2: ndarray[int]) -> None:
+    def print_horizontally_stacked_array(self,
+                                         arr1: ndarray[int],  # type: ignore
+                                         arr2: ndarray[int]) -> None:  # type: ignore
         """Print the horizontally stacked array"""
         print("Array 1 is : ", arr1.tolist())
         print("Array 2 is : ", arr2.tolist())
@@ -37,7 +41,8 @@ class NumpyUse:
               np.hstack((arr1, arr2)))  # type: ignore
 
     # type: ignore
-    def print_horizontal_split_array(self, arr: ndarray[int]) -> None:
+    def print_horizontal_split_array(self,
+                                     arr: ndarray[int]) -> None:  # type: ignore
         """Print the horizontal split array"""
         print("Array is : ", arr.tolist())
         print("Horizontal split array is : ",
@@ -52,28 +57,36 @@ class NumpyUse:
         print("Array copy is : ", arr1)  # type: ignore
 
     # type: ignore
-    def print_array_addition(self, arr1: ndarray[int], arr2: ndarray[int]) -> None:
+    def print_array_addition(self,
+                             arr1: ndarray[int],  # type: ignore
+                             arr2: ndarray[int]) -> None:  # type: ignore
         """Print the array addition"""
         print("Array 1 is : ", arr1.tolist())
         print("Array 2 is : ", arr2.tolist())
         print("Array addition is : ", arr1 + arr2)  # type: ignore
 
     # type: ignore
-    def print_array_subtraction(self, arr1: ndarray[int], arr2: ndarray[int]) -> None:
+    def print_array_subtraction(self,
+                                arr1: ndarray[int],  # type: ignore
+                                arr2: ndarray[int]) -> None:  # type: ignore
         """Print the array subtraction"""
         print("Array 1 is : ", arr1.tolist())
         print("Array 2 is : ", arr2.tolist())
         print("Array subtraction is : ", arr1 - arr2)
 
     # type: ignore
-    def print_array_multiplication(self, arr1: ndarray[int], arr2: ndarray[int]) -> None:
+    def print_array_multiplication(self,
+                                   arr1: ndarray[int],  # type: ignore
+                                   arr2: ndarray[int]) -> None:  # type: ignore
         """Print the array multiplication"""
         print("Array 1 is : ", arr1.tolist())
         print("Array 2 is : ", arr2.tolist())
         print("Array multiplication is : ", arr1 * arr2)  # type: ignore
 
     # type: ignore
-    def print_array_division(self, arr1: ndarray[int], arr2: ndarray[int]) -> None:
+    def print_array_division(self,
+                             arr1: ndarray[int],  # type: ignore
+                             arr2: ndarray[int]) -> None:  # type: ignore
         """Print the array division"""
         print("Array 1 is : ", arr1.tolist())
         print("Array 2 is : ", arr2.tolist())
@@ -85,14 +98,17 @@ class NumpyUse:
         print("Array sum is : ", arr.sum())
 
     # type: ignore
-    def print_array_sum_over_axis(self, arr: ndarray[int]) -> None:
+    def print_array_sum_over_axis(self,
+                                  arr: ndarray[int]) -> None:  # type: ignore
         """Print the array sum over axis"""
         print("Array is : ", arr.tolist())
         print("Array sum over axis 0 is : ", arr.sum(axis=0))
         print("Array sum over axis 1 is : ", arr.sum(axis=1))
 
     # type: ignore
-    def print_array_broadcasting(self, arr: ndarray[int], multplier: int) -> None:
+    def print_array_broadcasting(self,
+                                 arr: ndarray[int],  # type: ignore
+                                 multplier: int) -> None:
         """Print the array broadcasting"""
         print("Array is : ", arr.tolist())
         print("Multiplier is : ", multplier)
@@ -122,26 +138,30 @@ class NumpyUse:
         print("Unique values are : ", np.unique(arr))  # type: ignore
 
     # type: ignore
-    def print_unique_array_with_counts(self, arr: ndarray[int]) -> None:
+    def print_unique_array_with_counts(self,
+                                       arr: ndarray[int]) -> None:  # type: ignore
         """Print the unique array with counts"""
         print("Array is : ", arr.tolist())
         print("Unique array with count are : ", np.unique(
             arr, return_counts=True))  # type: ignore
 
     # type: ignore
-    def print_unique_array_rows(self, arr: ndarray[int]) -> None:
+    def print_unique_array_rows(self,
+                                arr: ndarray[int]) -> None:  # type: ignore
         """Print the unique array rows"""
         print("Array is : ", arr.tolist())
         print("Unique rows are : ", np.unique(arr, axis=0))  # type: ignore
 
     # type: ignore
-    def print_unique_array_columns(self, arr: ndarray[int]) -> None:
+    def print_unique_array_columns(self,
+                                   arr: ndarray[int]) -> None:  # type: ignore
         """Print the unique array columns"""
         print("Array is : ", arr.tolist())
         print("Unique columns are : ", np.unique(arr, axis=1))  # type: ignore
 
     # type: ignore
-    def print_unique_rows_indices_occurence_count(self, arr: ndarray[int]) -> None:
+    def print_unique_rows_indices_occurence_count(self,
+                                                  arr: ndarray[int]) -> None:  # type: ignore
         """Print the unique rows indices occurence count"""
         print("Array is : ", arr.tolist())
         unique_rows, indices, counts = np.unique(arr, axis=0,  # type: ignore
@@ -169,13 +189,15 @@ class NumpyUse:
               np.flip(arr))  # type: ignore
 
     # type: ignore
-    def print_array_reverse_rows(self, arr: ndarray[int]) -> None:
+    def print_array_reverse_rows(self,
+                                 arr: ndarray[int]) -> None:  # type: ignore
         """Print the array reverse rows"""
         print("Array is : ", arr.tolist())
         print("Array reverse rows is : ", np.flip(arr, axis=0))  # type: ignore
 
     # type: ignore
-    def print_array_reverse_columns(self, arr: ndarray[int]) -> None:
+    def print_array_reverse_columns(self,
+                                    arr: ndarray[int]) -> None:  # type: ignore
         """Print the array reverse columns"""
         print("Array is : ", arr.tolist())
         print("Array reverse columns is : ",
