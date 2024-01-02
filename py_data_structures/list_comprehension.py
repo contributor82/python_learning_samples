@@ -2,6 +2,7 @@
 # Ways to fill list such as loop/append, maps/lambda expressions
 # and bracket structure & range specified.
 
+
 class ListComprehensions:
     """ List comprehensions class """
 
@@ -32,6 +33,7 @@ class ListComprehensions:
 
         return item_list
 
+
 if __name__ == '__main__':
     lc_instance = ListComprehensions()
 
@@ -43,10 +45,11 @@ if __name__ == '__main__':
     empty_squares: list[str] = []
     print('Initial Squares list: ', empty_squares)
 
-    new_squares: list[int] = lc_instance.list_appending_using_lambda_expression(10)
+    new_squares: list[int] = lc_instance.list_appending_using_lambda_expression(
+        10)
     print('After appending list using lambda expression: ', new_squares)
 
-    empty_squares_two : list[str] = []
+    empty_squares_two: list[str] = []
     print('Initial Squares list: ', empty_squares_two)
 
     new_squares_two: list[int] = lc_instance.list_appending_expression(10)
@@ -56,4 +59,4 @@ if __name__ == '__main__':
         1, 2, 1, 4, 2, 4, 3, 5, 6, 7, 3, 4, 8, 9, 8, 5, 10]
     print('Duplicated Items list: ', duplicated_items_in_list)
     print('After removing duplicates from given list: ',
-        lc_instance.list_remove_duplicates(duplicated_items_in_list))
+          lc_instance.list_remove_duplicates(duplicated_items_in_list))
