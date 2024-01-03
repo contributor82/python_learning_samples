@@ -26,8 +26,8 @@ class PandaUse:
     def read_csv_file_cols(self, file_name: str) -> None:
         """Read csv file columns"""
         print("Reading csv, file name: ", file_name)
-        arr = pd.read_csv(file_name, usecols=[
-                          'Artist', 'Plays']).values  # type : ignore
+        arr = pd.read_csv(file_name,  # type : ignore
+                          usecols=['Artist', 'Plays']).values  # type : ignore
         print("Array from csv file: ", arr)  # type : ignore
 
 
