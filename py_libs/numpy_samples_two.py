@@ -128,6 +128,12 @@ class NumpyUse:
         """Print the array random"""
         print("Array random is : ", np.random.random((2, 3)))  # type: ignore
 
+    def print_array_random_second(self) -> None:  # type: ignore
+        """Print the array random second"""
+        rng = np.random.default_rng()  # type: ignore
+        arr = rng.integers(5, size=(2, 4))  # type: ignore
+        print("Array random second is : ", arr)  # type: ignore
+
     def print_2D_array(self, arr: ndarray[int]) -> None:  # type: ignore
         """Print the 2D array"""
         print("2D Array is : ", arr.tolist())
@@ -142,8 +148,9 @@ class NumpyUse:
                                        arr: ndarray[int]) -> None:  # type: ignore
         """Print the unique array with counts"""
         print("Array is : ", arr.tolist())
-        print("Unique array with count are : ", np.unique(
-            arr, return_counts=True))  # type: ignore
+        unique_values, occurrence_counts = np.unique(arr, return_counts=True)
+        print("Unique array with count are : ", unique_values,
+              "occurrence count : ", occurrence_counts)  # type: ignore
 
     # type: ignore
     def print_unique_array_rows(self,
@@ -185,8 +192,9 @@ class NumpyUse:
         """Print the array reverse"""
         print("Array is : ", arr.tolist())
         print("Array reverse using arr[::-1] is : ", arr[::-1])  # type: ignore
+        reverse_arr = np.flip(arr)  # type: ignore
         print("Array reverse using np.flip(arr) is : ",
-              np.flip(arr))  # type: ignore
+              reverse_arr)  # type: ignore
 
     # type: ignore
     def print_array_reverse_rows(self,
@@ -262,6 +270,7 @@ if __name__ == '__main__':
     numpy_use_instance.print_array_min(  # type: ignore
         np.arange(1, 25).reshape(2, 12))  # type: ignore
     numpy_use_instance.print_array_random()  # type: ignore
+    numpy_use_instance.print_array_random_second()  # type: ignore
 
     numpy_use_instance.print_2D_array(  # type: ignore
         np.array([[1, 2], [3, 4], [5, 6]]))  # type: ignore
