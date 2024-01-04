@@ -33,6 +33,20 @@ class ListComprehensions:
 
         return item_list
 
+    def list_length(self, item_list: list[int]) -> int:
+        """ List length method """
+        print('List: ', item_list)
+        print('Length of list: ', len(item_list))
+        return len(item_list)
+
+    def swap_list_first_and_last_items(self, item_list: list[int]) -> list[int]:
+        """ Swap list first and last items method """
+        if len(item_list) > 1:
+            print('List: ', item_list)
+            item_list[0], item_list[-1] = item_list[-1], item_list[0]
+            print('List after swapping first and last items: ', item_list)
+        return item_list
+
 
 if __name__ == '__main__':
     lc_instance = ListComprehensions()
@@ -60,3 +74,8 @@ if __name__ == '__main__':
     print('Duplicated Items list: ', duplicated_items_in_list)
     print('After removing duplicates from given list: ',
           lc_instance.list_remove_duplicates(duplicated_items_in_list))
+
+    lc_instance.list_length(duplicated_items_in_list)
+
+    lc_instance.swap_list_first_and_last_items(
+        duplicated_items_in_list)
