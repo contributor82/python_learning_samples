@@ -46,7 +46,7 @@ class PandasUse:
 
     def create_dataframe_from_csv(self, path: str) -> None:
         """Create dataframe from csv."""
-        df: pd.DataFrame = pd.read_csv(path)  # type: ignore
+        df = pd.read_csv(path)  # type: ignore
         print(df)  # type: ignore
 
     def read_csv_head_rows(self, path: str) -> None:
