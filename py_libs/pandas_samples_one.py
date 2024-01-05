@@ -1,5 +1,5 @@
 """Module for pandas samples."""
-
+import numpy as np
 from numpy import ndarray
 import pandas as pd
 
@@ -46,19 +46,19 @@ class PandasUse:
 
     def create_dataframe_from_csv(self, path: str) -> None:
         """Create dataframe from csv."""
-        df: DataFrame = pd.read_csv(path)  # type: ignore
+        df: pd.DataFrame = pd.read_csv(path)  # type: ignore
         print(df)  # type: ignore
 
     def read_csv_head_rows(self, path: str) -> None:
         """Read csv head rows."""
         print("Reading csv head rows from ", path)
-        df: DataFrame = pd.read_csv(path)
+        df = pd.read_csv(path)
         print(df.head(4))
 
     def read_csv_tail_rows(self, path: str) -> None:
         """Read csv tail rows."""
         print("Reading csv tail rows from ", path)
-        df: DataFrame = pd.read_csv(path)
+        df = pd.read_csv(path)
         print(df.tail(4))
 
     def save_dataframe(self, arr: ndarray[int]) -> None:  # type: ignore
