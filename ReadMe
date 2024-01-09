@@ -2,8 +2,8 @@
 
 Few points have been referred from Python documentation.(v3.10, v3.11)
 
-1. Create a "C:\Data" folder and keep the sample data files in it. Access sample data files from there in the respective Python programs.
-2. Added and updated Python code samples from the documentation.
+1. Create a "C:\Data" folder and keep the sample data files in it. The sample data files can be used in Python programs.
+2. Added and updated Python code samples from Python documentation.
 3. For importing classes, use the relative path compared to the direct path if classes are part of the project folder.
 4. Using class structure when invoking modules. Most of the samples from Python documentation have been structured in a class to better formulate and use for Python programming.
 5. Applying the python linting technique using pylint, flake8 for fixing type-checking errors and using formatting options such as autopep8 or black or fancier options to format Python program files.
@@ -14,7 +14,7 @@ NOTE: pylint causes import-error(E0401) so suggesting to either
     d. Or else avoid using pylint for the time being if problem still persists.
 6. Use pytype or mytest for type checking in Python program file.
 7. Performing local tests using "Pytest" for test-case verification before uploading it for build.
-8. Updating dependencies as & when required.
+8. To close pull requestes related to dependencies, Update requirements.txt file for dependencies as & when required.
 9. Added some design patterns with the help of online design documentation
 10. Review required before making use of any of the program.
 11. For further build testing, mypy can also be used.
