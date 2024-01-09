@@ -36,8 +36,8 @@ if __name__ == '__main__':
     host_address: tuple[str, int] = ('localhost', 3000)
 
     server_cert: str = ssl_module_instance.get_ssl_cert_info(host_address)
-    print(' Server certificate for host_address',
-          host_address, ' Cert info : ', server_cert)
+    # print(' Server certificate for host_address',
+    #      host_address, ' Cert info : ', server_cert)
 
     default_ca_file_path: ssl.DefaultVerifyPaths | None = ssl_module_instance.get_ssl_ca_file_path()
 
